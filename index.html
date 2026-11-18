@@ -2986,6 +2986,7 @@ function kitsuUlt(A,D,v){const U=R.ult;if(U)U.dur=1.9;const rage=A.fox>0||(A.tai
 
 /* ---------- patch notes: simple words, newest first ---------- */
 const PATCH_NOTES=[
+ {v:76,ar:['الضغط على الأزرار بقى أسرع'],en:['Buttons respond faster']},
  {v:75,ar:['صفحة اختيار الأبطال مبقتش بتهنّج'],en:['The hero selection screen no longer freezes']},
  {v:74,ar:['لو اللعبة وقفت، المرة الجاية بترجعك للمقاتل عشان تقدر تلعب'],en:['If the game freezes, next time it puts you on the Fighter so you can keep playing']},
  {v:73,ar:['تتبع أدق لمكان وقوف اللعبة، وصورة المدينة في القصة اتصلّحت'],en:['More detailed freeze tracking, and the city picture in Story is fixed']},
@@ -3385,7 +3386,7 @@ const KPOSE={
 
 /* ---------- crash breadcrumbs (temporary): where did the last session stop? ---------- */
 const BCR={a:[],t0:Date.now()};
-function bcr(s){try{BCR.a.push(((Date.now()-BCR.t0)/1000).toFixed(1)+'s '+s);if(BCR.a.length>60)BCR.a.shift();localStorage.setItem('by-bc',BCR.a.join('\n'))}catch(e){}}
+function bcr(s){try{BCR.a.push(((Date.now()-BCR.t0)/1000).toFixed(1)+'s '+s);if(BCR.a.length>60)BCR.a.shift();if(!BCR.q){BCR.q=1;queueMicrotask(()=>{BCR.q=0;try{localStorage.setItem('by-bc',BCR.a.join('\n'))}catch(e){}})}}catch(e){}}
 (function(){let prev='';try{prev=localStorage.getItem('by-bc')||''}catch(e){}
   const L=prev.split('\n').filter(Boolean),open={};for(const l of L){const m=/ ([><]) ([a-zA-Z]+)/.exec(l);if(m)open[m[2]]=(open[m[2]]||0)+(m[1]==='>'?1:-1)}
   const stuck=Object.keys(open).filter(k=>open[k]>0);
@@ -3395,8 +3396,8 @@ function bcr(s){try{BCR.a.push(((Date.now()-BCR.t0)/1000).toFixed(1)+'s '+s);if(
   try{localStorage.removeItem('by-bc')}catch(e){}})();
 BCR.hot=0;
 for(const n of ['show','switchChar','renderChars','renderHome','buildUps','findMatch','startRun','stillFig','figBox','lookOf','drawPrev','drawFig','tierInfo','renderShop','renderProf','renderCodex','toast','sfx','music','save','tagSearch','tagStart','openEvo','mapArt','renderStory','fit','measure']){
-  const f=window[n];if(typeof f!=='function')continue;const hot=['lookOf','drawPrev','sfx','figBox','drawFig','tierInfo','fit','measure'].includes(n);let cnt=0;
-  window[n]=function(...a){if(n==='show'){BCR.hot=6;if(a[0]==='home')try{bcr('# '+S.char+' lv '+JSON.stringify(S.lv)+' ghost '+JSON.stringify(S.ghost)+' day '+S.day+' dpr '+DPR+'/'+(window.devicePixelRatio||1)+' prev '+JSON.stringify(SZ.prev)+' win '+innerWidth+'x'+innerHeight)}catch(e){}}const log=!hot||BCR.hot>0||(++cnt%40===1);if(log)bcr('> '+n+(a[0]!=null&&typeof a[0]!=='object'&&typeof a[0]!=='function'?'('+String(a[0]).slice(0,16)+')':''));const r=f.apply(this,a);if(log)bcr('< '+n);return r}}
+  const f=window[n];if(typeof f!=='function')continue;const hot=['lookOf','drawPrev','sfx','figBox','drawFig','tierInfo','fit','measure'].includes(n);if(['lookOf','tierInfo','fit','measure','sfx'].includes(n))continue;let cnt=0;
+  window[n]=function(...a){if(n==='show'){BCR.hot=2;if(a[0]==='home')try{bcr('# '+S.char+' lv '+JSON.stringify(S.lv)+' ghost '+JSON.stringify(S.ghost)+' day '+S.day+' dpr '+DPR+'/'+(window.devicePixelRatio||1)+' prev '+JSON.stringify(SZ.prev)+' win '+innerWidth+'x'+innerHeight)}catch(e){}}const log=!hot||BCR.hot>0||(++cnt%40===1);if(log)bcr('> '+n+(a[0]!=null&&typeof a[0]!=='object'&&typeof a[0]!=='function'?'('+String(a[0]).slice(0,16)+')':''));const r=f.apply(this,a);if(log)bcr('< '+n);return r}}
 setInterval(()=>bcr('. alive '+mode+(R&&R.phase?'/'+R.phase:'')),2000);
 document.addEventListener('visibilitychange',()=>bcr(document.hidden?'. hidden':'. visible'));addEventListener('pagehide',()=>bcr('. bye'));
 {const _fbd=frameBody;let fc=0;frameBody=function(ts){if(BCR.hot>0){bcr('. f'+BCR.hot+' '+mode);BCR.hot--}else if(++fc%30===0)bcr('. frame '+mode+(R&&R.P?'/'+R.P.char:''));return _fbd(ts)}}
