@@ -145,9 +145,9 @@ button:focus-visible{outline:2px solid var(--bone);outline-offset:2px}
 .pfs{display:flex;flex-direction:column;align-items:center;gap:4px;padding:10px 6px;border-radius:14px;background:#0b092099;border:1px solid #ffd23e33;text-align:center;color:#fff}.pfs b{font-size:12px}.pfs span{font-size:10.5px;color:var(--mute)}
 .pfs.empty{border-style:dashed;border-color:#ffffff33;cursor:pointer;font:inherit}
 .medal{position:relative;width:46px;height:46px;flex:none;border-radius:50%;display:grid;place-items:center;background:radial-gradient(circle at 35% 30%,#ffffff55,transparent 45%),radial-gradient(var(--mc),#0b0920 120%);box-shadow:0 0 0 2.5px var(--mc),0 0 14px color-mix(in srgb,var(--mc) 55%,transparent),inset 0 -4px 8px #0006}
-.medal i{font-style:normal;font-size:22px;filter:drop-shadow(0 1px 2px #0008)}.medal img{width:80%;height:80%;border-radius:50%;object-fit:cover}
+.medal i{font-style:normal;font-size:22px;filter:drop-shadow(0 1px 2px #0008)}.medal img{width:90%;height:90%;border-radius:50%;object-fit:cover}
 .medal sub{position:absolute;bottom:-6px;left:50%;transform:translateX(-50%);font:900 9px/1 system-ui,sans-serif;padding:2px 5px;border-radius:6px;background:var(--mc);color:#15122e;box-shadow:0 1px 3px #0008}
-.medal.off{filter:grayscale(1) brightness(.6)}.medal.big{width:62px;height:62px}.medal.big i{font-size:30px}
+.medal.off{filter:grayscale(.55) brightness(.8)}.medal.big{width:62px;height:62px}.medal.big i{font-size:30px}
 .achlist{display:flex!important;flex-direction:column;gap:10px}
 .achhead{display:flex;align-items:center;gap:14px;padding:12px;border-radius:16px;background:linear-gradient(135deg,#2a2458,#15122e);border:1px solid #ffd23e44}
 .aring{width:76px;height:76px;flex:none}.aring circle{fill:none;stroke-width:8}.aring .bg{stroke:#ffffff14}.aring .fg{stroke:#ffd23e;stroke-linecap:round;transform:rotate(-90deg);transform-origin:40px 40px;filter:drop-shadow(0 0 4px #ffb23e)}.aring text{fill:#fff;font:900 16px system-ui,sans-serif;text-anchor:middle}
@@ -939,13 +939,13 @@ const NINJA_LOOKS=[
  {skin:'#e0a877',top:'#0b1a2a',pants:'#0b1a2a',boot:'#050d16',hair:'#7ef0ff',hs:'spiky',arm:'full',bracer:'#7ef0ff',mask:'#0b1a2a',acc:'#7ef0ff',eye:'#7ef0ff',glowEye:1,sc:1.2,musc:2,ex:'mask scarf katana aura lines'},
  {skin:'#2a2a3a',top:'#120a1a',pants:'#120a1a',boot:'#07040b',hair:'#120a1a',hs:'spiky',arm:'full',bracer:'#ff2e55',mask:'#120a1a',acc:'#ff2e55',eye:'#ff2e55',glowEye:1,sc:1.24,musc:2,ex:'mask scarf katana aura wisps lines'},
  {pat:'#ff2e55',hair:'#1a0610',hs:'spiky',mask:'#141040',acc:'#ff2e55',eye:'#ffffff',sc:1.28,ex:'mask scarf katana aura wisps core'},
- {pat:'#b48cff',hair:'#140a24',hs:'spiky',mask:'#141040',acc:'#b48cff',eye:'#ffffff',sc:1.32,ex:'mask scarf katana aura wisps core crown'},
- {pat:'#7ef0ff',hair:'#eaf6ff',hs:'flow',mask:'#141040',acc:'#7ef0ff',eye:'#ffffff',sc:1.36,ex:'mask scarf katana aura wisps core crown halo'},
- {pat:'#ffffff',hair:'#ffffff',hs:'flow',mask:'#141040',acc:'#ffffff',eye:'#ffd23e',sc:1.4,ex:'mask scarf katana aura wisps core crown halo float'},
- {pat:'#ff4d6d',hair:'#ffffff',hs:'flow',mask:'#141040',acc:'#ff4d6d',eye:'#ffffff',sc:1.43,cape:'#2a0610',capeIn:'#ff4d6d',ex:'mask scarf katana aura wisps core crown halo float cape'},
- {pat:'#7dffa8',hair:'#eafff0',hs:'flow',mask:'#141040',acc:'#7dffa8',eye:'#ffffff',sc:1.46,ex:'mask scarf katana aura wisps core crown float wings rings'},
- {pat:'#ffd23e',hair:'#ffffff',hs:'flame',mask:'#141040',acc:'#ffd23e',eye:'#ffffff',sc:1.49,cape:'#1a1240',capeIn:'#ffd23e',ex:'mask scarf katana aura core crown halo float wings rings cape'},
- {pat:'#c77dff',hair:'#ffffff',hs:'flow',mask:'#141040',acc:'#c77dff',eye:'#7ef0ff',sc:1.52,cape:'#16062e',capeIn:'#c77dff',ex:'mask scarf katana aura wisps core crown halo float wings rings cape lines'}
+ {pat:'#b40f3a',hair:'#140a24',hs:'spiky',mask:'#141040',acc:'#b40f3a',eye:'#ffffff',sc:1.32,ex:'mask scarf katana aura wisps core'},
+ {pat:'#8a2bff',hair:'#eaf6ff',hs:'flow',mask:'#141040',acc:'#8a2bff',eye:'#ffffff',sc:1.36,ex:'mask scarf katana aura wisps core'},
+ {pat:'#ff4d6d',hair:'#ffffff',hs:'flow',mask:'#141040',acc:'#ff4d6d',eye:'#ffd23e',sc:1.4,ex:'mask scarf katana aura wisps core horns'},
+ {pat:'#e0002b',hair:'#ffffff',hs:'flow',mask:'#141040',acc:'#e0002b',eye:'#ffffff',sc:1.43,cape:'#2a0610',capeIn:'#e0002b',ex:'mask scarf katana aura wisps core cape horns'},
+ {pat:'#9b1dff',hair:'#eafff0',hs:'flow',mask:'#141040',acc:'#9b1dff',eye:'#ffffff',sc:1.46,ex:'mask scarf katana aura wisps core horns'},
+ {pat:'#ff1a1a',hair:'#ffffff',hs:'flame',mask:'#141040',acc:'#ff1a1a',eye:'#ffffff',sc:1.49,cape:'#1a1240',capeIn:'#ff1a1a',ex:'mask scarf katana aura core cape wisps horns'},
+ {pat:'#ffe0e6',hair:'#ffffff',hs:'flow',mask:'#141040',acc:'#ffe0e6',eye:'#7ef0ff',sc:1.52,cape:'#16062e',capeIn:'#ffe0e6',ex:'mask scarf katana aura wisps core cape lines horns'}
 ];
 const MAGE_LOOKS=[
  {skin:'#e8b98a',top:'#3a4a8a',pants:'#2a3366',boot:'#1a1f3a',hair:'#5a3418',hs:'none',arm:'full',robe:'#3a4a8a',hat:'#3a4a8a',acc:'#ffb23e',eye:'#221d47',sc:.9,ex:'robe hat staff'},
@@ -956,14 +956,14 @@ const MAGE_LOOKS=[
  {skin:'#e8b98a',top:'#1a2a5a',pants:'#121d40',boot:'#0b1228',hair:'#eef2ff',hs:'none',arm:'full',robe:'#1a2a5a',hat:'#1a2a5a',cape:'#121d40',capeIn:'#ffd23e',acc:'#ffd23e',eye:'#15122e',sc:1.15,ex:'robe hat staff aura cape beard'},
  {skin:'#fff3c4',top:'#f3eddc',pants:'#d9c99a',boot:'#b39a5e',hair:'#ffffff',hs:'none',arm:'full',robe:'#f3eddc',hat:'#f3eddc',acc:'#ffd23e',eye:'#3aa0ff',sc:1.2,ex:'robe hat staff aura halo beard'},
  {skin:'#2b2460',top:'#1c1748',pants:'#1c1748',boot:'#120e30',hair:'#ff8a2a',hs:'none',arm:'full',robe:'#1c1748',hat:'#1c1748',cape:'#120e30',capeIn:'#ff8a2a',acc:'#ff8a2a',eye:'#ffd23e',glowEye:1,sc:1.24,ex:'robe hat staff aura cape lines'},
- {pat:'#ff8a2a',hair:'#fff1b8',hs:'none',acc:'#ff8a2a',eye:'#ffffff',sc:1.28,ex:'robe hat staff aura float core'},
- {pat:'#7ef0ff',hair:'#eaf6ff',hs:'none',acc:'#7ef0ff',eye:'#ffffff',sc:1.32,cape:'#0b1a3a',capeIn:'#7ef0ff',ex:'robe hat staff aura float core cape rings'},
- {pat:'#c77dff',hair:'#f3e6ff',hs:'none',acc:'#c77dff',eye:'#ffffff',sc:1.36,ex:'robe hat staff aura float core rings halo'},
- {pat:'#ffd23e',hair:'#ffffff',hs:'none',acc:'#ffd23e',eye:'#ffffff',sc:1.4,cape:'#1a1240',capeIn:'#ffd23e',ex:'robe hat staff aura float core rings halo cape'},
- {pat:'#ff5a6e',hair:'#ffe1e6',hs:'none',acc:'#ff5a6e',eye:'#ffffff',sc:1.43,ex:'robe hat staff aura float core rings wings'},
- {pat:'#7dffa8',hair:'#eafff0',hs:'none',acc:'#7dffa8',eye:'#ffffff',sc:1.46,cape:'#0a2a18',capeIn:'#7dffa8',ex:'robe hat staff aura float core rings halo cape lines'},
- {pat:'#ffffff',hair:'#ffffff',hs:'none',acc:'#ffffff',eye:'#3aa0ff',sc:1.49,ex:'robe hat staff aura float core rings halo crown wings beard'},
- {pat:'#ff4fd8',hair:'#ffd6f5',hs:'none',acc:'#ff4fd8',eye:'#7ef0ff',sc:1.52,cape:'#16062e',capeIn:'#ff4fd8',ex:'robe hat staff aura float core rings halo crown wings cape lines'}
+ {pat:'#7ef0ff',hair:'#fff1b8',hs:'none',acc:'#7ef0ff',eye:'#ffffff',sc:1.28,ex:'robe hat staff aura float core rings'},
+ {pat:'#c77dff',hair:'#eaf6ff',hs:'none',acc:'#c77dff',eye:'#ffffff',sc:1.32,cape:'#0b1a3a',capeIn:'#c77dff',ex:'robe hat staff aura float core cape rings'},
+ {pat:'#4da3ff',hair:'#f3e6ff',hs:'none',acc:'#4da3ff',eye:'#ffffff',sc:1.36,ex:'robe hat staff aura float core rings'},
+ {pat:'#b3fff5',hair:'#ffffff',hs:'none',acc:'#b3fff5',eye:'#ffffff',sc:1.4,cape:'#1a1240',capeIn:'#b3fff5',ex:'robe hat staff aura float core rings cape'},
+ {pat:'#e2a3ff',hair:'#ffe1e6',hs:'none',acc:'#e2a3ff',eye:'#ffffff',sc:1.43,ex:'robe hat staff aura float core rings'},
+ {pat:'#5be7ff',hair:'#eafff0',hs:'none',acc:'#5be7ff',eye:'#ffffff',sc:1.46,cape:'#0a2a18',capeIn:'#5be7ff',ex:'robe hat staff aura float core rings cape lines'},
+ {pat:'#a78bff',hair:'#ffffff',hs:'none',acc:'#a78bff',eye:'#3aa0ff',sc:1.49,ex:'robe hat staff aura float core rings beard'},
+ {pat:'#ffffff',hair:'#ffd6f5',hs:'none',acc:'#ffffff',eye:'#7ef0ff',sc:1.52,cape:'#16062e',capeIn:'#ffffff',ex:'robe hat staff aura float core rings cape lines'}
 ];
 const GOLEM_LOOKS=[
  {skin:'#8a93a8',top:'#8a93a8',pants:'#5d6478',boot:'#3a3f52',hair:'#000',hs:'none',arm:'full',plate:'#b8c4d8',acc:'#7ef0ff',eye:'#7ef0ff',sc:.92,ex:'visor armor'},
@@ -974,14 +974,14 @@ const GOLEM_LOOKS=[
  {skin:'#2a3a5a',top:'#2a3a5a',pants:'#1a2640',boot:'#0d1424',hair:'#000',hs:'none',arm:'full',plate:'#7ef0ff',acc:'#7ef0ff',eye:'#7ef0ff',sc:1.16,ex:'visor armor pads cannon jets aura lines'},
  {skin:'#e9eef8',top:'#e9eef8',pants:'#b8c4d8',boot:'#8a93a8',hair:'#000',hs:'none',arm:'full',plate:'#3aa0ff',acc:'#3aa0ff',eye:'#3aa0ff',sc:1.2,ex:'visor armor pads cannon jets aura float'},
  {skin:'#2a1a12',top:'#2a1a12',pants:'#1a100a',boot:'#0d0805',hair:'#000',hs:'none',arm:'full',plate:'#ffd23e',acc:'#ffd23e',eye:'#ffd23e',sc:1.24,ex:'visor armor pads cannon jets aura float lines'},
- {pat:'#7ef0ff',hair:'#000',hs:'none',plate:'#7ef0ff',acc:'#7ef0ff',eye:'#ffffff',sc:1.28,ex:'visor armor pads cannon jets aura float core'},
- {pat:'#ff5a6e',hair:'#000',hs:'none',plate:'#ff5a6e',acc:'#ff5a6e',eye:'#ffffff',sc:1.32,ex:'visor armor pads cannon jets aura float core rings'},
- {pat:'#ffd23e',hair:'#000',hs:'none',plate:'#ffd23e',acc:'#ffd23e',eye:'#ffffff',sc:1.36,ex:'visor armor pads cannon jets aura float core rings halo'},
- {pat:'#ffffff',hair:'#000',hs:'none',plate:'#ffffff',acc:'#ffffff',eye:'#7ef0ff',sc:1.4,ex:'visor armor pads cannon jets aura float core rings halo crown'},
- {pat:'#c77dff',hair:'#000',hs:'none',plate:'#c77dff',acc:'#c77dff',eye:'#ffffff',sc:1.43,ex:'visor armor pads cannon jets aura float core rings wings'},
- {pat:'#7dffa8',hair:'#000',hs:'none',plate:'#7dffa8',acc:'#7dffa8',eye:'#ffffff',sc:1.46,cape:'#0a2a18',capeIn:'#7dffa8',ex:'visor armor pads cannon jets aura float core rings halo cape'},
- {pat:'#ff8a2a',hair:'#000',hs:'none',plate:'#ffd23e',acc:'#ff8a2a',eye:'#ffffff',sc:1.49,ex:'visor armor pads cannon jets aura float core rings halo crown wings lines'},
- {pat:'#7ef0ff',hair:'#000',hs:'none',plate:'#ffffff',acc:'#7ef0ff',eye:'#ffd23e',sc:1.52,cape:'#0b1a3a',capeIn:'#7ef0ff',ex:'visor armor pads cannon jets aura float core rings halo crown wings cape lines'}
+ {pat:'#7ef0ff',hair:'#000',hs:'none',plate:'#7ef0ff',acc:'#7ef0ff',eye:'#ffffff',sc:1.28,ex:'visor armor pads cannon jets aura core'},
+ {pat:'#ff8a2a',hair:'#000',hs:'none',plate:'#ff5a6e',acc:'#ff8a2a',eye:'#ffffff',sc:1.32,ex:'visor armor pads cannon jets aura core'},
+ {pat:'#57ffb0',hair:'#000',hs:'none',plate:'#ffd23e',acc:'#57ffb0',eye:'#ffffff',sc:1.36,ex:'visor armor pads cannon jets aura core'},
+ {pat:'#ffd23e',hair:'#000',hs:'none',plate:'#ffffff',acc:'#ffd23e',eye:'#7ef0ff',sc:1.4,ex:'visor armor pads cannon jets aura core'},
+ {pat:'#00e5ff',hair:'#000',hs:'none',plate:'#c77dff',acc:'#00e5ff',eye:'#ffffff',sc:1.43,ex:'visor armor pads cannon jets aura core'},
+ {pat:'#ff5a1f',hair:'#000',hs:'none',plate:'#7dffa8',acc:'#ff5a1f',eye:'#ffffff',sc:1.46,cape:'#0a2a18',capeIn:'#ff5a1f',ex:'visor armor pads cannon jets aura core cape'},
+ {pat:'#9dff3a',hair:'#000',hs:'none',plate:'#ffd23e',acc:'#9dff3a',eye:'#ffffff',sc:1.49,ex:'visor armor pads cannon jets aura core lines'},
+ {pat:'#ffffff',hair:'#000',hs:'none',plate:'#ffffff',acc:'#ffffff',eye:'#ffd23e',sc:1.52,cape:'#0b1a3a',capeIn:'#ffffff',ex:'visor armor pads cannon jets aura core cape lines'}
 ];
 /* looks built from rows (colour + features per form) so new characters are cheap to add. sizes grow .9 -> 1.5 */
 const mkLooks=(base,rows)=>rows.map((r,i)=>Object.assign({},base,r,{sc:+(.9+i*.04).toFixed(2)}));
@@ -995,13 +995,13 @@ const ARCHER_LOOKS=mkLooks({skin:'#e8b98a',hair:'#6a4a2a',hs:'spiky',arm:'sleeve
  {top:'#f3eddc',pants:'#d9c99a',boot:'#b39a5e',hood:'#ffffff',acc:'#ffd23e',eye:'#3aa0ff',ex:'hood bow quiver wings halo aura'},
  {top:'#1c1748',pants:'#1c1748',boot:'#120e30',hood:'#120e30',acc:'#7dffa8',eye:'#7dffa8',glowEye:1,cape:'#120e30',capeIn:'#7dffa8',ex:'hood bow quiver cape aura wisps'},
  {pat:'#7dffa8',acc:'#7dffa8',eye:'#ffffff',ex:'hood bow quiver aura float core'},
- {pat:'#7ef0ff',acc:'#7ef0ff',eye:'#ffffff',ex:'hood bow quiver aura float core rings'},
- {pat:'#ffd23e',acc:'#ffd23e',eye:'#ffffff',cape:'#1a1240',capeIn:'#ffd23e',ex:'hood bow quiver aura float core cape halo'},
- {pat:'#ffffff',acc:'#ffffff',eye:'#3aa0ff',ex:'hood bow quiver aura float core wings halo'},
- {pat:'#ff8a2a',acc:'#ff8a2a',eye:'#ffffff',ex:'hood bow quiver aura float core rings crown'},
- {pat:'#c77dff',acc:'#c77dff',eye:'#ffffff',cape:'#16062e',capeIn:'#c77dff',ex:'hood bow quiver aura float core rings cape wings'},
- {pat:'#ff5a6e',acc:'#ff5a6e',eye:'#ffd23e',ex:'hood bow quiver aura float core rings crown halo wings'},
- {pat:'#ffe066',acc:'#ffe066',eye:'#ffffff',cape:'#1a1240',capeIn:'#ffe066',ex:'hood bow quiver aura float core rings crown halo wings cape lines'}
+ {pat:'#ffb23e',acc:'#ffb23e',eye:'#ffffff',ex:'hood bow quiver aura float core'},
+ {pat:'#3dff7a',acc:'#3dff7a',eye:'#ffffff',cape:'#1a1240',capeIn:'#3dff7a',ex:'hood bow quiver aura float core cape wings'},
+ {pat:'#ff8a2a',acc:'#ff8a2a',eye:'#3aa0ff',ex:'hood bow quiver aura float core wings'},
+ {pat:'#b6ff5a',acc:'#b6ff5a',eye:'#ffffff',ex:'hood bow quiver aura float core wings'},
+ {pat:'#ff6a1a',acc:'#ff6a1a',eye:'#ffffff',cape:'#16062e',capeIn:'#ff6a1a',ex:'hood bow quiver aura float core cape wings'},
+ {pat:'#53ffcf',acc:'#53ffcf',eye:'#ffd23e',ex:'hood bow quiver aura float core wings'},
+ {pat:'#ffd23e',acc:'#ffd23e',eye:'#ffffff',cape:'#1a1240',capeIn:'#ffd23e',ex:'hood bow quiver aura float core wings cape lines'}
 ]);
 const VAMP_LOOKS=mkLooks({skin:'#e6dcea',hair:'#15101c',hs:'flow',arm:'full',eye:'#ff2e55'},[
  {top:'#2a2030',pants:'#1c1622',boot:'#120e16',acc:'#b3123a',ex:'collar'},
@@ -1012,14 +1012,14 @@ const VAMP_LOOKS=mkLooks({skin:'#e6dcea',hair:'#15101c',hs:'flow',arm:'full',eye
  {top:'#1a1024',pants:'#100a18',boot:'#08050c',acc:'#ff2e55',cape:'#100a18',capeIn:'#ff2e55',musc:2,ex:'collar cape claws aura batwings'},
  {top:'#4a0a1a',pants:'#2a0610',boot:'#160308',acc:'#ff5a6e',cape:'#2a0610',capeIn:'#ff5a6e',musc:2,ex:'collar cape claws aura batwings lines'},
  {skin:'#cfc6da',top:'#0d0812',pants:'#0d0812',boot:'#060408',acc:'#ff2e55',glowEye:1,cape:'#0d0812',capeIn:'#ff2e55',musc:2,ex:'collar cape claws aura batwings wisps'},
+ {pat:'#d7263d',acc:'#d7263d',eye:'#ffffff',cape:'#16062e',capeIn:'#d7263d',ex:'collar cape batwings aura float core'},
  {pat:'#ff2e55',acc:'#ff2e55',eye:'#ffffff',cape:'#16062e',capeIn:'#ff2e55',ex:'collar cape batwings aura float core'},
- {pat:'#b48cff',acc:'#b48cff',eye:'#ffffff',cape:'#16062e',capeIn:'#b48cff',ex:'collar cape batwings aura float core rings'},
- {pat:'#ff5a6e',acc:'#ff5a6e',eye:'#ffd23e',cape:'#2a0610',capeIn:'#ff5a6e',ex:'collar cape batwings aura float core crown'},
- {pat:'#ffffff',acc:'#ffffff',eye:'#ff2e55',cape:'#16062e',capeIn:'#ffffff',ex:'collar cape batwings aura float core halo rings'},
- {pat:'#ff8a2a',acc:'#ff8a2a',eye:'#ffffff',cape:'#2a0610',capeIn:'#ff8a2a',ex:'collar cape batwings aura float core rings crown'},
- {pat:'#7ef0ff',acc:'#7ef0ff',eye:'#ffffff',cape:'#0b1a3a',capeIn:'#7ef0ff',ex:'collar cape batwings aura float core rings crown lines'},
- {pat:'#ffd23e',acc:'#ffd23e',eye:'#ffffff',cape:'#1a1240',capeIn:'#ffd23e',ex:'collar cape batwings aura float core rings crown halo'},
- {pat:'#ff4fd8',acc:'#ff4fd8',eye:'#7ef0ff',cape:'#16062e',capeIn:'#ff4fd8',ex:'collar cape batwings aura float core rings crown halo lines'}
+ {pat:'#8a0f2a',acc:'#8a0f2a',eye:'#ffd23e',cape:'#2a0610',capeIn:'#8a0f2a',ex:'collar cape batwings aura float core'},
+ {pat:'#ff5a6e',acc:'#ff5a6e',eye:'#ff2e55',cape:'#16062e',capeIn:'#ff5a6e',ex:'collar cape batwings aura float core'},
+ {pat:'#b0003a',acc:'#b0003a',eye:'#ffffff',cape:'#2a0610',capeIn:'#b0003a',ex:'collar cape batwings aura float core horns'},
+ {pat:'#ff1f4b',acc:'#ff1f4b',eye:'#ffffff',cape:'#0b1a3a',capeIn:'#ff1f4b',ex:'collar cape batwings aura float core lines horns'},
+ {pat:'#7a00ff',acc:'#7a00ff',eye:'#ffffff',cape:'#1a1240',capeIn:'#7a00ff',ex:'collar cape batwings aura float core horns'},
+ {pat:'#ff0033',acc:'#ff0033',eye:'#7ef0ff',cape:'#16062e',capeIn:'#ff0033',ex:'collar cape batwings aura float core lines horns'}
 ]);
 const FALLEN_LOOKS=mkLooks({skin:'#f2e2d0',hair:'#f5f0e0',hs:'flow',arm:'full',eye:'#3aa0ff',hair:'#eef0f8',plate:'#ffd23e'},[
  {top:'#f3eddc',pants:'#d8cfbf',boot:'#b39b6a',acc:'#ffd23e',ex:'halo2 float'},
@@ -1052,14 +1052,14 @@ const KITSU_LOOKS=mkLooks({skin:'#f0d2b4',hair:'#eef4ff',hs:'spiky',arm:'sleeve'
  {top:'#16204a',pants:'#0f1430',boot:'#080b1a',acc:'#ffcf40',bracer:'#ffc21a',cape:'#0f1430',capeIn:'#ffc21a',musc:1,ex:'scarf belt pads cape lines'},
  {top:'#111a3e',pants:'#0b1028',boot:'#060914',acc:'#ffd860',bracer:'#ffcf40',cape:'#0b1028',capeIn:'#ffcf40',musc:2,ex:'scarf belt pads cape aura'},
  {top:'#111a3e',pants:'#0b1028',boot:'#060914',acc:'#fff3a0',glowEye:1,cape:'#0b1028',capeIn:'#ffd860',musc:2,ex:'scarf belt pads cape aura wisps'},
- {pat:'#ffc21a',acc:'#ffc21a',eye:'#ffffff',cape:'#0b1a3a',capeIn:'#ffc21a',ex:'scarf cape aura float core'},
- {pat:'#ffd860',acc:'#ffd860',eye:'#ffffff',cape:'#0b1a3a',capeIn:'#ffd860',ex:'scarf cape aura float core rings'},
- {pat:'#fff3a0',acc:'#fff3a0',eye:'#ffc21a',cape:'#16062e',capeIn:'#fff3a0',ex:'scarf cape aura float core lines'},
- {pat:'#ffc21a',acc:'#ffc21a',eye:'#ffd23e',cape:'#1a1240',capeIn:'#ffc21a',ex:'scarf cape aura float core rings crown'},
- {pat:'#ffffff',acc:'#ffffff',eye:'#ffc21a',cape:'#0b1a3a',capeIn:'#ffffff',ex:'scarf cape aura float core rings crown'},
- {pat:'#ffcf40',acc:'#ffcf40',eye:'#ffffff',cape:'#0b1a3a',capeIn:'#ffcf40',ex:'scarf cape aura float core rings crown lines'},
- {pat:'#ffe680',acc:'#ffe680',eye:'#ffffff',cape:'#16062e',capeIn:'#ffe680',ex:'scarf cape aura float core rings crown halo'},
- {pat:'#fffbe0',acc:'#fffbe0',eye:'#ffc21a',cape:'#0b1a3a',capeIn:'#ffc21a',ex:'scarf cape aura float core rings crown halo lines'}
+ {pat:'#ffc21a',acc:'#ffc21a',eye:'#ffffff',cape:'#0b1a3a',capeIn:'#ffc21a',ex:'scarf cape aura core'},
+ {pat:'#ff9a1a',acc:'#ff9a1a',eye:'#ffffff',cape:'#0b1a3a',capeIn:'#ff9a1a',ex:'scarf cape aura core'},
+ {pat:'#fff06a',acc:'#fff06a',eye:'#ffc21a',cape:'#16062e',capeIn:'#fff06a',ex:'scarf cape aura core lines'},
+ {pat:'#ffb000',acc:'#ffb000',eye:'#ffd23e',cape:'#1a1240',capeIn:'#ffb000',ex:'scarf cape aura core'},
+ {pat:'#ffe14d',acc:'#ffe14d',eye:'#ffc21a',cape:'#0b1a3a',capeIn:'#ffe14d',ex:'scarf cape aura core'},
+ {pat:'#ff7a00',acc:'#ff7a00',eye:'#ffffff',cape:'#0b1a3a',capeIn:'#ff7a00',ex:'scarf cape aura core lines'},
+ {pat:'#fff6c2',acc:'#fff6c2',eye:'#ffffff',cape:'#16062e',capeIn:'#fff6c2',ex:'scarf cape aura core'},
+ {pat:'#ffd23e',acc:'#ffd23e',eye:'#ffc21a',cape:'#0b1a3a',capeIn:'#ffd23e',ex:'scarf cape aura core lines'}
 ]);
 const RYU_LOOKS=mkLooks({skin:'#f2d6bf',hair:'#2a1f3a',hs:'flow',arm:'sleeve',eye:'#221d47'},[
  {top:'#f3eddc',pants:'#14121c',boot:'#0b0a10',acc:'#ffd23e',cape:'#14121c',capeIn:'#2a2440',ex:'cape'},
@@ -1070,14 +1070,14 @@ const RYU_LOOKS=mkLooks({skin:'#f2d6bf',hair:'#2a1f3a',hs:'flow',arm:'sleeve',ey
  {top:'#ffffff',pants:'#0c0a14',boot:'#060509',acc:'#ffe680',cape:'#0c0a14',capeIn:'#b48cff',musc:2,ex:'cape belt trim lines'},
  {top:'#ffffff',pants:'#0c0a14',boot:'#060509',acc:'#b48cff',cape:'#0c0a14',capeIn:'#b48cff',musc:2,ex:'cape belt trim aura'},
  {top:'#ffffff',pants:'#0c0a14',boot:'#060509',acc:'#c9a0ff',glowEye:1,eye:'#c9a0ff',cape:'#0c0a14',capeIn:'#c9a0ff',musc:2,ex:'cape belt trim aura wisps'},
- {pat:'#b48cff',acc:'#b48cff',eye:'#ffffff',cape:'#16062e',capeIn:'#b48cff',ex:'cape aura core'},
- {pat:'#ffd23e',acc:'#ffd23e',eye:'#ffffff',cape:'#1a1240',capeIn:'#ffd23e',ex:'cape aura core rings'},
- {pat:'#c9a0ff',acc:'#c9a0ff',eye:'#ffd23e',cape:'#16062e',capeIn:'#c9a0ff',ex:'cape aura core lines'},
- {pat:'#ffffff',acc:'#ffffff',eye:'#b48cff',cape:'#16062e',capeIn:'#ffffff',ex:'cape aura core rings crown'},
- {pat:'#ff4fd8',acc:'#ff4fd8',eye:'#ffffff',cape:'#16062e',capeIn:'#ff4fd8',ex:'cape aura core rings crown'},
- {pat:'#ffd23e',acc:'#ffd23e',eye:'#b48cff',cape:'#1a1240',capeIn:'#ffd23e',ex:'cape aura core rings crown lines'},
- {pat:'#b48cff',acc:'#b48cff',eye:'#ffffff',cape:'#16062e',capeIn:'#b48cff',ex:'cape aura core rings crown halo'},
- {pat:'#ffffff',acc:'#ffffff',eye:'#ffd23e',cape:'#16062e',capeIn:'#ffd23e',ex:'cape aura core rings crown halo lines'}
+ {pat:'#bfe4ff',acc:'#bfe4ff',eye:'#ffffff',cape:'#16062e',capeIn:'#bfe4ff',ex:'cape aura core wisps'},
+ {pat:'#ffffff',acc:'#ffffff',eye:'#ffffff',cape:'#1a1240',capeIn:'#ffffff',ex:'cape aura core wisps'},
+ {pat:'#8fd0ff',acc:'#8fd0ff',eye:'#ffd23e',cape:'#16062e',capeIn:'#8fd0ff',ex:'cape aura core lines wisps'},
+ {pat:'#c9a0ff',acc:'#c9a0ff',eye:'#b48cff',cape:'#16062e',capeIn:'#c9a0ff',ex:'cape aura core wisps'},
+ {pat:'#e8f6ff',acc:'#e8f6ff',eye:'#ffffff',cape:'#16062e',capeIn:'#e8f6ff',ex:'cape aura core wisps'},
+ {pat:'#7ab8ff',acc:'#7ab8ff',eye:'#b48cff',cape:'#1a1240',capeIn:'#7ab8ff',ex:'cape aura core lines wisps'},
+ {pat:'#d9c2ff',acc:'#d9c2ff',eye:'#ffffff',cape:'#16062e',capeIn:'#d9c2ff',ex:'cape aura core wisps'},
+ {pat:'#ffffff',acc:'#ffffff',eye:'#ffd23e',cape:'#16062e',capeIn:'#ffffff',ex:'cape aura core lines wisps'}
 ]);
 const CHARS={
   fighter:{art:'img/char-fighter.webp',fuse:'قبضة',name:'المقاتل',desc:'قوة وبرق وسحر ودروع',col:'#ffb23e',looks:LOOKS,forms:FORMS,sk:SK,
@@ -1187,7 +1187,7 @@ function lookOf(lv,kind,ch){
     lw:5+6*lv.str/tot,tw:12+10*lv.end/tot,hr:8+5*lv.int/tot,spd:lv.spd/tot});
   if(L.char==='ninja')L.ex.add('katana');
   if(L.pat){L.skin=L.top=L.pants=L.boot='#141040';L.ol=L.acc;if(L.mask)L.mask='#141040'}
-  if(tier>top){const h=(300+47*(tier-top))%360;L.acc=L.ol=L.pat=`hsl(${h} 95% 72%)`}
+  if(tier>top){const h=(300+47*(tier-top)+({ninja:50,mage:140,golem:190,archer:100,vampire:-30,kitsu:20,ryu:210}[L.char]||0)+360)%360;L.acc=L.ol=L.pat=`hsl(${h} 95% 72%)`}
   if(kind==='ghost'){Object.assign(L,{skin:'#cfeaf2',top:'#9fd4e6',pants:'#6fa9bd',boot:'#5d93a8',hair:'#e9fbff',bracer:null,cape:L.cape?'#b7e3f1':null,capeIn:'#e9fbff',
     mask:'#9fd4e6',robe:'#9fd4e6',hood:'#9fd4e6',hat:'#b7e3f1',plate:'#e9fbff',acc:'#ffffff',eye:'#15122e',glowEye:0,ol:'#e9fbff',pat:null,alpha:.8})}
   if(kind==='shadow'){const keep=new Set([...L.ex].filter(x=>!['aura','core','halo','rings','crown','lines'].includes(x)));keep.add('wisps');
@@ -1388,12 +1388,19 @@ function drawFig(c,x,y,sg,L,ps,t,size){
     c.strokeStyle='#ffb23e';c.lineWidth=1.1;for(const j of[2,4,6,8]){c.beginPath();c.moveTo(wx,wy);c.lineTo(P[j][0],P[j][1]);c.stroke()}
     c.fillStyle='#ffb23e';for(let i=0;i<5;i++){const ex=wx-20-((i*13+t*40)%50),ey=wy-10-((i*23+t*60)%60);c.fillRect(ex,ey,2,2)}}
   if(E.has('wings')){
-    /* feathered wings growing from the upper back, fanning up and backwards (rotation a turns the 'down' axis: a=pi points straight up, a=pi/2 straight back) */
-    const f=Math.sin(t*5)*.14,wx=Sx-4,wy=Sy+2,wing=(ox,oy,sc,col,a0)=>{c.fillStyle=col;c.strokeStyle=L.ol;c.lineWidth=1;
-      for(let i=0;i<6;i++){const a=2.88-i*.3+f*(1-i*.12),len=(42-i*4.2)*sc;c.save();c.translate(wx+ox,wy+oy);c.rotate(a);c.globalAlpha*=a0;
-        c.beginPath();c.ellipse(0,len*.5,6.2*sc,len*.55,0,0,7);c.fill();if(!LOWQ)c.stroke();c.restore()}};
-    wing(5,-2,.82,L.pat?'#1d1460':L.acc,.55);wing(0,0,1,L.acc,1);
-    if(!LOWQ){c.fillStyle='#ffffff';for(let i=0;i<4;i++){const a=2.84-i*.34+f;c.save();c.translate(wx,wy);c.rotate(a);c.globalAlpha*=.8;c.beginPath();c.ellipse(0,11,3.2,12-i*1.5,0,0,7);c.fill();c.restore()}}}
+    /* layered bird wings: a bone arm up and back, long primaries fanned from the wrist, secondaries hanging from the arm, a row of small coverts on top */
+    const f=Math.sin(t*4.2)*.14,wx=Sx-4,wy=Sy+2,base=L.acc,dark=L.pat?'#1d1460':'#4a3c78';
+    const feather=(a,len,w,c1,c2)=>{c.save();c.rotate(a);const g=c.createLinearGradient(0,0,0,len);g.addColorStop(0,c1);g.addColorStop(1,c2);c.fillStyle=g;
+      c.beginPath();c.moveTo(-w*.45,0);c.quadraticCurveTo(-w,len*.55,0,len);c.quadraticCurveTo(w*.85,len*.6,w*.45,0);c.closePath();c.fill();
+      if(!LOWQ){c.stroke();c.globalAlpha*=.45;c.beginPath();c.moveTo(0,len*.06);c.lineTo(0,len*.88);c.stroke();c.globalAlpha/=.45}c.restore()};
+    const wing=(ox,oy,sc,al)=>{c.save();c.translate(wx+ox,wy+oy);c.scale(sc,sc);c.globalAlpha*=al;c.strokeStyle=L.ol;c.lineWidth=.7;c.lineJoin='round';
+      const wrx=-30,wry=-34-f*26;
+      c.save();c.translate(wrx,wry);for(let i=0;i<7;i++)feather(1.95+i*.16+f*.4,44-i*2.4,6.4,base,'#ffffff');c.restore();
+      for(let i=0;i<6;i++){const u=i/5,px=lerp(-3,wrx+2,u),py=lerp(-2,wry+3,u)-Math.sin(u*Math.PI)*8;c.save();c.translate(px,py);feather(.95+u*.75+f*.3,32-u*5,6,base,'#f7f2ff');c.restore()}
+      for(let i=0;i<7;i++){const u=i/6,px=lerp(-2,wrx,u),py=lerp(-3,wry,u)-Math.sin(u*Math.PI)*9;c.save();c.translate(px,py);feather(1.25+u*.6,14,5.4,dark,base);c.restore()}
+      c.strokeStyle=dark;c.lineWidth=3;c.lineCap='round';c.beginPath();c.moveTo(0,0);c.quadraticCurveTo(wrx*.45,wry*.5-9,wrx,wry);c.stroke();c.restore()};
+    if(!LOWQ){const a0=c.globalAlpha;c.globalAlpha=a0*.22;c.drawImage(glow(base),wx-78,wy-92,100,124);c.globalAlpha=a0}
+    wing(7,-3,.64,.5);wing(0,0,.8,1)}
   if(L.cape&&E.has('cape')){const w=Math.sin(t*6)*4+(ps.lean>.15||fly?12:0),hem=hipY+(fly?30:22);
     const cape=(col,dx0,sc)=>{c.fillStyle=col;c.beginPath();c.moveTo(Sx-1,Sy-1);c.quadraticCurveTo(Sx-16-w,Sy+12,-24*sc-w+dx0,hem);
       for(let i=0;i<5;i++){const u=(i+1)/5;c.lineTo(lerp(-24*sc-w+dx0,-6-w*.4,u)+(i%2?2:-1),hem-(i%2?6:0)+Math.sin(t*7+i)*1.5)}
@@ -1402,9 +1409,17 @@ function drawFig(c,x,y,sg,L,ps,t,size){
   if(E.has('tail')){c.strokeStyle=L.ol;c.lineWidth=6;c.lineCap='round';c.beginPath();c.moveTo(-2,hipY);c.quadraticCurveTo(-24,hipY+6,-26,hipY-14+Math.sin(t*4)*4);c.stroke();c.strokeStyle=L.skin;c.lineWidth=4;c.stroke()}
   if(E.has('wisps')){c.strokeStyle=L.acc;c.lineWidth=1.5;for(let i=0;i<3;i++){c.beginPath();c.moveTo(sx-4-i*4,sy+i*8);c.quadraticCurveTo(sx-16-i*3,sy+i*8-8+Math.sin(t*5+i)*4,sx-22-i*3,sy+i*8-16);c.stroke()}}
   if(L.hs==='flow'){c.lineCap='round';for(let i=0,n=LOWQ?2:5;i<n;i++){const yy=hy-r*.6+i*2.4,l=14+i*3,wv=Math.sin(t*5+i)*3;c.strokeStyle=L.ol;c.lineWidth=3.6;c.beginPath();c.moveTo(hx-r*.3,yy);c.quadraticCurveTo(hx-r-l*.5,yy-3+wv,hx-r-l,yy+4+wv*1.5);c.stroke();c.strokeStyle=L.hair;c.lineWidth=2.2;c.stroke()}}
-  if(E.has('batwings')){const fp=Math.sin(t*6)*4;c.fillStyle=L.pat?'#1a0a2a':'#2a0a14';c.strokeStyle=L.acc;c.lineWidth=1.3;c.lineJoin='round';
-    c.beginPath();c.moveTo(Sx-3,Sy+2);c.lineTo(Sx-22,Sy-24+fp);c.lineTo(Sx-40,Sy-14+fp);c.quadraticCurveTo(Sx-33,Sy-6,Sx-36,Sy+6);c.quadraticCurveTo(Sx-27,Sy,Sx-24,Sy+12);c.quadraticCurveTo(Sx-16,Sy+4,Sx-8,Sy+14);c.closePath();c.fill();c.stroke();
-    c.beginPath();c.moveTo(Sx-3,Sy+2);c.lineTo(Sx-22,Sy-24+fp);c.moveTo(Sx-3,Sy+2);c.lineTo(Sx-36,Sy+6);c.stroke()}
+  if(E.has('batwings')){const fp=Math.sin(t*6),wx=Sx-3,wy=Sy+2,mem=L.pat?'#1a0a2a':'#2a0a14',bone=L.pat?L.acc:'#5a1f2e';
+    const wing=(sc,al)=>{c.save();c.translate(wx,wy);c.scale(sc,sc);c.globalAlpha*=al;const wr=[-18,-24+fp*5],tips=[[-44,-44+fp*7],[-60,-22+fp*6],[-62,2+fp*4],[-48,18+fp*2]];
+      const g=c.createLinearGradient(0,-30,-56,14);g.addColorStop(0,mem);g.addColorStop(1,'#000000');c.fillStyle=g;c.globalAlpha*=.94;
+      c.beginPath();c.moveTo(0,0);c.lineTo(wr[0],wr[1]);c.lineTo(tips[0][0],tips[0][1]);
+      for(let i=1;i<tips.length;i++){const a=tips[i-1],b=tips[i];c.quadraticCurveTo((a[0]+b[0])/2*.78+wr[0]*.22,(a[1]+b[1])/2*.78+wr[1]*.22,b[0],b[1])}
+      c.quadraticCurveTo(-26,6,-6,16);c.closePath();c.fill();c.globalAlpha/=.94;
+      c.strokeStyle=L.acc;c.lineWidth=.9;c.globalAlpha*=.7;c.stroke();c.globalAlpha/=.7;
+      c.strokeStyle=bone;c.lineCap='round';c.lineWidth=2.6;c.beginPath();c.moveTo(0,0);c.lineTo(wr[0],wr[1]);c.stroke();c.lineWidth=1.5;for(const q of tips){c.beginPath();c.moveTo(wr[0],wr[1]);c.lineTo(q[0],q[1]);c.stroke()}
+      c.fillStyle=bone;c.beginPath();c.moveTo(wr[0],wr[1]);c.lineTo(wr[0]-1,wr[1]-6);c.lineTo(wr[0]+2.5,wr[1]-1);c.closePath();c.fill();c.restore()};
+    if(!LOWQ){const a0=c.globalAlpha;c.globalAlpha=a0*.25;c.drawImage(glow(L.acc),wx-76,wy-72,96,104);c.globalAlpha=a0}
+    wing(.72,.55);wing(.92,1)}
   if(E.has('collar')){c.fillStyle=L.cape||(PAT?'#16062e':L.top);c.strokeStyle=L.ol;c.lineWidth=1.6;c.lineJoin='round';for(const q of[-1,1]){c.beginPath();c.moveTo(Sx+q*2,Sy);c.lineTo(hx+q*(r+5),hy-r*.35);c.lineTo(hx+q*r*.4,hy+r*.95);c.closePath();c.fill();c.stroke()}}
   if(E.has('quiver')){c.save();c.translate(Sx-7,Sy+6);c.rotate(-.5);c.fillStyle='#6a4a2a';c.strokeStyle=L.ol;c.lineWidth=1.4;rr(c,-3,-12,6,18,2);c.fill();c.stroke();c.strokeStyle=L.acc;c.lineWidth=1.3;for(const q of[-1.5,1.5]){c.beginPath();c.moveTo(q,-12);c.lineTo(q,-17);c.stroke()}c.restore()}
   if(E.has('katana')){c.save();c.translate(Sx-2,Sy+2);c.rotate(2.35);c.lineCap='round';
@@ -1490,8 +1505,8 @@ function drawFig(c,x,y,sg,L,ps,t,size){
     c.strokeStyle=L.ol;c.lineWidth=5;c.beginPath();c.moveTo(-13,0);c.lineTo(2,0);c.stroke();c.strokeStyle='#2a1d14';c.lineWidth=3.2;c.stroke();
     c.strokeStyle=L.acc;c.lineWidth=1;for(let i=0;i<3;i++){c.beginPath();c.moveTo(-2-i*3.6,-1.5);c.lineTo(-3.8-i*3.6,1.5);c.stroke()}
     c.fillStyle='#d9b45a';c.strokeStyle=L.ol;c.lineWidth=1.2;c.beginPath();c.ellipse(3,0,1.9,5.2,0,0,7);c.fill();c.stroke();
-    c.fillStyle='#eef3fb';c.strokeStyle=L.ol;c.lineWidth=1.6;c.beginPath();c.moveTo(4.6,-1.9);c.quadraticCurveTo(33,-3.6,59,-9.4);c.lineTo(61,-8.8);c.quadraticCurveTo(34,.6,4.6,1.9);c.closePath();c.fill();c.stroke();
-    c.strokeStyle=L.acc;c.lineWidth=.9;c.globalAlpha=.85;c.beginPath();c.moveTo(7,.6);c.quadraticCurveTo(33,-1,58,-8.2);c.stroke();
+    {const bg=c.createLinearGradient(0,-7,0,3);bg.addColorStop(0,'#ffffff');bg.addColorStop(.45,'#dfe6f3');bg.addColorStop(1,'#7f8aa6');c.fillStyle=bg}c.strokeStyle=L.ol;c.lineWidth=1.6;c.beginPath();c.moveTo(4.6,-1.9);c.quadraticCurveTo(33,-3.6,59,-9.4);c.lineTo(61,-8.8);c.quadraticCurveTo(34,.6,4.6,1.9);c.closePath();c.fill();c.stroke();
+    c.strokeStyle=L.acc;c.lineWidth=.9;c.globalAlpha=.85;c.beginPath();c.moveTo(7,.6);c.quadraticCurveTo(33,-1,58,-8.2);c.stroke();c.strokeStyle='#ffffff';c.lineWidth=.7;c.globalAlpha=.9;c.beginPath();for(let i=0;i<=10;i++){const xx=8+i*4.8,yy=-1.2-(xx/60)*(xx/60)*6.5+Math.sin(i*1.7)*.5;i?c.lineTo(xx,yy):c.moveTo(xx,yy)}c.stroke();
     c.fillStyle='#ffffff';c.globalAlpha=.55+.45*Math.sin(t*3);c.beginPath();c.arc(42,-4.9,1.5,0,7);c.fill();c.globalAlpha=1;c.restore()}
   c.fillStyle=E.has('wraps')?'#f3eddc':SKIN;c.strokeStyle=L.ol;c.lineWidth=1.8;c.beginPath();c.arc(hnd[0],hnd[1],L.lw*.66,0,7);c.stroke();c.fill();
   if(E.has('claws')){c.strokeStyle=L.acc;c.lineWidth=1.5;for(let i=-1;i<=1;i++){c.beginPath();c.moveTo(hnd[0],hnd[1]);c.lineTo(hnd[0]+6,hnd[1]+i*3);c.stroke()}}
@@ -1513,8 +1528,15 @@ function drawFig(c,x,y,sg,L,ps,t,size){
     c.fillStyle='#5a3a1e';c.strokeStyle=L.ol;c.lineWidth=1;c.beginPath();c.rect(-2,-4,4,8);c.fill();c.stroke();
     c.restore();
     c.fillStyle=SKIN;c.strokeStyle=L.ol;c.lineWidth=1.8;c.beginPath();c.arc(hnd[0],hnd[1],L.lw*.62,0,7);c.stroke();c.fill()}
-  if(E.has('staff')){const sx0=hnd[0],sy0=hnd[1];c.lineCap='round';c.strokeStyle=L.ol;c.lineWidth=4.2;c.beginPath();c.moveTo(sx0+3,sy0+18);c.lineTo(sx0-4,sy0-30);c.stroke();c.strokeStyle='#7a5230';c.lineWidth=2.4;c.stroke();
-    const ox=sx0-4.5,oy=sy0-33,pp=1+.15*Math.sin(t*6);LOWQ||c.drawImage(glow(L.acc),ox-11*pp,oy-11*pp,22*pp,22*pp);c.fillStyle='#ffffff';c.beginPath();c.arc(ox,oy,3,0,7);c.fill();c.strokeStyle=L.acc;c.lineWidth=1.2;c.beginPath();c.arc(ox,oy,5.6,0,7);c.stroke()}
+  if(E.has('staff')){const sx0=hnd[0],sy0=hnd[1],bx2=sx0+3,by2=sy0+18,tx2=sx0-4,ty2=sy0-30;c.lineCap='round';
+    c.strokeStyle=L.ol;c.lineWidth=4.6;c.beginPath();c.moveTo(bx2,by2);c.lineTo(tx2,ty2);c.stroke();
+    {const g=c.createLinearGradient(bx2-3,0,bx2+3,0);g.addColorStop(0,'#4a2e16');g.addColorStop(.5,'#9a6a3a');g.addColorStop(1,'#5a3a1e');c.strokeStyle=g}c.lineWidth=2.8;c.stroke();
+    c.strokeStyle=L.acc;c.lineWidth=.9;for(let i=0;i<4;i++){const u=.18+i*.07,px=lerp(bx2,tx2,u),py=lerp(by2,ty2,u);c.beginPath();c.moveTo(px-2.2,py+1);c.lineTo(px+2.2,py-1.2);c.stroke()}
+    const ox=tx2-.5,oy=ty2-5,pp=1+.15*Math.sin(t*6);c.strokeStyle=L.ol;c.lineWidth=3.2;c.beginPath();c.moveTo(tx2,ty2);c.quadraticCurveTo(tx2-7,ty2-5,ox-4,oy-6);c.moveTo(tx2,ty2);c.quadraticCurveTo(tx2+6,ty2-4,ox+4,oy-6);c.stroke();
+    c.strokeStyle='#7a5230';c.lineWidth=1.8;c.stroke();
+    LOWQ||c.drawImage(glow(L.acc),ox-13*pp,oy-13*pp,26*pp,26*pp);
+    {const g=c.createLinearGradient(ox,oy-6,ox,oy+5);g.addColorStop(0,'#ffffff');g.addColorStop(1,L.acc);c.fillStyle=g}c.strokeStyle=L.ol;c.lineWidth=1;c.beginPath();c.moveTo(ox,oy-6.5);c.lineTo(ox+3.6,oy);c.lineTo(ox,oy+5.5);c.lineTo(ox-3.6,oy);c.closePath();c.fill();c.stroke();
+    if(!LOWQ){c.fillStyle='#ffffff';for(let i=0;i<3;i++){const a=t*3+i*2.1;c.globalAlpha*=.8;c.beginPath();c.arc(ox+Math.cos(a)*8,oy+Math.sin(a)*4,1,0,7);c.fill();c.globalAlpha/=.8}}}
   // speed build leaves streaks
   if(L.spd>.34){c.strokeStyle=L.acc;c.lineWidth=1.2;const a0=c.globalAlpha;c.globalAlpha=a0*.6;for(let i=0;i<3;i++){const yy=hipY-6-i*9,l=8+((i*5+Math.floor(t*12))%7)*2;c.beginPath();c.moveTo(-12,yy);c.lineTo(-12-l,yy);c.stroke()}c.globalAlpha=a0}
   c.restore();
@@ -1644,7 +1666,7 @@ const KICK_IC={};function kickIcon(ch){const ks=KICK[ch]||'leap';if(!['blast','s
 function kickIconSet(){const b=$('bKick');if(!b||!R||!R.P)return;const im=b.querySelector('.ic');const src=kickIcon(R.P.char);if(im&&im.getAttribute('src')!==src)im.src=src}
 function hpNum(id,f){const e=$(id);if(!e||!f)return;const v=fmt(Math.max(0,Math.ceil(f.hp)))+' / '+fmt(Math.round(f.max));if(e._v!==v){e._v=v;e.textContent=v}}
 function hitCount(n){const e=$('hitc');if(!e)return;if(n<2){e.classList.remove('on');return}e.innerHTML='<span class="bst"><b>'+n+'</b></span><i>Hits!</i>';e.classList.remove('pop');void e.offsetWidth;e.classList.add('on','pop')}
-function stHit(A,D,v){if(R){if(A.p){const now=R.clock||0;R.hc=(now-(R.hcT??-9)<1.3)?(R.hc||0)+1:1;R.hcT=now;hitCount(R.hc);R.hcMax=Math.max(R.hcMax||0,R.hc)}else if(D.p&&R.hc){R.hc=0;hitCount(0)}
+function stHit(A,D,v){if(R&&R.fx&&!LOWQ&&D){const big=v>(A.dmg||1)*1.8;R.fx.push({k:'impact',x:xOf(D)-(A.p?1:-1)*8,y:FLOOR-72-(D.airY||0),t:0,d:big?.2:.14,col:(A.look&&A.look.acc)||'#ffd23e',big,rot:Math.random()})}if(R){if(A.p){const now=R.clock||0;R.hc=(now-(R.hcT??-9)<1.3)?(R.hc||0)+1:1;R.hcT=now;hitCount(R.hc);R.hcMax=Math.max(R.hcMax||0,R.hc)}else if(D.p&&R.hc){R.hc=0;hitCount(0)}
   if((A.char==='ryu'||A.char==='kitsu')&&D.airY>0)D.airV=Math.max(D.airV,240);
   if(A.char==='kitsu'&&!(A.fox>0)&&(R.clock||0)-(A.tlT??-9)>.3){A.tlT=R.clock||0;kitsuTails(A,.5)}if(D.char==='kitsu'&&!(D.fox>0)&&(R.clock||0)-(D.tlT??-9)>.3){D.tlT=R.clock||0;kitsuTails(D,.5)}}if(R&&A.char==='fallen'&&A.dem>0)A.hp=Math.min(A.max,A.hp+v*.08);
   if(R&&D.char==='fallen'&&!(D.dem>0)&&D.hp>0&&(R.clock||0)-(D.hitT??-9)>.25){D.hitT=R.clock||0;D.hitsT=(D.hitsT||0)+1;if(D.hitsT>=4){D.hitsT=0;fallenFall(D,8)}}const s=R&&R.st;if(!s)return;if(A.p){s.dmg+=v;s.big=Math.max(s.big,v);s.cc++;s.cmb=Math.max(s.cmb,s.cc)}else if(D.p)s.cc=0}
@@ -2246,7 +2268,7 @@ const ACH_BASE=[
  ['lower','كاس التحدي الفضي','Silver cups','🥈',[1,5,15]],
  ['tplay','ماتشات بطولات','Tournament matches','🎮',[5,25,100]]];
 function achS(){return S.ach||(S.ach={c:{},g:{}})}
-function achList(){const L=ACH_BASE.slice();for(const id of CHAR_IDS){const C=CHARS[id];L.push(['h_'+id,'فوز بـ'+C.name,'Wins with '+tr(C.name),C.art?'img:'+C.art:'🥇',[5,25,100]])}return L}
+function achList(){const L=ACH_BASE.map(d=>[d[0],d[1],d[2],'img:img/ach/'+d[0]+'.webp',d[4]]);for(const id of CHAR_IDS){const C=CHARS[id];L.push(['h_'+id,'فوز بـ'+C.name,'Wins with '+tr(C.name),C.art?'img:'+C.art:'🥇',[5,25,100]])}return L}
 function achVal(k){const A=achS().c;switch(k){case 'day':return S.best||S.day||1;case 'rank':return rankOf(S.rp||0).idx;case 'heroes':return CHAR_IDS.filter(charUnlocked).length;case 'comps':return (S.comps||[]).length;
   case 'bp':return bpLevel();case 'lvl':return total(S.lv);case 'cups':return (S.cups&&S.cups.g)||0;case 'lower':return (S.cups&&S.cups.s)||0}return A[k]||0}
 function achAdd(k,v){const A=achS().c;A[k]=(A[k]||0)+(v||0)}
@@ -2998,7 +3020,7 @@ function render(ts,dt){
   pose(P,t,dt,R.phase==='run');pose(E,t,dt,R.phase==='run'&&E.slide>0);
   drawF(c,E,EX,-1,t);drawF(c,P,PX,1,t);
   if(R.ult)ultFront(c,t);
-  for(const p of R.pt){c.save();c.translate(p.x,p.y);c.rotate(p.rot);c.globalAlpha=Math.min(1,p.l*2);c.fillStyle=p.col;c.fillRect(-p.s/2,-p.s/2,p.s,p.s);c.restore()}
+  for(const p of R.pt){const sp=Math.hypot(p.vx,p.vy);c.save();c.globalAlpha=Math.min(1,p.l*2);if(sp>200&&!LOWQ){c.globalCompositeOperation='lighter';c.strokeStyle=p.col;c.lineWidth=p.s*.6;c.lineCap='round';c.beginPath();c.moveTo(p.x,p.y);c.lineTo(p.x-p.vx*.035,p.y-p.vy*.035);c.stroke()}else{c.translate(p.x,p.y);c.rotate(p.rot);c.fillStyle=p.col;c.fillRect(-p.s/2,-p.s/2,p.s,p.s)}c.restore()}
   for(const f of R.fx){if(f.t<0)continue;const u=f.t/f.d;c.globalAlpha=1-u;
     if(fxChar(c,f,u))continue;
     if(f.k==='ultxt'){const sc=1+Math.max(0,.25-u)*2.4;c.globalAlpha=u<.08?u/.08:1-Math.max(0,(u-.65)/.35);c.save();c.translate((PX+EX)/2,FLOOR-215);c.scale(sc,sc);
@@ -3025,9 +3047,12 @@ function render(ts,dt){
     if(f.k==='name'){c.globalAlpha=u<.15?u/.15:1-Math.max(0,(u-.6)/.4);c.font=(30+6*Math.min(1,u*8))+'px Lalezar, Tahoma';c.textAlign='center';c.lineWidth=6;c.strokeStyle='#0f0d24';
       c.strokeText(f.txt,(PX+EX)/2,FLOOR-205);c.fillStyle=f.col;c.fillText(f.txt,(PX+EX)/2,FLOOR-205);continue}
     if(f.k==='txt'){c.fillStyle=f.col;c.font='22px Lalezar, Tahoma';c.textAlign='center';c.fillText(f.txt,f.x,f.y-f.t*46)}
-    else if(f.k==='ring'){c.strokeStyle=f.col;c.lineWidth=6*(1-u);c.beginPath();c.arc(f.x,f.y,10+u*f.r,0,7);c.stroke()}
-    else if(f.k==='slash'){c.save();c.translate(f.x,f.y);c.scale(f.sg,1);c.rotate(-.5);const rad=f.big?62:44;c.strokeStyle=f.col;c.lineCap='round';
-      c.lineWidth=(f.big?12:8)*(1-u);c.beginPath();c.arc(-20,0,rad,-1.1+u*.6,1.1+u*.6);c.stroke();c.strokeStyle='#fff';c.lineWidth=3*(1-u);c.beginPath();c.arc(-20,0,rad-5,-.8+u*.6,.8+u*.6);c.stroke();c.restore()}
+    else if(f.k==='ring'){const r2=10+(1-Math.pow(1-u,2.2))*f.r,a0=c.globalAlpha;c.save();c.globalCompositeOperation='lighter';c.strokeStyle=f.col;if(!LOWQ){c.globalAlpha=a0*(1-u)*.45;c.lineWidth=16*(1-u);c.beginPath();c.arc(f.x,f.y,r2,0,7);c.stroke()}c.globalAlpha=a0*(1-u*.5);c.lineWidth=5*(1-u)+1;c.beginPath();c.arc(f.x,f.y,r2,0,7);c.stroke();c.strokeStyle='#ffffff';c.lineWidth=1.6*(1-u);c.beginPath();c.arc(f.x,f.y,r2*.93,0,7);c.stroke();c.restore()}
+    else if(f.k==='slash'){c.save();c.translate(f.x,f.y);c.scale(f.sg,1);c.rotate(-.5);const rad=f.big?66:46,e=1-Math.pow(1-u,3),q0=-1.25+e*.7,q1=1.25+e*.7,th=(f.big?17:12)*(1-u*.6),a0=c.globalAlpha;c.globalCompositeOperation='lighter';
+      if(!LOWQ){c.globalAlpha=a0*(1-u)*.5;c.drawImage(glow(f.col),-20-rad*1.1,-rad*1.1,rad*2.2,rad*2.2)}
+      c.globalAlpha=a0*(1-u);c.fillStyle=f.col;c.beginPath();c.arc(-20,0,rad,q0,q1);c.arc(-20+th,0,rad-th*.15,q1,q0,true);c.closePath();c.fill();
+      c.fillStyle='#ffffff';c.globalAlpha=a0*(1-u)*.95;c.beginPath();c.arc(-20,0,rad,q0+.18,q1-.18);c.arc(-20+th*.42,0,rad-th*.08,q1-.18,q0+.18,true);c.closePath();c.fill();c.restore()}
+    else if(f.k==='impact'){c.save();c.globalCompositeOperation='lighter';c.translate(f.x,f.y);const s2=(f.big?1.6:1)*(12+u*26);c.globalAlpha=1-u;c.fillStyle=f.col;c.beginPath();for(let i=0;i<16;i++){const a=i*Math.PI/8+f.rot,r2=i%2?s2*.3:s2*(i%4?1:1.35);c.lineTo(Math.cos(a)*r2,Math.sin(a)*r2)}c.closePath();c.fill();c.fillStyle='#ffffff';c.beginPath();c.arc(0,0,s2*.3,0,7);c.fill();c.restore()}
     else if(f.k==='beam'){const w=26*(1-u*u);c.lineCap='round';c.strokeStyle='#ffb23e';c.lineWidth=w;c.beginPath();c.moveTo(f.x0,f.y0);c.lineTo(f.x1,f.y1);c.stroke();
       c.strokeStyle='#ffd23e';c.lineWidth=w*.6;c.stroke();c.strokeStyle='#fff';c.lineWidth=w*.25;c.stroke()}
     else if(f.k==='star'){c.strokeStyle='#fff';c.lineWidth=3*(1-u);for(let i=0;i<8;i++){const an=i*.785;c.beginPath();c.moveTo(f.x+Math.cos(an)*(10+u*20),f.y+Math.sin(an)*(10+u*20));c.lineTo(f.x+Math.cos(an)*(26+u*40),f.y+Math.sin(an)*(26+u*40));c.stroke()}}
