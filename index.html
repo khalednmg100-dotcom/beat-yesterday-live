@@ -1994,7 +1994,7 @@ function drawPrev(ts){
   c.fillStyle='#2a2360';c.fillRect(0,h-24,w,24);c.strokeStyle='#ffb23e66';c.lineWidth=2;c.beginPath();c.moveTo(0,h-24);c.lineTo(w,h-24);c.stroke();
   c.fillStyle='#f3eddc';c.globalAlpha=.9;c.font='26px Lalezar, Tahoma';c.textAlign='center';c.fillText('ضد',w/2,h/2+6);c.globalAlpha=1;
   const ps=Object.assign({},REST,{crouch:Math.sin(t*3)*.15});
-  const gl=lookOf(S.ghost,'ghost'),me=lookOf(S.lv),kk=total(S.lv)+'|'+total(S.ghost)+'|'+(S.char||'')+'|'+h;
+  const gl=safeLook(lookOf(S.ghost,'ghost')),me=safeLook(lookOf(S.lv)),kk=total(S.lv)+'|'+total(S.ghost)+'|'+(S.char||'')+'|'+h;
   /* fit both heroes into the preview height (tall evolved forms would lose their heads on short phones); measured once per change */
   if(PREVK.key!==kk){PREVK.key=kk;const room=h-34,f=L=>{const b=figBox(L,REST,1);return Math.min(1.5,room/Math.max(1,b[3]-b[2]))};PREVK.g=f(gl);PREVK.m=f(me)}
   drawFig(c,w*.28,h-24,1,gl,ps,t+1,PREVK.g);
@@ -2986,6 +2986,7 @@ function kitsuUlt(A,D,v){const U=R.ult;if(U)U.dur=1.9;const rage=A.fox>0||(A.tai
 
 /* ---------- patch notes: simple words, newest first ---------- */
 const PATCH_NOTES=[
+ {v:75,ar:['صفحة اختيار الأبطال مبقتش بتهنّج'],en:['The hero selection screen no longer freezes']},
  {v:74,ar:['لو اللعبة وقفت، المرة الجاية بترجعك للمقاتل عشان تقدر تلعب'],en:['If the game freezes, next time it puts you on the Fighter so you can keep playing']},
  {v:73,ar:['تتبع أدق لمكان وقوف اللعبة، وصورة المدينة في القصة اتصلّحت'],en:['More detailed freeze tracking, and the city picture in Story is fixed']},
  {v:72,ar:['لو اللعبة وقفت، افتحها تاني هيظهر مربع أحمر فيه مكان الوقوف، صوّره وابعته'],en:['If the game freezes, open it again: a red box shows where it stopped, screenshot it and send it']},
@@ -3399,6 +3400,9 @@ for(const n of ['show','switchChar','renderChars','renderHome','buildUps','findM
 setInterval(()=>bcr('. alive '+mode+(R&&R.phase?'/'+R.phase:'')),2000);
 document.addEventListener('visibilitychange',()=>bcr(document.hidden?'. hidden':'. visible'));addEventListener('pagehide',()=>bcr('. bye'));
 {const _fbd=frameBody;let fc=0;frameBody=function(ts){if(BCR.hot>0){bcr('. f'+BCR.hot+' '+mode);BCR.hot--}else if(++fc%30===0)bcr('. frame '+mode+(R&&R.P?'/'+R.P.char:''));return _fbd(ts)}}
+
+/* menu figures of the new heroes without the new weapon extras (diagnosing a phone GPU hang) */
+function safeLook(L){if(!L||!L.ex||!(L.ex.has('scythe')||L.ex.has('spear')||L.ex.has('planets')))return L;const C=Object.assign({},L);C.ex=new Set([...L.ex].filter(x=>x!=='scythe'&&x!=='spear'&&x!=='planets'));return C}
 setTimeout(achBadge,1500);
 /* a stable little leaderboard around your rank */
 function renderArena(){const r=rankOf(S.rp);
@@ -3494,7 +3498,7 @@ function renderChars(){renderCompPick();$('cGrid').innerHTML=CHAR_IDS.map(id=>{c
       <div class="cs">${KEYS.map(k=>`<img src="${iconSrc(id,k,Math.max(1,skTier(L[k])))}" alt="" title="${C.sk[k].names[Math.max(0,skTier(L[k])-1)]}">`).join('')}</div>
       <button class="alt sm" data-evo="${id}">شوف كل التطورات (${C.looks.length})</button>
       <button class="go sm">${sel?'مختارة':ok?(owns(id)?'اختار':'تجربة · باقي '+S.trial.left):'من الشوب · '+fmt(C.price)}</button></div>`}).join('');
-  for(const id of CHAR_IDS)stillFig('cf_'+id,progOf(id).lv,1,charUnlocked(id)?null:'shadow',id)}
+  for(const id of CHAR_IDS)if(!CHARS[id].art)stillFig('cf_'+id,progOf(id).lv,1,charUnlocked(id)?null:'shadow',id)}
 /* the evolution book: every form of a character, the ones you reached and the ones still ahead */
 function lvForTier(n){let T=4;for(let i=0;i<n;i++)T+=tierLen(i);const b=Math.floor(T/4),lv={str:b,spd:b,end:b,int:b};for(let i=0;i<T-4*b;i++)lv[KEYS[i]]++;return lv}
 function openEvo(id){const C=CHARS[id],cur=tierOf(progOf(id).lv),ov=$('evo');$('evoName').textContent='تطورات '+C.name;$('evoName').style.color=C.col;
@@ -3886,8 +3890,8 @@ function applyGfx(){const g=S.gfx||'auto';LOWQ=g==='low';DPR=dprFor(g);PERF.slow
   $('qBtn').textContent='الرسوم: '+({auto:'تلقائي',high:'عالية',low:'خفيفة'})[g];$('fpsBtn').textContent='عداد السرعة: '+(S.fps?'آه':'لأ');$('fps').hidden=!S.fps;BG.key=''}
 function renderMenu(){passBadge();applyGfx();$('mCoins').textContent=fmt(S.coins||0);$('mcName').textContent=CHARS[S.char||'fighter'].name+' · '+formName(S.lv);stillFig('mcFig',S.lv,1);const r=rankOf(S.rp);$('mInfo').textContent=formName(S.lv)+' · مستوى '+total(S.lv)+' · اليوم '+S.day;
   rkFrame($('mPvp'),r,1);$('mRank').innerHTML=`<img class="rki" src="${rankPic(r)}" alt="">${r.full}`;$('mRank').style.color=r.col}
-function stillFig(id,lv,sg,kind,ch){const cv=$(id),d=Math.min(window.devicePixelRatio||1,2),w=cv.clientWidth||140,h=cv.clientHeight||170;cv.width=w*d;cv.height=h*d;
-  const c=cv.getContext('2d');c.setTransform(d,0,0,d,0,0);c.clearRect(0,0,w,h);const L=lookOf(lv,kind,ch),ps=Object.assign({},REST);
+function stillFig(id,lv,sg,kind,ch){const cv=$(id),d=Math.min(window.devicePixelRatio||1,1.5),w=cv.clientWidth||140,h=cv.clientHeight||170;cv.width=w*d;cv.height=h*d;
+  const c=cv.getContext('2d');c.setTransform(d,0,0,d,0,0);c.clearRect(0,0,w,h);const L=safeLook(lookOf(lv,kind,ch)),ps=Object.assign({},REST);
   if(L.ex.has('float'))Object.assign(ps,{a1:-.15,k1:-.55,a2:-.35,k2:-.7});
   const bb=figBox(L,ps,sg),k=Math.min(Math.min(1.9,h/95),(w-6)/(bb[1]-bb[0]),(h-8)/(bb[3]-bb[2]));
   drawFig(c,w/2-k*(bb[0]+bb[1])/2,h-4-k*bb[3],sg,L,ps,1.2,k)}
