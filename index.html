@@ -2630,7 +2630,7 @@ const BP_TIERS=30,BP_XP=100;
 const BP_GIFT='fox',BP_COMP15='imp';
 /* ---------- Google Play billing: the elite pass is a one-time in-app product ---------- */
 const ELITE_ID='elite_pass_s1',IAP={P:null,ok:false,price:'$3.99',busy:false};
-function iapInit(){try{const C=window.Capacitor;if(!C||!C.registerPlugin||!(C.isNativePlatform&&C.isNativePlatform()))return;const P=C.registerPlugin('NativePurchases');IAP.P=P;
+function iapInit(n){try{const C=window.Capacitor;if(!C||!C.registerPlugin||!(C.isNativePlatform&&C.isNativePlatform())){IAP.why=!C?'web':'nonnative';if((n||0)<4)setTimeout(()=>iapInit((n||0)+1),1500);return}if(IAP.P)return;const P=C.registerPlugin('NativePurchases');IAP.P=P;
   P.isBillingSupported().then(r=>{IAP.ok=!!(r&&r.isBillingSupported);if(!IAP.ok)return;
     P.getProducts({productIdentifiers:[ELITE_ID],productType:'inapp'}).then(r=>{const pr=r&&r.products&&r.products[0];if(pr&&pr.priceString)IAP.price=pr.priceString;if(mode==='pass')renderPass()}).catch(()=>{});
     iapRestore(true)}).catch(()=>{})}catch(e){}}
@@ -2638,7 +2638,8 @@ function iapInit(){try{const C=window.Capacitor;if(!C||!C.registerPlugin||!(C.is
 function iapRestore(silent){if(!IAP.P||!IAP.ok)return;IAP.P.getPurchases({productType:'inapp'}).then(r=>{const own=(r&&r.purchases||[]).some(t=>t.productIdentifier===ELITE_ID&&(t.purchaseState===undefined||String(t.purchaseState)==='1'));
   if(own&&!bpState().elite)grantElite(silent)}).catch(()=>{})}
 async function buyElite(){if(bpState().elite||IAP.busy)return;
-  if(!IAP.P){sfx('click');toast(LL('الشراء بيشتغل بس في اللعبة اللي متنزّلة من جوجل بلاي','Purchases only work in the game installed from Google Play'));return}
+  if(!IAP.P)iapInit(4);
+  if(!IAP.P){sfx('click');toast(LL('الشراء بيشتغل بس في اللعبة اللي متنزّلة من جوجل بلاي','Purchases only work in the game installed from Google Play')+' ('+(IAP.why||'?')+')');return}
   if(!IAP.ok){try{const r=await IAP.P.isBillingSupported();IAP.ok=!!(r&&r.isBillingSupported)}catch(e){}if(!IAP.ok){sfx('click');toast(LL('جوجل بلاي مش متاح دلوقتي · اتأكد إنك مسجّل في متجر بلاي وجرّب تاني','Google Play billing is not ready · check you are signed in to the Play Store and try again'));return}}
   IAP.busy=true;try{const t=await IAP.P.purchaseProduct({productIdentifier:ELITE_ID,productType:'inapp',quantity:1});
     if(t&&(!t.productIdentifier||t.productIdentifier===ELITE_ID)&&(t.purchaseState===undefined||String(t.purchaseState)==='1'))grantElite(false);
