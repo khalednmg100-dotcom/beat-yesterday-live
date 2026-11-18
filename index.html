@@ -2988,6 +2988,7 @@ function kitsuUlt(A,D,v){const U=R.ult;if(U)U.dur=1.9;const rage=A.fox>0||(A.tai
 
 /* ---------- patch notes: simple words, newest first ---------- */
 const PATCH_NOTES=[
+ {v:78,ar:['صفحة الأبطال بتظهر الكروت واحد ورا التاني (مؤقتًا عشان نعرف سبب التهنيج)'],en:['The heroes screen shows cards one by one (temporary, to find the freeze)']},
  {v:77,ar:['تصليح تهنيج صفحة الأبطال على بعض الموبايلات'],en:['Fix for the heroes screen freezing on some phones']},
  {v:76,ar:['الضغط على الأزرار بقى أسرع'],en:['Buttons respond faster']},
  {v:75,ar:['صفحة اختيار الأبطال مبقتش بتهنّج'],en:['The hero selection screen no longer freezes']},
@@ -3410,6 +3411,12 @@ function safeLook(L){if(!L||!L.ex||!(L.ex.has('scythe')||L.ex.has('spear')||L.ex
 
 /* phones: no CSS filter glows (they hung a Mali GPU at paint time) */
 if(IS_PHONE||'ontouchstart' in window||navigator.maxTouchPoints>0)document.body.classList.add('nofx');
+
+/* temporary: reveal the heroes screen item by item to find the one that hangs the phone's GPU */
+{const _rc=renderChars;let tok=0;renderChars=function(...a){const r=_rc.apply(this,a);const my=++tok;
+  const items=[...document.querySelectorAll('#cGrid [data-pick],#cComps [data-cpk]')];for(const e of items)e.style.visibility='hidden';
+  let i=0;const next=()=>{if(my!==tok||i>=items.length){if(i>=items.length)bcr('# all revealed');return}const e=items[i++];bcr('# reveal '+(e.dataset.pick?'hero '+e.dataset.pick:'comp '+e.dataset.cpk));e.style.visibility='';setTimeout(next,180)};
+  setTimeout(next,60);return r}}
 setTimeout(achBadge,1500);
 /* a stable little leaderboard around your rank */
 function renderArena(){const r=rankOf(S.rp);
