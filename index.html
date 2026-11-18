@@ -332,6 +332,8 @@ body:not(.onhome) .cbar .evo3d,body:not(.onhome) #cbP{display:none}
 #quests .qstreak .go{width:auto!important;padding:6px 12px!important;font-size:12px!important;margin:0!important;min-height:0!important}
 #quests .qrow{padding:4px 8px!important;margin:0!important;min-height:0!important;gap:6px!important}#quests .qm b{font-size:10.5px!important}#quests .qm .ab{height:9px!important;margin-top:2px!important}#quests .qm .ab em{font-size:8px!important}
 #quests .aclm{padding:3px 7px!important;font-size:10px!important;min-height:0!important}#quests .aclm .coin{width:12px!important;height:12px!important}}
+
+body.nofx *,body.nofx *::before,body.nofx *::after{filter:none!important;backdrop-filter:none!important;-webkit-backdrop-filter:none!important}
 #pAll{background:linear-gradient(#7dffa8,#2fbf6a);color:#05210f}
 .side .bar{height:13px;border-radius:7px;background:#00000066;border:1.5px solid #ffffff2e}
 .side .bar i{width:100%;transform-origin:left;will-change:transform} .side.en .bar i{transform-origin:right}
@@ -2986,6 +2988,7 @@ function kitsuUlt(A,D,v){const U=R.ult;if(U)U.dur=1.9;const rage=A.fox>0||(A.tai
 
 /* ---------- patch notes: simple words, newest first ---------- */
 const PATCH_NOTES=[
+ {v:77,ar:['تصليح تهنيج صفحة الأبطال على بعض الموبايلات'],en:['Fix for the heroes screen freezing on some phones']},
  {v:76,ar:['الضغط على الأزرار بقى أسرع'],en:['Buttons respond faster']},
  {v:75,ar:['صفحة اختيار الأبطال مبقتش بتهنّج'],en:['The hero selection screen no longer freezes']},
  {v:74,ar:['لو اللعبة وقفت، المرة الجاية بترجعك للمقاتل عشان تقدر تلعب'],en:['If the game freezes, next time it puts you on the Fighter so you can keep playing']},
@@ -3404,6 +3407,9 @@ document.addEventListener('visibilitychange',()=>bcr(document.hidden?'. hidden':
 
 /* menu figures of the new heroes without the new weapon extras (diagnosing a phone GPU hang) */
 function safeLook(L){if(!L||!L.ex||!(L.ex.has('scythe')||L.ex.has('spear')||L.ex.has('planets')))return L;const C=Object.assign({},L);C.ex=new Set([...L.ex].filter(x=>x!=='scythe'&&x!=='spear'&&x!=='planets'));return C}
+
+/* phones: no CSS filter glows (they hung a Mali GPU at paint time) */
+if(IS_PHONE||'ontouchstart' in window||navigator.maxTouchPoints>0)document.body.classList.add('nofx');
 setTimeout(achBadge,1500);
 /* a stable little leaderboard around your rank */
 function renderArena(){const r=rankOf(S.rp);
