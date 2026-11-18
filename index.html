@@ -304,6 +304,16 @@ body.playing .cbar{display:none!important}
 .qh{margin:4px 0 0;font-size:13px;color:#ffd23e}
 .qrow{display:flex;align-items:center;gap:8px;padding:6px 9px;border-radius:11px;background:#0b092099;border:1px solid #ffffff14}.qrow.can{border-color:#7dffa8}.qrow.done{opacity:.55}
 .qm{flex:1;min-width:0;display:flex;flex-direction:column;gap:3px}.qm b{font-size:12.5px;color:#fff}.qm .ab{position:relative;height:10px;border-radius:6px;background:#0b0920;overflow:hidden}.qm .ab i{display:block;height:100%;background:linear-gradient(90deg,#ffb23e,#ffd23e)}.qm .ab em{position:absolute;inset:0;display:grid;place-items:center;font:800 8px/1 system-ui,sans-serif;font-style:normal;color:#fff;text-shadow:0 1px 2px #000}
+
+#menu .mb.modem img{border-radius:50%}
+.qbtn img.qic{width:42px;height:42px;border-radius:50%;display:block;box-shadow:0 0 0 2px #ffd23e88}
+.mot>img{object-fit:cover}.mot>img.wbimg{width:96px;height:58px;border-radius:12px}.qli{width:22px;height:22px;border-radius:50%;vertical-align:middle;margin-inline-end:6px}
+.pfcard{background-image:linear-gradient(90deg,#15122ef2,#15122eaa),var(--bn)!important;background-size:cover!important;background-position:center!important}
+.bnbtn{position:absolute;top:6px;inset-inline-start:8px;z-index:2;border:0;border-radius:9px;padding:3px 8px;background:#0b0920cc;color:#fff;font:800 10px system-ui,sans-serif;cursor:pointer}
+#match{background-size:cover;background-position:center}
+.bng{display:grid;grid-template-columns:repeat(auto-fill,minmax(180px,1fr));gap:8px;overflow:auto}
+.bni{height:72px;border-radius:12px;border:1.5px solid #ffffff22;background-size:cover;background-position:center;display:flex;flex-direction:column;justify-content:flex-end;align-items:flex-start;padding:6px 8px;color:#fff;cursor:pointer;font:inherit;text-align:start}
+.bni b{font-size:12px;text-shadow:0 1px 3px #000}.bni small{font-size:9.5px;color:#ffb3bd}.bni.on{border-color:#7dffa8;box-shadow:0 0 12px #7dffa866}.bni.lk{filter:grayscale(.8) brightness(.6)}
 #pAll{background:linear-gradient(#7dffa8,#2fbf6a);color:#05210f}
 .side .bar{height:13px;border-radius:7px;background:#00000066;border:1.5px solid #ffffff2e}
 .side .bar i{width:100%;transform-origin:left;will-change:transform} .side.en .bar i{transform-origin:right}
@@ -684,7 +694,7 @@ body.playing .cbar{display:none!important}
   <section id="intro" class="screen"><canvas id="icv"></canvas><button id="iSkip">تخطي ›</button></section>
 
   <section id="menu" class="screen">
-    <div class="mtop"><button class="ico gear mi" id="mSet" aria-label="الإعدادات"><img src="https://khalednmg100-dotcom.github.io/beat-yesterday-live/img/ui/settings.webp" alt=""></button><button class="ico book mi" id="mCodex" aria-label="الموسوعة"><img src="https://khalednmg100-dotcom.github.io/beat-yesterday-live/img/ui/codex.webp" alt=""></button><button class="ico mi qbtn" id="mQuest" aria-label="quests"><i class="qic">📋</i><i class="dot" id="mQuestDot" hidden></i></button><button class="ico trophy mi" id="mAch" aria-label="الإنجازات"><img src="https://khalednmg100-dotcom.github.io/beat-yesterday-live/img/ui/ach.webp" alt=""><i class="dot" id="mAchDot" hidden></i></button><span></span><button class="mshop" id="mShop"><i class="coin3d"></i><b>الشوب</b><b id="mCoins" hidden>0</b></button><span class="mlv" id="mLv"></span><span id="mCoinSlot"></span><button class="mprof" id="mProf"><img id="mpAv" src="https://khalednmg100-dotcom.github.io/beat-yesterday-live/img/av/rookie.webp" alt=""><b id="mpName"></b><em class="elb">ELITE</em></button></div>
+    <div class="mtop"><button class="ico gear mi" id="mSet" aria-label="الإعدادات"><img src="https://khalednmg100-dotcom.github.io/beat-yesterday-live/img/ui/settings.webp" alt=""></button><button class="ico book mi" id="mCodex" aria-label="الموسوعة"><img src="https://khalednmg100-dotcom.github.io/beat-yesterday-live/img/ui/codex.webp" alt=""></button><button class="ico mi qbtn" id="mQuest" aria-label="quests"><img class="qic" src="https://khalednmg100-dotcom.github.io/beat-yesterday-live/img/ui/quests.webp" alt=""><i class="dot" id="mQuestDot" hidden></i></button><button class="ico trophy mi" id="mAch" aria-label="الإنجازات"><img src="https://khalednmg100-dotcom.github.io/beat-yesterday-live/img/ui/ach.webp" alt=""><i class="dot" id="mAchDot" hidden></i></button><span></span><button class="mshop" id="mShop"><i class="coin3d"></i><b>الشوب</b><b id="mCoins" hidden>0</b></button><span class="mlv" id="mLv"></span><span id="mCoinSlot"></span><button class="mprof" id="mProf"><img id="mpAv" src="https://khalednmg100-dotcom.github.io/beat-yesterday-live/img/av/rookie.webp" alt=""><b id="mpName"></b><em class="elb">ELITE</em></button></div>
     <b class="logo">اغلب نفسك</b>
     <p class="minfo" id="mInfo"></p>
     <div class="mrow">
@@ -694,7 +704,7 @@ body.playing .cbar{display:none!important}
       <button class="mb" id="mTrain"><img src="img/ic/str4.webp" alt=""><span class="mt"><b>طوّر مستواك</b><span>درّب نفسك واغلب نسخة امبارح</span></span></button>
       <button class="mb pvp" id="mPvp"><img src="img/ic/ult.webp" alt=""><span class="mt"><b>نافس آخرين</b><span>رانكك: <em id="mRank">برونز III</em></span></span></button>
       <button class="mb storym" id="mStory"><img src="https://khalednmg100-dotcom.github.io/beat-yesterday-live/img/story.webp" alt=""><span class="mt"><b>القصة</b><span id="mStoryInfo">100 مرحلة وبوص كل 10</span></span></button>
-      <button class="mb modem" id="mModes"><i class="mbe">⚔️</i><span class="mt"><b>التحديات</b><span id="mModesInfo"></span></span></button>
+      <button class="mb modem" id="mModes"><img src="https://khalednmg100-dotcom.github.io/beat-yesterday-live/img/ui/challenges.webp" alt=""><span class="mt"><b>التحديات</b><span id="mModesInfo"></span></span></button>
       <button class="mb tourm" id="mTour"><img src="https://khalednmg100-dotcom.github.io/beat-yesterday-live/img/ui/tour.webp" alt=""><span class="mt"><b>البطولة</b><span id="mTourInfo">مجموعات وأدوار إقصائية · اكسب الكاس</span></span></button>
     </div>
   </section>
@@ -2001,6 +2011,7 @@ function resolve(A,D){
   }
   if(!D.p&&D.st==='stun')v*=D.pvp?1.2:1.5;
   v*=taken(D)*gpow(A)*(D.comp==='guard'?.88:1);
+  if(k==='special'&&A.titan){titanUlt(A,D,v);return}
   if(k==='special'&&A.char==='ninja'&&R.ult&&R.ult.style==='blades'){ninjaUlt(A,D,v);return}
   if(k==='special'&&A.char==='vampire'&&R.ult&&R.ult.style==='blood'){vampUlt(A,D,v);return}
   if(k==='special'&&A.char==='kitsu'&&R.ult&&R.ult.style==='fox'){kitsuUlt(A,D,v);return}
@@ -2277,6 +2288,7 @@ function castSkill(A){
   const k=A.sk,t=Math.max(1,skTier(A.lv[k])),D=otherOf(A),ax=xOf(A),dx=xOf(D),hy=FLOOR-62,K=SKOF(A.char)[k],col=K.col;
   A.castId=(A.castId||0)+1;A.elem=(ELEM[A.char]||{})[k]||null;A.boost=(A.cmbCast?1.5:1)*(1+.1*skStar(A.lv[k]));if(A.cmbCast){A.cmbCast=0;R.fx.push({k:'name',txt:'كومبو سحري!',col:'#c77dff',t:0,d:.8})}
   R.fx.push({k:'name',txt:(A.dem>0&&K.dn?K.dn:K.names)[t-1],col:A.dem>0&&K.dn?'#ff3b1f':col,t:0,d:1});R.zoom=Math.max(R.zoom,.05);
+  if(A.titan){titanCast(A,k,t,D,ax,dx);return}
   if(A.char==='fighter'&&k==='spd'){fighterThunder(A,t,D,ax,dx,col);return}
   const CF=CASTS[A.char];if(CF){CF[k](A,t,D,ax,dx,col);return}
   if(A.char==='mage')mageFx(A,k,t,ax,dx);
@@ -2489,6 +2501,7 @@ function achBadge(){const e=$('mAchDot');if(e)e.hidden=!achReadyAll()}
 function achAfterFight(win){try{const s=R.st||{},was=achReadyAll();
   achAdd('dodge',s.dodge);achAdd('pd',s.pd);achAdd('block',s.block);achAdd('parry',s.parry);achAdd('sk',s.sk);achAdd('ult',(s.ult||0)+(s.cs||0));achAdd('brk',s.brk);achAdd('react',s.react);achAdd('dmg',Math.round(s.dmg||0));
   achMax('big',Math.round(s.big||0));achMax('cmb',s.cmb);achMax('hits',R.hcMax);achMax('streak',S.streak);if(R.tour)achAdd('tplay',1);
+  if(win&&R.mode==='story'&&SUB==='wboss')S.wbWins=(S.wbWins||0)+1;
   if(win){achAdd('win',1);achAdd(R.mode==='pvp'?'pw':'tw',1);achAdd('h_'+(S.char||'fighter'),1)}
   qAdd('win',win?1:0);qAdd('sk',s.sk||0);qAdd('dodge',s.dodge||0);qAdd('ult',(s.ult||0)+(s.cs||0));qAdd('pw',win&&R.mode==='pvp'&&!R.tour?1:0);qAdd('tplay',R.tour?1:0);
   if(R.mode==='story'){qAdd('story',win&&SUB==='story'?1:0);qAdd('tower',win&&SUB==='tower'?1:0);qAdd('wboss',SUB==='wboss'?1:0);qAdd('tag',win&&SUB==='tag'?1:0)}
@@ -2600,11 +2613,11 @@ function renderProf(){const r=rankOf(S.rp||0),cups=S.cups||{},L=achList(),G=achS
   const pins=(S.pins||[]).map(k=>L.find(d=>d[0]===k)).filter(Boolean);
   const tile=(ic,v,t)=>`<div class="pft"><img src="${ic}" alt=""><b>${v}</b><span>${t}</span></div>`;
   const slot=(d,i)=>d?`<button class="pfs" data-slot="${i}">${medal(d,G[d[0]]||0,1)}<b>${LL(d[1],d[2])}</b><span>${LL('مستوى ','Tier ')+ROM[(G[d[0]]||1)-1]}</span></button>`:`<button class="pfs empty" data-slot="${i}"><div class="medal off big"><i>+</i></div><b>${LL('اختار إنجاز','Pick one')}</b><span>📌</span></button>`;
-  $('pfBody').innerHTML=`<div class="pfcard${isElite()?' elite':''}" style="--rc:${r.col}">${isElite()?`<div class="elban">👑 ELITE PASS</div>`:''}<button class="pfavb" id="pfAvB"><img src="${avSrc(myAv())}" alt=""><i>✏️</i></button><div class="pfm"><div class="pfn"><b>${myName()}</b><button class="ico" id="pfEdit" aria-label="edit">✏️</button></div>
+  $('pfBody').innerHTML=`<div class="pfcard${isElite()?' elite':''}" style="--rc:${r.col};--bn:url(${bnSrc(myBn())})"><button class="bnbtn" id="pfBn">🖼️ ${LL('البانر','Banner')}</button>${isElite()?`<div class="elban">👑 ELITE PASS</div>`:''}<button class="pfavb" id="pfAvB"><img src="${avSrc(myAv())}" alt=""><i>✏️</i></button><div class="pfm"><div class="pfn"><b>${myName()}</b><button class="ico" id="pfEdit" aria-label="edit">✏️</button></div>
       <span class="pff">${tr(CHARS[S.char||'fighter'].name)} · ${formName(S.lv)}</span><span class="pfr"><img src="${rankPic(r)}" alt="">${r.full}</span></div></div>
     <div class="pftiles">${tile('img/ach/cups.webp',cups.g||0,LL('كاس دهبي','Gold cups'))}${tile('img/ach/lower.webp',cups.s||0,LL('كاس فضي','Silver cups'))}${tile('img/ach/win.webp',fmt(achVal('win')),LL('انتصارات','Victories'))}${tile('img/ach/day.webp',S.best||S.day||1,LL('أبعد يوم','Best day'))}${tile('img/ach/lvl.webp',total(S.lv),LL('المستوى','Level'))}${tile('https://khalednmg100-dotcom.github.io/beat-yesterday-live/img/ui/ach.webp',got+'/'+tot,LL('إنجازات','Achievements'))}</div>
     <h4 class="pfh">${LL('الإنجازات المعروضة','Showcase')}</h4><div class="pfshow">${slot(pins[0],0)}${slot(pins[1],1)}${slot(pins[2],2)}</div>`;
-  $('pfAvB').onclick=()=>{sfx('click');avPick()};
+  $('pfAvB').onclick=()=>{sfx('click');avPick()};$('pfBn').onclick=()=>{sfx('click');bnPick()};
   $('pfEdit').onclick=()=>{sfx('click');if(S.name&&!(S.nameCards>0))nameCardOffer();else nameAsk(1)};
   $('pfBody').querySelectorAll('[data-slot]').forEach(b=>b.onclick=()=>{sfx('click');pinPick(+b.dataset.slot)})}
 function pinPick(i){if(document.getElementById('avPick'))return;const L=achList(),G=achS().g,own=L.filter(d=>(G[d[0]]||0)>0),pins=(S.pins||[]).slice();const o=document.createElement('div');o.id='avPick';
@@ -2802,6 +2815,8 @@ function kitsuUlt(A,D,v){const U=R.ult;if(U)U.dur=1.9;const rage=A.fox>0||(A.tai
 
 /* ---------- patch notes: simple words, newest first ---------- */
 const PATCH_NOTES=[
+ {v:58,ar:['بوص الأسبوع بقاله قدرات خاصة بيه وقاضية ضخمة اسمها نهاية القرمزي'],en:['The weekly boss has its own abilities and a huge finisher: Crimson Apocalypse']},
+ {v:57,ar:['أيقونات جديدة للتحديات والمهام','بوص الأسبوع بقى عملاق مرعب','بانرات تختارها من البروفايل وتظهر وانت بتدور على خصم','الأبطال والمرافقين بقوا أغلى'],en:['New icons for Challenges and Quests','The weekly boss is a terrifying titan','Banners you pick in your profile, shown while searching for a match','Heroes and companions cost more']},
  {v:56,ar:['اللعبة بقت أخف بكتير على الموبايلات العادية'],en:['Much smoother on regular phones']},
  {v:55,ar:['مهام يومية وأسبوعية بجوايز، ومكافأة دخول يومي لـ 7 أيام','تحديات جديدة: بوص الأسبوع، البرج اللي ملوش آخر، وفرق 3 ضد 3'],en:['Daily and weekly quests with rewards, plus a 7-day login bonus','New Challenges: Weekly Boss, the endless Tower and 3v3 Tag Team']},
  {v:54,ar:['اللعبة أخف على الموبايل، وشاشة الفوز مش بتهنّج','البروفايل والترتيب وشاشة التطوير بقوا ظاهرين كويس على الموبايل'],en:['Smoother on phones, the victory screen no longer freezes','Profile, leaderboard and level-up screens fit phones properly']},
@@ -2843,7 +2858,7 @@ function streakDay(){const L=stk(),t=dkey(),y=dkey(new Date(Date.now()-864e5));i
 function streakClaim(){const L=stk(),t=dkey();if(L.claimed===t)return;const n=streakDay(),c=STREAK[n-1];L.n=n;L.last=t;L.claimed=t;S.coins=(S.coins||0)+c;bpGain(n===7?100:20);save();sfx('win');toast(LL('مكافأة اليوم ','Day ')+n+' · +'+fmt(c)+LL(' عملة',' coins'));qBadge()}
 function renderQuests(){const Q=qS(),n=streakDay(),ready=streakReady();{const h=document.querySelector('#quests .atop b');if(h)h.textContent=LL('المهام','Quests')}
   const row=(D,q,w)=>{const ok=!q.done&&q.got>=D[1];return `<div class="qrow${ok?' can':''}${q.done?' done':''}"><div class="qm"><b>${LL(D[2],D[3])}</b><div class="ab"><i style="width:${Math.min(100,q.got/D[1]*100)}%"></i><em>${q.got} / ${D[1]}</em></div></div>${q.done?'<em class="aok">✓</em>':`<button class="aclm" data-q="${w}${Q[w==='d'?'d':'w'].indexOf(q)}"${ok?'':' disabled'}><i class="coin"></i>${fmt(D[4])}</button>`}</div>`};
-  $('qsBody').innerHTML=`<div class="qstreak"><b>${LL('الدخول اليومي','Daily login')}</b><div class="qdays">${STREAK.map((c,i)=>`<div class="qday${i+1<n||(i+1===n&&!ready)?' got':''}${i+1===n&&ready?' now':''}"><small>${LL('يوم ','Day ')+(i+1)}</small><i class="coin"></i><b>${fmt(c)}</b></div>`).join('')}</div>${ready?`<button class="go" id="qsStreak">${LL('استلم مكافأة اليوم','Claim today')}</button>`:''}</div>
+  $('qsBody').innerHTML=`<div class="qstreak"><b><img src="${UI_IMG('login')}" alt="" class="qli">${LL('الدخول اليومي','Daily login')}</b><div class="qdays">${STREAK.map((c,i)=>`<div class="qday${i+1<n||(i+1===n&&!ready)?' got':''}${i+1===n&&ready?' now':''}"><small>${LL('يوم ','Day ')+(i+1)}</small><i class="coin"></i><b>${fmt(c)}</b></div>`).join('')}</div>${ready?`<button class="go" id="qsStreak">${LL('استلم مكافأة اليوم','Claim today')}</button>`:''}</div>
     <h4 class="qh">${LL('مهام اليوم','Daily quests')}</h4>${Q.d.map(q=>row(Q_DAILY[q.i],q,'d')).join('')}<h4 class="qh">${LL('مهام الأسبوع','Weekly quests')}</h4>${Q.w.map(q=>row(Q_WEEK[q.i],q,'w')).join('')}`;
   const b=$('qsStreak');if(b)b.onclick=()=>{streakClaim();renderQuests()}}
 $('qsBody').addEventListener('click',e=>{const b=e.target.closest('[data-q]');if(!b||b.disabled)return;const Q=qS(),w=b.dataset.q[0],i=+b.dataset.q.slice(1),q=(w==='d'?Q.d:Q.w)[i],D=(w==='d'?Q_DAILY:Q_WEEK)[q.i];if(q.done||q.got<D[1])return;
@@ -2855,9 +2870,9 @@ const WBOSS=[{n:['تنين الرماد','The Ash Dragon'],ch:'archer',m:['rage'
 const WB_TIER=[[.25,300],[.5,700],[.75,1500],[1,3000]];
 function wbS(){const wk=wkey(),t=dkey();let W=S.wb;if(!W||W.wk!==wk)W=S.wb={wk,best:0,got:0,day:t,tries:0};if(W.day!==t){W.day=t;W.tries=0}return W}
 function wbCur(){return WBOSS[wnum()%WBOSS.length]}
-function wbossFoe(){const B=wbCur();R.map=B.map;const lv={};for(const k of KEYS)lv[k]=Math.max(1,Math.round(S.lv[k]*1.2));const look=lookOf(lv,null,B.ch);look.sc*=1.15;
+function wbossFoe(){const B=wbCur();R.map=B.map;const lv={};for(const k of KEYS)lv[k]=Math.max(1,Math.round(S.lv[k]*1.2));const look=titanLook(lv);
   const hp=maxHp(S.lv)*(1+.1*skSum(S.lv))*40,dm=maxHp(S.lv)*.07,ai={dodge:.35,block:.35,skill:.7,combo:.7,pace:.55};if(B.m.includes('guard'))ai.block=.72;if(B.m.includes('counter'))ai.dodge=.6;
-  return mk(false,lv,hp,dm,{name:LL(B.n[0],B.n[1]),look,char:B.ch,comp:COMP_IDS[wnum()%COMP_IDS.length],smart:true,ai,story:true,sboss:true,mech:B.m.slice(),slide:slideIn()})}
+  return mk(false,lv,hp,dm,{name:LL(B.n[0],B.n[1]),look,char:B.ch,comp:COMP_IDS[wnum()%COMP_IDS.length],smart:true,ai,story:true,sboss:true,mech:B.m.slice(),titan:true,slide:slideIn()})}
 function wbossPlay(){const W=wbS();if(W.tries>=3){toast(LL('خلصت محاولات النهارده · ارجع بكرة','No tries left today · come back tomorrow'));return}W.tries++;save();SUB='wboss';auInit();sfx('click');show('play');startRun('story');music(true);
   if(!S.tipsOff)$('hint').textContent=LL('طرق غلبه: ','How to beat him: ')+wbCur().m.map(m=>LL(MECH_TIP[m][0],MECH_TIP[m][1])).join(' · ')}
 function wbossFinish(win){R.phase='over';R.ult=null;const W=wbS(),E=R.E,frac=win?1:Math.max(0,1-E.hp/E.max);achAfterFight(win);W.best=Math.max(W.best,frac);let coins=0;
@@ -2896,13 +2911,47 @@ function tagPick(){if(document.getElementById('avPick'))return;const own=CHAR_ID
 function modeLabel(){if(SUB==='wboss')return LL('بوص الأسبوع','Weekly boss');if(SUB==='tower')return LL('البرج · الدور ','Tower · floor ')+twS().cur;if(SUB==='tag')return LL('فرق 3 ضد 3 · بطل ','Tag 3v3 · hero ')+(R&&R.tagN||1);return storyLabel()}
 function renderModes(){const W=wbS(),B=wbCur(),T=twS();{const h=document.querySelector('#modes .atop b');if(h)h.textContent=LL('التحديات','Challenges')}
   const tile=(id,img,t,sub,extra)=>`<button class="mot" data-mo="${id}">${img}<div class="mot-t"><b>${t}</b><span>${sub}</span>${extra||''}</div></button>`;
-  $('moGrid').innerHTML=tile('wboss',`<img src="${avSrc(B.ch)}" alt="">`,LL('بوص الأسبوع','Weekly Boss')+': '+LL(B.n[0],B.n[1]),LL('محاولات النهارده ','Tries today ')+(3-W.tries)+'/3 · '+LL('أحسن ضرر ','Best ')+Math.round(W.best*100)+'%',`<div class="motb">${WB_TIER.map((x,i)=>`<i class="${i<W.got?'on':''}">${Math.round(x[0]*100)}% · ${fmt(x[1])}</i>`).join('')}</div>`)+
-    tile('tower','<i class="mbe">🗼</i>',LL('البرج','The Tower'),LL('الدور ','Floor ')+T.cur+' · '+LL('أعلى دور ','Best ')+T.best,`<div class="motb"><i>${LL('كل دور أصعب · بوص كل 5','Harder every floor · boss every 5')}</i></div>`)+
-    tile('tag','<i class="mbe">👥</i>',LL('فرق 3 ضد 3','Tag Team 3v3'),LL('أبطالك بيدخلوا ورا بعض لما واحد يقع','Your heroes enter one after another'))+
-    tile('quests','<i class="mbe">📋</i>',LL('المهام اليومية','Daily Quests'),qReady()?LL('فيه جوايز مستنياك!','Rewards waiting!'):LL('مهام جديدة كل يوم','New quests every day'))}
+  $('moGrid').innerHTML=tile('wboss',`<img src="${UI_IMG('bn_boss')}" alt="" class="wbimg">`,LL('بوص الأسبوع','Weekly Boss')+': '+LL(B.n[0],B.n[1]),LL('محاولات النهارده ','Tries today ')+(3-W.tries)+'/3 · '+LL('أحسن ضرر ','Best ')+Math.round(W.best*100)+'%',`<div class="motb">${WB_TIER.map((x,i)=>`<i class="${i<W.got?'on':''}">${Math.round(x[0]*100)}% · ${fmt(x[1])}</i>`).join('')}</div>`)+
+    tile('tower',`<img src="${UI_IMG('tower')}" alt="">`,LL('البرج','The Tower'),LL('الدور ','Floor ')+T.cur+' · '+LL('أعلى دور ','Best ')+T.best,`<div class="motb"><i>${LL('كل دور أصعب · بوص كل 5','Harder every floor · boss every 5')}</i></div>`)+
+    tile('tag',`<img src="${UI_IMG('tag')}" alt="">`,LL('فرق 3 ضد 3','Tag Team 3v3'),LL('أبطالك بيدخلوا ورا بعض لما واحد يقع','Your heroes enter one after another'))+
+    tile('quests',`<img src="${UI_IMG('quests')}" alt="">`,LL('المهام اليومية','Daily Quests'),qReady()?LL('فيه جوايز مستنياك!','Rewards waiting!'):LL('مهام جديدة كل يوم','New quests every day'))}
 $('moGrid').addEventListener('click',e=>{const b=e.target.closest('[data-mo]');if(!b)return;const m=b.dataset.mo;if(m==='wboss')wbossPlay();else if(m==='tower')towerPlay();else if(m==='tag')tagPick();else{sfx('click');show('quests');renderQuests()}});
 $('mModes').onclick=()=>{auInit();sfx('click');show('modes');renderModes()};$('moBack').onclick=()=>{sfx('click');show('menu')};
 function engMenu(){try{qS();qBadge();{const b=document.querySelector('#mModes b');if(b)b.textContent=LL('التحديات','Challenges')}const e=$('mModesInfo');if(e)e.textContent=LL('بوص الأسبوع · البرج · 3 ضد 3','Weekly boss · Tower · 3v3');if(streakReady()&&!document.getElementById('nmAsk')&&!document.getElementById('notesBox')&&S.name&&!S._stkShown){S._stkShown=1;setTimeout(()=>{if(mode==='menu'&&!document.getElementById('notesBox')&&!document.getElementById('nmAsk')){show('quests');renderQuests()}else S._stkShown=0},1500)}}catch(e){}}
+
+/* ---------- painted ui, banners, prices ---------- */
+const UI_IMG=n=>'https://khalednmg100-dotcom.github.io/beat-yesterday-live/img/ui/'+n+'.webp';
+function titanLook(lv){const L=lookOf(lv,null,'fighter');Object.assign(L,{skin:'#2a1c2e',top:'#22162a',pants:'#1a1020',boot:'#120a18',hair:'#eef0f8',hs:'flow',arm:'skin',acc:'#ff2e3e',eye:'#ff2e3e',glowEye:1,
+  cape:'#8a0f22',capeIn:'#ff2e55',bracer:'#3a2a3a',pat:null,musc:2,ol:'#ff2e3e'});L.ex=new Set(['pads','claws','cape','lava','aura','belt']);L.sc=1.35;return L}
+const BANNERS=[['ranked','img/ranked.webp',()=>true,['متاح من الأول','Available from the start'],['البطل','Champion']],['boss',UI_IMG('bn_boss'),()=>(S.wbWins||0)>0,['اغلب بوص الأسبوع','Beat a weekly boss'],['العملاق','The Titan']]];
+STORY.forEach((C,ci)=>BANNERS.push(['c_'+C.map,null,()=>stS().best>ci*10+10,['خلّص فصل '+C.n[0],'Finish chapter: '+C.n[1]],C.n,C.map]));
+const BN_CACHE={};
+function bnSrc(id){const b=BANNERS.find(x=>x[0]===id)||BANNERS[0];if(b[1])return b[1];if(BN_CACHE[id])return BN_CACHE[id];try{const cv=document.createElement('canvas');cv.style.cssText='position:fixed;left:-2000px;width:480px;height:180px';document.body.appendChild(cv);mapArt(cv,b[5],200);BN_CACHE[id]=cv.toDataURL('image/jpeg',.8);cv.remove()}catch(e){return 'img/ranked.webp'}return BN_CACHE[id]}
+function bnOk(id){const b=BANNERS.find(x=>x[0]===id);try{return !!(b&&b[2]())}catch(e){return false}}
+function myBn(){return S.bnr&&bnOk(S.bnr)?S.bnr:'ranked'}
+function bnPick(){if(document.getElementById('avPick'))return;const o=document.createElement('div');o.id='avPick';const cur=myBn();
+  o.innerHTML=`<div class="avc"><div class="avh"><b>${LL('اختار البانر بتاعك','Pick your banner')}</b><button class="ico" id="avX">✕</button></div><div class="bng">${BANNERS.map(b=>{const ok=bnOk(b[0]);return `<button class="bni${ok?'':' lk'}${b[0]===cur?' on':''}" data-bn="${b[0]}" style="background-image:linear-gradient(transparent 40%,#000c),url(${bnSrc(b[0])})"><b>${LL(b[4][0],b[4][1])}</b>${ok?'':`<small>🔒 ${LL(b[3][0],b[3][1])}</small>`}</button>`}).join('')}</div></div>`;
+  document.body.appendChild(o);o.querySelector('#avX').onclick=()=>o.remove();o.addEventListener('click',e=>{if(e.target===o){o.remove();return}const b=e.target.closest('[data-bn]');if(!b)return;const id=b.dataset.bn;if(!bnOk(id)){const B=BANNERS.find(x=>x[0]===id);toast('🔒 '+LL(B[3][0],B[3][1]));return}S.bnr=id;save();sfx('up');o.remove();renderProf()})}
+setTimeout(()=>{for(const id in CHARS)if(CHARS[id].price)CHARS[id].price=Math.round(CHARS[id].price*1.6/500)*500;for(const id in COMPS)if(COMPS[id].price)COMPS[id].price=Math.round(COMPS[id].price*1.6/500)*500},0);
+
+/* ---------- the titan: its own skills and finisher ---------- */
+const TITAN_SK={str:['ضربة الأرض المحطمة','Earthbreaker'],spd:['سلاسل الدم','Blood Chains'],int:['كرات الفراغ','Void Orbs'],end:['زئير العملاق','Titan Roar']};
+function titanCast(A,k,t,D,ax,dx){const red='#ff2e3e';R.fx.push({k:'name',txt:LL(TITAN_SK[k][0],TITAN_SK[k][1]),col:red,t:0,d:1});
+  if(k==='str'){R.fx.push({k:'portal',x:dx,y:FLOOR-240,r:50,col:red,t:0,d:.9});sfx('arcane');R.tasks.push({t:.3,fn:()=>{const x=xOf(otherOf(A));R.fx.push({k:'proj',shape:'fire',x0:x,y0:FLOOR-235,x1:x,y1:FLOOR-40,t:0,d:.16,col:red,sz:2.8});sfx('meteorFall')}});
+    R.tasks.push({t:.48,fn:()=>{const x=xOf(otherOf(A));R.fx.push({k:'crack',x,t:0,d:1.2,big:1},{k:'ring',x,y:FLOOR-10,t:0,d:.5,col:red,r:220},{k:'flash',t:0,d:.08,col:'#ff8a8a'});quake(4,x);burst(x,FLOOR-20,[red,'#2a1c2e','#ffd23e'],30,1.2);skillHit(A,3.2,{col:red,kb:30,stun:.4,snd:'slam'});launch(otherOf(A),600)}})}
+  else if(k==='spd'){sfx('zap');const D2=otherOf(A),x=xOf(D2);R.fx.push({k:'chain',x0:x-80,y0:FLOOR,a:A,t:0,d:1.4,i:0,col:red},{k:'chain',x0:x+80,y0:FLOOR,a:A,t:0,d:1.4,i:1,col:red});
+    for(let i=0;i<5;i++)R.tasks.push({t:.12+i*.22,fn:()=>{const D3=otherOf(A);if(D3.hp<=0)return;skillHit(A,.7,{col:red,kb:1,snd:i%2?'':'hit',light:i<4?1:0});if(i===0&&D3.shieldT<=0&&!evading(D3)){D3.st='stun';D3.t=Math.max(D3.t,1);D3.combo=0}}})}
+  else if(k==='int'){sfx('magicCast');for(let i=0;i<3;i++){const dl=.15+i*.18;R.tasks.push({t:dl,fn:()=>{const D2=otherOf(A),hx=xOf(A),y=FLOOR-150-i*14;R.fx.push({k:'proj',shape:'arcane',big:1,x0:hx+(i-1)*30,y0:y,x1:xOf(D2),y1:FLOOR-70-(D2.airY||0),t:0,d:.22,col:'#7a00ff',arc:40-i*20})}});
+    R.tasks.push({t:dl+.22,fn:()=>{const D2=otherOf(A);R.fx.push({k:'ring',x:xOf(D2),y:FLOOR-70,t:0,d:.35,col:'#7a00ff',r:90});skillHit(A,1.3,{col:'#7a00ff',kb:12,snd:'arcane',light:i<2?1:0})}})}}
+  else{sfx('boom');R.fx.push({k:'ring',x:ax,y:FLOOR-62,t:0,d:.6,col:red,r:260},{k:'speedl',x:ax,y:FLOOR-80,t:0,d:.45,col:red},{k:'name',txt:'ROOOAAR!',col:red,t:0,d:.9});R.shake=.8;
+    const h=A.max*.05;A.hp=Math.min(A.max,A.hp+h);A.gpowT=4;A.gpowX=1.3;R.tasks.push({t:.1,fn:()=>{const D2=otherOf(A);D2.kb=Math.max(D2.kb||0,70);skillHit(A,1.6,{col:red,kb:40,snd:'slam'})}})}}
+function titanUlt(A,D,v){const U=R.ult;if(U)U.dur=2.2;const red='#ff2e3e',x0=xOf(D),top=FLOOR-290;const sc0=A.look.sc;
+  R.fx.push({k:'redlight',t:0,d:2.2},{k:'name',txt:LL('نهاية القرمزي!','CRIMSON APOCALYPSE!'),col:red,t:0,d:1.4});A.look.sc=sc0*1.25;sfx('ultCharge');R.shake=.5;
+  R.tasks.push({t:.15,fn:()=>{R.fx.push({k:'portal',x:xOf(D),y:top,r:120,col:red,t:0,d:1.5},{k:'portal',x:xOf(D),y:top,r:80,col:'#ffd23e',t:0,d:1.4});sfx('arcane')}});
+  R.tasks.push({t:.7,fn:()=>{const x=xOf(D);R.fx.push({k:'proj',shape:'fire',x0:x,y0:top,x1:x,y1:FLOOR-40,t:0,d:.3,col:red,sz:5});sfx('meteorFall')}});
+  R.tasks.push({t:1.02,fn:()=>{const x=xOf(D);R.hs=Math.max(R.hs||0,.3);R.shake=1;buzz(160);R.fx.push({k:'flash',t:0,d:.16,col:'#ff8a8a'},{k:'erupt',x,t:0,d:1,col:red,big:1},{k:'erupt',x:x-60,t:0,d:.9,col:'#ffd23e'},{k:'erupt',x:x+60,t:0,d:.9,col:'#ffd23e'},{k:'crack',x,t:0,d:1.6,big:1},{k:'ring',x,y:FLOOR-10,t:0,d:.7,col:red,r:340},{k:'ring',x,y:FLOOR-10,t:0,d:.5,col:'#ffffff',r:200},{k:'speedl',x,y:FLOOR-70,t:0,d:.5,col:red});
+    quake(5,x);burst(x,FLOOR-30,[red,'#ffd23e','#2a1c2e','#ffffff'],50,1.5);sfx('boom');sfx('slam');if(!D.dead&&D.hp>0){D.hp-=v;D.flash=.25;D.hurtT=.4;D.hurtP=1;stHit(A,D,v);if(D.hp>0)launch(D,700)}}});
+  R.tasks.push({t:2.05,fn:()=>{A.look.sc=sc0}})}
 setTimeout(achBadge,1500);
 /* a stable little leaderboard around your rank */
 function renderArena(){const r=rankOf(S.rp);
@@ -3377,13 +3426,13 @@ function figBox(L,ps,sg){let b;
   const lq=LOWQ;LOWQ=true;drawFig(c,210,440,sg,L,ps,1.2,1);LOWQ=lq;const d=c.getImageData(0,0,420,520).data;let x0=420,x1=0,y0=520,y1=0;
   for(let y=0;y<520;y+=2)for(let x=0;x<420;x+=2)if(d[(y*420+x)*4+3]>40){if(x<x0)x0=x;if(x>x1)x1=x;if(y<y0)y0=y;if(y>y1)y1=y}
   b=x1>x0?[x0-210,x1-210,y0-440,y1-440]:[-40,40,-130,0];return b}
-function findMatch(o){auInit();sfx('click');OPP=o&&o.lv?o:makeOpp();const m=$('match');m.classList.add('on');$('mmSearch').hidden=false;$('mmVs').hidden=true;
+function findMatch(o){auInit();sfx('click');OPP=o&&o.lv?o:makeOpp();const m=$('match');m.classList.add('on');m.style.backgroundImage=`linear-gradient(#0b0920cc,#0b0920ee),url(${bnSrc(myBn())})`;$('mmSearch').hidden=false;$('mmVs').hidden=true;
   const iv=setInterval(()=>{$('mmName').textContent=NAMES[Math.floor(Math.random()*NAMES.length)]},90);
   setTimeout(()=>{clearInterval(iv);$('mmSearch').hidden=true;$('mmVs').hidden=false;
     const ro=rankOf(OPP.rp),rm=rankOf(S.rp);$('vsOpName').textContent=OPP.name;{const e=document.querySelector('.vside.me b');if(e)e.textContent=myName()}
     $('vsMeInfo').innerHTML=formName(S.lv)+' · مستوى '+total(S.lv)+' · <img class="rki" src="'+rankPic(rm)+'" alt="">'+rm.full;$('vsOpInfo').textContent=CHARS[OPP.char].name+' · '+formName(OPP.lv,OPP.char)+' · مستوى '+total(OPP.lv)+' · '+ro.full+(OPP.comp?' · معاه '+COMPS[OPP.comp].name:'');
     stillFig('vsMe',S.lv,1,null,S.char);rkFrame(document.querySelector('.vside.me'),rm,1,1);rkFrame(document.querySelector('.vside.op'),ro,0,1);stillFig('vsOp',OPP.lv,-1,null,OPP.char);sfx('morph');
-    setTimeout(()=>{m.classList.remove('on');show('play');startRun('pvp');music(true)},2300)},1500)}
+    setTimeout(()=>{m.classList.remove('on');m.style.backgroundImage='';show('play');startRun('pvp');music(true)},2600)},2300)}
 
 /* ---------- animation ---------- */
 function target(f,t,running){
