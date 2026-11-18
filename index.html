@@ -1864,7 +1864,7 @@ function startRun(mode){
   MODE=mode||'train';lay();
   R={map:MAP_IDS[Math.floor(Math.random()*MAP_IDS.length)],st:{dmg:0,big:0,cmb:0,cc:0,dodge:0,pd:0,block:0,parry:0,brk:0,react:0,sk:0,ult:0,cs:0},mode:MODE,phase:'run',it:0,round:0,P:mk(true,S.lv,MODE==='pvp'?pvpHp(OPP.lv,S.lv)*.52:maxHp(S.lv),dmg(S.lv),{look:lookOf(S.lv),char:S.char||'fighter',comp:S.comp||null}),E:null,fx:[],pt:[],earned:0,energy:0,held:false,q:null,last:0,shake:0,scroll:0,stepT:0,hand:[PX,FLOOR-70],
      tasks:[],hs:0,zoom:0,ult:null,sty:{}};
-  R.tour=TOUR_FIGHT;TOUR_FIGHT=false;R.E=foe(0);R.P.hand=R.hand;
+  R.tour=TOUR_FIGHT;TOUR_FIGHT=false;R.hc=0;R.hcT=-9;try{hitCount(0)}catch(e){}R.E=foe(0);R.P.hand=R.hand;
   setupSkills();layoutPad();kickIconSet();{const e=document.querySelector('.side.me span');if(e)e.textContent=myName()}$('timer').hidden=MODE!=='pvp';
   $('over').classList.remove('on');label();
   $('hint').textContent=MODE==='train'&&S.day<=3&&!S.tipsOff?'الشريط الأخضر طاقتك: متسبّمش. البرتقالي دفاع الخصم: املاه تكسره. صد أو تفادي في آخر لحظة = كاونتر. ضرب ضرب ركلة = ضربة صاعدة.':'';
@@ -2253,7 +2253,7 @@ function step(dt){
   R.pt=R.pt.filter(p=>p.l>0);
   if(R.phase==='run'){const sl=slideIn();R.it+=dt;R.scroll+=240*dt;R.stepT-=dt;if(R.stepT<=0&&!P.look.ex.has('float')){R.stepT=.21;sfx('step')}E.slide=Math.max(0,sl-sl/1.25*R.it);
     if(E.slide<=0){R.phase='fight';if(R.held)tryBlock(P)}return}
-  if(R.phase==='boom'){R.bt-=dt;if(R.bt<=0)R.after();return}
+  if(R.phase==='boom'){if(R.hc){R.hc=0;hitCount(0)}R.bt-=dt;if(R.bt<=0)R.after();return}
   R.clock=(R.clock||0)+dt;
   if(R.mode==='pvp'&&R.clock>PVP_TIME){if(!R.otOn){R.otOn=1;R.fx.push({k:'name',txt:'وقت إضافي! الضرر بيزيد والعلاج وقف',col:'#ff5a6e',t:0,d:1.8});sfx('warn')}
     for(const f of[P,E]){f.low=Math.min(f.low===undefined?f.hp:f.low,f.hp);f.hp=f.low}}
@@ -2280,7 +2280,7 @@ function step(dt){
 }
 function next(){
   const p=gain(20);say(EX,'+'+fmt(p),'#ffb23e');
-  R.round++;R.E=foe(R.round);R.phase='run';R.it=0;R.P.st='idle';R.tasks=[];R.P.shieldT=0;R.ult=null;
+  R.round++;R.hc=0;R.hcT=-9;hitCount(0);R.E=foe(R.round);R.phase='run';R.it=0;R.P.st='idle';R.tasks=[];R.P.shieldT=0;R.ult=null;
   if(R.round===ROUNDS-1)R.P.hp=R.P.max;else R.P.hp=Math.min(R.P.max,R.P.hp+R.P.max*.25);
   if(R.E.boss&&R.E.smart&&S.style)if(!S.tipsOff)$('hint').textContent='نسخة امبارح بتلعب بأسلوبك · بتحب '+styTop();
   label();{const z=(e,v)=>UI.set($(e).firstElementChild,'transform','scaleX('+v+')');z('hpE',1);z('stE',1);z('poE',0)}
@@ -3343,7 +3343,7 @@ function render(ts,dt){
 
 /* ---------- loop & input ---------- */
 let mode='home';
-function show(m){if(m!=='play')music(false);mode=m;if(m==='menu'){setTimeout(()=>{menuProf();if(!S.name)nameAsk()},350)}for(const id of['intro','menu','home','arena','chars','shop','play','pass','settings','codex','ach','tour','prof','story'])$(id).classList.toggle('on',id===m);$('coinBar').hidden=m==='play'||m==='intro'||m==='codex'||m==='settings'||m==='story'||m==='tour';measure();UI.clear();
+function show(m){if(m!=='play'){music(false);try{hitCount(0)}catch(e){}}mode=m;if(m==='menu'){setTimeout(()=>{menuProf();if(!S.name)nameAsk()},350)}for(const id of['intro','menu','home','arena','chars','shop','play','pass','settings','codex','ach','tour','prof','story'])$(id).classList.toggle('on',id===m);$('coinBar').hidden=m==='play'||m==='intro'||m==='codex'||m==='settings'||m==='story'||m==='tour';measure();UI.clear();
   if(m==='home')renderHome();if(m==='arena')renderArena();if(m==='menu')renderMenu();if(m==='chars')renderChars();if(m==='shop')renderShop();if(m==='pass')renderPass();if(m==='settings')renderSettings();if(m==='codex')renderCodex()}
 /* fixed 120 Hz simulation (same game speed on every phone) + one render per screen refresh.
    if frames take too long the canvas resolution steps down until the game is smooth again */
