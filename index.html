@@ -2023,7 +2023,7 @@ function fInit(f){f.sta=staMax(f.lv);f.pos=0;f.mk={};f.tired=0;f.brokeT=0;f.ctr=
 /* damage a fighter takes is raised when it is tired, guard-broken or superconducted */
 const taken=D=>(D.tired>0?1.5:1)*(D.brokeT>0?1.5:1)*(D.sc>0?1.3:1);
 function posAdd(D,n){if(!R||D.dead||D.hp<=0||evading(D)||D.shieldT>0||(R.ult&&R.ult.a===D))return;D.pos+=n*(D.sc>0?1.5:1);D.posT=0;if(D.pos>=posMax(D))guardBreak(D)}
-const KICK_IC={};function kickIcon(ch){const ks=KICK[ch]||'leap';if(['blast','sword','bats','charge','fox'].includes(ks))return 'https://khalednmg100-dotcom.github.io/beat-yesterday-live/img/ui/kick_'+ks+'.webp';if(!['blast','sword','bats','charge','fox'].includes(ks))return 'img/ic/kick.webp';if(KICK_IC[ks])return KICK_IC[ks];
+const KICK_IC={};function kickIcon(ch){const ks=KICK[ch]||'leap';if(['blast','sword','bats','charge','fox','gale','bolt','reap','grav','upper'].includes(ks))return 'https://khalednmg100-dotcom.github.io/beat-yesterday-live/img/ui/kick_'+ks+'.webp';if(!['blast','sword','bats','charge','fox','gale','bolt','reap','grav','upper'].includes(ks))return 'img/ic/kick.webp';if(KICK_IC[ks])return KICK_IC[ks];
   const S2=128,e=document.createElement('canvas');e.width=e.height=S2;const c=e.getContext('2d'),C=S2/2,col={blast:'#c77dff',sword:'#ffd23e',bats:'#ff2e55',charge:'#7ef0ff',fox:'#ffc21a'}[ks];
   const g=c.createRadialGradient(C,C,4,C,C,C);g.addColorStop(0,'#2a2150');g.addColorStop(1,'#0b0920');c.fillStyle=g;c.beginPath();c.arc(C,C,C-2,0,7);c.fill();c.strokeStyle=col;c.lineWidth=5;c.beginPath();c.arc(C,C,C-5,0,7);c.stroke();
   c.shadowColor=col;c.shadowBlur=18;c.fillStyle=col;c.strokeStyle=col;c.lineCap='round';c.lineJoin='round';
@@ -2983,6 +2983,7 @@ function kitsuUlt(A,D,v){const U=R.ult;if(U)U.dur=1.9;const rage=A.fox>0||(A.tai
 
 /* ---------- patch notes: simple words, newest first ---------- */
 const PATCH_NOTES=[
+ {v:65,ar:['أيقونات جديدة لزرار الضربة بتاع كايتو وميرا وفيكس وأوريون ودندي'],en:['New strike-button icons for Kaito, Mira, Vex, Orion and Dendi']},
  {v:64,ar:['كل بطل جديد بقاله حركة ضربة خاصة بيه بدل الركلة: كايتو سيف دوّار، ميرا طعنة رمح، فيكس ضربة منجل، أوريون دفعة جاذبية، دندي أبركت','صفحة المهام بقت على قد شاشة الموبايل'],en:['Each new hero has his own strike instead of the same kick: Kaito spinning sword, Mira spear thrust, Vex scythe swing, Orion gravity push, Dendi uppercut','The Quests screen fits phone screens']},
  {v:63,ar:['دندي بقاله صورته وأيقونات مهاراته وصورة بروفايل'],en:['Dendi now has his portrait, skill icons and profile picture']},
  {v:62,ar:['أسماء القواضي والمهارات الجديدة بقت بالإنجليزي صح في النسخة الإنجليزي'],en:['New finisher and skill names now show in English']},
