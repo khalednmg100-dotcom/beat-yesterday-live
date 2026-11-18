@@ -133,3 +133,4 @@ Object.assign(window.LANG_EN,{"مجموعات وأدوار إقصائية":"Grou
 Object.assign(window.LANG_EN,{"القصة":"Story","100 مرحلة وبوص كل 10":"100 stages · a boss every 10"});
 Object.assign(window.LANG_EN,{"قلعة الدم":"Blood Castle","غابة الأرواح":"Spirit Woods","السما المكسورة":"The Broken Sky","عالم المراية":"Mirror World"});
 Object.assign(window.LANG_EN,{"ما الجديد؟":"What's new?","ما الجديد":"What's new"});
+Object.assign(window.LANG_EN,{"التحديات":"Challenges","المهام":"Quests"});

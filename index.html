@@ -287,6 +287,23 @@ body.playing .cbar{display:none!important}
 .board .row{grid-template-columns:58px minmax(70px,1fr) auto 40px!important;gap:6px}#arena .agrid{grid-template-columns:minmax(180px,.75fr) minmax(0,1.6fr)!important;width:100%;max-width:900px}#arena .board{min-width:0}.board .n{min-width:0}.board .rk{white-space:nowrap}
 @media (max-height:440px){.up{padding:5px 7px!important;column-gap:6px!important}.up .ski{width:32px!important;height:32px!important}.up .h b{font-size:13px!important}.up .h span{font-size:9.5px!important;padding:0 5px}
   .up .e{font-size:9.5px!important;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}.up .sk{font-size:9px!important;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}.up .c{font-size:11px!important}.ups{gap:5px!important}}
+
+.mb.modem{border-color:#ff5a6e88;background:linear-gradient(100deg,#3a0a18ee,#1b1740ee 60%)}.mb.modem b{font-size:22px}
+#menu .mbtns{grid-template-columns:1fr 1fr 1fr!important;max-width:760px}
+.qbtn .qic{font-style:normal;font-size:22px;width:42px;height:42px;display:grid;place-items:center;border-radius:50%;background:radial-gradient(#3a2a6e,#15122e);box-shadow:0 0 0 2px #ffd23e88}.qbtn{position:relative}.qbtn .dot{top:-2px;inset-inline-end:-2px;width:10px;height:10px}
+#modes,#quests{flex-direction:column;gap:8px}
+.mogrid{flex:1;min-height:0;overflow:auto;display:grid;grid-template-columns:1fr 1fr;gap:8px;max-width:900px;width:100%;margin:0 auto;align-content:start}
+.mot{display:flex;gap:10px;align-items:center;text-align:start;padding:10px;border-radius:16px;border:1.5px solid #ffd23e55;background:linear-gradient(120deg,#2a2458,#15122e);color:#fff;cursor:pointer;font:inherit}
+.mot>img,.mot>.mbe{width:56px;height:56px;border-radius:50%;flex:none;object-fit:cover;box-shadow:0 0 0 2px #ffd23e,0 0 12px #ffb23e66;display:grid;place-items:center;font-size:32px}
+.mot-t{display:flex;flex-direction:column;gap:2px;min-width:0}.mot-t b{font-family:var(--display);font-weight:400;font-size:18px}.mot-t span{font-size:11px;color:var(--mute)}
+.motb{display:flex;flex-wrap:wrap;gap:4px;margin-top:3px}.motb i{font-style:normal;font-size:9.5px;padding:1px 6px;border-radius:6px;background:#0b0920;color:#cfc8ff}.motb i.on{background:#7dffa8;color:#05210f}
+.qsbody{flex:1;min-height:0;overflow:auto;display:flex;flex-direction:column;gap:6px;max-width:760px;width:100%;margin:0 auto}
+.qstreak{padding:8px 10px;border-radius:14px;background:linear-gradient(120deg,#4a3208,#15122e);border:1.5px solid #ffd23e88;display:flex;flex-direction:column;gap:6px}.qstreak>b{color:#ffd23e;font-size:14px}
+.qdays{display:grid;grid-template-columns:repeat(7,1fr);gap:4px}.qday{display:flex;flex-direction:column;align-items:center;gap:1px;padding:4px 2px;border-radius:9px;background:#0b0920aa;border:1px solid #ffffff18}.qday small{font-size:9px;color:var(--mute)}.qday b{font-size:11px;color:#fff}
+.qday.got{opacity:.5}.qday.now{border-color:#7dffa8;box-shadow:0 0 10px #7dffa866}.qstreak .go{font-size:16px;padding:6px}
+.qh{margin:4px 0 0;font-size:13px;color:#ffd23e}
+.qrow{display:flex;align-items:center;gap:8px;padding:6px 9px;border-radius:11px;background:#0b092099;border:1px solid #ffffff14}.qrow.can{border-color:#7dffa8}.qrow.done{opacity:.55}
+.qm{flex:1;min-width:0;display:flex;flex-direction:column;gap:3px}.qm b{font-size:12.5px;color:#fff}.qm .ab{position:relative;height:10px;border-radius:6px;background:#0b0920;overflow:hidden}.qm .ab i{display:block;height:100%;background:linear-gradient(90deg,#ffb23e,#ffd23e)}.qm .ab em{position:absolute;inset:0;display:grid;place-items:center;font:800 8px/1 system-ui,sans-serif;font-style:normal;color:#fff;text-shadow:0 1px 2px #000}
 #pAll{background:linear-gradient(#7dffa8,#2fbf6a);color:#05210f}
 .side .bar{height:13px;border-radius:7px;background:#00000066;border:1.5px solid #ffffff2e}
 .side .bar i{width:100%;transform-origin:left;will-change:transform} .side.en .bar i{transform-origin:right}
@@ -667,7 +684,7 @@ body.playing .cbar{display:none!important}
   <section id="intro" class="screen"><canvas id="icv"></canvas><button id="iSkip">تخطي ›</button></section>
 
   <section id="menu" class="screen">
-    <div class="mtop"><button class="ico gear mi" id="mSet" aria-label="الإعدادات"><img src="https://khalednmg100-dotcom.github.io/beat-yesterday-live/img/ui/settings.webp" alt=""></button><button class="ico book mi" id="mCodex" aria-label="الموسوعة"><img src="https://khalednmg100-dotcom.github.io/beat-yesterday-live/img/ui/codex.webp" alt=""></button><button class="ico trophy mi" id="mAch" aria-label="الإنجازات"><img src="https://khalednmg100-dotcom.github.io/beat-yesterday-live/img/ui/ach.webp" alt=""><i class="dot" id="mAchDot" hidden></i></button><span></span><button class="mshop" id="mShop"><i class="coin3d"></i><b>الشوب</b><b id="mCoins" hidden>0</b></button><span class="mlv" id="mLv"></span><span id="mCoinSlot"></span><button class="mprof" id="mProf"><img id="mpAv" src="https://khalednmg100-dotcom.github.io/beat-yesterday-live/img/av/rookie.webp" alt=""><b id="mpName"></b><em class="elb">ELITE</em></button></div>
+    <div class="mtop"><button class="ico gear mi" id="mSet" aria-label="الإعدادات"><img src="https://khalednmg100-dotcom.github.io/beat-yesterday-live/img/ui/settings.webp" alt=""></button><button class="ico book mi" id="mCodex" aria-label="الموسوعة"><img src="https://khalednmg100-dotcom.github.io/beat-yesterday-live/img/ui/codex.webp" alt=""></button><button class="ico mi qbtn" id="mQuest" aria-label="quests"><i class="qic">📋</i><i class="dot" id="mQuestDot" hidden></i></button><button class="ico trophy mi" id="mAch" aria-label="الإنجازات"><img src="https://khalednmg100-dotcom.github.io/beat-yesterday-live/img/ui/ach.webp" alt=""><i class="dot" id="mAchDot" hidden></i></button><span></span><button class="mshop" id="mShop"><i class="coin3d"></i><b>الشوب</b><b id="mCoins" hidden>0</b></button><span class="mlv" id="mLv"></span><span id="mCoinSlot"></span><button class="mprof" id="mProf"><img id="mpAv" src="https://khalednmg100-dotcom.github.io/beat-yesterday-live/img/av/rookie.webp" alt=""><b id="mpName"></b><em class="elb">ELITE</em></button></div>
     <b class="logo">اغلب نفسك</b>
     <p class="minfo" id="mInfo"></p>
     <div class="mrow">
@@ -677,6 +694,7 @@ body.playing .cbar{display:none!important}
       <button class="mb" id="mTrain"><img src="img/ic/str4.webp" alt=""><span class="mt"><b>طوّر مستواك</b><span>درّب نفسك واغلب نسخة امبارح</span></span></button>
       <button class="mb pvp" id="mPvp"><img src="img/ic/ult.webp" alt=""><span class="mt"><b>نافس آخرين</b><span>رانكك: <em id="mRank">برونز III</em></span></span></button>
       <button class="mb storym" id="mStory"><img src="https://khalednmg100-dotcom.github.io/beat-yesterday-live/img/story.webp" alt=""><span class="mt"><b>القصة</b><span id="mStoryInfo">100 مرحلة وبوص كل 10</span></span></button>
+      <button class="mb modem" id="mModes"><i class="mbe">⚔️</i><span class="mt"><b>التحديات</b><span id="mModesInfo"></span></span></button>
       <button class="mb tourm" id="mTour"><img src="https://khalednmg100-dotcom.github.io/beat-yesterday-live/img/ui/tour.webp" alt=""><span class="mt"><b>البطولة</b><span id="mTourInfo">مجموعات وأدوار إقصائية · اكسب الكاس</span></span></button>
     </div>
   </section>
@@ -695,6 +713,14 @@ body.playing .cbar{display:none!important}
     <div class="scity" id="sCity"><canvas id="sArt"></canvas><svg id="sPath"></svg><div class="snl" id="sNodes"></div><div class="stxt" id="sTxt"></div><button class="snav l" id="sPrev" aria-label="prev">‹</button><button class="snav r" id="sNext" aria-label="next">›</button></div>
     <div class="sdots" id="sDots"></div>
     <div class="spanel" id="sPanel"></div>
+  </section>
+  <section id="modes" class="screen">
+    <div class="atop"><button class="ico" id="moBack" aria-label="back"><svg viewBox="0 0 24 24"><path d="M15 6l-6 6 6 6"/></svg></button><b>التحديات</b><span></span></div>
+    <div class="mogrid" id="moGrid"></div>
+  </section>
+  <section id="quests" class="screen">
+    <div class="atop"><button class="ico" id="qsBack" aria-label="back"><svg viewBox="0 0 24 24"><path d="M15 6l-6 6 6 6"/></svg></button><b>المهام</b><span></span></div>
+    <div class="qsbody" id="qsBody"></div>
   </section>
   <section id="tour" class="screen">
     <div class="atop"><button class="ico" id="tBack" aria-label="رجوع"><svg viewBox="0 0 24 24"><path d="M15 6l-6 6 6 6"/></svg></button><b>البطولة</b><span id="tStage"></span></div>
@@ -1908,7 +1934,7 @@ const xOf=f=>f.p?PX:EX,otherOf=f=>f.p?R.E:R.P;
 function addEn(f,v){if(f.comp&&R&&R.phase==='fight')f.cpE=Math.min(100,(f.cpE||0)+v*.55);if(f.comp==='owl')v*=1.3;if(f.p){const was=R.energy;R.energy=Math.min(100,R.energy+v);if(was<100&&R.energy>=100)sfx('ready')}else f.energy=Math.min(100,f.energy+v)}
 let MODE='train',OPP=null;
 function foe(round){
-  if(MODE==='story')return storyFoe();
+  if(MODE==='story')return SUB==='wboss'?wbossFoe():SUB==='tower'?towerFoe():SUB==='tag'?tagFoe(0):storyFoe();
   if(MODE==='pvp'){const o=OPP;return mk(false,o.lv,pvpHp(S.lv,o.lv)*(o.hpm||1),dmg(o.lv)*1.15,{name:o.name,look:lookOf(o.lv,null,o.char),char:o.char,comp:o.comp||null,pvp:true,ai:o.ai,next:.5,slide:slideIn()})}
   const d=S.day;
   /* shadows keep up with the player: they always take a real fight (~14+ hits) and always hurt */
@@ -1929,7 +1955,7 @@ function startRun(mode){
   $('over').classList.remove('on');label();
   $('hint').textContent=MODE==='train'&&S.day<=3&&!S.tipsOff?'الشريط الأخضر طاقتك: متسبّمش. البرتقالي دفاع الخصم: املاه تكسره. صد أو تفادي في آخر لحظة = كاونتر. ضرب ضرب ركلة = ضربة صاعدة.':'';
 }
-function label(){$('phase').textContent=MODE==='story'?storyLabel():MODE==='pvp'?(R.tour?LL('بطولة','Tournament')+' · '+tourStageName():'منافسة · '+rankOf(S.rp).full):'اليوم '+S.day+' · الجولة '+(R.round+1)+' من '+ROUNDS;$('eName').textContent=R.E.name}
+function label(){$('phase').textContent=MODE==='story'?modeLabel():MODE==='pvp'?(R.tour?LL('بطولة','Tournament')+' · '+tourStageName():'منافسة · '+rankOf(S.rp).full):'اليوم '+S.day+' · الجولة '+(R.round+1)+' من '+ROUNDS;$('eName').textContent=R.E.name}
 function say(x,txt,col){R.fx.push({k:'txt',x,y:FLOOR-165,t:0,d:.8,txt,col:col||'#f3eddc'})}
 /* a character behind your strongest one earns up to x3.5 evolution points, so starting a new hero is never a slog */
 function catchUp(){let best=total(S.lv);if(S.prog)for(const id in S.prog)if(id!==S.char&&S.prog[id])best=Math.max(best,total(S.prog[id].lv));return Math.max(1,Math.min(3.5,1+2.5*(1-total(S.lv)/best)))}
@@ -2328,7 +2354,7 @@ function step(dt){
   // player
   if(P.st==='wind'||P.st==='recover'||P.st==='dodge'||P.st==='stun'){P.t-=dt;
     if(P.t<=0){if(P.st==='wind'){if(P.kind==='skill')castSkill(P);else resolve(P,E);P.st='recover';P.t=P.kind==='skill'?.3:P.kind==='special'?.35:P.kind==='kick'?.4:Math.max(.13,1/rate(S.lv)-.1)}else pIdle()}}
-  if(E.hp<=0){explode(E,EX);R.ult=null;R.phase='boom';R.bt=.8;R.after=E.boss||E.pvp||E.story?()=>finish(true):next;return}
+  if(E.hp<=0){explode(E,EX);R.ult=null;R.phase='boom';R.bt=.8;R.after=R.tagE&&R.tagE.length?tagNextE:(E.boss||E.pvp||E.story?()=>finish(true):next);return}
   if(R.ult)ultStep(dt);
   // opponent (frozen in time while your finisher charges)
   if(R.ult&&R.ult.ph==='charge'&&R.ult.a.p){}
@@ -2342,7 +2368,7 @@ function step(dt){
       if(E.st==='wind'){E.open=false;const res=resolve(E,P);if(res!=='parry'){E.st='recover';E.t=E.kind==='heavy'?(E.open?1.1:.7):.3}}
       else if(E.st==='recover'&&E.combo>0){E.combo--;E.st='wind';E.kind='light';E.t=E.w=Math.max(.26,.42-.01*d)}
       else{E.st='idle';E.next=Math.max(.35,1.1-.03*d)*(E.boss?1:1.3)+Math.random()*.5}}}
-  if(P.hp<=0){explode(P,PX);R.ult=null;R.phase='boom';R.bt=.9;R.after=()=>finish(false)}
+  if(P.hp<=0){explode(P,PX);R.ult=null;R.phase='boom';R.bt=.9;R.after=R.tagP&&R.tagP.length?tagNextP:()=>finish(false)}
 }
 function next(){
   const p=gain(20);say(EX,'+'+fmt(p),'#ffb23e');
@@ -2352,7 +2378,7 @@ function next(){
   label();{const z=(e,v)=>UI.set($(e).firstElementChild,'transform','scaleX('+v+')');z('hpE',1);z('stE',1);z('poE',0)}
 }
 function finish(win){
-  if(R.phase==='over')return;if(R.mode==='pvp'){pvpFinish(win);return}if(R.mode==='story'){storyFinish(win);return}
+  if(R.phase==='over')return;if(R.mode==='pvp'){pvpFinish(win);return}if(R.mode==='story'){if(SUB==='wboss')wbossFinish(win);else if(SUB==='tower')towerFinish(win);else if(SUB==='tag')tagFinish(win);else storyFinish(win);return}
   const boss=R.E.boss;R.phase='over';R.ult=null;
   let bonus=0;
   const tc=win?10+Math.min(40,Math.floor(S.day/3)):3;S.coins=(S.coins||0)+tc;bpGain(win?25:8);
@@ -2464,6 +2490,8 @@ function achAfterFight(win){try{const s=R.st||{},was=achReadyAll();
   achAdd('dodge',s.dodge);achAdd('pd',s.pd);achAdd('block',s.block);achAdd('parry',s.parry);achAdd('sk',s.sk);achAdd('ult',(s.ult||0)+(s.cs||0));achAdd('brk',s.brk);achAdd('react',s.react);achAdd('dmg',Math.round(s.dmg||0));
   achMax('big',Math.round(s.big||0));achMax('cmb',s.cmb);achMax('hits',R.hcMax);achMax('streak',S.streak);if(R.tour)achAdd('tplay',1);
   if(win){achAdd('win',1);achAdd(R.mode==='pvp'?'pw':'tw',1);achAdd('h_'+(S.char||'fighter'),1)}
+  qAdd('win',win?1:0);qAdd('sk',s.sk||0);qAdd('dodge',s.dodge||0);qAdd('ult',(s.ult||0)+(s.cs||0));qAdd('pw',win&&R.mode==='pvp'&&!R.tour?1:0);qAdd('tplay',R.tour?1:0);
+  if(R.mode==='story'){qAdd('story',win&&SUB==='story'?1:0);qAdd('tower',win&&SUB==='tower'?1:0);qAdd('wboss',SUB==='wboss'?1:0);qAdd('tag',win&&SUB==='tag'?1:0)}
   avCheck();if(achReadyAll()>was)setTimeout(()=>toast(LL('🏅 إنجاز جديد! افتح الإنجازات واستلم عملاتك','🏅 New achievement! Open Achievements to claim your coins')),1800);achBadge()}catch(e){}}
 const ACH_TIER=['#d08a4e','#cfd8e6','#ffd23e','#7ef0ff','#c77dff','#ff5a6e','#ffffff'],ROM=['I','II','III','IV','V','VI','VII'];let ACH_TAB='all';
 function medal(d,g,big){const col=ACH_TIER[Math.max(0,Math.min(6,g-1))],ic=d[3].startsWith('img:')?`<img src="${d[3].slice(4)}" alt="">`:`<i>${d[3]}</i>`;
@@ -2648,7 +2676,7 @@ function storyFoe(){const st=stS().cur,ci=Math.floor((st-1)/10),C=STORY[ci],boss
   return mk(false,lv,hp,dm,{name:boss?LL(C.boss.n[0],C.boss.n[1]):LL(C.foe[0],C.foe[1])+' '+(st%10),look,char:ch,comp:boss&&st>=30?COMP_IDS[ci%COMP_IDS.length]:null,smart:true,ai,story:true,sboss:boss,mech,slide:slideIn()})}
 function bossMech(f,dt){if(f.mech.includes('regen')&&!Object.keys(f.mk||{}).length&&f.hp<f.max)f.hp=Math.min(f.max,f.hp+f.max*.012*dt);
   if(f.mech.includes('rage')&&!f.raged&&f.hp<f.max*.5){f.raged=1;f.dmg*=1.35;if(f.ai)f.ai.pace*=.7;f.look.acc='#ff2e55';f.look.ex.add('aura');R.fx.push({k:'name',txt:LL('غضب!','RAGE!'),col:'#ff2e55',t:0,d:1},{k:'ring',x:xOf(f),y:FLOOR-62,t:0,d:.6,col:'#ff2e55',r:160});sfx('morph');R.shake=Math.max(R.shake,.5)}}
-function storyPlay(st){const T=stS();if(st>T.best)return;T.cur=st;save();auInit();sfx('click');show('play');startRun('story');music(true);
+function storyPlay(st){SUB='story';const T=stS();if(st>T.best)return;T.cur=st;save();auInit();sfx('click');show('play');startRun('story');music(true);
   const C=STORY[Math.floor((st-1)/10)];if(st%10===0&&!S.tipsOff)$('hint').textContent=LL('طرق غلبه: ','How to beat him: ')+C.boss.m.map(m=>LL(MECH_TIP[m][0],MECH_TIP[m][1])).join(' · ')}
 function storyCeleb(icon,title,sub){const o=document.createElement('div');o.id='rkUp';let cf='';const cols=['#ffd23e','#ff5a6e','#7ef0ff','#7dffa8','#c77dff','#ffffff'];
   for(let i=0;i<46;i++)cf+=`<i style="left:${Math.random()*100}%;background:${cols[i%6]};animation-delay:${(Math.random()*.9).toFixed(2)}s;animation-duration:${(1.8+Math.random()*1.4).toFixed(2)}s;transform:rotate(${Math.random()*360}deg)"></i>`;
@@ -2774,6 +2802,7 @@ function kitsuUlt(A,D,v){const U=R.ult;if(U)U.dur=1.9;const rage=A.fox>0||(A.tai
 
 /* ---------- patch notes: simple words, newest first ---------- */
 const PATCH_NOTES=[
+ {v:55,ar:['مهام يومية وأسبوعية بجوايز، ومكافأة دخول يومي لـ 7 أيام','تحديات جديدة: بوص الأسبوع، البرج اللي ملوش آخر، وفرق 3 ضد 3'],en:['Daily and weekly quests with rewards, plus a 7-day login bonus','New Challenges: Weekly Boss, the endless Tower and 3v3 Tag Team']},
  {v:54,ar:['اللعبة أخف على الموبايل، وشاشة الفوز مش بتهنّج','البروفايل والترتيب وشاشة التطوير بقوا ظاهرين كويس على الموبايل'],en:['Smoother on phones, the victory screen no longer freezes','Profile, leaderboard and level-up screens fit phones properly']},
  {v:53,ar:['شاشة "ما الجديد؟" بتظهر بعد كل تحديث، وتلاقيها كمان في الإعدادات'],en:['A "What\'s new" screen after every update, also in Settings']},
  {v:52,ar:['كيتسو بـ 9 ذيول بيتعصب ويقلب أحمر ناري، وقاضيته الجديدة: ثعلب نار عملاق يرمي الخصم لفوق وكيتسو ينزل عليه','المقاتل: ضربة الأرض بقت لكمة في الأرض بدل كرة النار'],en:['Kitsu at 9 tails goes into a crimson rage, new finisher: a giant fire fox tosses the enemy up and Kitsu crashes down','Fighter: the ground slam is now a ground punch instead of a fireball']},
@@ -2791,6 +2820,88 @@ function notesShow(all){if(document.getElementById('nmAsk')||document.getElement
   document.body.appendChild(o);const close=()=>{S.notesSeen=PATCH_NOTES[0].v;save();o.remove()};o.querySelector('#ntX').onclick=()=>{sfx('click');close()};o.querySelector('#ntOk').onclick=()=>{sfx('click');close()};o.addEventListener('click',e=>{if(e.target===o)close()})}
 function notesAuto(){try{if(mode!=='menu'||!S.name)return;if(S.notesSeen===undefined){S.notesSeen=0}if(PATCH_NOTES[0].v>(S.notesSeen||0))notesShow(false)}catch(e){}}
 $('notesBtn').onclick=()=>{sfx('click');notesShow(true)};
+
+/* ---------- engagement: quests, login streak, weekly boss, tower, tag team ---------- */
+let SUB='story';
+const dkey=d=>{d=d||new Date();return d.getFullYear()+'-'+(d.getMonth()+1)+'-'+d.getDate()};
+const wkey=()=>{const d=new Date(),j=new Date(d.getFullYear(),0,1);return d.getFullYear()+'w'+Math.floor(((d-j)/864e5+j.getDay()+6)/7)};
+const wnum=()=>Math.floor((Date.now()/864e5+3)/7);
+const Q_DAILY=[['win',3,'اكسب 3 ماتشات','Win 3 fights',150],['sk',15,'استخدم 15 مهارة','Use 15 skills',120],['dodge',10,'اتفادى 10 مرات','Dodge 10 times',120],['ult',2,'اعمل 2 قاضية','Land 2 finishers',150],
+  ['pw',2,'اكسب 2 منافسة','Win 2 ranked fights',200],['story',2,'خلّص 2 مرحلة في القصة','Clear 2 story stages',180],['tower',3,'اطلع 3 أدوار في البرج','Climb 3 tower floors',180],['tag',1,'اكسب ماتش فرق 3 ضد 3','Win a 3v3 tag fight',200]];
+const Q_WEEK=[['win',25,'اكسب 25 ماتش','Win 25 fights',800],['pw',10,'اكسب 10 منافسات','Win 10 ranked fights',1000],['tplay',6,'العب 6 ماتشات بطولة','Play 6 tournament fights',900],['wboss',3,'حارب بوص الأسبوع 3 مرات','Fight the weekly boss 3 times',1000]];
+const STREAK=[100,150,200,300,400,600,1200];
+function qS(){const today=dkey(),wk=wkey();let Q=S.q;if(!Q||Q.day!==today){let h=0;for(const ch of today)h=(h*31+ch.charCodeAt(0))>>>0;const idx=[],pool=Q_DAILY.map((_,i)=>i);while(idx.length<3){const i=h%pool.length;idx.push(pool.splice(i,1)[0]);h=(h*1103515245+12345)>>>0}
+    Q=S.q={day:today,d:idx.map(i=>({i,got:0,done:0})),wk:(Q&&Q.wk===wk)?Q.wk:wk,w:(Q&&Q.wk===wk)?Q.w:Q_WEEK.map((_,i)=>({i,got:0,done:0}))}}
+  if(Q.wk!==wk){Q.wk=wk;Q.w=Q_WEEK.map((_,i)=>({i,got:0,done:0}))}return Q}
+function qAdd(k,v){if(!v)return;try{const Q=qS();for(const q of Q.d){const D=Q_DAILY[q.i];if(D[0]===k&&!q.done)q.got=Math.min(D[1],q.got+v)}for(const q of Q.w){const D=Q_WEEK[q.i];if(D[0]===k&&!q.done)q.got=Math.min(D[1],q.got+v)}qBadge()}catch(e){}}
+function qReady(){const Q=qS();return Q.d.filter(q=>!q.done&&q.got>=Q_DAILY[q.i][1]).length+Q.w.filter(q=>!q.done&&q.got>=Q_WEEK[q.i][1]).length+(streakReady()?1:0)}
+function qBadge(){const e=$('mQuestDot');if(e)e.hidden=!qReady()}
+function stk(){return S.login||(S.login={last:'',n:0,claimed:''})}
+function streakReady(){const L=stk(),t=dkey();if(L.claimed===t)return false;return true}
+function streakDay(){const L=stk(),t=dkey(),y=dkey(new Date(Date.now()-864e5));if(L.claimed===t)return L.n;return L.last===y?(L.n%7)+1:1}
+function streakClaim(){const L=stk(),t=dkey();if(L.claimed===t)return;const n=streakDay(),c=STREAK[n-1];L.n=n;L.last=t;L.claimed=t;S.coins=(S.coins||0)+c;bpGain(n===7?100:20);save();sfx('win');toast(LL('مكافأة اليوم ','Day ')+n+' · +'+fmt(c)+LL(' عملة',' coins'));qBadge()}
+function renderQuests(){const Q=qS(),n=streakDay(),ready=streakReady();
+  const row=(D,q,w)=>{const ok=!q.done&&q.got>=D[1];return `<div class="qrow${ok?' can':''}${q.done?' done':''}"><div class="qm"><b>${LL(D[2],D[3])}</b><div class="ab"><i style="width:${Math.min(100,q.got/D[1]*100)}%"></i><em>${q.got} / ${D[1]}</em></div></div>${q.done?'<em class="aok">✓</em>':`<button class="aclm" data-q="${w}${Q[w==='d'?'d':'w'].indexOf(q)}"${ok?'':' disabled'}><i class="coin"></i>${fmt(D[4])}</button>`}</div>`};
+  $('qsBody').innerHTML=`<div class="qstreak"><b>${LL('الدخول اليومي','Daily login')}</b><div class="qdays">${STREAK.map((c,i)=>`<div class="qday${i+1<n||(i+1===n&&!ready)?' got':''}${i+1===n&&ready?' now':''}"><small>${LL('يوم ','Day ')+(i+1)}</small><i class="coin"></i><b>${fmt(c)}</b></div>`).join('')}</div>${ready?`<button class="go" id="qsStreak">${LL('استلم مكافأة اليوم','Claim today')}</button>`:''}</div>
+    <h4 class="qh">${LL('مهام اليوم','Daily quests')}</h4>${Q.d.map(q=>row(Q_DAILY[q.i],q,'d')).join('')}<h4 class="qh">${LL('مهام الأسبوع','Weekly quests')}</h4>${Q.w.map(q=>row(Q_WEEK[q.i],q,'w')).join('')}`;
+  const b=$('qsStreak');if(b)b.onclick=()=>{streakClaim();renderQuests()}}
+$('qsBody').addEventListener('click',e=>{const b=e.target.closest('[data-q]');if(!b||b.disabled)return;const Q=qS(),w=b.dataset.q[0],i=+b.dataset.q.slice(1),q=(w==='d'?Q.d:Q.w)[i],D=(w==='d'?Q_DAILY:Q_WEEK)[q.i];if(q.done||q.got<D[1])return;
+  q.done=1;S.coins=(S.coins||0)+D[4];bpGain(w==='d'?30:80);save();sfx('up');toast('+'+fmt(D[4])+LL(' عملة',' coins'));renderQuests();qBadge()});
+$('mQuest').onclick=()=>{auInit();sfx('click');show('quests');renderQuests()};$('qsBack').onclick=()=>{sfx('click');show('menu')};
+/* weekly boss */
+const WBOSS=[{n:['تنين الرماد','The Ash Dragon'],ch:'archer',m:['rage','armor'],map:'lava'},{n:['ملكة الصقيع','The Frost Queen'],ch:'mage',m:['regen','counter'],map:'snow'},{n:['العملاق الحديدي','The Iron Colossus'],ch:'golem',m:['armor','guard'],map:'neon'},
+  {n:['سيد الظلال','The Shadow Lord'],ch:'ninja',m:['counter','rage'],map:'temple'},{n:['الكونت الأحمر','The Crimson Count'],ch:'vampire',m:['regen','rage'],map:'castle'},{n:['الملاك المنفي','The Exiled Angel'],ch:'fallen',m:['armor','regen'],map:'sky'}];
+const WB_TIER=[[.25,300],[.5,700],[.75,1500],[1,3000]];
+function wbS(){const wk=wkey(),t=dkey();let W=S.wb;if(!W||W.wk!==wk)W=S.wb={wk,best:0,got:0,day:t,tries:0};if(W.day!==t){W.day=t;W.tries=0}return W}
+function wbCur(){return WBOSS[wnum()%WBOSS.length]}
+function wbossFoe(){const B=wbCur();R.map=B.map;const lv={};for(const k of KEYS)lv[k]=Math.max(1,Math.round(S.lv[k]*1.2));const look=lookOf(lv,null,B.ch);look.sc*=1.15;
+  const hp=maxHp(S.lv)*(1+.1*skSum(S.lv))*40,dm=maxHp(S.lv)*.07,ai={dodge:.35,block:.35,skill:.7,combo:.7,pace:.55};if(B.m.includes('guard'))ai.block=.72;if(B.m.includes('counter'))ai.dodge=.6;
+  return mk(false,lv,hp,dm,{name:LL(B.n[0],B.n[1]),look,char:B.ch,comp:COMP_IDS[wnum()%COMP_IDS.length],smart:true,ai,story:true,sboss:true,mech:B.m.slice(),slide:slideIn()})}
+function wbossPlay(){const W=wbS();if(W.tries>=3){toast(LL('خلصت محاولات النهارده · ارجع بكرة','No tries left today · come back tomorrow'));return}W.tries++;save();SUB='wboss';auInit();sfx('click');show('play');startRun('story');music(true);
+  if(!S.tipsOff)$('hint').textContent=LL('طرق غلبه: ','How to beat him: ')+wbCur().m.map(m=>LL(MECH_TIP[m][0],MECH_TIP[m][1])).join(' · ')}
+function wbossFinish(win){R.phase='over';R.ult=null;const W=wbS(),E=R.E,frac=win?1:Math.max(0,1-E.hp/E.max);achAfterFight(win);W.best=Math.max(W.best,frac);let coins=0;
+  while(W.got<WB_TIER.length&&W.best>=WB_TIER[W.got][0]){coins+=WB_TIER[W.got][1];W.got++}S.coins=(S.coins||0)+coins;bpGain(win?120:40);const reward=Math.round((win?200:60)*dayMult(S.day)*intMult(S.lv));S.pts+=reward+R.earned;lastGain=reward+R.earned;styMerge();useTrialFight();save();music(false);sfx(win?'win':'lose');
+  $('oAd').hidden=true;$('card').className='card '+(win?'win':'lose');$('oTitle').textContent=win?LL('غلبت بوص الأسبوع!','You beat the weekly boss!'):LL('ضرر في البوص: ','Damage to the boss: ')+Math.round(frac*100)+'%';
+  $('oText').textContent=LL('أحسن نتيجة الأسبوع ده: ','Best this week: ')+Math.round(W.best*100)+'% · '+LL('محاولات النهارده: ','Tries today: ')+W.tries+'/3';
+  showStats(win,[['coin',coins,'عملات'],['evo',lastGain,'نقاط تطور'],['bp',win?120:40,'نقط الباس']]);$('oBtn').textContent=LL('ارجع للتحديات','Back to Challenges');$('over').classList.add('on')}
+/* tower */
+function twS(){return S.tower||(S.tower={cur:1,best:0})}
+function towerFoe(){const T=twS(),f=T.cur,mul=.72+f*.022,ch=CHAR_IDS[(f*5)%CHAR_IDS.length];R.map=MAP_IDS[f%MAP_IDS.length];const lv={};for(const k of KEYS)lv[k]=Math.max(1,Math.round(S.lv[k]*mul));
+  const boss=f%5===0,hp=maxHp(S.lv)*(1+.1*skSum(S.lv))*(1.6+f*.07)*(boss?2:1),dm=maxHp(S.lv)*(.045+f*.0012)*(boss?1.2:1),sk=Math.min(.9,.2+f/60),ai={dodge:.1+.35*sk,block:.15+.3*sk,skill:.35+.4*sk,combo:.25+.5*sk,pace:1-.45*sk},look=lookOf(lv,null,ch);if(boss)look.sc*=1.1;
+  return mk(false,lv,hp,dm,{name:LL('الدور ','Floor ')+f,look,char:ch,smart:true,ai,story:true,sboss:boss,mech:boss?[['rage','armor','regen','counter','guard'][(f/5)%5]]:[],slide:slideIn()})}
+function towerPlay(){SUB='tower';auInit();sfx('click');show('play');startRun('story');music(true)}
+function towerFinish(win){R.phase='over';R.ult=null;const T=twS(),f=T.cur;achAfterFight(win);let coins=0;
+  if(win){coins=20+f*6;T.best=Math.max(T.best,f);T.cur=f+1;R.towerNext=1}else{coins=Math.round(f*4);T.cur=1;R.towerNext=0}S.coins=(S.coins||0)+coins;bpGain(win?15:5);
+  const reward=Math.round((win?40:12)*dayMult(S.day)*intMult(S.lv));S.pts+=reward+R.earned;lastGain=reward+R.earned;styMerge();useTrialFight();save();music(false);sfx(win?'win':'lose');
+  $('oAd').hidden=true;$('card').className='card '+(win?'win':'lose');$('oTitle').textContent=win?LL('عدّيت الدور ','Floor ')+f+LL('!',' cleared!'):LL('وقعت في الدور ','Fell on floor ')+f;
+  $('oText').textContent=LL('أعلى دور وصلتله: ','Best floor: ')+T.best+(win?'':' · '+LL('البرج هيبدأ من الأول','the tower starts over'));showStats(win,[['coin',coins,'عملات'],['evo',lastGain,'نقاط تطور'],['bp',win?15:5,'نقط الباس']]);
+  $('oBtn').textContent=win?LL('الدور الجاي','Next floor'):LL('ارجع للتحديات','Back to Challenges');$('over').classList.add('on')}
+/* tag team 3v3 */
+let TAG_TEAM=[];
+function tagFoe(i){const ids=R.tagEids||[],ch=ids[i]||CHAR_IDS[i%CHAR_IDS.length],mul=.9;const lv={};for(const k of KEYS)lv[k]=Math.max(1,Math.round(S.lv[k]*mul));
+  const hp=maxHp(S.lv)*(1+.1*skSum(S.lv))*2.6,dm=maxHp(S.lv)*.055,ai={dodge:.3,block:.3,skill:.6,combo:.6,pace:.7};return mk(false,lv,hp,dm,{name:tr(CHARS[ch].name),look:lookOf(lv,null,ch),char:ch,smart:true,ai,story:true,slide:slideIn()})}
+function tagStart(team){const orig=S.char;TAG_TEAM=team.slice(0,3);SUB='tag';S.tagOrig=orig;if(S.char!==TAG_TEAM[0])switchChar(TAG_TEAM[0]);
+  const pool=CHAR_IDS.slice().sort(()=>Math.random()-.5);auInit();sfx('click');show('play');R=null;startRun('story');R.tagEids=pool.slice(0,3);R.E=tagFoe(0);R.tagE=[1,2];R.tagP=TAG_TEAM.slice(1);R.tagN=1;label();music(true)}
+function tagNextE(){const i=3-R.tagE.length;R.tagE.shift();R.E=tagFoe(i);R.phase='run';R.it=0;R.tasks=[];R.ult=null;R.P.hp=Math.min(R.P.max,R.P.hp+R.P.max*.2);label();toast(LL('الخصم الجاي!','Next opponent!'))}
+function tagNextP(){const id=R.tagP.shift();switchChar(id);const P=mk(true,S.lv,maxHp(S.lv),dmg(S.lv),{look:lookOf(S.lv),char:S.char,comp:S.comp||null});P.hand=R.hand;R.P=P;R.tagN++;R.phase='run';R.it=0;R.tasks=[];R.ult=null;setupSkills();kickIconSet();label();toast(LL('دخل ','In: ')+tr(CHARS[id].name))}
+function tagFinish(win){R.phase='over';R.ult=null;achAfterFight(win);const coins=win?260:40;S.coins=(S.coins||0)+coins;bpGain(win?50:12);const reward=Math.round((win?90:20)*dayMult(S.day)*intMult(S.lv));S.pts+=reward+R.earned;lastGain=reward+R.earned;
+  if(S.tagOrig&&S.char!==S.tagOrig)switchChar(S.tagOrig);styMerge();useTrialFight();save();music(false);sfx(win?'win':'lose');$('oAd').hidden=true;$('card').className='card '+(win?'win':'lose');
+  $('oTitle').textContent=win?LL('فريقك كسب!','Your team won!'):LL('فريقك خسر','Your team lost');$('oText').textContent=LL('3 ضد 3 · الأبطال بيدخلوا ورا بعض','3v3 · heroes enter one after another');
+  showStats(win,[['coin',coins,'عملات'],['evo',lastGain,'نقاط تطور'],['bp',win?50:12,'نقط الباس']]);$('oBtn').textContent=LL('ارجع للتحديات','Back to Challenges');$('over').classList.add('on')}
+function tagPick(){if(document.getElementById('avPick'))return;const own=CHAR_IDS.filter(owns);let sel=own.slice(0,3);const o=document.createElement('div');o.id='avPick';
+  const draw=()=>{o.innerHTML=`<div class="avc"><div class="avh"><b>${LL('اختار فريقك (لحد 3)','Pick your team (up to 3)')}</b><button class="ico" id="avX">✕</button></div><div class="avg">${own.map(id=>`<button class="avi${sel.includes(id)?' on':''}" data-tp="${id}"><img src="${avSrc(id)}" alt=""><b>${tr(CHARS[id].name)}</b>${sel.includes(id)?`<small>#${sel.indexOf(id)+1}</small>`:''}</button>`).join('')}</div><button class="go" id="tpGo"${sel.length?'':' disabled'}>${LL('ابدأ','Start')} (${sel.length}/3)</button></div>`;
+    o.querySelector('#avX').onclick=()=>o.remove();o.querySelector('#tpGo').onclick=()=>{if(!sel.length)return;o.remove();tagStart(sel)}};
+  o.addEventListener('click',e=>{if(e.target===o){o.remove();return}const b=e.target.closest('[data-tp]');if(!b)return;const id=b.dataset.tp;if(sel.includes(id))sel=sel.filter(x=>x!==id);else if(sel.length<3)sel.push(id);sfx('click');draw()});draw();document.body.appendChild(o)}
+function modeLabel(){if(SUB==='wboss')return LL('بوص الأسبوع','Weekly boss');if(SUB==='tower')return LL('البرج · الدور ','Tower · floor ')+twS().cur;if(SUB==='tag')return LL('فرق 3 ضد 3 · بطل ','Tag 3v3 · hero ')+(R&&R.tagN||1);return storyLabel()}
+function renderModes(){const W=wbS(),B=wbCur(),T=twS();
+  const tile=(id,img,t,sub,extra)=>`<button class="mot" data-mo="${id}">${img}<div class="mot-t"><b>${t}</b><span>${sub}</span>${extra||''}</div></button>`;
+  $('moGrid').innerHTML=tile('wboss',`<img src="${avSrc(B.ch)}" alt="">`,LL('بوص الأسبوع','Weekly Boss')+': '+LL(B.n[0],B.n[1]),LL('محاولات النهارده ','Tries today ')+(3-W.tries)+'/3 · '+LL('أحسن ضرر ','Best ')+Math.round(W.best*100)+'%',`<div class="motb">${WB_TIER.map((x,i)=>`<i class="${i<W.got?'on':''}">${Math.round(x[0]*100)}% · ${fmt(x[1])}</i>`).join('')}</div>`)+
+    tile('tower','<i class="mbe">🗼</i>',LL('البرج','The Tower'),LL('الدور ','Floor ')+T.cur+' · '+LL('أعلى دور ','Best ')+T.best,`<div class="motb"><i>${LL('كل دور أصعب · بوص كل 5','Harder every floor · boss every 5')}</i></div>`)+
+    tile('tag','<i class="mbe">👥</i>',LL('فرق 3 ضد 3','Tag Team 3v3'),LL('أبطالك بيدخلوا ورا بعض لما واحد يقع','Your heroes enter one after another'))+
+    tile('quests','<i class="mbe">📋</i>',LL('المهام اليومية','Daily Quests'),qReady()?LL('فيه جوايز مستنياك!','Rewards waiting!'):LL('مهام جديدة كل يوم','New quests every day'))}
+$('moGrid').addEventListener('click',e=>{const b=e.target.closest('[data-mo]');if(!b)return;const m=b.dataset.mo;if(m==='wboss')wbossPlay();else if(m==='tower')towerPlay();else if(m==='tag')tagPick();else{sfx('click');show('quests');renderQuests()}});
+$('mModes').onclick=()=>{auInit();sfx('click');show('modes');renderModes()};$('moBack').onclick=()=>{sfx('click');show('menu')};
+function engMenu(){try{qS();qBadge();const e=$('mModesInfo');if(e)e.textContent=LL('بوص الأسبوع · البرج · 3 ضد 3','Weekly boss · Tower · 3v3');if(streakReady()&&!document.getElementById('nmAsk')&&!document.getElementById('notesBox')&&S.name&&!S._stkShown){S._stkShown=1;setTimeout(()=>{if(mode==='menu'&&!document.getElementById('notesBox')&&!document.getElementById('nmAsk')){show('quests');renderQuests()}else S._stkShown=0},1500)}}catch(e){}}
 setTimeout(achBadge,1500);
 /* a stable little leaderboard around your rank */
 function renderArena(){const r=rankOf(S.rp);
@@ -3543,7 +3654,7 @@ function render(ts,dt){
 
 /* ---------- loop & input ---------- */
 let mode='home';
-function show(m){document.body.classList.toggle('playing',m==='play');if(m==='menu')setTimeout(notesAuto,900);if(m!=='play'){music(false);try{hitCount(0)}catch(e){}}try{const cb=$('coinBar'),sl=$('mCoinSlot');if(m==='menu'&&sl){if(cb.parentNode!==sl)sl.appendChild(cb);cb.classList.add('inm')}else if(cb.parentNode!==document.body){document.body.appendChild(cb);cb.classList.remove('inm')}}catch(e){}mode=m;if(m==='menu'){setTimeout(()=>{menuProf();if(!S.name)nameAsk()},350)}for(const id of['intro','menu','home','arena','chars','shop','play','pass','settings','codex','ach','tour','prof','story'])$(id).classList.toggle('on',id===m);$('coinBar').hidden=m==='play'||m==='intro'||m==='codex'||m==='settings'||m==='story'||m==='tour';measure();UI.clear();
+function show(m){document.body.classList.toggle('playing',m==='play');if(m==='menu'){setTimeout(notesAuto,900);setTimeout(engMenu,400)}if(m!=='play'){music(false);try{hitCount(0)}catch(e){}}try{const cb=$('coinBar'),sl=$('mCoinSlot');if(m==='menu'&&sl){if(cb.parentNode!==sl)sl.appendChild(cb);cb.classList.add('inm')}else if(cb.parentNode!==document.body){document.body.appendChild(cb);cb.classList.remove('inm')}}catch(e){}mode=m;if(m==='menu'){setTimeout(()=>{menuProf();if(!S.name)nameAsk()},350)}for(const id of['intro','menu','home','arena','chars','shop','play','pass','settings','codex','ach','tour','prof','story','modes','quests'])$(id).classList.toggle('on',id===m);$('coinBar').hidden=m==='play'||m==='intro'||m==='codex'||m==='settings'||m==='story'||m==='tour';measure();UI.clear();
   if(m==='home')renderHome();if(m==='arena')renderArena();if(m==='menu')renderMenu();if(m==='chars')renderChars();if(m==='shop')renderShop();if(m==='pass')renderPass();if(m==='settings')renderSettings();if(m==='codex')renderCodex()}
 /* fixed 120 Hz simulation (same game speed on every phone) + one render per screen refresh.
    if frames take too long the canvas resolution steps down until the game is smooth again */
@@ -3625,7 +3736,7 @@ $('vibBtn').onclick=()=>{S.noVib=!S.noVib;save();sfx('click');if(!S.noVib)buzz(4
 $('tipBtn').onclick=()=>{S.tipsOff=!S.tipsOff;save();sfx('click');renderSettings()};
 $('snd').onclick=()=>{auInit();setMute(!S.mute);sfx('click')};
 $('oAd').onclick=adsDouble;
-$('oBtn').onclick=()=>{sfx('click');if(R&&R.mode==='story'){show('story');renderStory();return}if(R&&R.tour){show('tour');renderTour();return}show(R&&R.mode==='pvp'?'arena':'home')};
+$('oBtn').onclick=()=>{sfx('click');if(R&&R.mode==='story'&&SUB==='tower'&&R.towerNext){towerPlay();return}if(R&&R.mode==='story'&&SUB!=='story'){show('modes');renderModes();return}if(R&&R.mode==='story'){show('story');renderStory();return}if(R&&R.tour){show('tour');renderTour();return}show(R&&R.mode==='pvp'?'arena':'home')};
 $('quit').onclick=()=>{if(R&&R.phase!=='over')finish(false)};
 /* inside the Android app: the back button leaves a fight instead of closing the game */
 function nativeInit(){try{const C=window.Capacitor;if(!C||!capPlug(C,'App')||!(C.isNativePlatform&&C.isNativePlatform()))return;const App=capPlug(C,'App');
