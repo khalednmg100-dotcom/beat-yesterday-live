@@ -1461,6 +1461,7 @@ const CHARS={
     sk:{str:{g:'fang',col:'#ff4d3a',w:.14,cd:[6, 6, 5.5, 5.5],names:['قبضات سريعة', 'مطر اللكمات', 'قبضات الإعصار', 'ألف لكمة']},spd:{g:'arrows',col:'#ffb23e',w:.14,cd:[7, 7, 6.5, 6.5],names:['شدّة الفولاذ', 'شد وضرب', 'كومبو الشارع', 'محدش بيهرب']},int:{g:'drop',col:'#ffd23e',w:.14,cd:[9, 9, 8.5, 8],names:['جدار الصبر', 'امتصاص', 'ردّ الضربة', 'شعاع الغضب']},end:{g:'flip',col:'#ff6a3a',w:.14,cd:[13, 13, 12, 11],names:['وضع الغضب', 'غضب الحلبة', 'النار الحمرا', 'غضب لا يوقف']}},
     cast:{str:'hit',spd:'blade',int:'shield',end:'morph'},price:12000}
 };
+{const HN={fighter:'Fighter',ninja:'Ninja',mage:'Mage',golem:'Robot',archer:'Archer',vampire:'Vampire',fallen:'Fallen Angel',kitsu:'Kitsu',ryu:'Ryu',kaito:'Kaito',mira:'Mira',vex:'Vex',orion:'Orion',dendi:'Dendi'};for(const id in HN)if(CHARS[id])CHARS[id].name=HN[id]}
 const CHAR_IDS=Object.keys(CHARS);
 const SKOF=id=>CHARS[id||S.char||'fighter'].sk;
 const castSnd=(id,k)=>CHARS[id||'fighter'].cast[k];
@@ -2984,6 +2985,7 @@ function kitsuUlt(A,D,v){const U=R.ult;if(U)U.dur=1.9;const rage=A.fox>0||(A.tai
 
 /* ---------- patch notes: simple words, newest first ---------- */
 const PATCH_NOTES=[
+ {v:68,ar:['أسماء الأبطال بقت بالإنجليزي في كل حتة'],en:['Hero names are shown in English everywhere']},
  {v:67,ar:['دندي: صد الفولاذ اتشال واتحط مكانه وضع الغضب، قبضاته بتولّع وضربه أقوى وأسرع'],en:['Dendi: Steel Guard is replaced by Fury Mode, burning fists with harder, faster punches']},
  {v:66,ar:['اتصلّحت مشكلة العملتين فوق بعض وحاجات قديمة كانت مستخبية ورا الشاشة، واللعبة بقت أخف'],en:['Fixed the double coin bar and old screens hidden behind the game, the game is lighter now']},
  {v:65,ar:['أيقونات جديدة لزرار الضربة بتاع كايتو وميرا وفيكس وأوريون ودندي'],en:['New strike-button icons for Kaito, Mira, Vex, Orion and Dendi']},
