@@ -2986,6 +2986,7 @@ function kitsuUlt(A,D,v){const U=R.ult;if(U)U.dur=1.9;const rage=A.fox>0||(A.tai
 
 /* ---------- patch notes: simple words, newest first ---------- */
 const PATCH_NOTES=[
+ {v:70,ar:['الشريط الأحمر بقى بيظهر كمان لو حصل خطأ في صفحة التطوير'],en:['The red error bar also shows errors on the Level up screen']},
  {v:69,ar:['تصليح لمشكلة إن اللعبة بتقف لما تدوس، ولو حصل خطأ هيظهر شريط أحمر صوّره وابعته'],en:['Fix for the game freezing on tap; if an error happens a red bar shows it, screenshot it and send it']},
  {v:68,ar:['أسماء الأبطال بقت بالإنجليزي في كل حتة'],en:['Hero names are shown in English everywhere']},
  {v:67,ar:['دندي: صد الفولاذ اتشال واتحط مكانه وضع الغضب، قبضاته بتولّع وضربه أقوى وأسرع'],en:['Dendi: Steel Guard is replaced by Fury Mode, burning fists with harder, faster punches']},
@@ -4159,7 +4160,7 @@ function show(m){document.body.classList.toggle('playing',m==='play');document.b
 const PERF={ema:16,slow:0,last:0,work:6};
 function frame(ts){
   requestAnimationFrame(frame);
-  try{frameBody(ts)}catch(e){console.error(e);try{CTX&&CTX.setTransform(1,0,0,1,0,0);if(CTX)CTX.globalAlpha=1}catch(_){}}
+  try{frameBody(ts)}catch(e){console.error(e);if((frame._r=(frame._r||0)+1)<=2)try{window.dispatchEvent(new ErrorEvent('error',{message:'frame['+mode+'/'+(S&&S.char)+']: '+(e&&e.message),error:e}))}catch(_){}try{CTX&&CTX.setTransform(1,0,0,1,0,0);if(CTX)CTX.globalAlpha=1}catch(_){}}
 }
 function frameBody(ts){
   const raw=PERF.last?ts-PERF.last:16;PERF.last=ts;
