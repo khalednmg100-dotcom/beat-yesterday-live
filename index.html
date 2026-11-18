@@ -1,6 +1,7 @@
 <!DOCTYPE html>
 <html lang="ar" dir="ltr">
 <head>
+<script>(function(){function cut(){var m=document.getElementById('liveEnd');if(!m)return;while(m.nextSibling)m.parentNode.removeChild(m.nextSibling);}if(window.__live){document.addEventListener('DOMContentLoaded',cut);var n=0,iv=setInterval(function(){cut();if(++n>40)clearInterval(iv)},50)}})();</script>
 <script>window.BUILD_V=28;window.LIVE_BASE='https://khalednmg100-dotcom.github.io/beat-yesterday-live/';(function(){try{if(window.__live||location.port)return;var o=JSON.parse(localStorage.getItem('by-live')||'null');if(o&&o.v>window.BUILD_V&&o.html&&o.html.length>50000){var E='<'+'/script>',h=o.html.replace(/<head>/i,'<head><script>window.__live='+o.v+E);if(o.lang)h=h.replace('<script src="lang-en.js">'+E,'<script>'+o.lang.split(E).join('<\/script>')+E);document.open();document.write(h);document.close()}}catch(e){}})();</script>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no, viewport-fit=cover">
@@ -2983,6 +2984,7 @@ function kitsuUlt(A,D,v){const U=R.ult;if(U)U.dur=1.9;const rage=A.fox>0||(A.tai
 
 /* ---------- patch notes: simple words, newest first ---------- */
 const PATCH_NOTES=[
+ {v:66,ar:['اتصلّحت مشكلة العملتين فوق بعض وحاجات قديمة كانت مستخبية ورا الشاشة، واللعبة بقت أخف'],en:['Fixed the double coin bar and old screens hidden behind the game, the game is lighter now']},
  {v:65,ar:['أيقونات جديدة لزرار الضربة بتاع كايتو وميرا وفيكس وأوريون ودندي'],en:['New strike-button icons for Kaito, Mira, Vex, Orion and Dendi']},
  {v:64,ar:['كل بطل جديد بقاله حركة ضربة خاصة بيه بدل الركلة: كايتو سيف دوّار، ميرا طعنة رمح، فيكس ضربة منجل، أوريون دفعة جاذبية، دندي أبركت','صفحة المهام بقت على قد شاشة الموبايل'],en:['Each new hero has his own strike instead of the same kick: Kaito spinning sword, Mira spear thrust, Vex scythe swing, Orion gravity push, Dendi uppercut','The Quests screen fits phone screens']},
  {v:63,ar:['دندي بقاله صورته وأيقونات مهاراته وصورة بروفايل'],en:['Dendi now has his portrait, skill icons and profile picture']},
@@ -4242,5 +4244,6 @@ function boot(d){for(const id of COMP_IDS)compImg(id);load(d);buildUps();$('snd'
 try{window.claude?.hot?.snapshot?.(()=>S)}catch(e){}
 if(window.claude?.hot?.ready)window.claude.hot.ready(boot);else boot(window.claude?.hot?.data??{});
 </script>
+<i id="liveEnd" hidden></i>
 </body>
 </html>
