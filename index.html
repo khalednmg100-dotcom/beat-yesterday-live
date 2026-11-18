@@ -681,7 +681,7 @@ button:focus-visible{outline:2px solid var(--bone);outline-offset:2px}
     <div class="atop"><button class="ico" id="sBack" aria-label="رجوع"><svg viewBox="0 0 24 24"><path d="M9 6l6 6-6 6"/></svg></button><b>الشوب</b><span class="coins" hidden><i class="coin"></i><b id="sCoins">0</b></span></div>
     <div class="sgrid">
       <div class="rollbox rbar"><i class="rbq">?</i><div class="rbt"><b id="rbT">ريرول شخصية</b><small id="rbS">شخصية عشوائية · لو مكررة ترجعلك 250</small></div><button class="ico" id="rbInfo" aria-label="info">i</button><button class="go" id="sRoll">600 <i class="coin"></i></button></div>
-      <div class="rollbox rbar"><i class="rbq">🪪</i><div class="rbt"><b id="ncT">كارت تغيير اسم</b><small id="ncS"></small></div><button class="go" id="sName">1000 <i class="coin"></i></button></div>
+      <div class="rollbox rbar"><i class="rbq">🪪</i><div class="rbt"><b id="ncT">كارت تغيير اسم</b><small id="ncS"></small></div><button class="go" id="sName">10K <i class="coin"></i></button></div>
       <div class="scol"><div id="sGrid" class="schars"></div><h4 class="sh">المرافقين <span>واحد بيطير فوقك ويساعدك، وبيندمج مع ضربتك القاضية</span></h4><div id="sComps" class="schars"></div></div>
     </div>
   </section>
@@ -2494,7 +2494,7 @@ function nameAsk(edit){if(document.getElementById('nmAsk'))return;const o=docume
   document.body.appendChild(o);const inp=o.querySelector('#nmIn');setTimeout(()=>inp.focus(),80);
   const ok=()=>{const v=cleanName(inp.value);if(v.length<2){o.querySelector('#nmErr').textContent=LL('الاسم لازم يبقى حرفين على الأقل','At least 2 characters');return}if(edit&&S.name){if(!(S.nameCards>0)){o.remove();nameCardOffer();return}S.nameCards--}S.name=v;save();sfx('up');o.remove();menuProf();if(mode==='prof')renderProf()};
   o.querySelector('#nmOk').onclick=ok;inp.addEventListener('keydown',e=>{if(e.key==='Enter')ok()})}
-const NAME_CARD=1000;
+const NAME_CARD=10000;
 function buyNameCard(){if((S.coins||0)<NAME_CARD){sfx('lose');toast(LL('محتاج ','You need ')+fmt(NAME_CARD-(S.coins||0))+LL(' عملة كمان',' more coins'));return false}S.coins-=NAME_CARD;S.nameCards=(S.nameCards||0)+1;save();sfx('win');toast(LL('اشتريت كارت تغيير اسم · استخدمه من البروفايل','Name Card bought · use it from your profile'));return true}
 function nameCardOffer(){if(document.getElementById('nmAsk'))return;const o=document.createElement('div');o.id='nmAsk';
   o.innerHTML=`<div class="nmc"><div class="nmi">🪪</div><h2>${LL('كارت تغيير الاسم','Name Card')}</h2><p>${LL('اسمك اتحدد خلاص. عشان تغيّره محتاج كارت تغيير اسم.','Your name is set. To change it you need a Name Card.')}</p>
