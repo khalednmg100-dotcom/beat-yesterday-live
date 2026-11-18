@@ -321,6 +321,15 @@ body:not(.onhome) .cbar .evo3d,body:not(.onhome) #cbP{display:none}
 #tagVs{display:flex;align-items:center;justify-content:center}.tvs{display:flex;align-items:center;gap:18px}.tvr{display:flex;gap:10px}.tvr div{display:flex;flex-direction:column;align-items:center;gap:3px}
 .tvr img{width:64px;height:64px;border-radius:50%;box-shadow:0 0 0 2px #ffd23e,0 0 14px #ffb23e66}.tvr b{font-size:11px;color:#fff}.tvs .vsx{font-family:var(--display);font-size:40px;color:#ff5a6e}
 @media (max-height:440px){#tour .tbody{gap:4px}#tour .tg h4,#tour .tbr h4{font-size:10.5px}#tour .trow{font-size:9.5px;padding:1px 4px}#tour .tm{font-size:9px}#tour .tm small{font-size:8px}#tour .tch i .cupi,#tour .tch .cupi{width:24px!important;height:24px!important}#tour #tGo{font-size:15px;padding:5px}#tour .tpy{grid-template-columns:1fr 1fr .5fr}}
+
+@media (max-height:440px){#quests .qsbody{display:grid!important;grid-template-columns:1fr 1fr;gap:4px 8px;align-content:start;padding:4px 10px 8px!important}
+#quests .qstreak,#quests .qh{grid-column:1/-1}#quests .qh{margin:2px 0 0!important;font-size:11px!important}
+#quests .qstreak{display:grid!important;grid-template-columns:auto 1fr auto;align-items:center;gap:8px;padding:4px 8px!important;margin:0!important}
+#quests .qstreak>b{font-size:11px!important;white-space:nowrap}#quests .qli{width:18px!important;height:18px!important}
+#quests .qdays{gap:3px!important;margin:0!important}#quests .qday{padding:2px 0!important;min-height:0!important;border-radius:7px!important}#quests .qday small{font-size:8px!important}#quests .qday b{font-size:9px!important}#quests .qday .coin{width:11px!important;height:11px!important}
+#quests .qstreak .go{width:auto!important;padding:6px 12px!important;font-size:12px!important;margin:0!important;min-height:0!important}
+#quests .qrow{padding:4px 8px!important;margin:0!important;min-height:0!important;gap:6px!important}#quests .qm b{font-size:10.5px!important}#quests .qm .ab{height:9px!important;margin-top:2px!important}#quests .qm .ab em{font-size:8px!important}
+#quests .aclm{padding:3px 7px!important;font-size:10px!important;min-height:0!important}#quests .aclm .coin{width:12px!important;height:12px!important}}
 #pAll{background:linear-gradient(#7dffa8,#2fbf6a);color:#05210f}
 .side .bar{height:13px;border-radius:7px;background:#00000066;border:1.5px solid #ffffff2e}
 .side .bar i{width:100%;transform-origin:left;will-change:transform} .side.en .bar i{transform-origin:right}
@@ -1354,22 +1363,22 @@ const ORION_LOOKS=mkLooks({'skin': '#f4e0d4', 'hair': '#e4e4f0', 'hs': 'flow', '
  {'top': '#1c1a52', 'pants': '#16143e', 'boot': '#0e0c2a', 'cape': '#1c1a52', 'capeIn': '#e8e0ff', 'acc': '#ffffff', 'musc': 2, 'glowEye': 1, 'ex': 'robe cape float planets collar belt pads lines aura wisps rings core'}
 ]);
 const DENDI_LOOKS=mkLooks({'skin': '#e2b896', 'hair': '#1a1418', 'hs': 'spiky', 'arm': 'skin', 'eye': '#ffb23e'},[
- {'top': '#1c1a22', 'pants': '#2a2430', 'boot': '#141016', 'bracer': '#d9b45a', 'acc': '#ff4d3a', 'musc': 2, 'ex': 'wraps band belt'},
- {'top': '#1c1a22', 'pants': '#2a2430', 'boot': '#141016', 'bracer': '#d9b45a', 'acc': '#ff4d3a', 'musc': 2, 'ex': 'wraps band belt'},
- {'top': '#1c1a22', 'pants': '#2a2430', 'boot': '#141016', 'bracer': '#d9b45a', 'acc': '#ff5a3a', 'musc': 2, 'ex': 'wraps band belt pads'},
- {'top': '#1c1a22', 'pants': '#2a2430', 'boot': '#141016', 'bracer': '#d9b45a', 'acc': '#ff5a3a', 'musc': 2, 'ex': 'wraps band belt pads'},
- {'top': '#1c1a22', 'pants': '#2a2430', 'boot': '#141016', 'bracer': '#d9b45a', 'acc': '#ff6a3a', 'musc': 2, 'ex': 'wraps band belt pads'},
- {'top': '#1c1a22', 'pants': '#2a2430', 'boot': '#141016', 'bracer': '#d9b45a', 'acc': '#ff6a3a', 'musc': 2, 'ex': 'wraps band belt pads lines'},
- {'top': '#1c1a22', 'pants': '#2a2430', 'boot': '#141016', 'bracer': '#d9b45a', 'acc': '#ff7a3a', 'musc': 2, 'ex': 'wraps band belt pads lines aura'},
- {'top': '#1c1a22', 'pants': '#2a2430', 'boot': '#141016', 'bracer': '#d9b45a', 'acc': '#ff8a3a', 'musc': 2, 'ex': 'wraps band belt pads lines aura', 'glowEye': 1},
- {'top': '#1c1a22', 'pants': '#2a2430', 'boot': '#141016', 'bracer': '#d9b45a', 'acc': '#ff9a3a', 'musc': 2, 'ex': 'wraps band belt pads lines aura wisps', 'glowEye': 1},
- {'top': '#1c1a22', 'pants': '#2a2430', 'boot': '#141016', 'bracer': '#d9b45a', 'acc': '#ffaa3a', 'musc': 2, 'ex': 'wraps band belt pads lines aura wisps cape', 'glowEye': 1, 'cape': '#1c1a22', 'capeIn': '#ffaa3a'},
- {'top': '#1c1a22', 'pants': '#2a2430', 'boot': '#141016', 'bracer': '#d9b45a', 'acc': '#ffb23e', 'musc': 2, 'ex': 'wraps band belt pads lines aura wisps cape', 'glowEye': 1, 'cape': '#1c1a22', 'capeIn': '#ffb23e'},
- {'top': '#1c1a22', 'pants': '#2a2430', 'boot': '#141016', 'bracer': '#d9b45a', 'acc': '#ffc040', 'musc': 2, 'ex': 'wraps band belt pads lines aura wisps core cape', 'glowEye': 1, 'cape': '#1c1a22', 'capeIn': '#ffc040'},
- {'top': '#1c1a22', 'pants': '#2a2430', 'boot': '#141016', 'bracer': '#d9b45a', 'acc': '#ffd23e', 'musc': 2, 'ex': 'wraps band belt pads lines aura wisps core cape', 'glowEye': 1, 'cape': '#1c1a22', 'capeIn': '#ffd23e'},
- {'top': '#1c1a22', 'pants': '#2a2430', 'boot': '#141016', 'bracer': '#d9b45a', 'acc': '#ffe06a', 'musc': 2, 'ex': 'wraps band belt pads lines aura wisps core cape', 'glowEye': 1, 'cape': '#1c1a22', 'capeIn': '#ffe06a'},
- {'top': '#1c1a22', 'pants': '#2a2430', 'boot': '#141016', 'bracer': '#d9b45a', 'acc': '#fff0a0', 'musc': 2, 'ex': 'wraps band belt pads lines aura wisps core cape', 'glowEye': 1, 'cape': '#1c1a22', 'capeIn': '#fff0a0'},
- {'top': '#1c1a22', 'pants': '#2a2430', 'boot': '#141016', 'bracer': '#d9b45a', 'acc': '#ffffff', 'musc': 2, 'ex': 'wraps band belt pads lines aura wisps core cape', 'glowEye': 1, 'cape': '#1c1a22', 'capeIn': '#ffffff'}
+ {'top': '#1c1a22', 'pants': '#1a1620', 'boot': '#141016', 'bracer': '#d9b45a', 'acc': '#ff4d3a', 'musc': 2, 'ex': 'wraps band belt'},
+ {'top': '#1c1a22', 'pants': '#1a1620', 'boot': '#141016', 'bracer': '#d9b45a', 'acc': '#ff4d3a', 'musc': 2, 'ex': 'wraps band belt'},
+ {'top': '#1c1a22', 'pants': '#1a1620', 'boot': '#141016', 'bracer': '#d9b45a', 'acc': '#ff5a3a', 'musc': 2, 'ex': 'wraps band belt pads'},
+ {'top': '#1c1a22', 'pants': '#1a1620', 'boot': '#141016', 'bracer': '#d9b45a', 'acc': '#ff5a3a', 'musc': 2, 'ex': 'wraps band belt pads'},
+ {'top': '#1c1a22', 'pants': '#1a1620', 'boot': '#141016', 'bracer': '#d9b45a', 'acc': '#ff6a3a', 'musc': 2, 'ex': 'wraps band belt pads'},
+ {'top': '#1c1a22', 'pants': '#1a1620', 'boot': '#141016', 'bracer': '#d9b45a', 'acc': '#ff6a3a', 'musc': 2, 'ex': 'wraps band belt pads lines'},
+ {'top': '#1c1a22', 'pants': '#1a1620', 'boot': '#141016', 'bracer': '#d9b45a', 'acc': '#ff7a3a', 'musc': 2, 'ex': 'wraps band belt pads lines aura'},
+ {'top': '#1c1a22', 'pants': '#1a1620', 'boot': '#141016', 'bracer': '#d9b45a', 'acc': '#ff8a3a', 'musc': 2, 'ex': 'wraps band belt pads lines aura', 'glowEye': 1},
+ {'top': '#1c1a22', 'pants': '#1a1620', 'boot': '#141016', 'bracer': '#d9b45a', 'acc': '#ff9a3a', 'musc': 2, 'ex': 'wraps band belt pads lines aura wisps', 'glowEye': 1},
+ {'top': '#1c1a22', 'pants': '#1a1620', 'boot': '#141016', 'bracer': '#d9b45a', 'acc': '#ffaa3a', 'musc': 2, 'ex': 'wraps band belt pads lines aura wisps cape', 'glowEye': 1, 'cape': '#1c1a22', 'capeIn': '#ffaa3a'},
+ {'top': '#1c1a22', 'pants': '#1a1620', 'boot': '#141016', 'bracer': '#d9b45a', 'acc': '#ffb23e', 'musc': 2, 'ex': 'wraps band belt pads lines aura wisps cape', 'glowEye': 1, 'cape': '#1c1a22', 'capeIn': '#ffb23e'},
+ {'top': '#1c1a22', 'pants': '#1a1620', 'boot': '#141016', 'bracer': '#d9b45a', 'acc': '#ffc040', 'musc': 2, 'ex': 'wraps band belt pads lines aura wisps core cape', 'glowEye': 1, 'cape': '#1c1a22', 'capeIn': '#ffc040'},
+ {'top': '#1c1a22', 'pants': '#1a1620', 'boot': '#141016', 'bracer': '#d9b45a', 'acc': '#ffd23e', 'musc': 2, 'ex': 'wraps band belt pads lines aura wisps core cape', 'glowEye': 1, 'cape': '#1c1a22', 'capeIn': '#ffd23e'},
+ {'top': '#1c1a22', 'pants': '#1a1620', 'boot': '#141016', 'bracer': '#d9b45a', 'acc': '#ffe06a', 'musc': 2, 'ex': 'wraps band belt pads lines aura wisps core cape', 'glowEye': 1, 'cape': '#1c1a22', 'capeIn': '#ffe06a'},
+ {'top': '#1c1a22', 'pants': '#1a1620', 'boot': '#141016', 'bracer': '#d9b45a', 'acc': '#fff0a0', 'musc': 2, 'ex': 'wraps band belt pads lines aura wisps core cape', 'glowEye': 1, 'cape': '#1c1a22', 'capeIn': '#fff0a0'},
+ {'top': '#1c1a22', 'pants': '#1a1620', 'boot': '#141016', 'bracer': '#d9b45a', 'acc': '#ffffff', 'musc': 2, 'ex': 'wraps band belt pads lines aura wisps core cape', 'glowEye': 1, 'cape': '#1c1a22', 'capeIn': '#ffffff'}
 ]);
 const CHARS={
   fighter:{art:'img/char-fighter.webp',fuse:'قبضة',name:'المقاتل',desc:'قوة وبرق وسحر ودروع',col:'#ffb23e',looks:LOOKS,forms:FORMS,sk:SK,
@@ -1446,7 +1455,7 @@ const CHARS={
     forms:['نجم صغير', 'قارئ النجوم', 'حارس المدار', 'سيد الجاذبية', 'الكوكب الأزرق', 'المذنّب', 'سيد الأقمار', 'قلب المجرة', 'النجم الأسود', 'ملك النجوم', 'حاكم الفضاء', 'روح الكون', 'المجرة الدهبية', 'حافة الأفق', 'سيد الأكوان', 'أوريون الأسطورة'],
     sk:{str:{g:'drop',col:'#9a7dff',w:.14,cd:[6, 6, 5.5, 5.5],names:['سحق الجاذبية', 'رفع وسحق', 'جاذبية تقيلة', 'انهيار الكوكب']},spd:{g:'fang',col:'#ffd23e',w:.14,cd:[6, 6, 5.5, 5.5],names:['قبضة النيزك', 'نيزكين', 'مطر النيازك', 'عاصفة النجوم']},int:{g:'mist',col:'#9a7dff',w:.14,cd:[7.5, 7.5, 7, 7],names:['الثقب الأسود', 'ثقب أكبر', 'دوامة الفضاء', 'ابتلاع النجوم']},end:{g:'flip',col:'#e8e0ff',w:.14,cd:[12, 12, 11, 10],names:['انعدام الجاذبية', 'طفو', 'حرية المدار', 'سيد الفراغ']}},
     cast:{str:'arcane',spd:'magicCast',int:'arcane',end:'morph'},price:12000},
-  dendi:{fuse:'قبضة',name:'دندي',desc:'ملاكم الحلبة: لكمات سريعة، يشد الخصم لعنده، يمتص الضرب ويرجّعه شعاع',descEn:'Ring brawler: rapid punches, pulls enemies in, absorbs damage and fires it back as a beam',col:'#ff4d3a',looks:DENDI_LOOKS,gen:1,
+  dendi:{fuse:'قبضة',name:'دندي',desc:'ملاكم الحلبة: لكمات سريعة، يشد الخصم لعنده، يمتص الضرب ويرجّعه شعاع',descEn:'Ring brawler: rapid punches, pulls enemies in, absorbs damage and fires it back as a beam',col:'#ff4d3a',looks:DENDI_LOOKS,art:'https://khalednmg100-dotcom.github.io/beat-yesterday-live/img/ui/char-dendi.webp',ui:1,
     forms:['ولد الحلبة', 'ملاكم', 'قبضة الشارع', 'المصارع', 'بطل الحلبة', 'القبضة النارية', 'الوحش', 'ملك الحلبة', 'الجبل', 'القبضة الحديد', 'الإعصار الأحمر', 'محطّم الأرض', 'الأسطورة الحمرا', 'الزعيم', 'ملك القبضات', 'دندي الأسطورة'],
     sk:{str:{g:'fang',col:'#ff4d3a',w:.14,cd:[6, 6, 5.5, 5.5],names:['قبضات سريعة', 'مطر اللكمات', 'قبضات الإعصار', 'ألف لكمة']},spd:{g:'arrows',col:'#ffb23e',w:.14,cd:[7, 7, 6.5, 6.5],names:['شدّة الفولاذ', 'شد وضرب', 'كومبو الشارع', 'محدش بيهرب']},int:{g:'drop',col:'#ffd23e',w:.14,cd:[9, 9, 8.5, 8],names:['جدار الصبر', 'امتصاص', 'ردّ الضربة', 'شعاع الغضب']},end:{g:'flip',col:'#d9b45a',w:.14,cd:[12, 12, 11, 10],names:['صد الفولاذ', 'جسم حديد', 'جبل', 'محدش يهزّني']}},
     cast:{str:'hit',spd:'blade',int:'shield',end:'shield'},price:12000}
@@ -2786,14 +2795,14 @@ function pinPick(i){if(document.getElementById('avPick'))return;const L=achList(
 
 /* ---------- profile avatars ---------- */
 const AVS=[['rookie','المبتدئ المجهول','Mystery Rookie',()=>true,['متاحة من الأول','Available from the start']]];
-for(const id of ['fighter','ninja','mage','golem','archer','vampire','fallen','kitsu','ryu','kaito','mira','vex','orion'])if(CHARS[id])AVS.push([id,CHARS[id].name,null,()=>charUnlocked(id),['افتح البطل ده','Unlock this hero']]);
+for(const id of ['fighter','ninja','mage','golem','archer','vampire','fallen','kitsu','ryu','kaito','mira','vex','orion','dendi'])if(CHARS[id])AVS.push([id,CHARS[id].name,null,()=>charUnlocked(id),['افتح البطل ده','Unlock this hero']]);
 const hasAv=id=>(S.avs||[]).includes(id);
 AVS.push(['dragon','التنين الدهبي','Golden Dragon',()=>hasAv('dragon'),['الباتل باس · مستوى 10','Battle Pass · level 10']],
   ['phoenix','العنقاء','Phoenix',()=>hasAv('phoenix'),['نخبة الباتل باس · مستوى 20','Elite Pass · level 20']],
   ['cosmic','الإمبراطور الكوني','Cosmic Emperor',()=>hasAv('cosmic'),['نخبة الباتل باس · مستوى 28','Elite Pass · level 28']],
   ['skull','فارس الجمجمة','Skull Knight',()=>stS().best>50,['خلّص 5 فصول في القصة','Clear 5 story chapters']],
   ['crystal','ملكة الكريستال','Crystal Queen',()=>((S.cups||{}).g||0)>=1,['اكسب بطولة (كاس دهبي)','Win a tournament (gold cup)']]);
-function avSrc(id){return 'https://khalednmg100-dotcom.github.io/beat-yesterday-live/img/av/'+(id==='dendi'?'rookie':id)+'.webp'}
+function avSrc(id){return 'https://khalednmg100-dotcom.github.io/beat-yesterday-live/img/av/'+id+'.webp'}
 function avName(a){return a[2]?LL(a[1],a[2]):tr(a[1])}
 function avOk(id){const a=AVS.find(x=>x[0]===id);try{return !!(a&&a[3]())}catch(e){return false}}
 function myAv(){if(S.av&&avOk(S.av))return S.av;const c=S.char||'fighter';return avOk(c)?c:'rookie'}
@@ -2974,6 +2983,8 @@ function kitsuUlt(A,D,v){const U=R.ult;if(U)U.dur=1.9;const rage=A.fox>0||(A.tai
 
 /* ---------- patch notes: simple words, newest first ---------- */
 const PATCH_NOTES=[
+ {v:64,ar:['كل بطل جديد بقاله حركة ضربة خاصة بيه بدل الركلة: كايتو سيف دوّار، ميرا طعنة رمح، فيكس ضربة منجل، أوريون دفعة جاذبية، دندي أبركت','صفحة المهام بقت على قد شاشة الموبايل'],en:['Each new hero has his own strike instead of the same kick: Kaito spinning sword, Mira spear thrust, Vex scythe swing, Orion gravity push, Dendi uppercut','The Quests screen fits phone screens']},
+ {v:63,ar:['دندي بقاله صورته وأيقونات مهاراته وصورة بروفايل'],en:['Dendi now has his portrait, skill icons and profile picture']},
  {v:62,ar:['أسماء القواضي والمهارات الجديدة بقت بالإنجليزي صح في النسخة الإنجليزي'],en:['New finisher and skill names now show in English']},
  {v:61,ar:['بطل جديد: دندي ملاكم الحلبة، بيمتص الضرب ويرجّعه شعاع وقاضيته الضربة الكبرى','مرافقين جداد: فرخ العنقاء بيرجّعك بعد ما تموت، وفولت ذئب البرق بيشل الخصم','بوص الأسبوع بيتغير: العملاق، ملكة الهاوية، أمير الحرب الحديدي','سلو موشن في كل القواضي'],en:['New hero: Dendi the ring brawler, absorbs damage and fires it back as a beam, finisher Grand Slam','New companions: the Phoenix Chick revives you, Volt the lightning pup stuns the enemy','The weekly boss rotates: the Titan, the Abyss Queen, the Iron Warlord','Slow motion in every finisher']},
  {v:60,ar:['4 أبطال جداد: كايتو سيّاف الريح، ميرا فارسة البرق، فيكس حاصد الأرواح، أوريون سيد الجاذبية','كل بطل ليه 4 مهارات وقاضية خاصة بيه وصورة بروفايل'],en:['4 new heroes: Kaito the wind swordsman, Mira the lightning knight, Vex the soul reaper, Orion the gravity master','Each hero has 4 skills, his own finisher and a profile picture']},
@@ -3343,6 +3354,15 @@ function dendiUlt(A,D,v){const U=R.ult;if(U)U.dur=2.9;const col='#ff4d3a',sg=sgO
   R.tasks.push({t:2.6,fn:()=>{A.ninPos=null}})}
 H_ULT.dendi=dendiUlt;
 {const _hb=hUltBack;hUltBack=function(c,t,U,k,ax,ex,st){if(st==='grandslam'){c.globalAlpha=.6*k;c.fillStyle='#120404';c.fillRect(-60,-60,W+120,H+120);for(let i=0;i<4;i++){const x=W*(i+.5)/4+Math.sin(t*1.5+i)*30;c.globalAlpha=.18*k;c.fillStyle='#ffd23e';c.beginPath();c.moveTo(x-8,-60);c.lineTo(x+8,-60);c.lineTo(x+70,FLOOR);c.lineTo(x-70,FLOOR);c.closePath();c.fill()}return 1}return _hb(c,t,U,k,ax,ex,st)}}
+
+/* each new hero's own kick-button move: w = wind-up pose, r = the strike */
+const KPOSE={
+  gale:{w:{r1:1.55,e1:0,r2:-.4,e2:.6,lean:.1,crouch:.3,a1:.5,k1:-.6,a2:-.4,k2:-.6},r:{r1:1.2,e1:0,r2:-.8,e2:.5,lean:.38,crouch:.4,a1:.9,k1:-.4,a2:-.7,k2:-.1}},
+  bolt:{w:{r1:-.3,e1:1.7,r2:.4,e2:.8,lean:-.15,crouch:.4,a1:.3,k1:-.2,a2:-.3,k2:-.2},r:{r1:1.57,e1:0,r2:1.3,e2:.3,lean:.5,crouch:.5,a1:1,k1:-.4,a2:-.8,k2:-.1}},
+  reap:{w:{r1:3,e1:.2,r2:2.6,e2:.4,lean:-.25,crouch:.2,a1:.2,k1:-.1,a2:-.2,k2:-.1},r:{r1:.5,e1:0,r2:.3,e2:.3,lean:.45,crouch:.6,a1:.9,k1:-.5,a2:-.7,k2:-.2}},
+  grav:{w:{r1:.4,e1:1.6,r2:.3,e2:1.6,lean:-.1,crouch:.3},r:{r1:1.55,e1:0,r2:1.45,e2:.05,lean:.25,crouch:.2}},
+  upper:{w:{r1:.3,e1:1.9,r2:.9,e2:1.4,lean:.15,crouch:.9,a1:.7,k1:-.9,a2:-.5,k2:-.6},r:{r1:2.7,e1:.3,r2:.7,e2:1.6,lean:-.2,crouch:0,a1:.4,k1:-.2,a2:-.6,k2:-.5}}
+};
 setTimeout(achBadge,1500);
 /* a stable little leaderboard around your rank */
 function renderArena(){const r=rankOf(S.rp);
@@ -3473,7 +3493,7 @@ function aiStyled(E,A){const w=A.w,opts=[['atk',w.atk+.12],['heavy',.07],['block
 const PVP_TIME=50;
 const ot=()=>R.mode==='pvp'?1+Math.max(0,(R.clock||0)-PVP_TIME)*.35:1;
 /* dodge styles: fighter backflip, ninja vanishes in smoke, mage blinks as light, robot jet-dashes, archer rolls low, vampire turns into bats */
-const KICK={fighter:'leap',ninja:'shadow',mage:'blast',golem:'charge',archer:'flip',vampire:'bats',fallen:'sword',kitsu:'fox',ryu:'axe',kaito:'gale',mira:'bolt',vex:'reap',orion:'grav',dendi:'charge'},KSTAY={mage:1,archer:1,fallen:1,orion:1};
+const KICK={fighter:'leap',ninja:'shadow',mage:'blast',golem:'charge',archer:'flip',vampire:'bats',fallen:'sword',kitsu:'fox',ryu:'axe',kaito:'gale',mira:'bolt',vex:'reap',orion:'grav',dendi:'upper'},KSTAY={mage:1,archer:1,fallen:1,orion:1};
 const DODGE={fighter:'roll',ninja:'vanish',mage:'mirror',golem:'dash',archer:'jump',vampire:'bats',fallen:'wing',kitsu:'flame',ryu:'sway',kaito:'wind',mira:'blink',vex:'vanish',orion:'grav',dendi:'roll'};
 function kickStart(f){const D=otherOf(f);if(!D)return;const x=xOf(f),dx=xOf(D),sg=f.p?1:-1,w=Math.max(.12,f.w||.24),ks=KICK[f.char]||'leap',hd=f.hand||[x,FLOOR-80];
   if(ks==='leap')burst(x,FLOOR-8,['#ff8a2a','#ffd23e'],10,.4);
@@ -3488,7 +3508,8 @@ function kickStart(f){const D=otherOf(f);if(!D)return;const x=xOf(f),dx=xOf(D),s
   else if(ks==='gale'){R.fx.push({k:'tornado',x:x+sg*20,t:0,d:.35,col:'#3fe0c8',s:.42});sfx('kickWind')}
   else if(ks==='bolt'){R.fx.push({k:'bolt2',x0:x,y0:FLOOR-70,x1:dx,y1:FLOOR-66,t:0,d:Math.max(.12,w),col:'#ffd23e'});sfx('zap')}
   else if(ks==='reap'){R.fx.push({k:'chain',x0:hd[0],y0:hd[1],a:f,t:0,d:w+.15,i:1,col:'#b04dff'});sfx('blade')}
-  else if(ks==='grav'){R.fx.push({k:'ring',x:dx,y:FLOOR-6,t:0,d:w+.1,col:'#9a7dff',r:70});sfx('arcane')}}
+  else if(ks==='grav'){R.fx.push({k:'ring',x:dx,y:FLOOR-6,t:0,d:w+.1,col:'#9a7dff',r:70});sfx('arcane')}
+  else if(ks==='upper'){burst(x,FLOOR-30,['#ff4d3a','#ffd23e'],10,.4);sfx('kickWind')}}
 function kickHit(A,D,dx,hy,v){const ks=KICK[A.char]||'leap',sg=A.p?1:-1;
   if(ks==='leap'){R.fx.push({k:'ring',x:dx,y:hy,t:0,d:.4,col:'#ff8a2a',r:110});burst(dx,hy,['#ff8a2a','#ffd23e','#ffffff'],16,.6)}
   else if(ks==='shadow'){R.fx.push({k:'slash',x:dx,y:hy-6,t:0,d:.26,sg,col:'#b48cff',big:true},{k:'smoke',x:dx,t:0,d:.4})}
@@ -3502,6 +3523,7 @@ function kickHit(A,D,dx,hy,v){const ks=KICK[A.char]||'leap',sg=A.p?1:-1;
   else if(ks==='gale'){R.fx.push({k:'xslash',x:dx,y:hy,t:0,d:.3,col:'#3fe0c8',s:.6});launch(D,520)}
   else if(ks==='bolt'){R.fx.push({k:'ring',x:dx,y:hy,t:0,d:.4,col:'#ffd23e',r:100},{k:'bolt2',x0:dx,y0:-20,x1:dx,y1:FLOOR,t:0,d:.2,col:'#6aa8ff'});burst(dx,hy,['#ffd23e','#6aa8ff','#ffffff'],14,.6)}
   else if(ks==='reap'){R.fx.push({k:'crescent',x:dx,y:hy,t:0,d:.28,col:'#b04dff',r:64,sg});A.hp=Math.min(A.max,A.hp+v*.1)}
+  else if(ks==='upper'){R.fx.push({k:'punch',x:dx,y:hy-14,t:0,d:.25,col:'#ffd23e',s:1.1},{k:'ring',x:dx,y:hy,t:0,d:.4,col:'#ff4d3a',r:110},{k:'speedl',x:dx,y:hy-20,t:0,d:.25,col:'#ff4d3a'});launch(D,640)}
   else if(ks==='grav'){R.fx.push({k:'ring',x:dx,y:hy,t:0,d:.4,col:'#9a7dff',r:110});launch(D,560);R.tasks.push({t:.35,fn:()=>{if(D.airY>0)slamDown(D,1600)}})}}
 /* the Fallen Angel's summoned swords */
 function fallenHud(c,f,x,lift){const y=headY(f)-lift-34;c.save();if(f.dem>0){const w=34,k=Math.min(1,f.dem/8);c.fillStyle='#0b0920aa';c.fillRect(x-w/2,y,w,4);c.fillStyle='#ff3b1f';c.fillRect(x-w/2,y,w*k,4)}
@@ -3873,12 +3895,14 @@ function target(f,t,running){
       if(ks==='blast'||ks==='sword'){q.r1=1.5;q.e1=.05;q.r2=1.35;q.e2=.15;q.lean=.12;q.crouch=.5}
       else if(ks==='flip'){q.rot=-(1-f.t/f.w)*6.283;q.a1=1.4;q.k1=-1.8;q.a2=1.2;q.k2=-1.8;q.r1=.6;q.e1=1.6}
       else if(ks==='charge'||ks==='bats'){q.lean=.55;q.r1=-.4;q.e1=.6;q.r2=.9;q.e2=.3;q.a1=.6;q.k1=-.8;q.a2=-.6;q.k2=-.3;q.crouch=.5}
+      else if(KPOSE[ks]){Object.assign(q,KPOSE[ks].w);if(ks==='gale')q.rot=-(1-f.t/f.w)*6.283}
       else{q.a1=1.5;q.k1=-.05;q.a2=-.5;q.k2=-1.3;q.lean=-.35;q.r1=-.6;q.e1=.6;q.r2=-1;q.e2=.5}}
     else if(f.char==='fallen'){q.r1=1.5;q.e1=.1;q.r2=-.3;q.e2=.8;q.lean=.06}
     else{q.r1=-1;q.e1=1.2;q.lean=-.18}
   }
   if(f.st==='recover'&&f.off>20){q.r1=1.55;q.e1=.05;q.r2=-.6;q.e2=.8;q.lean=.42;q.a1=.8;q.k1=-.5;q.a2=-.7;q.k2=-.1;if(f.kind==='heavy'){q.r1=.9;q.r2=.9;q.e2=.1}}
-  if(f.st==='recover'&&f.kind==='kick'&&f.off>20){q.a1=1.55;q.k1=0;q.a2=-.5;q.k2=-1.3;q.lean=-.4;q.r1=-.6;q.e1=.6;q.r2=-1;q.e2=.5}
+  if(f.st==='recover'&&f.kind==='kick'&&KPOSE[KICK[f.char]])Object.assign(q,KPOSE[KICK[f.char]].r);
+  else if(f.st==='recover'&&f.kind==='kick'&&f.off>20){q.a1=1.55;q.k1=0;q.a2=-.5;q.k2=-1.3;q.lean=-.4;q.r1=-.6;q.e1=.6;q.r2=-1;q.e2=.5}
   if(f.st==='recover'&&f.kind==='special'&&f.p){q.r1=1.5;q.e1=0;q.r2=1.4;q.e2=.1;q.lean=.3}
   if(f.st==='block'){q.r1=1;q.e1=1.9;q.r2=.9;q.e2=1.9;q.lean=-.08;q.crouch=1}
   if(f.airY>0){q.lean=-.55;q.a1=.8;q.k1=-1.2;q.a2=.4;q.k2=-.9;q.r1=2.4;q.e1=.4;q.r2=2;q.e2=.5;return q}
@@ -3914,7 +3938,7 @@ function drawF(c,f,bx,sg,t){
   if(f.ninPos!=null){const o=otherOf(f);if(o&&((sg>0&&f.ninPos>xOf(o)+2)||(sg<0&&f.ninPos<xOf(o)-2)))sg=-sg}
   let x=f.ninPos!=null?f.ninPos:bx+sg*f.off-sg*f.kb+(f.p?0:f.slide),lift=f.airY||0;if(f.hovY>0)lift+=f.hovY;if(f.hurtT>.1)x+=Math.sin(t*95)*2.8*(f.hurtP||1);if(f.spinT>0){const u=1-f.spinT/.45;x+=sg*REACH*1.1*Math.min(1,u*2.5);lift+=78*Math.sin(Math.min(1,u)*Math.PI)}if(f.leapT>0){const v=1-f.leapT/.38;x+=sg*REACH*1.1;lift+=v<.7?150*Math.sin(v/.7*Math.PI/2):150*(1-(v-.7)/.3)}if(f.faceDown>0)lift-=26;
   if(f.st==='wind'&&f.kind==='kick'){const u=1-f.t/f.w,ks=KICK[f.char]||'leap';
-    if(ks==='leap'||ks==='shadow'||ks==='gale'){x+=sg*REACH*u;lift=(ks==='shadow'?16:44)*Math.sin(u*Math.PI*.8)}else if(ks==='charge'||ks==='bats'||ks==='bolt'||ks==='reap'){x+=sg*REACH*u}else if(ks==='flip')lift=52*Math.sin(u*Math.PI)}
+    if(ks==='leap'||ks==='shadow'||ks==='gale'){x+=sg*REACH*u;lift=(ks==='shadow'?16:44)*Math.sin(u*Math.PI*.8)}else if(ks==='charge'||ks==='bats'||ks==='bolt'||ks==='reap'||ks==='upper'){x+=sg*REACH*u}else if(ks==='flip')lift=52*Math.sin(u*Math.PI)}
   else if(f.st==='wind'&&f.kind!=='special')x-=sg*8;
   if(f.st==='recover'&&f.kind==='kick')lift=Math.min(26,f.off*.25);
   let dodA=1,dk=null;if(f.st==='dodge'){const sn=Math.sin((1-f.t/.42)*Math.PI);dk=DODGE[f.char]||'flip';
