@@ -131,3 +131,4 @@ Object.assign(window.LANG_EN,{"مبروك":"Congratulations","روح الثعل�
 Object.assign(window.LANG_EN,{"البروفايل":"Profile","مجموعات وأدوار إقصائية · اكسب الكاس":"Groups and knockouts · win the cup"});
 Object.assign(window.LANG_EN,{"مجموعات وأدوار إقصائية":"Groups and knockouts","اكسب الكاس":"win the cup"});
 Object.assign(window.LANG_EN,{"القصة":"Story","100 مرحلة وبوص كل 10":"100 stages · a boss every 10"});
+Object.assign(window.LANG_EN,{"قلعة الدم":"Blood Castle","غابة الأرواح":"Spirit Woods","السما المكسورة":"The Broken Sky","عالم المراية":"Mirror World"});

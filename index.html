@@ -180,6 +180,29 @@ button:focus-visible{outline:2px solid var(--bone);outline-offset:2px}
 .spinfo{flex:1;min-width:0;display:flex;flex-direction:column;gap:2px}.spinfo b{color:#fff;font-size:14px}.spinfo .sbn{color:#ff5a6e}.spinfo span{font-size:12px;color:var(--mute)}.spinfo small{font-size:11.5px;color:#ffd23e}
 .spinfo ul{margin:2px 0;padding-inline-start:16px;font-size:11.5px;color:#ffd0d6;line-height:1.4}
 .spanel .go{flex:none;font-size:20px;padding:8px 18px}
+
+.scity{position:relative;flex:1;min-height:0;width:100%;max-width:980px;margin:0 auto;border-radius:18px;overflow:hidden;border:1.5px solid #ffffff22;box-shadow:0 10px 30px #0008}
+.scity canvas{position:absolute;inset:0;width:100%;height:100%;display:block}
+.scity::after{content:"";position:absolute;inset:0;background:linear-gradient(#05030fcc,transparent 38%,transparent 70%,#05030f99);pointer-events:none}
+.scity.lock canvas{filter:grayscale(.85) brightness(.45)}
+#sPath{position:absolute;inset:0;width:100%;height:100%;z-index:1;pointer-events:none}
+#sPath .sp0{fill:none;stroke:#0008;stroke-width:3.2;vector-effect:non-scaling-stroke;stroke-linecap:round;stroke-linejoin:round}
+#sPath .sp1{fill:none;stroke:#ffd23e;stroke-width:2.4;stroke-dasharray:2 6;vector-effect:non-scaling-stroke;stroke-linecap:round;filter:drop-shadow(0 0 3px #ffb23e)}
+.snl{position:absolute;inset:0;z-index:2}
+.scity .snode{position:absolute;transform:translate(-50%,-50%);width:38px;height:38px;max-width:none;aspect-ratio:auto;border-radius:50%;border:2.5px solid #ffffffcc;background:radial-gradient(circle at 35% 30%,#4a4290,#15122e);color:#fff;font:900 14px system-ui,sans-serif;cursor:pointer;padding:0;box-shadow:0 4px 0 #0008,0 0 12px #0006}
+.scity .snode.clr{background:radial-gradient(circle at 35% 30%,#fff1b8,#ffb23e 60%,#a8620e);color:#3a2000;border-color:#fff3c4}
+.scity .snode.cur{border-color:#7dffa8;box-shadow:0 0 0 4px #7dffa855,0 0 18px #7dffa8;animation:rkpulse 1.6s infinite}
+.scity .snode.lk{opacity:.55;filter:grayscale(.6)}
+.scity .snode.boss{width:58px;height:58px;font-size:28px;border-color:#ff5a6e;background:radial-gradient(circle at 35% 30%,#ff8a9a,#7a0a1e 70%);box-shadow:0 0 0 4px #ff5a6e44,0 0 24px #ff2e55}
+.scity .snode.sel{outline:3px solid #fff;outline-offset:3px}
+.sbl{position:absolute;transform:translate(-50%,0);z-index:2;font:800 11px system-ui,sans-serif;color:#fff;background:#7a0a1ecc;border:1px solid #ff5a6e;border-radius:8px;padding:2px 7px;white-space:nowrap;pointer-events:none}
+.stxt{position:absolute;top:10px;left:14px;right:60px;z-index:2;display:flex;flex-direction:column;gap:2px;text-shadow:0 2px 6px #000}
+.stxt small{font:800 11px system-ui,sans-serif;color:#ffd23e;letter-spacing:1px;text-transform:uppercase}.stxt b{font-family:var(--display);font-weight:400;font-size:30px;color:#fff;line-height:1}
+.stxt p{margin:3px 0 0;font-size:12.5px;line-height:1.45;color:#e8e4ff;max-width:560px}.stxt .slk{color:#ffb3bd}
+.snav{position:absolute;top:50%;transform:translateY(-50%);z-index:3;width:38px;height:54px;border:0;border-radius:12px;background:#05030fb3;color:#fff;font-size:30px;line-height:1;cursor:pointer}
+.snav.l{left:6px}.snav.r{right:6px}.snav:disabled{opacity:.25}
+.sdots{display:flex;gap:7px;justify-content:center}
+.sdot{width:11px;height:11px;border-radius:50%;border:0;padding:0;background:#ffffff33;cursor:pointer}.sdot.ok{background:#ffb23e}.sdot.on{background:#fff;transform:scale(1.35);box-shadow:0 0 8px #fff}.sdot.lk{opacity:.4}
 #pAll{background:linear-gradient(#7dffa8,#2fbf6a);color:#05210f}
 .side .bar{height:13px;border-radius:7px;background:#00000066;border:1.5px solid #ffffff2e}
 .side .bar i{width:100%;transform-origin:left;will-change:transform} .side.en .bar i{transform-origin:right}
@@ -585,7 +608,8 @@ button:focus-visible{outline:2px solid var(--bone);outline-offset:2px}
   </section>
   <section id="story" class="screen">
     <div class="atop"><button class="ico" id="sBack" aria-label="رجوع"><svg viewBox="0 0 24 24"><path d="M15 6l-6 6 6 6"/></svg></button><b>القصة</b><span id="sProg"></span></div>
-    <div class="sbody" id="sBody"></div>
+    <div class="scity" id="sCity"><canvas id="sArt"></canvas><svg id="sPath"></svg><div class="snl" id="sNodes"></div><div class="stxt" id="sTxt"></div><button class="snav l" id="sPrev" aria-label="prev">‹</button><button class="snav r" id="sNext" aria-label="next">›</button></div>
+    <div class="sdots" id="sDots"></div>
     <div class="spanel" id="sPanel"></div>
   </section>
   <section id="tour" class="screen">
@@ -1615,8 +1639,14 @@ const MAPS={city:{n:'المدينة',sky:['#120f2c','#33296e'],orb:'#f3eddc',moo
   desert:{n:'الصحرا',sky:['#4a2a5a','#ffb86a'],orb:'#fff0b0',gr:['#b07a3a','#4a2a10'],line:'#ffe0a066',far:'#a0603a',near:'#5a3010',pt:'dust'},
   snow:{n:'الغابة المتلجة',sky:['#0e1a3a','#4a6aa0'],orb:'#eaf6ff',moon:1,gr:['#c8d8f0','#5a7098'],line:'#ffffff88',far:'#2a3a6a',near:'#122048',pt:'snow'},
   lava:{n:'كهف الحمم',sky:['#1a0606','#5a1408'],orb:null,gr:['#3a0e08','#0e0402'],line:'#ff6a1a99',far:'#2a0a06',near:'#140402',pt:'ember'},
+  castle:{n:'قلعة الدم',sky:['#1a0410','#5a0a1e'],orb:'#ff3b4a',moon:1,gr:['#2a0a14','#0a0206'],line:'#ff2e5566',far:'#2a0814',near:'#14040a',pt:'ember'},
+  spirit:{n:'غابة الأرواح',sky:['#04141a','#0e4a4a'],orb:'#9fffe0',moon:1,gr:['#0e2a24','#04100c'],line:'#7dffd088',far:'#0a2e2a',near:'#041a16',pt:'snow'},
+  sky:{n:'السما المكسورة',sky:['#1a1040','#ffb3e0'],orb:'#ffffff',gr:['#e8e0ff','#8a7ab8'],line:'#ffffffaa',far:'#c9b8ff',near:'#7a6ab0',pt:'petal'},
+  mirror:{n:'عالم المراية',sky:['#020814','#0a2a4a'],orb:'#7ef0ff',gr:['#0a1a2e','#02060e'],line:'#7ef0ffaa',far:'#0e2a48',near:'#06182e',pt:'dust'},
   neon:{n:'مدينة النيون',sky:['#0a0420','#3a0a5a'],orb:'#ff4fd8',moon:1,gr:['#1a0a3a','#06020f'],line:'#ff4fd888',far:'#1a0a3a',near:'#0e0624'}};
-const MAP_IDS=Object.keys(MAPS);const curMap=()=>MAPS[(R&&R.map)||'city']||MAPS.city;
+const MAP_IDS=Object.keys(MAPS);let MAP_OVR=null;const curMap=()=>MAPS[MAP_OVR||(R&&R.map)||'city']||MAPS.city;
+function mapArt(cv,id,sc){const d=Math.min(2,window.devicePixelRatio||1),w=cv.clientWidth||320,h=cv.clientHeight||200;cv.width=Math.round(w*d);cv.height=Math.round(h*d);const g=cv.getContext('2d');
+  const oSZ=SZ.cv;if(!oSZ||!oSZ[0])SZ.cv=[W*2,H*2];MAP_OVR=id;BG.key=null;try{const z=Math.max(w/W,h/(FLOOR+60));g.setTransform(z*d,0,0,z*d,(w-W*z)/2*d,(h-(FLOOR+60)*z)*d);backdropRaw(g,0,sc||0)}finally{MAP_OVR=null;SZ.cv=oSZ;BG.key=null;BG.fullKey=null}}
 function bgSky(k){const M=curMap(),key=W+'|'+FLOOR+'|'+H+'|'+k+'|'+M.n;if(BG.key===key)return;BG.key=key;
   const e=document.createElement('canvas');e.width=Math.ceil((W+20)*k);e.height=Math.ceil((FLOOR+10)*k);const c=e.getContext('2d');c.scale(k,k);c.translate(10,10);
   const g=c.createLinearGradient(0,0,0,FLOOR);g.addColorStop(0,M.sky[0]);g.addColorStop(1,M.sky[1]);c.fillStyle=g;c.fillRect(-10,-10,W+20,FLOOR+10);
@@ -2437,13 +2467,13 @@ const STORY=[
   t:['تحت الأرض النار بتغلي. سيد اللهب بيتقوى كل ما يتعب.','Underground the fire boils. The Flame Lord grows stronger the more he is hurt.']},
  {n:['مدينة النيون','Neon City'],map:'neon',foe:['درون مقاتل','Combat Drone'],boss:{n:['الآلة المطلقة','The Final Machine'],ch:'golem',m:['armor','rage']},
   t:['مدينة من المستقبل بتحكمها آلة واحدة، وبتقول إنها حسبت كل حركاتك.','A city of the future ruled by one machine that claims it has calculated your every move.']},
- {n:['قلعة الدم','Blood Castle'],map:'temple',foe:['خادم الكونت','Count\'s Servant'],boss:{n:['الكونت','The Count'],ch:'vampire',m:['regen','counter']},
+ {n:['قلعة الدم','Blood Castle'],map:'castle',foe:['خادم الكونت','Count\'s Servant'],boss:{n:['الكونت','The Count'],ch:'vampire',m:['regen','counter']},
   t:['الكونت عايش من مئات السنين على دم المحاربين، ومستني دمك.','The Count has lived for centuries on the blood of fighters, and he is waiting for yours.']},
- {n:['غابة الأرواح','Spirit Woods'],map:'snow',foe:['روح تايهة','Lost Spirit'],boss:{n:['الثعلب العجوز','The Elder Fox'],ch:'kitsu',m:['counter','rage']},
+ {n:['غابة الأرواح','Spirit Woods'],map:'spirit',foe:['روح تايهة','Lost Spirit'],boss:{n:['الثعلب العجوز','The Elder Fox'],ch:'kitsu',m:['counter','rage']},
   t:['الثعلب العجوز شاف أبطال كتير قبلك، وكلهم وقعوا. هو بيختبر صبرك.','The Elder Fox has seen many heroes before you, and all of them fell. He is testing your patience.']},
- {n:['السما المكسورة','The Broken Sky'],map:'neon',foe:['فارس السما','Sky Knight'],boss:{n:['الملاك الساقط','The Fallen One'],ch:'fallen',m:['armor','regen']},
+ {n:['السما المكسورة','The Broken Sky'],map:'sky',foe:['فارس السما','Sky Knight'],boss:{n:['الملاك الساقط','The Fallen One'],ch:'fallen',m:['armor','regen']},
   t:['السما اتشقت ونزل منها ملاك ساقط بيقول إنك وصلت لآخر حدودك.','The sky cracked open and a fallen angel descended, saying you have reached your limit.']},
- {n:['نسختك الأقوى','Your Strongest Self'],map:'city',foe:['ظل المستقبل','Future Shadow'],boss:{n:['إنت بكرة','Tomorrow\'s You'],ch:'self',m:['guard','counter','rage']},
+ {n:['نسختك الأقوى','Your Strongest Self'],map:'mirror',foe:['ظل المستقبل','Future Shadow'],boss:{n:['إنت بكرة','Tomorrow\'s You'],ch:'self',m:['guard','counter','rage']},
   t:['آخر بوابة. وراها مفيش وحش… وراها إنت، النسخة اللي هتبقاها بكرة. اغلبها، واغلب نفسك.','The last gate. Behind it there is no monster… only you, the one you will be tomorrow. Beat them, and beat yourself.']}];
 function stS(){return S.story||(S.story={best:1,cur:1,seen:{},bosses:0})}
 let ST_SEL=null;
@@ -2477,20 +2507,28 @@ function storyFinish(win){R.phase='over';R.ult=null;const T=stS(),st=T.cur,boss=
   $('oBtn').textContent=LL('ارجع للقصة','Back to the story');$('over').classList.add('on');
   if(boss&&first)setTimeout(()=>storyCeleb('👑',LL('خلّصت فصل '+C.n[0],'Chapter complete: '+C.n[1]),'+'+fmt(chap)+' '+LL('عملة مكافأة الفصل','chapter bonus coins')),1200);
   if(first&&st===100)setTimeout(()=>storyCeleb('🏆',LL('خلّصت القصة كلها!','You finished the story!'),LL('غلبت نفسك بجد','You truly beat yourself')),2600)}
-function renderStory(){const T=stS(),best=Math.min(100,T.best);$('sProg').textContent=LL('المرحلة ','Stage ')+best+' / 100';
-  let h='';STORY.forEach((C,ci)=>{const s0=ci*10+1,open=T.best>=s0,done=T.best>s0+9;
-    h+=`<div class="sch${open?'':' lock'}${done?' done':''}" data-map="${C.map}"><div class="schh"><b>${ci+1}. ${LL(C.n[0],C.n[1])}</b>${done?'<em>✓</em>':open?'':'<em>🔒</em>'}</div>`+(open?`<p>${LL(C.t[0],C.t[1])}</p>`:'')+'<div class="snodes">';
-    for(let i=0;i<10;i++){const st=s0+i,b=i===9,cls=st<T.best?'clr':st===T.best?'cur':'lk';h+=`<button class="snode ${cls}${b?' boss':''}${ST_SEL===st?' sel':''}" data-st="${st}"${st>T.best?' disabled':''}>${b?'👑':st}</button>`}
-    h+='</div></div>'});
-  $('sBody').innerHTML=h;const sel=ST_SEL||Math.min(best,100);storyPanel(sel);const c=$('sBody').querySelector('.snode.sel')||$('sBody').querySelector('.snode.cur');if(c)c.scrollIntoView({block:'center'})}
+let ST_CH=null;const ST_POS=[[9,74],[18,60],[27,72],[36,57],[45,70],[54,55],[63,68],[72,53],[79,66],[86,40]];
+function renderStory(){const T=stS(),best=Math.min(100,T.best);if(ST_CH==null)ST_CH=Math.floor((best-1)/10);const ci=ST_CH,C=STORY[ci],s0=ci*10+1,open=T.best>=s0;
+  $('sProg').textContent=LL('المرحلة ','Stage ')+best+' / 100';$('sCity').classList.toggle('lock',!open);
+  requestAnimationFrame(()=>{try{mapArt($('sArt'),C.map,ci*90)}catch(e){}});
+  $('sTxt').innerHTML=`<small>${LL('الفصل ','Chapter ')+(ci+1)}</small><b>${LL(C.n[0],C.n[1])}</b>${open?`<p>${LL(C.t[0],C.t[1])}</p>`:`<p class="slk">🔒 ${LL('خلّص الفصل اللي قبله عشان تفتح المدينة دي','Finish the previous chapter to open this city')}</p>`}`;
+  let path='',nodes='';ST_POS.forEach((q,i)=>{path+=(i?'L':'M')+q[0]+' '+q[1]+' ';const st=s0+i,b=i===9,cls=st<T.best?'clr':st===T.best?'cur':'lk';
+    nodes+=`<button class="snode ${cls}${b?' boss':''}${ST_SEL===st?' sel':''}" style="left:${q[0]}%;top:${q[1]}%" data-st="${st}"${st>T.best?' disabled':''}>${b?'👑':st}</button>`+(b?`<span class="sbl" style="left:${q[0]}%;top:${q[1]+9}%">${LL(C.boss.n[0],C.boss.n[1])}</span>`:'')});
+  $('sPath').setAttribute('viewBox','0 0 100 100');$('sPath').setAttribute('preserveAspectRatio','none');$('sPath').innerHTML=`<path d="${path}" class="sp0"/><path d="${path}" class="sp1"/>`;
+  $('sNodes').innerHTML=nodes;$('sPrev').disabled=ci<=0;$('sNext').disabled=ci>=9;
+  $('sDots').innerHTML=STORY.map((c,i)=>`<button class="sdot${i===ci?' on':''}${T.best>i*10+1?' ok':''}${T.best>=i*10+1?'':' lk'}" data-ch="${i}" aria-label="${i+1}"></button>`).join('');
+  const sel=ST_SEL&&Math.floor((ST_SEL-1)/10)===ci?ST_SEL:(open?Math.min(Math.max(best,s0),s0+9):null);if(sel)storyPanel(sel);else $('sPanel').innerHTML=`<div class="spinfo"><span>${LL('المدينة دي لسه مقفولة','This city is still locked')}</span></div>`}
+$('sPrev').onclick=()=>{if(ST_CH>0){ST_CH--;ST_SEL=null;sfx('click');renderStory()}};
+$('sNext').onclick=()=>{if(ST_CH<9){ST_CH++;ST_SEL=null;sfx('click');renderStory()}};
+$('sDots').addEventListener('click',e=>{const b=e.target.closest('[data-ch]');if(!b)return;ST_CH=+b.dataset.ch;ST_SEL=null;sfx('click');renderStory()});
+$('sNodes').addEventListener('click',e=>{const b=e.target.closest('[data-st]');if(!b||b.disabled)return;ST_SEL=+b.dataset.st;sfx('click');renderStory()});
 function storyPanel(st){const T=stS(),ci=Math.floor((st-1)/10),C=STORY[ci],boss=st%10===0,first=st>=T.best;
   const coins=boss?400+st*12+(first?1000*(ci+1):0):40+st*3;
   $('sPanel').innerHTML=`<div class="spinfo"><b>${LL('المرحلة ','Stage ')+st}${boss?' · <span class="sbn">'+LL(C.boss.n[0],C.boss.n[1])+'</span>':''}</b>`+
     (boss?`<ul>${C.boss.m.map(m=>`<li>${LL(MECH_TIP[m][0],MECH_TIP[m][1])}</li>`).join('')}</ul>`:`<span>${LL(C.foe[0],C.foe[1])} · ${LL('على نفس مستواك','at your level')}</span>`)+
     `<small>${first?LL('أول مرة: ','First clear: '):LL('إعادة: ','Replay: ')}<i class="coin"></i> ${fmt(first?coins:Math.round(coins*.4))}</small></div><button class="go" id="sGo">${boss?LL('واجه البوص','Fight the boss'):LL('قاتل','Fight')}</button>`;
   $('sGo').onclick=()=>storyPlay(st)}
-$('sBody').addEventListener('click',e=>{const b=e.target.closest('[data-st]');if(!b||b.disabled)return;ST_SEL=+b.dataset.st;sfx('click');renderStory()});
-$('mStory').onclick=()=>{auInit();sfx('click');ST_SEL=null;show('story');renderStory()};
+$('mStory').onclick=()=>{auInit();sfx('click');ST_SEL=null;ST_CH=null;show('story');renderStory()};
 $('sBack').onclick=()=>{sfx('click');show('menu')};
 setTimeout(achBadge,1500);
 /* a stable little leaderboard around your rank */
@@ -3111,6 +3149,19 @@ function mapScene(c,sc,M){const id=MAP_IDS.find(k=>MAPS[k]===M),o1=sc*.15,o2=sc*
   else if(id==='neon'){const P1=60;for(let i=0,n=Math.ceil(W/P1)+2;i<n;i++){const x=i*P1-(o1%P1),h=70+((i*29)%5)*22;c.fillStyle=M.far;c.fillRect(x,FLOOR-h,52,h);c.fillStyle=i%2?'#ff4fd844':'#7ef0ff44';for(let y=FLOOR-h+8;y<FLOOR-8;y+=12)for(let wx=x+6;wx<x+48;wx+=12)if(((wx+y)>>3)%3)c.fillRect(wx,y,6,6)}
     const P2=230;for(let i=0,n=Math.ceil(W/P2)+2;i<n;i++){const x=i*P2-(o2%P2)+40,cl=i%2?'#ff4fd8':'#7ef0ff';c.fillStyle=M.near;c.fillRect(x,FLOOR-120,10,120);if(!LOWQ){c.globalAlpha=.5;c.drawImage(glow(cl),x-30,FLOOR-150,90,50);c.globalAlpha=1}
       c.strokeStyle=cl;c.lineWidth=2.5;c.strokeRect(x-18,FLOOR-140,46,20)}}
+  else if(id==='castle'){c.fillStyle=M.far;c.beginPath();c.moveTo(-10,FLOOR);for(let x=-10;x<=W+20;x+=10)c.lineTo(x,FLOOR-40-Math.sin((x+o1)*.02)*14-((x*7)%3)*3);c.lineTo(W+20,FLOOR);c.fill();
+    const P=260;for(let i=0,n=Math.ceil(W/P)+2;i<n;i++){const x=i*P-(o2%P)+30;c.fillStyle=M.near;c.fillRect(x,FLOOR-120,34,120);c.fillRect(x+34,FLOOR-80,70,80);c.fillRect(x+104,FLOOR-140,30,140);
+      for(const[tx,tw,th]of[[x,34,120],[x+104,30,140]]){c.beginPath();c.moveTo(tx-4,FLOOR-th);c.lineTo(tx+tw/2,FLOOR-th-34);c.lineTo(tx+tw+4,FLOOR-th);c.fill()}
+      for(let k=0;k<5;k++)c.fillRect(x+38+k*14,FLOOR-88,8,8);c.fillStyle='#ff3b4a';for(const[wx,wy]of[[x+13,FLOOR-96],[x+113,FLOOR-112],[x+60,FLOOR-56]]){c.fillRect(wx,wy,7,11)}
+      if(!LOWQ){c.globalAlpha=.35;c.drawImage(glow('#ff3b4a'),x+100,FLOOR-130,40,30);c.globalAlpha=1}}}
+  else if(id==='spirit'){c.fillStyle=M.far;for(let i=0,n=Math.ceil(W/70)+2;i<n;i++){const x=i*70-(o1%70),h=80+((i*31)%4)*20;c.fillRect(x+30,FLOOR-h,8,h);c.beginPath();c.ellipse(x+34,FLOOR-h,30,22,0,0,7);c.fill()}
+    const P=180;for(let i=0,n=Math.ceil(W/P)+2;i<n;i++){const x=i*P-(o2%P)+40;c.fillStyle=M.near;c.fillRect(x-6,FLOOR-130,12,130);c.beginPath();c.ellipse(x,FLOOR-140,46,34,0,0,7);c.fill();
+      for(let k=0;k<3;k++){const lx=x-30+k*30,ly=FLOOR-112+((k*17)%3)*10;if(!LOWQ){c.globalAlpha=.7;c.drawImage(glow('#9fffe0'),lx-12,ly-12,24,24);c.globalAlpha=1}c.fillStyle='#e6fff6';c.beginPath();c.arc(lx,ly,2.4,0,7);c.fill()}}}
+  else if(id==='sky'){c.strokeStyle='#ffffff';for(let i=0;i<4;i++){const x0=(i*97+40)%W,y0=30+i*28;c.globalAlpha=.55;c.lineWidth=2;c.beginPath();c.moveTo(x0,y0);c.lineTo(x0+14,y0+18);c.lineTo(x0+6,y0+30);c.lineTo(x0+22,y0+50);c.stroke();if(!LOWQ){c.globalAlpha=.3;c.drawImage(glow('#ffffff'),x0-10,y0,40,56)}}c.globalAlpha=1;
+    const P=200;for(let i=0,n=Math.ceil(W/P)+2;i<n;i++){const x=i*P-(o1%P)+50,y=FLOOR-110-(i%2)*36;c.fillStyle=M.near;c.beginPath();c.moveTo(x-46,y);c.lineTo(x+46,y);c.lineTo(x+16,y+34);c.lineTo(x-6,y+44);c.lineTo(x-24,y+26);c.closePath();c.fill();c.fillStyle='#bff5c8';c.fillRect(x-46,y-4,92,5)}
+    c.fillStyle=M.far;c.beginPath();c.moveTo(-10,FLOOR);for(let x=-10;x<=W+20;x+=12)c.lineTo(x,FLOOR-14-Math.sin((x+o2)*.03)*6);c.lineTo(W+20,FLOOR);c.fill()}
+  else if(id==='mirror'){const P=90;for(let i=0,n=Math.ceil(W/P)+2;i<n;i++){const x=i*P-(o1%P),h=60+((i*41)%5)*24;const g=c.createLinearGradient(x,FLOOR-h,x+30,FLOOR);g.addColorStop(0,'#bff8ff');g.addColorStop(1,M.far);c.fillStyle=g;c.globalAlpha=.55;c.beginPath();c.moveTo(x,FLOOR);c.lineTo(x+16,FLOOR-h);c.lineTo(x+34,FLOOR);c.fill()}c.globalAlpha=1;
+    const P2=240;for(let i=0,n=Math.ceil(W/P2)+2;i<n;i++){const x=i*P2-(o2%P2)+60;c.fillStyle=M.near;c.beginPath();c.moveTo(x-20,FLOOR);c.lineTo(x,FLOOR-150);c.lineTo(x+22,FLOOR);c.fill();c.strokeStyle='#7ef0ff';c.lineWidth=1.5;c.stroke();if(!LOWQ){c.globalAlpha=.4;c.drawImage(glow('#7ef0ff'),x-26,FLOOR-170,52,60);c.globalAlpha=1}}}
   c.drawImage(BG.ground,-10,FLOOR,W+20,H-FLOOR+10);c.strokeStyle=M.line;c.lineWidth=2;c.beginPath();c.moveTo(-10,FLOOR);c.lineTo(W+10,FLOOR);c.stroke();
   c.strokeStyle='#ffffff10';c.lineWidth=1;const o3=sc%70;for(let i=-2,n=Math.ceil(W/70)+3;i<n;i++){const x=i*70-o3;c.beginPath();c.moveTo(x,FLOOR);c.lineTo(W/2+(x-W/2)*2.6,H);c.stroke()}}
 function render(ts,dt){
