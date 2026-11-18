@@ -2432,7 +2432,7 @@ function nameAsk(edit){if(document.getElementById('nmAsk'))return;const o=docume
   document.body.appendChild(o);const inp=o.querySelector('#nmIn');setTimeout(()=>inp.focus(),80);
   const ok=()=>{const v=cleanName(inp.value);if(v.length<2){o.querySelector('#nmErr').textContent=LL('الاسم لازم يبقى حرفين على الأقل','At least 2 characters');return}S.name=v;save();sfx('up');o.remove();menuProf();if(mode==='prof')renderProf()};
   o.querySelector('#nmOk').onclick=ok;inp.addEventListener('keydown',e=>{if(e.key==='Enter')ok()})}
-function menuProf(){const n=$('mpName');if(n)n.textContent=myName();try{stillFig('mpFig',S.lv,1,null,S.char)}catch(e){}}
+function menuProf(){const n=$('mpName');if(n)n.textContent=myName();{const a=$('mStoryInfo');if(a)a.textContent=LL('100 مرحلة وبوص كل 10 مراحل','100 stages · a boss every 10');const b=$('mTourInfo');if(b)b.textContent=LL('مجموعات وأدوار إقصائية · اكسب الكاس','Groups and knockouts · win the cup')}try{stillFig('mpFig',S.lv,1,null,S.char)}catch(e){}}
 function renderProf(){const r=rankOf(S.rp||0),cups=S.cups||{},L=achList(),G=achS().g;let tot=0,got=0;for(const d of L){tot+=d[4].length;got+=G[d[0]]||0}
   const pins=(S.pins||[]).map(k=>L.find(d=>d[0]===k)).filter(Boolean);
   const tile=(ic,v,t)=>`<div class="pft"><i>${ic}</i><b>${v}</b><span>${t}</span></div>`;
@@ -3231,7 +3231,7 @@ function render(ts,dt){
 
 /* ---------- loop & input ---------- */
 let mode='home';
-function show(m){if(m!=='play')music(false);mode=m;if(m==='menu'){setTimeout(()=>{menuProf();if(!S.name)nameAsk()},350)}for(const id of['intro','menu','home','arena','chars','shop','play','pass','settings','codex','ach','tour','prof','story'])$(id).classList.toggle('on',id===m);$('coinBar').hidden=m==='play'||m==='intro'||m==='codex'||m==='settings';measure();UI.clear();
+function show(m){if(m!=='play')music(false);mode=m;if(m==='menu'){setTimeout(()=>{menuProf();if(!S.name)nameAsk()},350)}for(const id of['intro','menu','home','arena','chars','shop','play','pass','settings','codex','ach','tour','prof','story'])$(id).classList.toggle('on',id===m);$('coinBar').hidden=m==='play'||m==='intro'||m==='codex'||m==='settings'||m==='story'||m==='tour';measure();UI.clear();
   if(m==='home')renderHome();if(m==='arena')renderArena();if(m==='menu')renderMenu();if(m==='chars')renderChars();if(m==='shop')renderShop();if(m==='pass')renderPass();if(m==='settings')renderSettings();if(m==='codex')renderCodex()}
 /* fixed 120 Hz simulation (same game speed on every phone) + one render per screen refresh.
    if frames take too long the canvas resolution steps down until the game is smooth again */
