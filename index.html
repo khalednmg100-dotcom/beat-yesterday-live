@@ -237,7 +237,7 @@ button:focus-visible{outline:2px solid var(--bone);outline-offset:2px}
 
 #menu .mtop{gap:7px}.mshop{display:flex;align-items:center;gap:5px;height:32px;padding:0 10px 0 5px;border-radius:999px;border:1px solid #ffd23e66;background:linear-gradient(#2a2458,#1b1740);color:#ffe680;font:800 12px system-ui,sans-serif;cursor:pointer}.mshop .coin3d{width:22px;height:22px}
 .mlv{height:28px;display:flex;align-items:center;padding:0 10px;border-radius:999px;background:#0b0920cc;border:1px solid #ffffff22;color:#fff;font:800 12px system-ui,sans-serif;white-space:nowrap}
-.cbar.inm{position:static;inset:auto}#menu .mtop #mProf{order:-4}#menu .mtop #mCoinSlot{order:-3}#menu .mtop #mLv{order:-2}#menu .mtop #mShop{order:-1}#menu .mtop .ico.mi{order:1}.mtop>.mlv,.mtop>#mCoinSlot{flex:none}
+.cbar.inm{position:static;inset:auto}#menu .mtop .ico.mi{order:-5}#menu .mtop #mShop{order:1}#menu .mtop #mLv{order:2}#menu .mtop #mProf{order:3}#menu .mtop #mCoinSlot{display:none}#menu .mtop{right:calc(var(--cbw,170px) + 20px);top:calc(2px + env(safe-area-inset-top))}.mtop>.mlv,.mtop>#mCoinSlot{flex:none}
 .mprof{position:relative}.mprof .elb{display:none}.mprof.elite{border:1.5px solid #ffd23e;background:linear-gradient(120deg,#5a3a08,#2a1458 60%,#5a0a1e);box-shadow:0 0 14px #ffb23e66}
 .mprof.elite .elb{display:block;position:absolute;top:-8px;left:50%;transform:translateX(-50%);font:900 8px/1 system-ui,sans-serif;font-style:normal;letter-spacing:1px;color:#2a1a00;background:linear-gradient(#ffe680,#ffb23e);border-radius:6px;padding:2px 5px;box-shadow:0 0 8px #ffd23e}
 .mprof.elite img{box-shadow:0 0 0 2px #ffd23e,0 0 10px #ffd23e}
@@ -444,7 +444,7 @@ button:focus-visible{outline:2px solid var(--bone);outline-offset:2px}
 .card.rkf{border-width:2px}
 .board .row.rr{border-inline-start:3px solid var(--rr)}
 /* coin counter */
-.cbar{position:fixed;top:calc(4px + env(safe-area-inset-top));inset-inline-end:calc(64px + env(safe-area-inset-right));z-index:40;display:flex;align-items:center;gap:5px;height:28px;padding:0 3px 0 4px;
+.cbar{position:fixed;top:calc(4px + env(safe-area-inset-top));inset-inline-end:calc(12px + env(safe-area-inset-right));z-index:40;display:flex;align-items:center;gap:5px;height:28px;padding:0 3px 0 4px;
   border-radius:999px;background:linear-gradient(180deg,#2a2052,#16123a);border:1.5px solid #ffd23e88;box-shadow:0 0 14px #ffd23e33,inset 0 1px 0 #ffffff22}
 .cbar b{font-family:var(--display);font-weight:400;font-size:16px;color:#ffe680;min-width:34px;text-align:center;text-shadow:0 1px 0 #7a4a00,0 0 8px #ffd23e66}
 .cbar button{width:22px;height:22px;border-radius:50%;border:none;background:linear-gradient(180deg,#7dffa8,#2fb86a);color:#0b2a16;font-weight:800;font-size:18px;line-height:1;cursor:pointer;box-shadow:0 2px 0 #12603a}
@@ -2536,7 +2536,7 @@ function nameCardOffer(){if(document.getElementById('nmAsk'))return;const o=docu
     <button class="go" id="ncBuy">${LL('اشتري كارت','Buy a card')} · ${fmt(NAME_CARD)} <i class="coin"></i></button><button class="ico" id="ncX" style="width:auto;padding:0 14px;height:34px;border-radius:10px">${LL('إلغاء','Cancel')}</button></div>`;
   document.body.appendChild(o);o.querySelector('#ncX').onclick=()=>{sfx('click');o.remove()};o.querySelector('#ncBuy').onclick=()=>{if(buyNameCard()){o.remove();nameAsk(1)}}}
 function isElite(){try{return !!bpState().elite}catch(e){return false}}
-function menuProf(){const n=$('mpName');if(n)n.textContent=myName();{const pr=$('mProf');if(pr)pr.classList.toggle('elite',isElite());const lv=$('mLv');if(lv)lv.textContent=LL('مستوى ','Lv ')+total(S.lv);const sh=$('mShop');if(sh)sh.querySelector('b').textContent=LL('الشوب','Shop')}{const a=$('mStoryInfo');if(a)a.textContent=LL('100 مرحلة وبوص كل 10 مراحل','100 stages · a boss every 10');const b=$('mTourInfo');if(b)b.textContent=LL('مجموعات وأدوار إقصائية · اكسب الكاس','Groups and knockouts · win the cup')}{const im=$('mpAv');if(im)im.src=avSrc(myAv())}avCheck()}
+function menuProf(){try{const cb=$('coinBar');if(cb&&cb.offsetWidth)document.documentElement.style.setProperty('--cbw',cb.offsetWidth+'px')}catch(e){}const n=$('mpName');if(n)n.textContent=myName();{const pr=$('mProf');if(pr)pr.classList.toggle('elite',isElite());const lv=$('mLv');if(lv)lv.textContent=LL('مستوى ','Lv ')+total(S.lv);const sh=$('mShop');if(sh)sh.querySelector('b').textContent=LL('الشوب','Shop')}{const a=$('mStoryInfo');if(a)a.textContent=LL('100 مرحلة وبوص كل 10 مراحل','100 stages · a boss every 10');const b=$('mTourInfo');if(b)b.textContent=LL('مجموعات وأدوار إقصائية · اكسب الكاس','Groups and knockouts · win the cup')}{const im=$('mpAv');if(im)im.src=avSrc(myAv())}avCheck()}
 function renderProf(){const r=rankOf(S.rp||0),cups=S.cups||{},L=achList(),G=achS().g;let tot=0,got=0;for(const d of L){tot+=d[4].length;got+=G[d[0]]||0}
   const pins=(S.pins||[]).map(k=>L.find(d=>d[0]===k)).filter(Boolean);
   const tile=(ic,v,t)=>`<div class="pft"><img src="${ic}" alt=""><b>${v}</b><span>${t}</span></div>`;
@@ -3412,7 +3412,7 @@ function render(ts,dt){
 
 /* ---------- loop & input ---------- */
 let mode='home';
-function show(m){if(m!=='play'){music(false);try{hitCount(0)}catch(e){}}try{const cb=$('coinBar'),sl=$('mCoinSlot');if(m==='menu'&&sl){if(cb.parentNode!==sl)sl.appendChild(cb);cb.classList.add('inm')}else if(cb.parentNode!==document.body){document.body.appendChild(cb);cb.classList.remove('inm')}}catch(e){}mode=m;if(m==='menu'){setTimeout(()=>{menuProf();if(!S.name)nameAsk()},350)}for(const id of['intro','menu','home','arena','chars','shop','play','pass','settings','codex','ach','tour','prof','story'])$(id).classList.toggle('on',id===m);$('coinBar').hidden=m==='play'||m==='intro'||m==='codex'||m==='settings'||m==='story'||m==='tour';measure();UI.clear();
+function show(m){if(m!=='play'){music(false);try{hitCount(0)}catch(e){}}try{const cb=$('coinBar'),sl=$('mCoinSlot');if(false&&m==='menu'&&sl){if(cb.parentNode!==sl)sl.appendChild(cb);cb.classList.add('inm')}else if(cb.parentNode!==document.body){document.body.appendChild(cb);cb.classList.remove('inm')}}catch(e){}mode=m;if(m==='menu'){setTimeout(()=>{menuProf();if(!S.name)nameAsk()},350)}for(const id of['intro','menu','home','arena','chars','shop','play','pass','settings','codex','ach','tour','prof','story'])$(id).classList.toggle('on',id===m);$('coinBar').hidden=m==='play'||m==='intro'||m==='codex'||m==='settings'||m==='story'||m==='tour';measure();UI.clear();
   if(m==='home')renderHome();if(m==='arena')renderArena();if(m==='menu')renderMenu();if(m==='chars')renderChars();if(m==='shop')renderShop();if(m==='pass')renderPass();if(m==='settings')renderSettings();if(m==='codex')renderCodex()}
 /* fixed 120 Hz simulation (same game speed on every phone) + one render per screen refresh.
    if frames take too long the canvas resolution steps down until the game is smooth again */
