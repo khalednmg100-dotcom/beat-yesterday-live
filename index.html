@@ -255,6 +255,22 @@ button:focus-visible{outline:2px solid var(--bone);outline-offset:2px}
 .sxt{flex:1;min-width:0;display:flex;flex-direction:column;gap:1px;position:relative}.sxt b{font-family:var(--display);font-weight:400;font-size:17px;color:#fff;line-height:1.1}.sxt small{font-size:10.5px;color:#d8d2f5;opacity:.85;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
 .sxinfo{position:relative;width:24px;height:24px;flex:none;border-radius:50%;border:1px solid #ffffff44;background:#0b092099;color:#fff;font:800 12px system-ui,sans-serif;cursor:pointer}
 .sxb{position:relative;flex:none;display:flex;align-items:center;gap:4px;height:34px;padding:0 12px;border:0;border-radius:11px;background:linear-gradient(#ffe27a,#ffb23e);color:#2a1a00;font:900 14px system-ui,sans-serif;cursor:pointer;box-shadow:0 3px 0 #a8620e,0 0 12px #ffb23e55}.sxc #sRoll,.sxc #sName{width:auto!important;min-width:0;margin:0!important;font-size:14px!important;padding:0 12px!important;height:34px!important;flex:none!important}.sxt b{white-space:nowrap;overflow:hidden;text-overflow:ellipsis}.sxb:active{transform:translateY(2px);box-shadow:0 1px 0 #a8620e}
+
+#home .top .chip{display:none}
+.obtns{display:flex;gap:8px;align-items:stretch}.obtns #oBtn{flex:1}
+#oAd{flex:none;display:flex;align-items:center;gap:6px;border:0;border-radius:12px;padding:0 14px;background:linear-gradient(#7dffa8,#2fbf6a);color:#05210f;font:900 16px system-ui,sans-serif;box-shadow:0 3px 0 #157a3d,0 0 14px #7dffa866;cursor:pointer}
+#oAd i{font-style:normal;width:22px;height:22px;border-radius:50%;background:#05210f;color:#7dffa8;display:grid;place-items:center;font-size:10px}
+@media (max-height:440px){#over .card{padding:8px 12px;gap:5px;max-width:620px}.oban{font-size:28px!important;letter-spacing:2px}.card h2{font-size:17px!important}.card p{font-size:11px}
+  .earn .ech{transform:scale(.85)}.ostats{gap:4px}.st{padding:2px 5px;font-size:10px;border-radius:7px}.st i{font-size:12px}.st b{font-size:12px}.obtns #oBtn{font-size:17px;padding:6px}}
+#menu .mprof{height:40px;padding:0 14px 0 3px;gap:7px}#menu .mprof img{width:34px;height:34px}#menu .mprof b{font-size:14px}
+@media (min-width:600px) and (max-height:520px){.pfbody{display:grid;grid-template-columns:230px 1fr;grid-template-rows:auto auto 1fr;gap:8px;align-content:start}
+  .pfcard{grid-row:1/4;flex-direction:column;justify-content:center;text-align:center;padding:12px}.pfcard .pfm{align-items:center}.pfavb img{width:76px!important;height:76px!important}.pfn b{font-size:20px}
+  .pftiles{grid-template-columns:repeat(3,1fr)!important}.pfh{margin:0}.pfshow{gap:6px}.pfs{padding:5px}.medal.big{width:40px!important;height:40px!important}}
+.agrid{grid-template-columns:repeat(auto-fill,minmax(205px,1fr))!important;gap:6px!important}
+.achc{gap:7px;padding:6px 7px 6px 8px;border-radius:11px}.achc .medal{width:36px;height:36px}.achc .medal i{font-size:17px}.achc .am b{font-size:12px}.ag{font-size:10px}.achc .ab{height:10px}.achc .ab em{font-size:8px}
+.atiers i{width:9px;height:3px}.aclm{padding:4px 7px;font-size:11px;border-radius:8px}.apin{font-size:11px;padding:2px 5px}
+.achhead{padding:7px 10px;gap:10px}.aring{width:54px;height:54px}.ahm b{font-size:22px}.atab{padding:4px 10px;font-size:11px}
+.pfs{cursor:pointer;font:inherit}.avg.pk .avi .medal{margin:0 auto;width:52px!important;height:52px!important}.avg.pk .avi .medal img{width:90%!important;height:90%!important}.avg.pk .avi.lk .medal{filter:grayscale(.7) brightness(.6)}.avg.pk .avi.lk img{filter:none}.pft{padding:4px 3px!important}@media (max-height:520px){.achhead{padding:5px 10px!important}.achhead .aring{width:42px!important;height:42px!important}.ahm b{font-size:18px!important}.ahint{display:none}.atabs{margin:0}}.pft img{width:22px!important;height:22px!important}.pft b{font-size:13px!important}
 #pAll{background:linear-gradient(#7dffa8,#2fbf6a);color:#05210f}
 .side .bar{height:13px;border-radius:7px;background:#00000066;border:1.5px solid #ffffff2e}
 .side .bar i{width:100%;transform-origin:left;will-change:transform} .side.en .bar i{transform-origin:right}
@@ -785,8 +801,7 @@ button:focus-visible{outline:2px solid var(--bone);outline-offset:2px}
     </div>
     <div id="over"><div class="card" id="card">
       <div class="oban" id="oBan"></div><h2 id="oTitle"></h2><p id="oText"></p><div class="gain" id="oGain"></div><div class="ostats" id="oStats"></div>
-      <button class="alt" id="oAd" hidden>شوف إعلان وضاعف النقط</button>
-      <button class="go" id="oBtn">كمّل</button>
+      <div class="obtns"><button class="alt" id="oAd" hidden><i>▶</i><span>x2</span></button><button class="go" id="oBtn">كمّل</button></div>
     </div></div>
   </section>
 </div>
@@ -2525,14 +2540,18 @@ function menuProf(){const n=$('mpName');if(n)n.textContent=myName();{const pr=$(
 function renderProf(){const r=rankOf(S.rp||0),cups=S.cups||{},L=achList(),G=achS().g;let tot=0,got=0;for(const d of L){tot+=d[4].length;got+=G[d[0]]||0}
   const pins=(S.pins||[]).map(k=>L.find(d=>d[0]===k)).filter(Boolean);
   const tile=(ic,v,t)=>`<div class="pft"><img src="${ic}" alt=""><b>${v}</b><span>${t}</span></div>`;
-  const slot=d=>d?`<div class="pfs">${medal(d,G[d[0]]||0,1)}<b>${LL(d[1],d[2])}</b><span>${LL('مستوى ','Tier ')+ROM[(G[d[0]]||1)-1]}</span></div>`:`<button class="pfs empty" data-goach="1"><div class="medal off big"><i>+</i></div><b>${LL('اختار إنجاز','Pick one')}</b><span>📌</span></button>`;
+  const slot=(d,i)=>d?`<button class="pfs" data-slot="${i}">${medal(d,G[d[0]]||0,1)}<b>${LL(d[1],d[2])}</b><span>${LL('مستوى ','Tier ')+ROM[(G[d[0]]||1)-1]}</span></button>`:`<button class="pfs empty" data-slot="${i}"><div class="medal off big"><i>+</i></div><b>${LL('اختار إنجاز','Pick one')}</b><span>📌</span></button>`;
   $('pfBody').innerHTML=`<div class="pfcard${isElite()?' elite':''}" style="--rc:${r.col}">${isElite()?`<div class="elban">👑 ELITE PASS</div>`:''}<button class="pfavb" id="pfAvB"><img src="${avSrc(myAv())}" alt=""><i>✏️</i></button><div class="pfm"><div class="pfn"><b>${myName()}</b><button class="ico" id="pfEdit" aria-label="edit">✏️</button></div>
       <span class="pff">${tr(CHARS[S.char||'fighter'].name)} · ${formName(S.lv)}</span><span class="pfr"><img src="${rankPic(r)}" alt="">${r.full}</span></div></div>
     <div class="pftiles">${tile('img/ach/cups.webp',cups.g||0,LL('كاس دهبي','Gold cups'))}${tile('img/ach/lower.webp',cups.s||0,LL('كاس فضي','Silver cups'))}${tile('img/ach/win.webp',fmt(achVal('win')),LL('انتصارات','Victories'))}${tile('img/ach/day.webp',S.best||S.day||1,LL('أبعد يوم','Best day'))}${tile('img/ach/lvl.webp',total(S.lv),LL('المستوى','Level'))}${tile('https://khalednmg100-dotcom.github.io/beat-yesterday-live/img/ui/ach.webp',got+'/'+tot,LL('إنجازات','Achievements'))}</div>
-    <h4 class="pfh">${LL('الإنجازات المعروضة','Showcase')}</h4><div class="pfshow">${slot(pins[0])}${slot(pins[1])}${slot(pins[2])}</div>`;
+    <h4 class="pfh">${LL('الإنجازات المعروضة','Showcase')}</h4><div class="pfshow">${slot(pins[0],0)}${slot(pins[1],1)}${slot(pins[2],2)}</div>`;
   $('pfAvB').onclick=()=>{sfx('click');avPick()};
   $('pfEdit').onclick=()=>{sfx('click');if(S.name&&!(S.nameCards>0))nameCardOffer();else nameAsk(1)};
-  $('pfBody').querySelectorAll('[data-goach]').forEach(b=>b.onclick=()=>{sfx('click');ACH_TAB='done';show('ach');renderAch()})}
+  $('pfBody').querySelectorAll('[data-slot]').forEach(b=>b.onclick=()=>{sfx('click');pinPick(+b.dataset.slot)})}
+function pinPick(i){if(document.getElementById('avPick'))return;const L=achList(),G=achS().g,own=L.filter(d=>(G[d[0]]||0)>0),pins=(S.pins||[]).slice();const o=document.createElement('div');o.id='avPick';
+  o.innerHTML=`<div class="avc"><div class="avh"><b>${LL('اختار إنجاز تعرضه','Pick an achievement to show')}</b><button class="ico" id="avX">✕</button></div>`+(own.length?`<div class="avg pk">${own.map(d=>`<button class="avi${pins[i]===d[0]?' on':''}${pins.includes(d[0])&&pins[i]!==d[0]?' lk':''}" data-pk="${d[0]}">${medal(d,G[d[0]],1)}<b>${LL(d[1],d[2])}</b><small>${LL('مستوى ','Tier ')+ROM[G[d[0]]-1]}</small></button>`).join('')}</div>`:`<p style="color:var(--mute);text-align:center">${LL('لسه ماحققتش إنجازات · العب وارجع','No achievements yet · play and come back')}</p>`)+(pins[i]?`<button class="alt" id="pkClr">${LL('فضّي الخانة دي','Clear this slot')}</button>`:'')+`</div>`;
+  document.body.appendChild(o);const close=()=>o.remove();o.querySelector('#avX').onclick=()=>{sfx('click');close()};const clr=o.querySelector('#pkClr');if(clr)clr.onclick=()=>{S.pins=(S.pins||[]).filter((_,j)=>j!==i);save();sfx('click');close();renderProf()};
+  o.addEventListener('click',e=>{if(e.target===o){close();return}const b=e.target.closest('[data-pk]');if(!b)return;const k=b.dataset.pk,P=(S.pins||[]).slice();const at=P.indexOf(k);if(at>=0)P.splice(at,1);P[Math.min(i,P.length)]=k;S.pins=P.filter(Boolean).slice(0,3);save();sfx('up');close();renderProf()})}
 
 /* ---------- profile avatars ---------- */
 const AVS=[['rookie','المبتدئ المجهول','Mystery Rookie',()=>true,['متاحة من الأول','Available from the start']]];
