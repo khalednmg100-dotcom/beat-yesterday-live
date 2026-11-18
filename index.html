@@ -1819,6 +1819,7 @@ const KICK_IC={};function kickIcon(ch){const ks=KICK[ch]||'leap';if(['blast','sw
   else{c.beginPath();c.moveTo(34,40);c.lineTo(50,64);c.lineTo(78,64);c.lineTo(94,40);c.lineTo(92,78);c.quadraticCurveTo(64,108,36,78);c.closePath();c.fill();c.fillStyle='#0b0920';c.shadowBlur=0;c.beginPath();c.arc(52,74,5,0,7);c.arc(76,74,5,0,7);c.fill()}
   return KICK_IC[ks]=e.toDataURL()}
 function kickIconSet(){const b=$('bKick');if(!b||!R||!R.P)return;const im=b.querySelector('.ic');if(im&&!im._fb){im._fb=1;im.addEventListener('error',()=>{if(!/kick\.webp$/.test(im.src))im.src='img/ic/kick.webp'})}const src=kickIcon(R.P.char);if(im&&im.getAttribute('src')!==src)im.src=src}
+function gpow(A){return A&&A.gpowT>0?(A.gpowX||1.35):1}
 function hpNum(id,f){const e=$(id);if(!e||!f)return;const v=fmt(Math.max(0,Math.ceil(f.hp)))+' / '+fmt(Math.round(f.max));if(e._v!==v){e._v=v;e.textContent=v}}
 function hitCount(n){const e=$('hitc');if(!e)return;if(n<2){e.classList.remove('on');return}e.innerHTML='<span class="bst"><b>'+n+'</b></span><i>Hits!</i>';e.classList.remove('pop');void e.offsetWidth;e.classList.add('on','pop')}
 function stHit(A,D,v){if(R&&D&&D.hp>0){const bg=v>(A.dmg||1)*1.8;D.hurtT=bg?.36:.24;D.hurtP=bg?1:.65;D.kb=Math.max(D.kb||0,bg?18:8);if(!LOWQ){burst(xOf(D)-(A.p?1:-1)*4,FLOOR-96-(D.airY||0),['#ffffff','#cfe8ff','#9fd4e6'],bg?9:4,.42);if(bg&&!(D.airY>0))R.fx.push({k:'dust',x:xOf(D),t:0,d:.5,sg:A.p?1:-1})}}
@@ -1956,7 +1957,7 @@ function resolve(A,D){
     }else{D.st='stun';D.t=D.p||D.pvp?.45:(k==='kick'?.9:.7);say(dx,'الصد اتكسر','#ff5a6e');posAdd(D,30);sfx('brk');burst(dx,hy,['#9fd4e6','#ffffff'],14,.6)}
   }
   if(!D.p&&D.st==='stun')v*=D.pvp?1.2:1.5;
-  v*=taken(D);
+  v*=taken(D)*gpow(A)*(D.comp==='guard'?.88:1);
   if(k==='special'&&A.char==='ninja'&&R.ult&&R.ult.style==='blades'){ninjaUlt(A,D,v);return}
   if(k==='special'&&A.char==='vampire'&&R.ult&&R.ult.style==='blood'){vampUlt(A,D,v);return}
   if(k==='special'&&A.char==='fallen'&&R.ult&&R.ult.style==='fallen'){fallenUlt(A,D,v);return}
@@ -2206,7 +2207,7 @@ function skillHit(A,m,o){const D=otherOf(A),dx=xOf(D);if(D.dead||D.hp<=0)return;
     if(D.iceFreeze&&A.hp>0&&!A.frozen){A.frozen=.5;A.st='stun';A.t=.5;A.combo=0}
     if(back>0){A.hp-=back;A.flash=.18;R.fx.push({k:'txt',x:xOf(A),y:FLOOR-150,t:0,d:.9,txt:'ارتداد '+fmt(back),col:'#ffd23e'})}return}
   if(D.guardUp&&!o.light){guardBlock(D,dx);return}
-  v*=taken(D)*(A.boost||1)*(A.dem>0?(A.giant>0?1.6:1.35):1)*(A.fox>0?(A.giant>0?1.6:1.4):1)*(A.silent>0?1.35:1);if(A.ctr>0){v*=1.6;A.ctr=0;ctrFx(A,D)}
+  v*=taken(D)*(A.boost||1)*gpow(A)*(D.comp==='guard'?.88:1)*(A.dem>0?(A.giant>0?1.6:1.35):1)*(A.fox>0?(A.giant>0?1.6:1.4):1)*(A.silent>0?1.35:1);if(A.ctr>0){v*=1.6;A.ctr=0;ctrFx(A,D)}
   D.hp-=v;D.flash=.2;stHit(A,D,v);if(!o.light&&R.fx){const cc=o.col||'#ffd23e',y=FLOOR-72-(D.airY||0);R.hs=Math.max(R.hs||0,.055);R.zoom=Math.max(R.zoom,.07);R.shake=Math.max(R.shake,.28);R.fx.push({k:'speedl',x:dx,y,t:0,d:.3,col:cc},{k:'impact',x:dx,y,t:0,d:.22,col:cc,big:1,rot:Math.random()},{k:'flash',t:0,d:.07,col:cc});buzz(25)}D.kb=Math.max(D.kb,o.kb||12);posAdd(D,o.light?3:8);
   if(A.elem&&A.markedCast!==A.castId){A.markedCast=A.castId;applyEl(A,D,A.elem)}
   if(o.stun&&D.boss)o.stun*=.5; // yesterday's you shrugs stuns off faster
@@ -2293,7 +2294,7 @@ function step(dt){
   if(R.hs>0){R.hs-=dt;return}
   mechStep(P,dt);if(E)mechStep(E,dt);
   P.blockCd=(P.blockCd||0)-dt;if(P.st==='block'&&P.blockT>BLOCK_HOLD){P.st='idle';P.blockCd=1.2;R.held=false;say(PX,'الصد تعب','#9fd4e6')} // hit-stop: freeze a few frames so hits feel heavy
-  for(const f of[P,E]){f.hurtT=Math.max(0,(f.hurtT||0)-dt);f.throwT=Math.max(0,(f.throwT||0)-dt);f.grabT=Math.max(0,(f.grabT||0)-dt);f.barrT=Math.max(0,(f.barrT||0)-dt);if(f.mech&&f.hp>0)bossMech(f,dt);f.off*=Math.exp(-dt*7);f.kb*=Math.exp(-dt*9);f.flash=Math.max(0,f.flash-dt);f.dodgeCd-=dt;f.kickCd-=dt;f.blockT+=dt;f.weakT-=dt;f.frozen=Math.max(0,f.frozen-dt)}
+  for(const f of[P,E]){f.hurtT=Math.max(0,(f.hurtT||0)-dt);if(f.gpowT>0){f.gpowT-=dt;if(f.gpowT<=0)f.gpowX=0}f.throwT=Math.max(0,(f.throwT||0)-dt);f.grabT=Math.max(0,(f.grabT||0)-dt);f.barrT=Math.max(0,(f.barrT||0)-dt);if(f.mech&&f.hp>0)bossMech(f,dt);f.off*=Math.exp(-dt*7);f.kb*=Math.exp(-dt*9);f.flash=Math.max(0,f.flash-dt);f.dodgeCd-=dt;f.kickCd-=dt;f.blockT+=dt;f.weakT-=dt;f.frozen=Math.max(0,f.frozen-dt)}
   R.shake=Math.max(0,R.shake-dt);
   for(const f of R.fx)f.t+=dt;R.fx=R.fx.filter(f=>f.t<f.d);
   for(const p of R.pt){p.l-=dt;p.vy+=620*dt;p.x+=p.vx*dt;p.y+=p.vy*dt;p.rot+=dt*8;if(p.y>FLOOR){p.y=FLOOR;p.vy*=-.4;p.vx*=.6}}
@@ -2934,7 +2935,7 @@ const COMPS={
   spirit:{name:'روح النور',desc:'بتعالجك شوية كل ثانيتين',fuse:'القاضية بتعالجك',suf:'النور',col:'#7dffa8',price:1500},
   drake:{name:'تنين صغير',desc:'بينفخ كورة نار على الخصم كل 4 ثواني',fuse:'القاضية بتحرق الخصم',suf:'التنين',col:'#ff8a2a',price:2500},
   owl:{name:'بومة الحكمة',desc:'طاقة القاضية أسرع 30% ونقط تطور أكتر 25%',fuse:'القاضية بترجّع مهاراتك وتضعف الخصم',suf:'اللعنة',col:'#c77dff',price:2000},
-  guard:{name:'الحارس الصغير',desc:'بيصد عنك ضربة كاملة كل 9 ثواني',fuse:'القاضية بتديك درع عاكس',suf:'الحصن',col:'#7ef0ff',price:3000},
+  guard:{name:'الحارس الصغير',desc:'بيصد عنك ضربة كاملة كل 6 ثواني ويشحنك +35% ضرر · ضرر أقل عليك 12%',descEn:'Blocks a full hit every 6 s and charges you +35% damage · you take 12% less damage',fuse:'القاضية بتديك درع عاكس',suf:'الحصن',col:'#7ef0ff',price:3000},
   imp:{name:'شيطان الهاوية',desc:'بيولّع الخصم كل 3 ثواني · مع الملاك الساقط التحوّل أسرع',descEn:'Burns the enemy every 3 s · with the Fallen Angel he transforms faster',fuse:'القاضية بتدمجكم في شيطان عملاق',suf:'الهاوية',col:'#ff3b1f',price:0,bp:1},
   azfox:{name:'روح الثعلب الأزرق',desc:'كل 5 ثواني بيقلل وقت مهاراتك ثانية · مع كيتسو بيزوّد ذيل',descEn:'Every 5 s cuts your skill cooldowns by 1 s · with Kitsu it adds a tail',fuse:'القاضية بتحوّلك لروح الثعلب الكاملة',suf:'الذيول',col:'#3aa0ff',price:4000},
   fox:{name:'ثعلب البرق',desc:'مهاراتك بترجع أسرع 20% وضربات حرجة أكتر',fuse:'القاضية بتنزل 4 صواعق زيادة',suf:'البرق',col:'#ffd23e',price:3500}
@@ -2989,7 +2990,7 @@ function compStep(f,dt){const id=f.comp;if(!id||f.dead||f.hp<=0)return;const D=o
   if(id==='spirit'){if(f.compT>=2){f.compT=0;if(f.hp<f.max){const h=f.max*(pv?.004:.015);f.hp=Math.min(f.max,f.hp+h);R.fx.push({k:'txt',x:xOf(f),y:FLOOR-178,t:0,d:.7,txt:'+'+fmt(h),col:'#7dffa8'})}}}
   else if(id==='drake'){if(f.compT>=4&&D&&D.hp>0&&!D.dead){f.compT=0;const sg=f.p?1:-1;R.fx.push({k:'proj',shape:'fire',x0:xOf(f)-sg*10,y0:headY(f)-24,x1:xOf(D),y1:FLOOR-64,t:0,d:.28,col:'#ff8a2a',arc:8,sz:.55});
       R.tasks.push({t:.28,fn:()=>{dotHit(f,1.1,'#ff8a2a');sfx('fireHit')}})}}
-  else if(id==='guard'){if(!f.guardUp&&f.compT>=9){f.guardUp=1;if(f.p)sfx('ready')}}
+  else if(id==='guard'){if(!f.guardUp&&f.compT>=6){f.guardUp=1;if(f.p)sfx('ready')}}
   else if(id==='azfox'){if(f.compT>=5){f.compT=0;for(const k of KEYS)f.cd[k]=Math.max(0,f.cd[k]-1);if(f.char==='kitsu')kitsuTails(f,1);R.fx.push({k:'ring',x:xOf(f),y:FLOOR-150,t:0,d:.3,col:'#3aa0ff',r:30})}}
   else if(id==='imp'){if(f.compT>=3&&D&&D.hp>0&&!D.dead){f.compT=0;dotHit(f,.9,'#ff3b1f');R.fx.push({k:'ring',x:xOf(D),y:FLOOR-62,t:0,d:.3,col:'#ff3b1f',r:44});}}}
 /* every companion has its own skill (cooldown) and its own finisher (fills in ~40 s) */
@@ -3002,7 +3003,7 @@ function compSkill(f){const id=f.comp;if(!id||!R||R.phase!=='fight'||f.dead||f.h
       R.tasks.push({t:dl+.26,fn:()=>{skillHit(f,.8,{col,kb:6,snd:'fireHit',light:1});dotHit(f,.15,col)}})}}
   else if(id==='owl'){for(let i=0;i<6;i++){const dl=i*.06;R.fx.push({k:'proj',shape:'feather',x0:o[0],y0:o[1],x1:dx,y1:FLOOR-80+(i%3-1)*16,t:-dl,d:.2,col});
       R.tasks.push({t:dl+.2,fn:()=>{skillHit(f,.55,{col,kb:5,snd:'hit',light:1});if(D.shieldT<=0)D.weakT=5}})}}
-  else if(id==='guard'){f.shieldT=f.shieldMax=3;f.shieldKind='steel';f.reflect=.3;f.iceFreeze=0;R.fx.push({k:'hex',a:f,t:0,d:.9,col,r:62});sfx('shield')}
+  else if(id==='guard'){f.shieldT=f.shieldMax=3.5;f.shieldKind='steel';f.reflect=.6;f.gpowT=Math.max(f.gpowT||0,3.5);f.gpowX=1.3;f.iceFreeze=0;R.fx.push({k:'hex',a:f,t:0,d:.9,col,r:62});sfx('shield')}
   else if(id==='azfox'){for(let i=0;i<3;i++)R.fx.push({k:'chain',x0:o[0],y0:o[1],a:f,t:0,d:1.5,i,col});sfx('magicCast');
     R.tasks.push({t:.18,fn:()=>{const D2=otherOf(f);skillHit(f,.7,{col,kb:2,snd:'hit'});if(D2.shieldT>0||D2.hp<=0||evading(D2))return;const st=freezeT(D2,1.4);D2.st='stun';D2.t=Math.max(D2.t,st);D2.combo=0;D2.open=false}})}
   else if(id==='imp'){R.fx.push({k:'erupt',x:dx,t:0,d:1,col});for(let i=0;i<3;i++){const dl=i*.12;
@@ -3015,7 +3016,7 @@ function compUlt(f){const id=f.comp;if(!id||!R||R.phase!=='fight'||f.dead||f.hp<
   else if(id==='drake'){for(let i=0;i<8;i++){const off=(i%4-1.5)*22;R.fx.push({k:'meteor',x:dx+off,t:-i*.09,d:.32});R.tasks.push({t:i*.09+.32,fn:()=>{R.fx.push({k:'ring',x:dx+off,y:FLOOR-30,t:0,d:.3,col,r:60});skillHit(f,1.1,{col,kb:10,snd:'fireHit',light:i<7?1:0});dotHit(f,.2,col)}})}}
   else if(id==='owl'){R.fx.push({k:'moon',x:dx,t:0,d:1.3,col});R.tasks.push({t:.3,fn:()=>{R.fx.push({k:'pillar',x:dx,t:0,d:.6,col});skillHit(f,3,{col,kb:20,snd:'arcane'});
       if(D.shieldT<=0&&D.hp>0){const fz=freezeT(D,2);D.frozen=fz;D.st='stun';D.t=fz;D.combo=0;D.weakT=6;sfx('freeze')}}})}
-  else if(id==='guard'){f.shieldT=f.shieldMax=5;f.shieldKind='steel';f.reflect=1.2;f.iceFreeze=0;const h=f.max*(pv?.05:.1);f.hp=Math.min(f.max,f.hp+h);R.fx.push({k:'hex',a:f,t:0,d:1.6,col,r:84,big:1});sfx('shield')}
+  else if(id==='guard'){f.shieldT=f.shieldMax=6;f.shieldKind='steel';f.reflect=1.5;f.gpowT=Math.max(f.gpowT||0,6);f.gpowX=1.5;f.iceFreeze=0;const h=f.max*(pv?.05:.1);f.hp=Math.min(f.max,f.hp+h);R.fx.push({k:'hex',a:f,t:0,d:1.6,col,r:84,big:1});sfx('shield')}
   else if(id==='azfox'){const h=f.max*(pv?.08:.15);f.hp=Math.min(f.max,f.hp+h);for(const k of KEYS)f.cd[k]=0;if(f.p)R.energy=Math.min(100,R.energy+50);else f.energy=Math.min(100,(f.energy||0)+50);
     R.fx.push({k:'pillar',x:ax,t:0,d:.8,col},{k:'ring',x:ax,y:FLOOR-62,t:0,d:.6,col,r:140},{k:'txt',x:ax,y:FLOOR-178,t:0,d:1.1,txt:'+'+fmt(h),col:'#7dffa8'});burst(ax,FLOOR-70,[col,'#ffffff'],24,.8);sfx('heal');if(f.char==='kitsu')foxMode(f,8)}
   else if(id==='imp'){R.fx.push({k:'hand',x:dx,t:0,d:1.1,col});R.tasks.push({t:.3,fn:()=>{quakeFx(dx,{col});R.fx.push({k:'erupt',x:dx,t:0,d:.9,col,big:1});burst(dx,FLOOR-40,[col,'#1a0a10','#ffd23e'],30,1);
@@ -3025,7 +3026,7 @@ function compUlt(f){const id=f.comp;if(!id||!R||R.phase!=='fight'||f.dead||f.hp<
 function setupComp(){const P=R&&R.P,id=P&&P.comp,show=!!id;for(const b of[$('bCs'),$('bCu')])b.hidden=!show;if(!show)return;const col=COMPS[id].col;
   $('bCs').style.setProperty('--col',col);$('bCu').style.setProperty('--col',col);$('bCs').querySelector('.ic').src='img/ic/comp_'+id+'_sk.webp';$('bCu').querySelector('.ic').src='img/ic/comp_'+id+'_ult.webp'
   $('bCs').setAttribute('aria-label',COMP_SK[id].n);$('bCu').setAttribute('aria-label',COMP_SK[id].u)}
-function guardBlock(D,dx){D.guardUp=0;D.compT=0;say(dx,'الحارس صد!','#7ef0ff');sfx('shieldHit');R.fx.push({k:'ring',x:dx,y:FLOOR-62,t:0,d:.35,col:'#7ef0ff',r:80})}
+function guardBlock(D,dx){D.guardUp=0;D.compT=0;D.gpowT=4;R.fx.push({k:'name',txt:LL('الحارس شحنك! +35%','Guardian charge! +35%'),col:'#7ef0ff',t:0,d:.9});say(dx,'الحارس صد!','#7ef0ff');sfx('shieldHit');R.fx.push({k:'ring',x:dx,y:FLOOR-62,t:0,d:.35,col:'#7ef0ff',r:80})}
 /* the fused finisher: the companion adds its own effect on top of the character's finisher */
 function ultFuse(A,U){const id=A.comp,D=otherOf(A),ax=xOf(A),dx=xOf(D),col=COMPS[id].col,pv=R.mode==='pvp';
   if(id==='spirit'){const h=A.max*(pv?.08:.18);A.hp=Math.min(A.max,A.hp+h);R.fx.push({k:'pillar',x:ax,t:0,d:.6,col},{k:'txt',x:ax,y:FLOOR-178,t:0,d:1,txt:'+'+fmt(h),col:'#7dffa8'});sfx('heal')}
@@ -3315,6 +3316,7 @@ const h=drawFig(c,x,FLOOR-lift,sg,f.look,f.ps,t,f.giant>0?2:1.6);c.globalAlpha=1
     c.globalAlpha=.9*a;c.strokeStyle='#e9fbff';c.lineWidth=2;rr(c,x-34,FLOOR-lift-150*f.look.sc,68,150*f.look.sc,18);c.stroke();
     c.fillStyle='#ffffff';for(let i=0;i<5;i++){const yy=FLOOR-20-i*26,xx=x+((i*17)%30)-15;c.beginPath();c.moveTo(xx,yy-7);c.lineTo(xx+4,yy);c.lineTo(xx,yy+7);c.lineTo(xx-4,yy);c.fill()}c.restore()}
   if(f.weakT>0){c.strokeStyle='#c77dff';c.lineWidth=2;c.globalAlpha=.7;for(let i=0;i<3;i++){const an=t*3+i*2.1;c.beginPath();c.arc(x+Math.cos(an)*30,cy+Math.sin(an*1.3)*40,5,0,7);c.stroke()}c.globalAlpha=1}
+  if(f.gpowT>0&&!LOWQ){c.save();c.globalCompositeOperation='lighter';c.globalAlpha=.35+.15*Math.sin(t*10);c.drawImage(glow('#7ef0ff'),x-46,cy-70,92,120);c.restore()}
   if(f.shieldT>0)drawShield(c,f,x,cy,t);
   if(f.st==='stun'&&!f.frozen){c.fillStyle='#ffd23e';for(let i=0;i<3;i++){const an=t*6+i*2.1;c.beginPath();c.arc(x+Math.cos(an)*20,FLOOR-150*f.look.sc+Math.sin(an)*5,3,0,7);c.fill()}}
   if(f.char==='ryu'&&f.st==='wind'&&(f.kind==='special'||f.kind==='skill')){const u=1-f.t/f.w,col=f.kind==='skill'?SKOF(f.char)[f.sk].col:'#c9a0ff';c.save();c.lineCap='round';for(let i=0;i<3;i++){const a=t*14+i*2.1;c.globalAlpha=.5+.4*u;c.strokeStyle=i%2?'#ffffff':col;c.lineWidth=2.5;c.beginPath();c.ellipse(x+sg*10,FLOOR-lift-10-i*7,18+u*16,5+i*2,0,a,a+3.4);c.stroke()}c.restore()}
