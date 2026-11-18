@@ -678,7 +678,7 @@ button:focus-visible{outline:2px solid var(--bone);outline-offset:2px}
   <section id="settings" class="screen">
     <div class="atop"><button class="ico" id="stBack" aria-label="رجوع"><svg viewBox="0 0 24 24"><path d="M9 6l6 6-6 6"/></svg></button><b>الإعدادات</b><span></span></div>
     <div class="sets">
-      <button class="set" id="qBtn"></button><button class="set" id="sndBtn"></button>
+      <button class="set" id="qBtn"></button><button class="set" id="sndBtn"></button><button class="set" id="musBtn"></button>
       <button class="set" id="vibBtn"></button><button class="set" id="tipBtn"></button>
       <button class="set" id="fpsBtn"></button><button class="set" id="langBtn"></button>
       <button class="set wide" id="introBtn">المقدمة</button>
@@ -1015,7 +1015,7 @@ function musicTick(){if(!AU.ctx)return;const c=AU.ctx,stepT=60/118/2;
     tone(BASS[i]*(boss?1.5:1),stepT*.9,'triangle',.22,0,at,AU.mus);
     if(boss&&i%2===0)tone(BASS[(i+5)%16]*4,stepT*.5,'triangle',.04,0,at,AU.mus);
     AU.nextT+=stepT;AU.beat++}}
-function music(on){clearInterval(AU.timer);AU.timer=0;if(on&&AU.ctx){AU.nextT=AU.ctx.currentTime+.05;AU.beat=0;AU.timer=setInterval(musicTick,60)}}
+function music(on){clearInterval(AU.timer);AU.timer=0;if(on&&AU.ctx&&!S.noMusic){AU.nextT=AU.ctx.currentTime+.05;AU.beat=0;AU.timer=setInterval(musicTick,60)}}
 function setMute(m){S.mute=m;save();if(AU.out)AU.out.gain.value=m?0:.62;$('snd').classList.toggle('off',m)}
 
 /* ---------- ads: only inside the Android app, through the AdMob plugin ---------- */
@@ -2181,7 +2181,7 @@ function skillHit(A,m,o){const D=otherOf(A),dx=xOf(D);if(D.dead||D.hp<=0)return;
     if(back>0){A.hp-=back;A.flash=.18;R.fx.push({k:'txt',x:xOf(A),y:FLOOR-150,t:0,d:.9,txt:'ارتداد '+fmt(back),col:'#ffd23e'})}return}
   if(D.guardUp&&!o.light){guardBlock(D,dx);return}
   v*=taken(D)*(A.boost||1)*(A.dem>0?(A.giant>0?1.6:1.35):1)*(A.fox>0?(A.giant>0?1.6:1.4):1)*(A.silent>0?1.35:1);if(A.ctr>0){v*=1.6;A.ctr=0;ctrFx(A,D)}
-  D.hp-=v;D.flash=.2;stHit(A,D,v);D.kb=Math.max(D.kb,o.kb||12);posAdd(D,o.light?3:8);
+  D.hp-=v;D.flash=.2;stHit(A,D,v);if(!o.light&&R.fx){const cc=o.col||'#ffd23e',y=FLOOR-72-(D.airY||0);R.hs=Math.max(R.hs||0,.055);R.zoom=Math.max(R.zoom,.07);R.shake=Math.max(R.shake,.28);R.fx.push({k:'speedl',x:dx,y,t:0,d:.3,col:cc},{k:'impact',x:dx,y,t:0,d:.22,col:cc,big:1,rot:Math.random()},{k:'flash',t:0,d:.07,col:cc});buzz(25)}D.kb=Math.max(D.kb,o.kb||12);posAdd(D,o.light?3:8);
   if(A.elem&&A.markedCast!==A.castId){A.markedCast=A.castId;applyEl(A,D,A.elem)}
   if(o.stun&&D.boss)o.stun*=.5; // yesterday's you shrugs stuns off faster
   if(o.stun){D.t=D.st==='stun'?Math.max(D.t,o.stun):o.stun;D.st='stun';D.combo=0;D.open=false}
@@ -3341,6 +3341,8 @@ function render(ts,dt){
       if(!LOWQ){c.globalAlpha=a0*(1-u)*.5;c.drawImage(glow(f.col),-20-rad*1.1,-rad*1.1,rad*2.2,rad*2.2)}
       c.globalAlpha=a0*(1-u);c.fillStyle=f.col;c.beginPath();c.arc(-20,0,rad,q0,q1);c.arc(-20+th,0,rad-th*.15,q1,q0,true);c.closePath();c.fill();
       c.fillStyle='#ffffff';c.globalAlpha=a0*(1-u)*.95;c.beginPath();c.arc(-20,0,rad,q0+.18,q1-.18);c.arc(-20+th*.42,0,rad-th*.08,q1-.18,q0+.18,true);c.closePath();c.fill();c.restore()}
+    else if(f.k==='speedl'){c.save();c.globalCompositeOperation='lighter';const n=LOWQ?14:28,e=1-Math.pow(1-Math.min(1,u*1.6),2);for(let i=0;i<n;i++){const a=i*6.283/n+((i*37)%7)*.05,r1=70+((i*53)%40)+e*40,r2=r1+180+((i*29)%60);
+      c.globalAlpha=(1-u)*(.35+((i*13)%5)*.08);c.strokeStyle=i%3?'#ffffff':f.col;c.lineWidth=i%4?1.4:2.6;c.beginPath();c.moveTo(f.x+Math.cos(a)*r1,f.y+Math.sin(a)*r1*.7);c.lineTo(f.x+Math.cos(a)*r2,f.y+Math.sin(a)*r2*.7);c.stroke()}c.restore()}
     else if(f.k==='portal'){const o=Math.min(1,u/.18),cl=u>.8?(1-u)/.2:1,sc=o*cl,r=f.r*sc;c.save();c.translate(f.x,f.y);c.rotate(f.rot||0);c.globalCompositeOperation='lighter';
       if(!LOWQ){c.globalAlpha=.55*sc;c.drawImage(glow(f.col),-r*1.9,-r*1.9,r*3.8,r*3.8)}c.scale(1,f.flat||.36);c.globalAlpha=.95*sc;c.strokeStyle=f.col;c.lineWidth=4.5;c.beginPath();c.arc(0,0,r,0,7);c.stroke();
       c.strokeStyle='#ffffff';c.lineWidth=2;c.beginPath();c.arc(0,0,r*.74,0,7);c.stroke();c.save();c.rotate(f.t*3.2);c.strokeStyle=f.col;c.lineWidth=1.6;for(let i=0;i<10;i++){const a=i*.628;c.beginPath();c.moveTo(Math.cos(a)*r*.74,Math.sin(a)*r*.74);c.lineTo(Math.cos(a+.45)*r,Math.sin(a+.45)*r);c.stroke()}c.restore();
@@ -3409,7 +3411,7 @@ function frameBody(ts){
     render(ts,dt);
     const work=performance.now()-w0;PERF.work+=(work-PERF.work)*.05;
     /* only when drawing itself is too heavy: first drop the extra effects (auto), then step the density down, never below 1x */
-    if(raw<250&&PERF.work>13&&(S.gfx!=='high'&&!LOWQ||DPR>1)){if(++PERF.slow>60){if(S.gfx==='auto'&&!LOWQ)LOWQ=true;else DPR=Math.max(1,+(DPR-.25).toFixed(2));PERF.slow=0;PERF.work=8;BG.key=''}}else PERF.slow=0;
+    if(raw<250&&PERF.work>11&&(DPR>1||S.gfx==='auto'&&!LOWQ&&PERF.work>22)){if(++PERF.slow>60){if(DPR>1)DPR=Math.max(1,+(DPR-.25).toFixed(2));else if(S.gfx==='auto'&&!LOWQ)LOWQ=true;PERF.slow=0;PERF.work=8;BG.key=''}}else PERF.slow=0;
     if(S.fps){PERF.fc=(PERF.fc||0)+1;if(ts-(PERF.ft||0)>500){UI.txt($('fps'),Math.round(PERF.fc*1000/(ts-(PERF.ft||ts-500)))+' fps'+(LOWQ?' · خفيف':''));PERF.fc=0;PERF.ft=ts}}}
 }
 document.addEventListener('visibilitychange',()=>{PERF.last=0;if(R)R.acc=0;if(AU.ctx){if(document.hidden)AU.ctx.suspend();else AU.ctx.resume()}});
@@ -3444,8 +3446,8 @@ $('cComps').addEventListener('click',e=>{const b=e.target.closest('[data-cpk]');
   S.comp=id;save();sfx('up');toast(COMPS[id].name+' معاك دلوقتي');renderCompPick()});
 $('cGrid').addEventListener('click',e=>{const ev=e.target.closest('[data-evo]');if(ev){e.stopPropagation();auInit();sfx('click');openEvo(ev.dataset.evo);return}const b=e.target.closest('[data-pick]');if(!b)return;const id=b.dataset.pick;if(!charUnlocked(id)){sfx('click');show('shop');return}switchChar(id);save();sfx('morph');buildUps();renderChars();toast('اخترت '+CHARS[id].name)});$('aFind').onclick=()=>{TOUR_FIGHT=false;findMatch()};
 function renderSettings(){applyGfx();const on=v=>v?'شغال':'مقفول';
-  $('sndBtn').textContent='الصوت: '+on(!S.mute);$('vibBtn').textContent='الاهتزاز: '+on(!S.noVib);$('tipBtn').textContent='الإرشادات: '+on(!S.tipsOff);
-  for(const[id,v]of[['sndBtn',!S.mute],['vibBtn',!S.noVib],['tipBtn',!S.tipsOff],['fpsBtn',!!S.fps]])$(id).classList.toggle('on',v)}
+  $('sndBtn').textContent=LL('الصوت: ','Sound: ')+on(!S.mute);$('musBtn').textContent=LL('الموسيقى: ','Music: ')+on(!S.noMusic);$('vibBtn').textContent='الاهتزاز: '+on(!S.noVib);$('tipBtn').textContent='الإرشادات: '+on(!S.tipsOff);
+  for(const[id,v]of[['musBtn',!S.noMusic],['sndBtn',!S.mute],['vibBtn',!S.noVib],['tipBtn',!S.tipsOff],['fpsBtn',!!S.fps]])$(id).classList.toggle('on',v)}
 $('mSet').onclick=()=>{auInit();sfx('click');show('settings')};
 $('mCodex').onclick=()=>{auInit();sfx('click');show('codex')};
 let CX_T='h';document.querySelectorAll('.cxt').forEach(b=>b.onclick=()=>{sfx('click');CX_T=b.dataset.t;renderCodex()});
@@ -3467,6 +3469,7 @@ function renderCodex(){document.querySelectorAll('.cxt').forEach(b=>b.classList.
   else $('cxList').innerHTML=COMP_IDS.map(id=>{const C=COMPS[id],K=COMP_SK[id],own=(S.comps||[]).includes(id);return `<article class="cxc" style="--cc:${C.col}"><header><img src="img/comp/${id}.webp" alt=""><div><h3>${tr(C.name)}</h3><p>${dsc(C)}</p><small>${own?LL('عندك','Owned'):LL('في الشوب','In the shop')}</small></div></header>`+
     row('img/ic/comp_'+id+'_sk.webp',tr(K.n),LL('مهارة المرافق · بترجع كل ','Companion skill · every ')+K.cd+LL(' ثانية',' s'))+row('img/ic/comp_'+id+'_ult.webp',tr(K.u),LL('قاضية المرافق · بتتشحن من الضرب والتفادي','Companion finisher · charges as you fight'))+row('img/ic/ult.webp',LL('دمج مع قاضيتك','Fuses with your finisher'),tr(C.fuse))+'</article>'}).join('')}
 $('sndBtn').onclick=()=>{auInit();setMute(!S.mute);sfx('click');renderSettings()};
+$('musBtn').onclick=()=>{auInit();S.noMusic=!S.noMusic;save();if(S.noMusic)music(false);sfx('click');renderSettings()};
 $('vibBtn').onclick=()=>{S.noVib=!S.noVib;save();sfx('click');if(!S.noVib)buzz(40);renderSettings()};
 $('tipBtn').onclick=()=>{S.tipsOff=!S.tipsOff;save();sfx('click');renderSettings()};
 $('snd').onclick=()=>{auInit();setMute(!S.mute);sfx('click')};
