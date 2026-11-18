@@ -130,3 +130,4 @@ Object.assign(window.LANG_EN,{"الإنجازات":"Achievements","البطول�
 Object.assign(window.LANG_EN,{"مبروك":"Congratulations","روح الثعلب: ذيول نار صفرا وضربات بالذيول":"Fox spirit: yellow fire tails and tail strikes","قائد الشارع الهادي: إيده في جيبه وركلاته بترفعك للسما":"The calm street boss: hands in pockets, kicks that send you flying","بيولّع الخصم كل 3 ثواني · مع الملاك الساقط التحوّل أسرع":"Burns the enemy every 3 s · with the Fallen Angel he transforms faster","كل 5 ثواني بيقلل وقت مهاراتك ثانية · مع كيتسو بيزوّد ذيل":"Every 5 s cuts your skill cooldowns by 1 s · with Kitsu it adds a tail"});
 Object.assign(window.LANG_EN,{"البروفايل":"Profile","مجموعات وأدوار إقصائية · اكسب الكاس":"Groups and knockouts · win the cup"});
 Object.assign(window.LANG_EN,{"مجموعات وأدوار إقصائية":"Groups and knockouts","اكسب الكاس":"win the cup"});
+Object.assign(window.LANG_EN,{"القصة":"Story","100 مرحلة وبوص كل 10":"100 stages · a boss every 10"});
