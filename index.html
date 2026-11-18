@@ -2986,6 +2986,7 @@ function kitsuUlt(A,D,v){const U=R.ult;if(U)U.dur=1.9;const rage=A.fox>0||(A.tai
 
 /* ---------- patch notes: simple words, newest first ---------- */
 const PATCH_NOTES=[
+ {v:72,ar:['لو اللعبة وقفت، افتحها تاني هيظهر مربع أحمر فيه مكان الوقوف، صوّره وابعته'],en:['If the game freezes, open it again: a red box shows where it stopped, screenshot it and send it']},
  {v:71,ar:['اتصلّح التهنيج لما تدوس في صفحة الأبطال والتطوير وأول الرانك، اللعبة بقت أسرع بكتير على الموبايل'],en:['Fixed the freeze when tapping on the heroes and Level up screens and when starting ranked, much faster on phones']},
  {v:70,ar:['الشريط الأحمر بقى بيظهر كمان لو حصل خطأ في صفحة التطوير'],en:['The red error bar also shows errors on the Level up screen']},
  {v:69,ar:['تصليح لمشكلة إن اللعبة بتقف لما تدوس، ولو حصل خطأ هيظهر شريط أحمر صوّره وابعته'],en:['Fix for the game freezing on tap; if an error happens a red bar shows it, screenshot it and send it']},
@@ -3378,6 +3379,23 @@ const KPOSE={
 /* figBox is pure for a given look and pose: remember it (the pixel scan was freezing phones on every tap) */
 {const FBX=new Map(),_fb=figBox;figBox=function(L,ps,sg){let k;try{k=(L.char||'')+'|'+L.tier+'|'+sg+'|'+(L.pat||'')+'|'+L.hs+'|'+(L.sc||1)+'|'+[...L.ex].join(',')+'|'+Math.round(L.lw)+'|'+Math.round(L.tw)+'|'+Math.round(L.hr)+'|'+(L.tails|0)+'|'+(ps===REST?'r':JSON.stringify(ps))}catch(e){return _fb(L,ps,sg)}
   let b=FBX.get(k);if(!b){b=_fb(L,ps,sg);if(FBX.size>400)FBX.clear();FBX.set(k,b)}return b}}
+
+/* ---------- crash breadcrumbs (temporary): where did the last session stop? ---------- */
+const BCR={a:[],t0:Date.now()};
+function bcr(s){try{BCR.a.push(((Date.now()-BCR.t0)/1000).toFixed(1)+'s '+s);if(BCR.a.length>30)BCR.a.shift();localStorage.setItem('by-bc',BCR.a.join('\n'))}catch(e){}}
+(function(){let prev='';try{prev=localStorage.getItem('by-bc')||''}catch(e){}
+  const L=prev.split('\n').filter(Boolean),open={};for(const l of L){const m=/ ([><]) ([a-zA-Z]+)/.exec(l);if(m)open[m[2]]=(open[m[2]]||0)+(m[1]==='>'?1:-1)}
+  const stuck=Object.keys(open).filter(k=>open[k]>0);
+  const froze=L.length>3&&!L.slice(-4).some(l=>/ \. (hidden|bye)/.test(l));
+  if((stuck.length||froze)&&L.length)setTimeout(()=>{try{const d=document.createElement('div');d.id='bcBox';d.style.cssText='position:fixed;left:8px;right:8px;top:8px;z-index:2147483647;background:#b0102c;color:#fff;font:600 10.5px/1.3 system-ui,sans-serif;padding:8px 10px;border-radius:10px;white-space:pre-wrap;max-height:70vh;overflow:auto';
+    d.textContent=LL('آخر مرة اللعبة وقفت هنا (صوّر وابعت · دوس عشان تقفل):','Last time the game stopped here (screenshot it · tap to close):')+'\nv'+(window.__live||window.BUILD_V)+' · stuck in: '+(stuck.join(', ')||'drawing / no exit')+'\n'+L.slice(-14).join('\n');d.onclick=()=>d.remove();document.body.appendChild(d)}catch(e){}},1200);
+  try{localStorage.removeItem('by-bc')}catch(e){}})();
+for(const n of ['show','switchChar','renderChars','renderHome','buildUps','findMatch','startRun','stillFig','figBox','lookOf','drawPrev','renderShop','renderProf','renderCodex','toast','sfx','music','save','tagSearch','tagStart','openEvo']){
+  const f=window[n];if(typeof f!=='function')continue;const hot=n==='lookOf'||n==='drawPrev'||n==='sfx'||n==='figBox';let cnt=0;
+  window[n]=function(...a){const log=!hot||(++cnt%40===1);if(log)bcr('> '+n+(a[0]!=null&&typeof a[0]!=='object'&&typeof a[0]!=='function'?'('+String(a[0]).slice(0,16)+')':''));const r=f.apply(this,a);if(log)bcr('< '+n);return r}}
+setInterval(()=>bcr('. alive '+mode+(R&&R.phase?'/'+R.phase:'')),2000);
+document.addEventListener('visibilitychange',()=>bcr(document.hidden?'. hidden':'. visible'));addEventListener('pagehide',()=>bcr('. bye'));
+{const _fbd=frameBody;let fc=0;frameBody=function(ts){if(++fc%30===0)bcr('. frame '+mode+(R&&R.P?'/'+R.P.char:''));return _fbd(ts)}}
 setTimeout(achBadge,1500);
 /* a stable little leaderboard around your rank */
 function renderArena(){const r=rankOf(S.rp);
