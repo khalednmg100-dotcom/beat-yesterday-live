@@ -2630,7 +2630,8 @@ const BP_TIERS=30,BP_XP=100;
 const BP_GIFT='fox',BP_COMP15='imp';
 /* ---------- Google Play billing: the elite pass is a one-time in-app product ---------- */
 const ELITE_ID='elite_pass_s1',IAP={P:null,ok:false,price:'$3.99',busy:false};
-function iapInit(n){try{const C=window.Capacitor;if(!C||!C.registerPlugin||!(C.isNativePlatform&&C.isNativePlatform())){IAP.why=!C?'web':'nonnative';if((n||0)<4)setTimeout(()=>iapInit((n||0)+1),1500);return}if(IAP.P)return;const P=C.registerPlugin('NativePurchases');IAP.P=P;
+function capPlug(C,name){return C.registerPlugin?C.registerPlugin(name):(C.Plugins&&C.Plugins[name])||null}
+function iapInit(n){try{const C=window.Capacitor;if(!C||!capPlug(C,'NativePurchases')||!(C.isNativePlatform&&C.isNativePlatform())){IAP.why=!C?'web':'nonnative';if((n||0)<4)setTimeout(()=>iapInit((n||0)+1),1500);return}if(IAP.P)return;const P=capPlug(C,'NativePurchases');IAP.P=P;
   P.isBillingSupported().then(r=>{IAP.ok=!!(r&&r.isBillingSupported);if(!IAP.ok)return;
     P.getProducts({productIdentifiers:[ELITE_ID],productType:'inapp'}).then(r=>{const pr=r&&r.products&&r.products[0];if(pr&&pr.priceString)IAP.price=pr.priceString;if(mode==='pass')renderPass()}).catch(()=>{});
     iapRestore(true)}).catch(()=>{})}catch(e){}}
@@ -3404,7 +3405,7 @@ $('oAd').onclick=adsDouble;
 $('oBtn').onclick=()=>{sfx('click');if(R&&R.mode==='story'){show('story');renderStory();return}if(R&&R.tour){show('tour');renderTour();return}show(R&&R.mode==='pvp'?'arena':'home')};
 $('quit').onclick=()=>{if(R&&R.phase!=='over')finish(false)};
 /* inside the Android app: the back button leaves a fight instead of closing the game */
-function nativeInit(){try{const C=window.Capacitor;if(!C||!C.registerPlugin||!(C.isNativePlatform&&C.isNativePlatform()))return;const App=C.registerPlugin('App');
+function nativeInit(){try{const C=window.Capacitor;if(!C||!capPlug(C,'App')||!(C.isNativePlatform&&C.isNativePlatform()))return;const App=capPlug(C,'App');
   App.addListener('backButton',()=>{if($('match').classList.contains('on'))return;if(mode==='play'){if(R&&R.phase!=='over')finish(false);else{sfx('click');show(R&&R.mode==='pvp'?'arena':'home')}}else if(mode!=='menu'){sfx('click');show('menu')}else App.exitApp()});
   App.addListener('pause',()=>music(false));App.addListener('resume',()=>{if(mode==='play'&&R&&R.phase!=='over')music(true)})}catch(e){}}
 function boot(d){for(const id of COMP_IDS)compImg(id);load(d);buildUps();$('snd').classList.toggle('off',!!S.mute);adsInit();nativeInit();iapInit();CB.shown=S.coins||0;$('cbN').textContent=fmt(CB.shown);let skipI=false;try{skipI=sessionStorage.getItem('by-skip-intro')==='1';sessionStorage.removeItem('by-skip-intro')}catch(e){}if(skipI)show('menu');else introStart();requestAnimationFrame(frame)}
