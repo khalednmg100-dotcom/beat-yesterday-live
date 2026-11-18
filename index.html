@@ -1034,14 +1034,14 @@ const CHARS={
         int:{g:'drop',col:'#ffe680',w:.18,cd:[6.5,6.5,7,7],names:['سيف الحكم','سيف السماء العملاق','غضب السماء','يوم الحساب'],dn:['سيف الجحيم','نصل الهاوية','بركان أسود','بوابة الجحيم']},
         end:{g:'flip',col:'#ff3b1f',w:.12,cd:[12,12,11,10],names:['هالة السيوف','حلقة النور','درع الشفرات','سيوف الحراسة'],dn:['هالة الجحيم','حلقة النار','شفرات الهاوية','سيوف الهلاك']}},
     cast:{str:'magicCast',spd:'magicCast',int:'magicCast',end:'magicCast'},price:0},
-  kitsu:{fuse:'ذيول',name:'كيتسو',desc:'روح الثعلب: ذيول نار صفرا وضربات بالذيول',col:'#ffc21a',looks:KITSU_LOOKS,gen:1,
+  kitsu:{fuse:'ذيول',name:'كيتسو',desc:'روح الثعلب: ذيول نار صفرا وضربات بالذيول',col:'#ffc21a',looks:KITSU_LOOKS,art:'img/char-kitsu.webp',
     forms:['حامل الختم','شرارة زرقا','ذيل واحد','ثلاث ذيول','نار الثعلب','خمس ذيول','الروح المستيقظة','سبع ذيول','رفيق الثعلب','تسع ذيول','الثعلب السماوي','نار الأرواح','حارس الختم','الثعلب الأبيض','ملك الأرواح','الثعلب الأبدي'],
     sk:{str:{g:'drop',col:'#ffc21a',w:.16,cd:[6,6,5.5,5.5],names:['قنبلة النار الصفرا','قنبلة كبيرة','انفجار الثعلب','شمس زرقا']},
         spd:{g:'fang',col:'#ffd860',w:.14,cd:[6,6,5.5,5.5],names:['نسخ النار','نسخ أكتر','جيش النار','ألف نسخة']},
         int:{g:'arrows',col:'#ffcf40',w:.16,cd:[7,7,6.5,6.5],names:['ضربة الذيل','رفع للسما','ذيل الجبل','سقوط الذيول']},
         end:{g:'flip',col:'#fff3a0',w:.12,cd:[10,10,9.5,9],names:['زئير','زئير الروح','زئير الذيول','زئير الملك']}},
     cast:{str:'magicCast',spd:'swing2',int:'kickWind',end:'morph'},price:9000},
-  ryu:{fuse:'ركلة',name:'ريو',desc:'قائد الشارع الهادي: إيده في جيبه وركلاته بترفعك للسما',col:'#ffd23e',looks:RYU_LOOKS,gen:1,
+  ryu:{fuse:'ركلة',name:'ريو',desc:'قائد الشارع الهادي: إيده في جيبه وركلاته بترفعك للسما',col:'#ffd23e',looks:RYU_LOOKS,art:'img/char-ryu.webp',
     forms:['ولد الشارع','المتمرد','زعيم الحارة','الركلة السريعة','قائد الشارع','الإعصار','الهادي','الوحش الصامت','قائد المدينة','الركلة الذهبية','ملك الشوارع','العاصفة البنفسجية','اللي محدش يغلبه','الإمبراطور','الأسطورة الهادية','القائد الأبدي'],
     sk:{str:{g:'fang',col:'#ffd23e',w:.14,cd:[6,6,5.5,5.5],names:['ركلة دوّارة','ركلة الإعصار','ركلة السما','الركلة العظمى']},
         spd:{g:'arrows',col:'#ffffff',w:.12,cd:[6,6,5.5,5.5],names:['وابل ركلات','عاصفة ركلات','ألف ركلة','الركلات اللانهائية']},
@@ -1719,7 +1719,7 @@ const ULT_BG={fox:'#020a1a',skykick:'#0a0614',fallen:'#0e0408',fist:'#05030f',bl
 /* fighter: a giant fist of energy (hits hardest) · ninja: a thousand blades · mage: the beam · robot: an orbital strike from the sky */
 const ULTS={fighter:{style:'fist',name:'قبضة الكون!',x:5},ninja:{style:'blades',name:'ألف شفرة!',x:4},mage:{style:'beam',name:'شعاع الدمار!',x:4},golem:{style:'orbital',name:'القصف المداري!',x:4.2},archer:{style:'rain',name:'سهم العنقاء!',x:4.3},fallen:{style:'fallen',name:'سقوط السماء!',x:4.6},kitsu:{style:'fox',name:'زئير التسع ذيول!',x:4.6},ryu:{style:'skykick',name:'ركلة السما!',x:4.6},vampire:{style:'blood',name:'عاصفة الدم!',x:4}};
 const ultOf=A=>ULTS[A.char]||ULTS.fighter;
-const ULT_IC={fighter:1,ninja:1,mage:1,golem:1,archer:1,vampire:1,fallen:1};function ultIcon(id){return ULT_IC[id]?'img/ic/ult_'+id+'.webp':'img/ic/ult.webp'}
+const ULT_IC={fighter:1,ninja:1,mage:1,golem:1,archer:1,vampire:1,fallen:1,kitsu:1,ryu:1};function ultIcon(id){return ULT_IC[id]?'img/ic/ult_'+id+'.webp':'img/ic/ult.webp'}
 function ultCol(A){const L=A.look;return L.tier>=6?hex(L.acc):A.char&&A.char!=='fighter'?CHARS[A.char].col:'#ffd23e'}
 function ultStart(A){const tr=A.look.tier,ax=xOf(A),U=R.ult={a:A,ph:'charge',style:ultOf(A).style,t:0,tr,col:ULT_COL[A.char]||ultCol(A),fuse:A.comp||null,motes:[],rocks:[]};
   if(tr>=4&&U.style==='fist')for(let i=0;i<6+Math.min(tr,12);i++)U.rocks.push({x:ax-100+Math.random()*200,y:FLOOR-2,vy:-(18+Math.random()*40),vx:0,s:3+Math.random()*5,r:Math.random()*6,vr:Math.random()*2-1});
@@ -2293,7 +2293,7 @@ const COMPS={
 };
 const COMP_IDS=Object.keys(COMPS);
 const fuseName=A=>(CHARS[A.char||'fighter'].fuse||'ضربة')+' '+COMPS[A.comp].suf+'!';
-const COMP_IMG={},COMP_FACE={spirit:1,drake:1,owl:1,guard:-1,fox:-1,imp:1,azfox:1}; // which way each painted pet looks (1 = right)
+const COMP_IMG={},COMP_FACE={spirit:1,drake:1,owl:1,guard:-1,fox:-1,imp:1,azfox:-1}; // which way each painted pet looks (1 = right)
 function compImg(id){let i=COMP_IMG[id];if(!i){i=COMP_IMG[id]=new Image();i.src='img/comp/'+id+'.webp'}return i.complete&&i.naturalWidth?i:null}
 function drawComp(c,id,x,y,t,sg,s){const C=COMPS[id],im=compImg(id);if(im){const z=(s||1)*46,pu=1+.1*Math.sin(t*4);c.save();c.translate(x,y);
     const a0=c.globalAlpha;c.globalAlpha=a0*.75;c.drawImage(glow(C.col),-z*pu,-z*pu,z*2*pu,z*2*pu);c.globalAlpha=a0*.5;c.drawImage(glow('#ffffff'),-z*.35,-z*.35,z*.7,z*.7);
