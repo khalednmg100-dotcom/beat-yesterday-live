@@ -2986,6 +2986,7 @@ function kitsuUlt(A,D,v){const U=R.ult;if(U)U.dur=1.9;const rage=A.fox>0||(A.tai
 
 /* ---------- patch notes: simple words, newest first ---------- */
 const PATCH_NOTES=[
+ {v:74,ar:['لو اللعبة وقفت، المرة الجاية بترجعك للمقاتل عشان تقدر تلعب'],en:['If the game freezes, next time it puts you on the Fighter so you can keep playing']},
  {v:73,ar:['تتبع أدق لمكان وقوف اللعبة، وصورة المدينة في القصة اتصلّحت'],en:['More detailed freeze tracking, and the city picture in Story is fixed']},
  {v:72,ar:['لو اللعبة وقفت، افتحها تاني هيظهر مربع أحمر فيه مكان الوقوف، صوّره وابعته'],en:['If the game freezes, open it again: a red box shows where it stopped, screenshot it and send it']},
  {v:71,ar:['اتصلّح التهنيج لما تدوس في صفحة الأبطال والتطوير وأول الرانك، اللعبة بقت أسرع بكتير على الموبايل'],en:['Fixed the freeze when tapping on the heroes and Level up screens and when starting ranked, much faster on phones']},
@@ -3388,7 +3389,7 @@ function bcr(s){try{BCR.a.push(((Date.now()-BCR.t0)/1000).toFixed(1)+'s '+s);if(
   const L=prev.split('\n').filter(Boolean),open={};for(const l of L){const m=/ ([><]) ([a-zA-Z]+)/.exec(l);if(m)open[m[2]]=(open[m[2]]||0)+(m[1]==='>'?1:-1)}
   const stuck=Object.keys(open).filter(k=>open[k]>0);
   const froze=L.length>3&&!L.slice(-4).some(l=>/ \. (hidden|bye)/.test(l));
-  if((stuck.length||froze)&&L.length)setTimeout(()=>{try{const d=document.createElement('div');d.id='bcBox';d.style.cssText='position:fixed;left:8px;right:8px;top:8px;z-index:2147483647;background:#b0102c;color:#fff;font:600 10.5px/1.3 system-ui,sans-serif;padding:8px 10px;border-radius:10px;white-space:pre-wrap;max-height:70vh;overflow:auto';
+  if((stuck.length||froze)&&L.length)setTimeout(()=>{try{if(S.char&&S.char!=='fighter'&&typeof switchChar==='function'){const was=S.char;switchChar('fighter');save();if(mode==='menu'&&typeof renderMenu==='function')renderMenu();bcr('# rescue '+was+' -> fighter');toast(LL('اللعبة وقفت آخر مرة، فرجّعناك للمقاتل مؤقتًا','The game froze last time, so you are on the Fighter for now'))}}catch(e){}try{const d=document.createElement('div');d.id='bcBox';d.style.cssText='position:fixed;left:8px;right:8px;top:8px;z-index:2147483647;background:#b0102c;color:#fff;font:600 10.5px/1.3 system-ui,sans-serif;padding:8px 10px;border-radius:10px;white-space:pre-wrap;max-height:70vh;overflow:auto';
     d.textContent=LL('آخر مرة اللعبة وقفت هنا (صوّر وابعت · دوس عشان تقفل):','Last time the game stopped here (screenshot it · tap to close):')+'\nv'+(window.__live||window.BUILD_V)+' · stuck in: '+(stuck.join(', ')||'drawing / no exit')+'\n'+L.slice(-30).join('\n');d.onclick=()=>d.remove();document.body.appendChild(d)}catch(e){}},1200);
   try{localStorage.removeItem('by-bc')}catch(e){}})();
 BCR.hot=0;
