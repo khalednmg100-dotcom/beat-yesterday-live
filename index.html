@@ -2007,7 +2007,7 @@ function drawPrev(ts){
 /* ---------- duel ---------- */
 const REACH=118,ROUNDS=4;let W=360,PX=92,EX=268,H=640,FLOOR=400,R=null;
 /* portrait: 360 world units wide. landscape: 420 units tall and as wide as the screen, the duel sits a bit left of centre so the skill wheel has room */
-function lay(){if(!SZ.cv||!SZ.cv[0])measure();const cw=SZ.cv[0]||1,ch=SZ.cv[1]||1;
+function lay(){if(!SZ.cv||!SZ.cv[0])measure();if(!SZ.cv[0]||!SZ.cv[1])return;const cw=SZ.cv[0],ch=SZ.cv[1];
   if(cw>ch){H=420;W=H*cw/ch;FLOOR=H-74;const c=W*.44;PX=c-90;EX=c+90}
   else{W=360;H=W*ch/cw;FLOOR=Math.max(250,H-268*W/cw);PX=92;EX=268}}
 const slideIn=()=>Math.max(300,W-EX+70);
@@ -2986,6 +2986,7 @@ function kitsuUlt(A,D,v){const U=R.ult;if(U)U.dur=1.9;const rage=A.fox>0||(A.tai
 
 /* ---------- patch notes: simple words, newest first ---------- */
 const PATCH_NOTES=[
+ {v:73,ar:['تتبع أدق لمكان وقوف اللعبة، وصورة المدينة في القصة اتصلّحت'],en:['More detailed freeze tracking, and the city picture in Story is fixed']},
  {v:72,ar:['لو اللعبة وقفت، افتحها تاني هيظهر مربع أحمر فيه مكان الوقوف، صوّره وابعته'],en:['If the game freezes, open it again: a red box shows where it stopped, screenshot it and send it']},
  {v:71,ar:['اتصلّح التهنيج لما تدوس في صفحة الأبطال والتطوير وأول الرانك، اللعبة بقت أسرع بكتير على الموبايل'],en:['Fixed the freeze when tapping on the heroes and Level up screens and when starting ranked, much faster on phones']},
  {v:70,ar:['الشريط الأحمر بقى بيظهر كمان لو حصل خطأ في صفحة التطوير'],en:['The red error bar also shows errors on the Level up screen']},
@@ -3382,20 +3383,21 @@ const KPOSE={
 
 /* ---------- crash breadcrumbs (temporary): where did the last session stop? ---------- */
 const BCR={a:[],t0:Date.now()};
-function bcr(s){try{BCR.a.push(((Date.now()-BCR.t0)/1000).toFixed(1)+'s '+s);if(BCR.a.length>30)BCR.a.shift();localStorage.setItem('by-bc',BCR.a.join('\n'))}catch(e){}}
+function bcr(s){try{BCR.a.push(((Date.now()-BCR.t0)/1000).toFixed(1)+'s '+s);if(BCR.a.length>60)BCR.a.shift();localStorage.setItem('by-bc',BCR.a.join('\n'))}catch(e){}}
 (function(){let prev='';try{prev=localStorage.getItem('by-bc')||''}catch(e){}
   const L=prev.split('\n').filter(Boolean),open={};for(const l of L){const m=/ ([><]) ([a-zA-Z]+)/.exec(l);if(m)open[m[2]]=(open[m[2]]||0)+(m[1]==='>'?1:-1)}
   const stuck=Object.keys(open).filter(k=>open[k]>0);
   const froze=L.length>3&&!L.slice(-4).some(l=>/ \. (hidden|bye)/.test(l));
   if((stuck.length||froze)&&L.length)setTimeout(()=>{try{const d=document.createElement('div');d.id='bcBox';d.style.cssText='position:fixed;left:8px;right:8px;top:8px;z-index:2147483647;background:#b0102c;color:#fff;font:600 10.5px/1.3 system-ui,sans-serif;padding:8px 10px;border-radius:10px;white-space:pre-wrap;max-height:70vh;overflow:auto';
-    d.textContent=LL('آخر مرة اللعبة وقفت هنا (صوّر وابعت · دوس عشان تقفل):','Last time the game stopped here (screenshot it · tap to close):')+'\nv'+(window.__live||window.BUILD_V)+' · stuck in: '+(stuck.join(', ')||'drawing / no exit')+'\n'+L.slice(-14).join('\n');d.onclick=()=>d.remove();document.body.appendChild(d)}catch(e){}},1200);
+    d.textContent=LL('آخر مرة اللعبة وقفت هنا (صوّر وابعت · دوس عشان تقفل):','Last time the game stopped here (screenshot it · tap to close):')+'\nv'+(window.__live||window.BUILD_V)+' · stuck in: '+(stuck.join(', ')||'drawing / no exit')+'\n'+L.slice(-30).join('\n');d.onclick=()=>d.remove();document.body.appendChild(d)}catch(e){}},1200);
   try{localStorage.removeItem('by-bc')}catch(e){}})();
-for(const n of ['show','switchChar','renderChars','renderHome','buildUps','findMatch','startRun','stillFig','figBox','lookOf','drawPrev','renderShop','renderProf','renderCodex','toast','sfx','music','save','tagSearch','tagStart','openEvo']){
-  const f=window[n];if(typeof f!=='function')continue;const hot=n==='lookOf'||n==='drawPrev'||n==='sfx'||n==='figBox';let cnt=0;
-  window[n]=function(...a){const log=!hot||(++cnt%40===1);if(log)bcr('> '+n+(a[0]!=null&&typeof a[0]!=='object'&&typeof a[0]!=='function'?'('+String(a[0]).slice(0,16)+')':''));const r=f.apply(this,a);if(log)bcr('< '+n);return r}}
+BCR.hot=0;
+for(const n of ['show','switchChar','renderChars','renderHome','buildUps','findMatch','startRun','stillFig','figBox','lookOf','drawPrev','drawFig','tierInfo','renderShop','renderProf','renderCodex','toast','sfx','music','save','tagSearch','tagStart','openEvo','mapArt','renderStory','fit','measure']){
+  const f=window[n];if(typeof f!=='function')continue;const hot=['lookOf','drawPrev','sfx','figBox','drawFig','tierInfo','fit','measure'].includes(n);let cnt=0;
+  window[n]=function(...a){if(n==='show'){BCR.hot=6;if(a[0]==='home')try{bcr('# '+S.char+' lv '+JSON.stringify(S.lv)+' ghost '+JSON.stringify(S.ghost)+' day '+S.day+' dpr '+DPR+'/'+(window.devicePixelRatio||1)+' prev '+JSON.stringify(SZ.prev)+' win '+innerWidth+'x'+innerHeight)}catch(e){}}const log=!hot||BCR.hot>0||(++cnt%40===1);if(log)bcr('> '+n+(a[0]!=null&&typeof a[0]!=='object'&&typeof a[0]!=='function'?'('+String(a[0]).slice(0,16)+')':''));const r=f.apply(this,a);if(log)bcr('< '+n);return r}}
 setInterval(()=>bcr('. alive '+mode+(R&&R.phase?'/'+R.phase:'')),2000);
 document.addEventListener('visibilitychange',()=>bcr(document.hidden?'. hidden':'. visible'));addEventListener('pagehide',()=>bcr('. bye'));
-{const _fbd=frameBody;let fc=0;frameBody=function(ts){if(++fc%30===0)bcr('. frame '+mode+(R&&R.P?'/'+R.P.char:''));return _fbd(ts)}}
+{const _fbd=frameBody;let fc=0;frameBody=function(ts){if(BCR.hot>0){bcr('. f'+BCR.hot+' '+mode);BCR.hot--}else if(++fc%30===0)bcr('. frame '+mode+(R&&R.P?'/'+R.P.char:''));return _fbd(ts)}}
 setTimeout(achBadge,1500);
 /* a stable little leaderboard around your rank */
 function renderArena(){const r=rankOf(S.rp);
