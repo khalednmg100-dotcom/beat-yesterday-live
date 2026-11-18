@@ -203,6 +203,19 @@ button:focus-visible{outline:2px solid var(--bone);outline-offset:2px}
 .snav.l{left:6px}.snav.r{right:6px}.snav:disabled{opacity:.25}
 .sdots{display:flex;gap:7px;justify-content:center}
 .sdot{width:11px;height:11px;border-radius:50%;border:0;padding:0;background:#ffffff33;cursor:pointer}.sdot.ok{background:#ffb23e}.sdot.on{background:#fff;transform:scale(1.35);box-shadow:0 0 8px #fff}.sdot.lk{opacity:.4}
+
+.mprof img{width:32px;height:32px;border-radius:50%;object-fit:cover;box-shadow:0 0 0 1.5px #ffd23e88}
+.mb.storym img{border-radius:50%}
+.pfavb{position:relative;flex:none;border:0;padding:0;background:none;cursor:pointer}.pfavb img{width:84px;height:84px;border-radius:50%;object-fit:cover;display:block;box-shadow:0 0 0 3px var(--rc),0 0 18px #0008}
+.pfavb i{position:absolute;right:-2px;bottom:-2px;font-style:normal;font-size:12px;width:24px;height:24px;border-radius:50%;display:grid;place-items:center;background:#15122e;box-shadow:0 0 0 1.5px var(--rc)}
+.pav{width:18px;height:18px;border-radius:50%;vertical-align:middle;margin-inline-start:3px;box-shadow:0 0 0 1.5px #ffd23e,0 0 8px #ffd23e}
+#avPick{position:fixed;inset:0;z-index:9999;display:grid;place-items:center;background:#05030fcc;backdrop-filter:blur(4px)}
+.avc{width:min(94vw,640px);max-height:88vh;display:flex;flex-direction:column;gap:10px;padding:14px;border-radius:18px;background:linear-gradient(#2a2458,#15122e);border:1.5px solid #ffd23e88;animation:banIn .45s cubic-bezier(.2,1.5,.4,1)}
+.avh{display:flex;justify-content:space-between;align-items:center}.avh b{font-family:var(--display);font-weight:400;font-size:24px;color:#ffd23e}
+.avg{display:grid;grid-template-columns:repeat(auto-fill,minmax(96px,1fr));gap:10px;overflow:auto}
+.avi{display:flex;flex-direction:column;align-items:center;gap:4px;padding:8px 4px;border-radius:14px;border:1.5px solid #ffffff1c;background:#0b092099;color:#fff;cursor:pointer;font:inherit}
+.avi img{width:64px;height:64px;border-radius:50%;object-fit:cover}.avi b{font-size:11.5px;text-align:center}.avi small{font-size:9.5px;color:#ffb3bd;text-align:center;line-height:1.3}
+.avi.on{border-color:#7dffa8;box-shadow:0 0 14px #7dffa855}.avi.lk img{filter:grayscale(.85) brightness(.5)}
 #pAll{background:linear-gradient(#7dffa8,#2fbf6a);color:#05210f}
 .side .bar{height:13px;border-radius:7px;background:#00000066;border:1.5px solid #ffffff2e}
 .side .bar i{width:100%;transform-origin:left;will-change:transform} .side.en .bar i{transform-origin:right}
@@ -583,7 +596,7 @@ button:focus-visible{outline:2px solid var(--bone);outline-offset:2px}
   <section id="intro" class="screen"><canvas id="icv"></canvas><button id="iSkip">تخطي ›</button></section>
 
   <section id="menu" class="screen">
-    <div class="mtop"><button class="ico gear" id="mSet" aria-label="الإعدادات"><svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="3.2"/><path d="M12 2.5v3M12 18.5v3M2.5 12h3M18.5 12h3M5.3 5.3l2.1 2.1M16.6 16.6l2.1 2.1M5.3 18.7l2.1-2.1M16.6 7.4l2.1-2.1"/></svg></button><button class="ico book" id="mCodex" aria-label="الموسوعة"><svg viewBox="0 0 24 24"><path d="M5 4.5A1.5 1.5 0 0 1 6.5 3H19v15H6.5A1.5 1.5 0 0 0 5 19.5z"/><path d="M5 19.5A1.5 1.5 0 0 0 6.5 21H19v-3M9 7h6M9 10.5h6"/></svg></button><button class="ico trophy" id="mAch" aria-label="الإنجازات"><svg viewBox="0 0 24 24"><path d="M8 4h8v5a4 4 0 0 1-8 0zM8 6H5a3 3 0 0 0 3 4M16 6h3a3 3 0 0 1-3 4M12 13v4M9 20h6"/></svg><i class="dot" id="mAchDot" hidden></i></button><button class="mprof" id="mProf"><canvas id="mpFig"></canvas><b id="mpName"></b></button><span></span></div>
+    <div class="mtop"><button class="ico gear" id="mSet" aria-label="الإعدادات"><svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="3.2"/><path d="M12 2.5v3M12 18.5v3M2.5 12h3M18.5 12h3M5.3 5.3l2.1 2.1M16.6 16.6l2.1 2.1M5.3 18.7l2.1-2.1M16.6 7.4l2.1-2.1"/></svg></button><button class="ico book" id="mCodex" aria-label="الموسوعة"><svg viewBox="0 0 24 24"><path d="M5 4.5A1.5 1.5 0 0 1 6.5 3H19v15H6.5A1.5 1.5 0 0 0 5 19.5z"/><path d="M5 19.5A1.5 1.5 0 0 0 6.5 21H19v-3M9 7h6M9 10.5h6"/></svg></button><button class="ico trophy" id="mAch" aria-label="الإنجازات"><svg viewBox="0 0 24 24"><path d="M8 4h8v5a4 4 0 0 1-8 0zM8 6H5a3 3 0 0 0 3 4M16 6h3a3 3 0 0 1-3 4M12 13v4M9 20h6"/></svg><i class="dot" id="mAchDot" hidden></i></button><button class="mprof" id="mProf"><img id="mpAv" src="https://khalednmg100-dotcom.github.io/beat-yesterday-live/img/av/rookie.webp" alt=""><b id="mpName"></b></button><span></span></div>
     <b class="logo">اغلب نفسك</b>
     <p class="minfo" id="mInfo"></p>
     <div class="mrow"><button class="mchar" id="mShop"><i class="coin3d big"></i><span class="mt"><b>الشوب</b></span><b id="mCoins" hidden>0</b></button>
@@ -592,7 +605,7 @@ button:focus-visible{outline:2px solid var(--bone);outline-offset:2px}
     <div class="mbtns">
       <button class="mb" id="mTrain"><img src="img/ic/str4.webp" alt=""><span class="mt"><b>طوّر مستواك</b><span>درّب نفسك واغلب نسخة امبارح</span></span></button>
       <button class="mb pvp" id="mPvp"><img src="img/ic/ult.webp" alt=""><span class="mt"><b>نافس آخرين</b><span>رانكك: <em id="mRank">برونز III</em></span></span></button>
-      <button class="mb storym" id="mStory"><i class="mbe">📜</i><span class="mt"><b>القصة</b><span id="mStoryInfo">100 مرحلة وبوص كل 10</span></span></button>
+      <button class="mb storym" id="mStory"><img src="https://khalednmg100-dotcom.github.io/beat-yesterday-live/img/story.webp" alt=""><span class="mt"><b>القصة</b><span id="mStoryInfo">100 مرحلة وبوص كل 10</span></span></button>
       <button class="mb tourm" id="mTour"><i class="mbe">🏆</i><span class="mt"><b>البطولة</b><span id="mTourInfo">مجموعات وأدوار إقصائية · اكسب الكاس</span></span></button>
     </div>
   </section>
@@ -2367,7 +2380,7 @@ function achAfterFight(win){try{const s=R.st||{},was=achReadyAll();
   achAdd('dodge',s.dodge);achAdd('pd',s.pd);achAdd('block',s.block);achAdd('parry',s.parry);achAdd('sk',s.sk);achAdd('ult',(s.ult||0)+(s.cs||0));achAdd('brk',s.brk);achAdd('react',s.react);achAdd('dmg',Math.round(s.dmg||0));
   achMax('big',Math.round(s.big||0));achMax('cmb',s.cmb);achMax('hits',R.hcMax);achMax('streak',S.streak);if(R.tour)achAdd('tplay',1);
   if(win){achAdd('win',1);achAdd(R.mode==='pvp'?'pw':'tw',1);achAdd('h_'+(S.char||'fighter'),1)}
-  if(achReadyAll()>was)setTimeout(()=>toast(LL('🏅 إنجاز جديد! افتح الإنجازات واستلم عملاتك','🏅 New achievement! Open Achievements to claim your coins')),1800);achBadge()}catch(e){}}
+  avCheck();if(achReadyAll()>was)setTimeout(()=>toast(LL('🏅 إنجاز جديد! افتح الإنجازات واستلم عملاتك','🏅 New achievement! Open Achievements to claim your coins')),1800);achBadge()}catch(e){}}
 const ACH_TIER=['#d08a4e','#cfd8e6','#ffd23e','#7ef0ff','#c77dff','#ff5a6e','#ffffff'],ROM=['I','II','III','IV','V','VI','VII'];let ACH_TAB='all';
 function medal(d,g,big){const col=ACH_TIER[Math.max(0,Math.min(6,g-1))],ic=d[3].startsWith('img:')?`<img src="${d[3].slice(4)}" alt="">`:`<i>${d[3]}</i>`;
   return `<div class="medal${g?'':' off'}${big?' big':''}" style="--mc:${g?col:'#3a3466'}">${ic}${g?`<sub>${ROM[g-1]}</sub>`:''}</div>`}
@@ -2461,18 +2474,38 @@ function nameAsk(edit){if(document.getElementById('nmAsk'))return;const o=docume
   document.body.appendChild(o);const inp=o.querySelector('#nmIn');setTimeout(()=>inp.focus(),80);
   const ok=()=>{const v=cleanName(inp.value);if(v.length<2){o.querySelector('#nmErr').textContent=LL('الاسم لازم يبقى حرفين على الأقل','At least 2 characters');return}S.name=v;save();sfx('up');o.remove();menuProf();if(mode==='prof')renderProf()};
   o.querySelector('#nmOk').onclick=ok;inp.addEventListener('keydown',e=>{if(e.key==='Enter')ok()})}
-function menuProf(){const n=$('mpName');if(n)n.textContent=myName();{const a=$('mStoryInfo');if(a)a.textContent=LL('100 مرحلة وبوص كل 10 مراحل','100 stages · a boss every 10');const b=$('mTourInfo');if(b)b.textContent=LL('مجموعات وأدوار إقصائية · اكسب الكاس','Groups and knockouts · win the cup')}try{stillFig('mpFig',S.lv,1,null,S.char)}catch(e){}}
+function menuProf(){const n=$('mpName');if(n)n.textContent=myName();{const a=$('mStoryInfo');if(a)a.textContent=LL('100 مرحلة وبوص كل 10 مراحل','100 stages · a boss every 10');const b=$('mTourInfo');if(b)b.textContent=LL('مجموعات وأدوار إقصائية · اكسب الكاس','Groups and knockouts · win the cup')}{const im=$('mpAv');if(im)im.src=avSrc(myAv())}avCheck()}
 function renderProf(){const r=rankOf(S.rp||0),cups=S.cups||{},L=achList(),G=achS().g;let tot=0,got=0;for(const d of L){tot+=d[4].length;got+=G[d[0]]||0}
   const pins=(S.pins||[]).map(k=>L.find(d=>d[0]===k)).filter(Boolean);
   const tile=(ic,v,t)=>`<div class="pft"><i>${ic}</i><b>${v}</b><span>${t}</span></div>`;
   const slot=d=>d?`<div class="pfs">${medal(d,G[d[0]]||0,1)}<b>${LL(d[1],d[2])}</b><span>${LL('مستوى ','Tier ')+ROM[(G[d[0]]||1)-1]}</span></div>`:`<button class="pfs empty" data-goach="1"><div class="medal off big"><i>+</i></div><b>${LL('اختار إنجاز','Pick one')}</b><span>📌</span></button>`;
-  $('pfBody').innerHTML=`<div class="pfcard" style="--rc:${r.col}"><canvas id="pfFig"></canvas><div class="pfm"><div class="pfn"><b>${myName()}</b><button class="ico" id="pfEdit" aria-label="edit">✏️</button></div>
+  $('pfBody').innerHTML=`<div class="pfcard" style="--rc:${r.col}"><button class="pfavb" id="pfAvB"><img src="${avSrc(myAv())}" alt=""><i>✏️</i></button><div class="pfm"><div class="pfn"><b>${myName()}</b><button class="ico" id="pfEdit" aria-label="edit">✏️</button></div>
       <span class="pff">${tr(CHARS[S.char||'fighter'].name)} · ${formName(S.lv)}</span><span class="pfr"><img src="${rankPic(r)}" alt="">${r.full}</span></div></div>
     <div class="pftiles">${tile('🏆',cups.g||0,LL('كاس دهبي','Gold cups'))}${tile('🥈',cups.s||0,LL('كاس فضي','Silver cups'))}${tile('⚔️',fmt(achVal('win')),LL('انتصارات','Victories'))}${tile('📅',S.best||S.day||1,LL('أبعد يوم','Best day'))}${tile('📈',total(S.lv),LL('المستوى','Level'))}${tile('🏅',got+'/'+tot,LL('إنجازات','Achievements'))}</div>
     <h4 class="pfh">${LL('الإنجازات المعروضة','Showcase')}</h4><div class="pfshow">${slot(pins[0])}${slot(pins[1])}${slot(pins[2])}</div>`;
-  try{stillFig('pfFig',S.lv,1,null,S.char)}catch(e){}
+  $('pfAvB').onclick=()=>{sfx('click');avPick()};
   $('pfEdit').onclick=()=>{sfx('click');nameAsk(1)};
   $('pfBody').querySelectorAll('[data-goach]').forEach(b=>b.onclick=()=>{sfx('click');ACH_TAB='done';show('ach');renderAch()})}
+
+/* ---------- profile avatars ---------- */
+const AVS=[['rookie','المبتدئ المجهول','Mystery Rookie',()=>true,['متاحة من الأول','Available from the start']]];
+for(const id of ['fighter','ninja','mage','golem','archer','vampire','fallen','kitsu','ryu'])if(CHARS[id])AVS.push([id,CHARS[id].name,null,()=>charUnlocked(id),['افتح البطل ده','Unlock this hero']]);
+AVS.push(['dragon','التنين الدهبي','Golden Dragon',()=>bpLevel()>=10,['الباتل باس · مستوى 10','Battle Pass · level 10'],10],
+  ['phoenix','العنقاء','Phoenix',()=>bpState().elite&&bpLevel()>=20,['نخبة الباتل باس · مستوى 20','Elite Pass · level 20'],20],
+  ['cosmic','الإمبراطور الكوني','Cosmic Emperor',()=>bpState().elite&&bpLevel()>=30,['نخبة الباتل باس · مستوى 30','Elite Pass · level 30'],30],
+  ['skull','فارس الجمجمة','Skull Knight',()=>stS().best>50,['خلّص 5 فصول في القصة','Clear 5 story chapters']],
+  ['crystal','ملكة الكريستال','Crystal Queen',()=>((S.cups||{}).g||0)>=1,['اكسب بطولة (كاس دهبي)','Win a tournament (gold cup)']]);
+function avSrc(id){return 'https://khalednmg100-dotcom.github.io/beat-yesterday-live/img/av/'+id+'.webp'}
+function avName(a){return a[2]?LL(a[1],a[2]):tr(a[1])}
+function avOk(id){const a=AVS.find(x=>x[0]===id);try{return !!(a&&a[3]())}catch(e){return false}}
+function myAv(){if(S.av&&avOk(S.av))return S.av;const c=S.char||'fighter';return avOk(c)?c:'rookie'}
+function avCheck(){try{S.avSeen=S.avSeen||AVS.filter(a=>avOk(a[0])).map(a=>a[0]);const nw=AVS.filter(a=>avOk(a[0])&&!S.avSeen.includes(a[0]));if(!nw.length)return;for(const a of nw)S.avSeen.push(a[0]);save();
+  setTimeout(()=>toast('🎉 '+LL('صورة بروفايل جديدة: ','New profile picture: ')+avName(nw[0])),1200)}catch(e){}}
+function avPick(){if(document.getElementById('avPick'))return;const o=document.createElement('div');o.id='avPick';const cur=myAv();
+  o.innerHTML=`<div class="avc"><div class="avh"><b>${LL('اختار صورتك','Pick your picture')}</b><button class="ico" id="avX">✕</button></div><div class="avg">${AVS.map(a=>{const ok=avOk(a[0]);
+    return `<button class="avi${ok?'':' lk'}${a[0]===cur?' on':''}" data-av="${a[0]}"><img src="${avSrc(a[0])}" alt=""><b>${avName(a)}</b>${ok?'':`<small>🔒 ${LL(a[4][0],a[4][1])}</small>`}</button>`}).join('')}</div></div>`;
+  document.body.appendChild(o);o.querySelector('#avX').onclick=()=>{sfx('click');o.remove()};o.addEventListener('click',e=>{if(e.target===o){o.remove();return}const b=e.target.closest('[data-av]');if(!b)return;const a=AVS.find(x=>x[0]===b.dataset.av);
+    if(!avOk(a[0])){sfx('lose');toast('🔒 '+LL(a[4][0],a[4][1]));return}S.av=a[0];save();sfx('up');o.remove();menuProf();if(mode==='prof')renderProf()})}
 $('mProf').onclick=()=>{auInit();sfx('click');show('prof');renderProf()};
 $('pfBack').onclick=()=>{sfx('click');show('menu')};
 $('mTour').onclick=()=>{auInit();sfx('click');show('tour');renderTour()};
@@ -2633,7 +2666,7 @@ function renderPass(){const b=bpState(),lv=bpLevel(),into=lv>=BP_TIERS?BP_XP:b.x
   let h='<div class="pcol plab"><span></span><div class="pr lab">مجاني</div><div class="pr lab el">النخبة</div></div>';
   for(let i=1;i<=BP_TIERS;i++){const ok=i<=lv,cell=(t)=>{const got=b[t].includes(i),lock=t==='e'&&!b.elite,cls=got?'got':ok&&!lock?'can':'no';
       return `<div class="pr ${t==='e'?'el':''} ${cls}" data-bp="${t}${i}">${rwIcon(bpReward(t,i))}${got?'<i class="ok">✓</i>':lock?'<i class="lk">🔒</i>':''}</div>`};
-    h+=`<div class="pcol${ok?' on':''}${i===lv+1?' next':''}"><span>${i}</span>${cell('f')}${cell('e')}</div>`}
+    const av=AVS.find(a=>a[5]===i);h+=`<div class="pcol${ok?' on':''}${i===lv+1?' next':''}"><span>${i}${av?`<img class="pav" src="${avSrc(av[0])}" alt="">`:''}</span>${cell('f')}${cell('e')}</div>`}
   $('pAll').hidden=!bpClaimable();$('pAll').textContent=LL('استلم الكل','Claim all')+' ('+bpClaimable()+')';
   $('pTrack').innerHTML=h;const nx=$('pTrack').querySelector('.next')||$('pTrack').querySelector('.can');if(nx)nx.scrollIntoView({inline:'center',block:'nearest'})}
 $('pTrack').addEventListener('click',e=>{const c=e.target.closest('[data-bp]');if(!c||!c.classList.contains('can'))return;const t=c.dataset.bp[0],i=+c.dataset.bp.slice(1),b=bpState();
