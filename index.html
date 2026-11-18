@@ -1920,10 +1920,10 @@ const STAT={
 };
 function buildUps(){
   $('ups').innerHTML=KEYS.map(k=>`<button class="up" id="up-${k}" data-k="${k}"><img class="ski" alt=""><span class="h"><i class="i"><svg viewBox="0 0 24 24">${STAT[k].i}</svg></i><b>${STAT[k].n}</b><span></span></span><span class="e"></span><span class="sk"></span><span class="skb"><i></i></span><span class="c"></span></button>`).join('');
-  $('ups').addEventListener('click',ev=>{const b=ev.target.closest('.up');if(!b||b.disabled)return;const k=b.dataset.k,c=cost(S.lv[k]);
+  if(!$('ups')._on){$('ups')._on=1;$('ups').addEventListener('click',ev=>{const b=ev.target.closest('.up');if(!b||b.disabled)return;const k=b.dataset.k,c=cost(S.lv[k]);
     if(S.pts>=c){auInit();const was=tierOf(S.lv),st=skTier(S.lv[k]);S.pts-=c;S.lv[k]++;save();renderHome();
       const nt=skTier(S.lv[k]);if(nt>st){toast((nt===1?'مهارة جديدة: ':'مهارتك اتطورت: ')+SKOF()[k].names[nt-1]);sfx('morph')}else if(nt===4&&skStar(S.lv[k])>skStar(S.lv[k]-1)){toast('نجمة إتقان: '+SKOF()[k].names[3]+' ★'+skStar(S.lv[k]));sfx('morph')}
-      if(tierOf(S.lv)>was){morph=1;sfx('morph');const tb=100+60*tierOf(S.lv);S.coins=(S.coins||0)+tb;save();toast('تحول جديد: '+formName(S.lv)+' · +'+tb+' عملة');bpGain(30)}else if(nt===st)sfx('up')}});
+      if(tierOf(S.lv)>was){morph=1;sfx('morph');const tb=100+60*tierOf(S.lv);S.coins=(S.coins||0)+tb;save();toast('تحول جديد: '+formName(S.lv)+' · +'+tb+' عملة');bpGain(30)}else if(nt===st)sfx('up')}})}
 }
 let morph=0;
 function renderHome(){
@@ -2986,6 +2986,7 @@ function kitsuUlt(A,D,v){const U=R.ult;if(U)U.dur=1.9;const rage=A.fox>0||(A.tai
 
 /* ---------- patch notes: simple words, newest first ---------- */
 const PATCH_NOTES=[
+ {v:71,ar:['اتصلّح التهنيج لما تدوس في صفحة الأبطال والتطوير وأول الرانك، اللعبة بقت أسرع بكتير على الموبايل'],en:['Fixed the freeze when tapping on the heroes and Level up screens and when starting ranked, much faster on phones']},
  {v:70,ar:['الشريط الأحمر بقى بيظهر كمان لو حصل خطأ في صفحة التطوير'],en:['The red error bar also shows errors on the Level up screen']},
  {v:69,ar:['تصليح لمشكلة إن اللعبة بتقف لما تدوس، ولو حصل خطأ هيظهر شريط أحمر صوّره وابعته'],en:['Fix for the game freezing on tap; if an error happens a red bar shows it, screenshot it and send it']},
  {v:68,ar:['أسماء الأبطال بقت بالإنجليزي في كل حتة'],en:['Hero names are shown in English everywhere']},
@@ -3373,6 +3374,10 @@ const KPOSE={
   grav:{w:{r1:.4,e1:1.6,r2:.3,e2:1.6,lean:-.1,crouch:.3},r:{r1:1.55,e1:0,r2:1.45,e2:.05,lean:.25,crouch:.2}},
   upper:{w:{r1:.3,e1:1.9,r2:.9,e2:1.4,lean:.15,crouch:.9,a1:.7,k1:-.9,a2:-.5,k2:-.6},r:{r1:2.7,e1:.3,r2:.7,e2:1.6,lean:-.2,crouch:0,a1:.4,k1:-.2,a2:-.6,k2:-.5}}
 };
+
+/* figBox is pure for a given look and pose: remember it (the pixel scan was freezing phones on every tap) */
+{const FBX=new Map(),_fb=figBox;figBox=function(L,ps,sg){let k;try{k=(L.char||'')+'|'+L.tier+'|'+sg+'|'+(L.pat||'')+'|'+L.hs+'|'+(L.sc||1)+'|'+[...L.ex].join(',')+'|'+Math.round(L.lw)+'|'+Math.round(L.tw)+'|'+Math.round(L.hr)+'|'+(L.tails|0)+'|'+(ps===REST?'r':JSON.stringify(ps))}catch(e){return _fb(L,ps,sg)}
+  let b=FBX.get(k);if(!b){b=_fb(L,ps,sg);if(FBX.size>400)FBX.clear();FBX.set(k,b)}return b}}
 setTimeout(achBadge,1500);
 /* a stable little leaderboard around your rank */
 function renderArena(){const r=rankOf(S.rp);
