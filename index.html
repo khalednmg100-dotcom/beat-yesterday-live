@@ -216,6 +216,7 @@ button:focus-visible{outline:2px solid var(--bone);outline-offset:2px}
 .avi{display:flex;flex-direction:column;align-items:center;gap:4px;padding:8px 4px;border-radius:14px;border:1.5px solid #ffffff1c;background:#0b092099;color:#fff;cursor:pointer;font:inherit}
 .avi img{width:64px;height:64px;border-radius:50%;object-fit:cover}.avi b{font-size:11.5px;text-align:center}.avi small{font-size:9.5px;color:#ffb3bd;text-align:center;line-height:1.3}
 .avi.on{border-color:#7dffa8;box-shadow:0 0 14px #7dffa855}.avi.lk img{filter:grayscale(.85) brightness(.5)}
+.mtop .ico.mi{width:42px;height:42px;padding:0;border:0;background:none;position:relative}.mtop .ico.mi img{width:100%;height:100%;border-radius:50%;display:block;filter:drop-shadow(0 2px 6px #0009)}.mtop .ico.mi:active img{transform:scale(.92)}
 #pAll{background:linear-gradient(#7dffa8,#2fbf6a);color:#05210f}
 .side .bar{height:13px;border-radius:7px;background:#00000066;border:1.5px solid #ffffff2e}
 .side .bar i{width:100%;transform-origin:left;will-change:transform} .side.en .bar i{transform-origin:right}
@@ -596,7 +597,7 @@ button:focus-visible{outline:2px solid var(--bone);outline-offset:2px}
   <section id="intro" class="screen"><canvas id="icv"></canvas><button id="iSkip">تخطي ›</button></section>
 
   <section id="menu" class="screen">
-    <div class="mtop"><button class="ico gear" id="mSet" aria-label="الإعدادات"><svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="3.2"/><path d="M12 2.5v3M12 18.5v3M2.5 12h3M18.5 12h3M5.3 5.3l2.1 2.1M16.6 16.6l2.1 2.1M5.3 18.7l2.1-2.1M16.6 7.4l2.1-2.1"/></svg></button><button class="ico book" id="mCodex" aria-label="الموسوعة"><svg viewBox="0 0 24 24"><path d="M5 4.5A1.5 1.5 0 0 1 6.5 3H19v15H6.5A1.5 1.5 0 0 0 5 19.5z"/><path d="M5 19.5A1.5 1.5 0 0 0 6.5 21H19v-3M9 7h6M9 10.5h6"/></svg></button><button class="ico trophy" id="mAch" aria-label="الإنجازات"><svg viewBox="0 0 24 24"><path d="M8 4h8v5a4 4 0 0 1-8 0zM8 6H5a3 3 0 0 0 3 4M16 6h3a3 3 0 0 1-3 4M12 13v4M9 20h6"/></svg><i class="dot" id="mAchDot" hidden></i></button><button class="mprof" id="mProf"><img id="mpAv" src="https://khalednmg100-dotcom.github.io/beat-yesterday-live/img/av/rookie.webp" alt=""><b id="mpName"></b></button><span></span></div>
+    <div class="mtop"><button class="ico gear mi" id="mSet" aria-label="الإعدادات"><img src="https://khalednmg100-dotcom.github.io/beat-yesterday-live/img/ui/settings.webp" alt=""></button><button class="ico book mi" id="mCodex" aria-label="الموسوعة"><img src="https://khalednmg100-dotcom.github.io/beat-yesterday-live/img/ui/codex.webp" alt=""></button><button class="ico trophy mi" id="mAch" aria-label="الإنجازات"><img src="https://khalednmg100-dotcom.github.io/beat-yesterday-live/img/ui/ach.webp" alt=""><i class="dot" id="mAchDot" hidden></i></button><button class="mprof" id="mProf"><img id="mpAv" src="https://khalednmg100-dotcom.github.io/beat-yesterday-live/img/av/rookie.webp" alt=""><b id="mpName"></b></button><span></span></div>
     <b class="logo">اغلب نفسك</b>
     <p class="minfo" id="mInfo"></p>
     <div class="mrow"><button class="mchar" id="mShop"><i class="coin3d big"></i><span class="mt"><b>الشوب</b></span><b id="mCoins" hidden>0</b></button>
