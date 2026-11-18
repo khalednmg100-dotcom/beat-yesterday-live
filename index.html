@@ -217,6 +217,11 @@ button:focus-visible{outline:2px solid var(--bone);outline-offset:2px}
 .avi img{width:64px;height:64px;border-radius:50%;object-fit:cover}.avi b{font-size:11.5px;text-align:center}.avi small{font-size:9.5px;color:#ffb3bd;text-align:center;line-height:1.3}
 .avi.on{border-color:#7dffa8;box-shadow:0 0 14px #7dffa855}.avi.lk img{filter:grayscale(.85) brightness(.5)}
 .mtop .ico.mi{width:42px;height:42px;padding:0;border:0;background:none;position:relative}.mtop .ico.mi img{width:100%;height:100%;border-radius:50%;display:block;filter:drop-shadow(0 2px 6px #0009)}.mtop .ico.mi:active img{transform:scale(.92)}
+.sgrid{grid-template-columns:1fr!important;align-content:start}
+.rollbox.rbar{position:static;display:flex;flex-direction:row;align-items:center;gap:10px;padding:6px 10px;border-radius:14px;text-align:start}
+.rbar .rbq{width:34px;height:34px;font-size:20px;flex:none}.rbar .rbt{flex:1;min-width:0;display:flex;flex-direction:column}.rbar .rbt b{font-family:var(--display);font-weight:400;font-size:17px;color:#ffd23e}.rbar .rbt small{font-size:11px;color:var(--mute);white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.rbar #rbInfo{width:28px;height:28px;font:800 14px system-ui,sans-serif}.rbar #sRoll{flex:none;width:auto;min-width:96px;font-size:16px;padding:6px 14px;margin:0}
+.pr img.rav{border-radius:50%;box-shadow:0 0 0 2px #ffd23e,0 0 12px #ffd23e88}
 #pAll{background:linear-gradient(#7dffa8,#2fbf6a);color:#05210f}
 .side .bar{height:13px;border-radius:7px;background:#00000066;border:1.5px solid #ffffff2e}
 .side .bar i{width:100%;transform-origin:left;will-change:transform} .side.en .bar i{transform-origin:right}
@@ -621,7 +626,7 @@ button:focus-visible{outline:2px solid var(--bone);outline-offset:2px}
     <div class="pfbody" id="pfBody"></div>
   </section>
   <section id="story" class="screen">
-    <div class="atop"><button class="ico" id="sBack" aria-label="رجوع"><svg viewBox="0 0 24 24"><path d="M15 6l-6 6 6 6"/></svg></button><b>القصة</b><span id="sProg"></span></div>
+    <div class="atop"><button class="ico" id="syBack" aria-label="رجوع"><svg viewBox="0 0 24 24"><path d="M15 6l-6 6 6 6"/></svg></button><b>القصة</b><span id="sProg"></span></div>
     <div class="scity" id="sCity"><canvas id="sArt"></canvas><svg id="sPath"></svg><div class="snl" id="sNodes"></div><div class="stxt" id="sTxt"></div><button class="snav l" id="sPrev" aria-label="prev">‹</button><button class="snav r" id="sNext" aria-label="next">›</button></div>
     <div class="sdots" id="sDots"></div>
     <div class="spanel" id="sPanel"></div>
@@ -663,8 +668,7 @@ button:focus-visible{outline:2px solid var(--bone);outline-offset:2px}
   <section id="shop" class="screen">
     <div class="atop"><button class="ico" id="sBack" aria-label="رجوع"><svg viewBox="0 0 24 24"><path d="M9 6l6 6-6 6"/></svg></button><b>الشوب</b><span class="coins" hidden><i class="coin"></i><b id="sCoins">0</b></span></div>
     <div class="sgrid">
-      <div class="rollbox"><i class="rbq">?</i><b>ريرول شخصية</b><p>شخصية عشوائية<br>نينجا 42% · ساحر 27% · رامي 17%<br>روبوت 14% · مصاص الدماء من الباتل باس بس<br>لو طلعت معاك يرجعلك 250</p><button class="go" id="sRoll">ريرول · 600 <i class="coin"></i></button>
-        <span class="hint2">العملات بتيجي من المنافسات: كل فوز بيديك أكتر كل ما رانكك يعلى</span></div>
+      <div class="rollbox rbar"><i class="rbq">?</i><div class="rbt"><b id="rbT">ريرول شخصية</b><small id="rbS">شخصية عشوائية · لو مكررة ترجعلك 250</small></div><button class="ico" id="rbInfo" aria-label="info">i</button><button class="go" id="sRoll">600 <i class="coin"></i></button></div>
       <div class="scol"><div id="sGrid" class="schars"></div><h4 class="sh">المرافقين <span>واحد بيطير فوقك ويساعدك، وبيندمج مع ضربتك القاضية</span></h4><div id="sComps" class="schars"></div></div>
     </div>
   </section>
@@ -1260,7 +1264,7 @@ function rollAnim(id,dup){const ov=$('roll');ov.classList.add('on');$('rollTxt')
     else{stillFig('rollFig',S.lv,1,null,id);if(CHARS[id].art){$('rollArt').src=CHARS[id].art;$('rollArt').hidden=false;$('rollFig').hidden=true}$('rollTxt').textContent=CHARS[id].name;$('rollTxt').style.color=CHARS[id].col;
       $('rollSub').textContent=dup?'مكررة · رجعلك '+REROLL_BACK+' عملة':'شخصية جديدة!';sfx(dup?'up':'morph');$('rollOk').hidden=false;$('roll').classList.add('rev')}};
   $('roll').classList.remove('rev');$('rollFig').hidden=false;$('rollArt').hidden=true;tick()}
-function renderShop(){$('sCoins').textContent=fmt(S.coins||0);
+function renderShop(){{const e=$('rbS');if(e)e.textContent=LL('شخصية عشوائية · لو مكررة ترجعلك 250','Random hero · duplicates refund 250');const t=$('rbT');if(t)t.textContent=LL('ريرول شخصية','Hero reroll')}$('sCoins').textContent=fmt(S.coins||0);
   $('sGrid').innerHTML=CHAR_IDS.filter(id=>id!=='fighter').map(id=>{const C=CHARS[id],own=owns(id),tr=S.trial&&S.trial.char===id;
     return `<div class="sc${own?' own':''}" style="--cc:${C.col}">${C.art?`<img class="port" src="${C.art}" alt="">`:`<canvas class="port" id="sf_${id}"></canvas>`}<b>${C.name}</b>
       <div class="cs">${KEYS.map(k=>`<img src="${iconSrc(id,k,4)}" alt="">`).join('')}</div>
@@ -2492,9 +2496,10 @@ function renderProf(){const r=rankOf(S.rp||0),cups=S.cups||{},L=achList(),G=achS
 /* ---------- profile avatars ---------- */
 const AVS=[['rookie','المبتدئ المجهول','Mystery Rookie',()=>true,['متاحة من الأول','Available from the start']]];
 for(const id of ['fighter','ninja','mage','golem','archer','vampire','fallen','kitsu','ryu'])if(CHARS[id])AVS.push([id,CHARS[id].name,null,()=>charUnlocked(id),['افتح البطل ده','Unlock this hero']]);
-AVS.push(['dragon','التنين الدهبي','Golden Dragon',()=>bpLevel()>=10,['الباتل باس · مستوى 10','Battle Pass · level 10'],10],
-  ['phoenix','العنقاء','Phoenix',()=>bpState().elite&&bpLevel()>=20,['نخبة الباتل باس · مستوى 20','Elite Pass · level 20'],20],
-  ['cosmic','الإمبراطور الكوني','Cosmic Emperor',()=>bpState().elite&&bpLevel()>=30,['نخبة الباتل باس · مستوى 30','Elite Pass · level 30'],30],
+const hasAv=id=>(S.avs||[]).includes(id);
+AVS.push(['dragon','التنين الدهبي','Golden Dragon',()=>hasAv('dragon'),['الباتل باس · مستوى 10','Battle Pass · level 10']],
+  ['phoenix','العنقاء','Phoenix',()=>hasAv('phoenix'),['نخبة الباتل باس · مستوى 20','Elite Pass · level 20']],
+  ['cosmic','الإمبراطور الكوني','Cosmic Emperor',()=>hasAv('cosmic'),['نخبة الباتل باس · مستوى 28','Elite Pass · level 28']],
   ['skull','فارس الجمجمة','Skull Knight',()=>stS().best>50,['خلّص 5 فصول في القصة','Clear 5 story chapters']],
   ['crystal','ملكة الكريستال','Crystal Queen',()=>((S.cups||{}).g||0)>=1,['اكسب بطولة (كاس دهبي)','Win a tournament (gold cup)']]);
 function avSrc(id){return 'https://khalednmg100-dotcom.github.io/beat-yesterday-live/img/av/'+id+'.webp'}
@@ -2593,7 +2598,7 @@ function storyPanel(st){const T=stS(),ci=Math.floor((st-1)/10),C=STORY[ci],boss=
     `<small>${first?LL('أول مرة: ','First clear: '):LL('إعادة: ','Replay: ')}<i class="coin"></i> ${fmt(first?coins:Math.round(coins*.4))}</small></div><button class="go" id="sGo">${boss?LL('واجه البوص','Fight the boss'):LL('قاتل','Fight')}</button>`;
   $('sGo').onclick=()=>storyPlay(st)}
 $('mStory').onclick=()=>{auInit();sfx('click');ST_SEL=null;ST_CH=null;show('story');renderStory()};
-$('sBack').onclick=()=>{sfx('click');show('menu')};
+$('syBack').onclick=()=>{sfx('click');show('menu')};
 setTimeout(achBadge,1500);
 /* a stable little leaderboard around your rank */
 function renderArena(){const r=rankOf(S.rp);
@@ -2646,6 +2651,7 @@ function grantElite(silent){const b=bpState();if(b.elite)return;b.elite=true;S.c
 function bpState(){return S.bp||(S.bp={xp:0,f:[],e:[],elite:false})}
 function bpLevel(){return Math.min(BP_TIERS,Math.floor(bpState().xp/BP_XP))}
 function bpReward(track,i){/* i = 1..30 */
+  if(track==='f'&&i===10)return{av:'dragon'};if(track==='e'&&i===20)return{av:'phoenix'};if(track==='e'&&i===28)return{av:'cosmic'};
   if(track==='f'){if(i===30)return{coins:2000};if(i%5===0)return{rp:20+i};if(i%3===0)return{pts:1};return{coins:50+i*10}}
   if(i===30)return{hero:1};if(i===25)return{frame:1};if(i===15)return{comp:1};if(i%5===0)return{rp:40+i*2};if(i%4===0)return{shield:1};return{coins:150+i*25}}
 function bpClaimable(){const b=bpState(),lv=bpLevel();let n=0;for(let i=1;i<=lv;i++){if(!b.f.includes(i))n++;if(b.elite&&!b.e.includes(i))n++}return n}
@@ -2653,10 +2659,10 @@ function bpGain(n){const b=bpState(),was=bpLevel();b.xp=Math.min(BP_TIERS*BP_XP,
 function passBadge(){if(!$('mPassLv'))return;$('mPassLv').textContent='مستوى '+bpLevel()+' / '+BP_TIERS;$('mPassDot').hidden=!bpClaimable()}
 /* the elite pass ends with a hero: the rarest one you don't have yet */
 const bpHero=()=>owns('fallen')?null:'fallen';
-function rwIcon(r){if(r.hero){const h=bpHero();return h?`<img src="${CHARS[h].art||ultIcon(h)}" alt="" class="hero"><b>${CHARS[h].name}</b>`:`<i class="coin3d"></i><b>5K</b>`}if(r.coins)return `<i class="coin3d"></i><b>${fmt(r.coins)}</b>`;if(r.rp)return `<img src="${rankPic(rankOf(S.rp))}" alt=""><b>+${r.rp} نقطة رانك</b>`;
+function rwIcon(r){if(r.av){const a=AVS.find(x=>x[0]===r.av);return `<img src="${avSrc(r.av)}" alt="" class="hero rav"><b>${a?avName(a):''}</b>`}if(r.hero){const h=bpHero();return h?`<img src="${CHARS[h].art||ultIcon(h)}" alt="" class="hero"><b>${CHARS[h].name}</b>`:`<i class="coin3d"></i><b>5K</b>`}if(r.coins)return `<i class="coin3d"></i><b>${fmt(r.coins)}</b>`;if(r.rp)return `<img src="${rankPic(rankOf(S.rp))}" alt=""><b>+${r.rp} نقطة رانك</b>`;
   if(r.pts)return `<img src="img/ic/str4.webp" alt="" class="rnd"><b>نقط تطور</b>`;if(r.shield)return `<img src="img/ic/block.webp" alt="" class="rnd"><b>درع الرانك</b>`;
   if(r.comp)return S.comps&&S.comps.includes(BP_COMP15)?`<i class="coin3d"></i><b>2.5K</b>`:`<img src="img/comp/${BP_COMP15}.webp" alt=""><b>${COMPS[BP_COMP15].name}</b>`;return `<span class="cosf"></span><b>إطار كوني</b>`}
-function bpGive(r){if(r.coins){S.coins=(S.coins||0)+r.coins;return '+'+fmt(r.coins)+' عملة'}
+function bpGive(r){if(r.av){S.avs=S.avs||[];if(!S.avs.includes(r.av))S.avs.push(r.av);const a=AVS.find(x=>x[0]===r.av);setTimeout(avCheck,300);return LL('صورة بروفايل جديدة: ','New profile picture: ')+(a?avName(a):'')}if(r.coins){S.coins=(S.coins||0)+r.coins;return '+'+fmt(r.coins)+' عملة'}
   if(r.rp){const before=rankOf(S.rp);S.rp=(S.rp||0)+r.rp;const a=rankOf(S.rp);if(a.idx>before.idx)setTimeout(()=>toast('رانك جديد: '+a.full),700);return '+'+r.rp+' نقطة رانك'}
   if(r.pts){const v=Math.round(150*dayMult(S.day)*intMult(S.lv));S.pts=(S.pts||0)+v;return '+'+fmt(v)+' نقطة تطور'}
   if(r.shield){S.shield=(S.shield||0)+1;return 'درع الرانك: خسارتك الجاية في المنافسة مش هتنقصك'}
@@ -2669,7 +2675,7 @@ function renderPass(){const b=bpState(),lv=bpLevel(),into=lv>=BP_TIERS?BP_XP:b.x
   let h='<div class="pcol plab"><span></span><div class="pr lab">مجاني</div><div class="pr lab el">النخبة</div></div>';
   for(let i=1;i<=BP_TIERS;i++){const ok=i<=lv,cell=(t)=>{const got=b[t].includes(i),lock=t==='e'&&!b.elite,cls=got?'got':ok&&!lock?'can':'no';
       return `<div class="pr ${t==='e'?'el':''} ${cls}" data-bp="${t}${i}">${rwIcon(bpReward(t,i))}${got?'<i class="ok">✓</i>':lock?'<i class="lk">🔒</i>':''}</div>`};
-    const av=AVS.find(a=>a[5]===i);h+=`<div class="pcol${ok?' on':''}${i===lv+1?' next':''}"><span>${i}${av?`<img class="pav" src="${avSrc(av[0])}" alt="">`:''}</span>${cell('f')}${cell('e')}</div>`}
+    h+=`<div class="pcol${ok?' on':''}${i===lv+1?' next':''}"><span>${i}</span>${cell('f')}${cell('e')}</div>`}
   $('pAll').hidden=!bpClaimable();$('pAll').textContent=LL('استلم الكل','Claim all')+' ('+bpClaimable()+')';
   $('pTrack').innerHTML=h;const nx=$('pTrack').querySelector('.next')||$('pTrack').querySelector('.can');if(nx)nx.scrollIntoView({inline:'center',block:'nearest'})}
 $('pTrack').addEventListener('click',e=>{const c=e.target.closest('[data-bp]');if(!c||!c.classList.contains('can'))return;const t=c.dataset.bp[0],i=+c.dataset.bp.slice(1),b=bpState();
@@ -3356,7 +3362,8 @@ $('hBack').onclick=$('aBack').onclick=$('cBack').onclick=$('pBack').onclick=$('s
 $('introBtn').onclick=()=>{auInit();introStart()};
 $('langBtn').textContent=LANG==='en'?'Language: English':'اللغة: العربي';$('langBtn').onclick=()=>{sfx('click');setLang(LANG==='en'?'ar':'en')};$('iSkip').onclick=introEnd;
 $('icv').addEventListener('pointerdown',()=>{auInit();if(INTRO.t>INTRO.END+.6)introEnd()});
-$('mChars').onclick=()=>{auInit();sfx('click');show('chars')};$('mShop').onclick=()=>{auInit();sfx('click');show('shop')};$('sBack').onclick=()=>{sfx('click');show('menu')};
+$('mChars').onclick=()=>{auInit();sfx('click');show('chars')};$('mShop').onclick=()=>{auInit();sfx('click');show('shop')};$('rbInfo').onclick=()=>{sfx('click');toast(LL('نينجا 42% · ساحر 27% · رامي 17% · روبوت 14% · مصاص الدماء من الباتل باس بس','Ninja 42% · Mage 27% · Archer 17% · Robot 14% · Vampire: Battle Pass only'))};
+$('sBack').onclick=()=>{sfx('click');show('menu')};
 $('sRoll').onclick=()=>{auInit();reroll()};$('evoX').onclick=()=>{sfx('click');$('evo').classList.remove('on')};$('rollOk').onclick=()=>{sfx('click');$('roll').classList.remove('on');renderShop()};
 $('sComps').addEventListener('click',e=>{const b=e.target.closest('[data-cbuy],[data-ceq]');if(!b)return;auInit();if(b.dataset.cbuy)compBuy(b.dataset.cbuy);else compEq(b.dataset.ceq)});
 $('sGrid').addEventListener('click',e=>{const b=e.target.closest('[data-buy],[data-try]');if(!b)return;auInit();if(b.dataset.buy)buyChar(b.dataset.buy);else trialChar(b.dataset.try)});
