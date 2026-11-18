@@ -1,7 +1,8 @@
 <!DOCTYPE html>
 <html lang="ar" dir="ltr">
 <head>
-<script>(function(){function cut(){var m=document.getElementById('liveEnd');if(!m)return;while(m.nextSibling)m.parentNode.removeChild(m.nextSibling);}if(window.__live){document.addEventListener('DOMContentLoaded',cut);var n=0,iv=setInterval(function(){cut();if(++n>40)clearInterval(iv)},50)}})();</script>
+<script>(function(){var shown=0;function rep(msg){try{if(shown>2||!document.body)return;if(/Unexpected identifier|already been declared|Script error/i.test(msg))return;shown++;var d=document.getElementById('errBar');if(!d){d=document.createElement('div');d.id='errBar';d.style.cssText='position:fixed;left:8px;right:8px;bottom:8px;z-index:2147483647;background:#b0102c;color:#fff;font:600 11px/1.35 system-ui,sans-serif;padding:6px 10px;border-radius:9px;white-space:pre-wrap;max-height:40vh;overflow:auto';d.onclick=function(){d.remove()};document.body.appendChild(d)}d.textContent+=(d.textContent?'\n':'')+'v'+(window.__live||window.BUILD_V||'?')+' · '+msg}catch(e){}}window.addEventListener('error',function(e){rep((e.message||'error')+' @'+(e.lineno||0)+':'+(e.colno||0)+(e.error&&e.error.stack?'\n'+String(e.error.stack).split('\n').slice(1,3).join('\n'):''))});window.addEventListener('unhandledrejection',function(e){rep('promise: '+(e.reason&&(e.reason.message||e.reason)))})})();</script>
+<script>(function(){function cut(){var m=document.getElementById('liveEnd');if(!m)return;while(m.nextSibling)m.parentNode.removeChild(m.nextSibling);}if(window.__live)document.addEventListener('DOMContentLoaded',cut)})();</script>
 <script>window.BUILD_V=28;window.LIVE_BASE='https://khalednmg100-dotcom.github.io/beat-yesterday-live/';(function(){try{if(window.__live||location.port)return;var o=JSON.parse(localStorage.getItem('by-live')||'null');if(o&&o.v>window.BUILD_V&&o.html&&o.html.length>50000){var E='<'+'/script>',h=o.html.replace(/<head>/i,'<head><script>window.__live='+o.v+E);if(o.lang)h=h.replace('<script src="lang-en.js">'+E,'<script>'+o.lang.split(E).join('<\/script>')+E);document.open();document.write(h);document.close()}}catch(e){}})();</script>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no, viewport-fit=cover">
@@ -890,7 +891,7 @@ function tr(s){if(LANG!=='en'||typeof s!=='string'||!HAS_AR.test(s))return s;let
   r=s.replace(AR_RE,trRun).replace(/\u060C/g,',').replace(/\u061F/g,'?').replace(/(\d) ([KMBT])(?![a-z])/g,'$1$2').replace(/\s{2,}/g,' ');
   if(TRC.size>5000)TRC.clear();TRC.set(s,r);return r}
 function trNode(n){if(n.nodeType===3){const v=n.nodeValue;if(HAS_AR.test(v)){const t=tr(v);if(t!==v)n.nodeValue=t}return}
-  if(n.nodeType!==1)return;for(const a of['aria-label','title','placeholder'])if(n.hasAttribute&&n.hasAttribute(a)){const v=n.getAttribute(a);if(HAS_AR.test(v))n.setAttribute(a,tr(v))}
+  if(n.nodeType!==1||n.tagName==='SCRIPT'||n.tagName==='STYLE')return;for(const a of['aria-label','title','placeholder'])if(n.hasAttribute&&n.hasAttribute(a)){const v=n.getAttribute(a);if(HAS_AR.test(v))n.setAttribute(a,tr(v))}
   for(let c=n.firstChild;c;c=c.nextSibling)trNode(c)}
 if(LANG==='en'){document.documentElement.lang='en';document.documentElement.dir='ltr';document.title=tr(document.title);trNode(document.body);
   new MutationObserver(ms=>{for(const m of ms){if(m.type==='characterData')trNode(m.target);else if(m.type==='attributes')trNode(m.target);else for(const n of m.addedNodes)trNode(n)}})
@@ -2985,6 +2986,7 @@ function kitsuUlt(A,D,v){const U=R.ult;if(U)U.dur=1.9;const rage=A.fox>0||(A.tai
 
 /* ---------- patch notes: simple words, newest first ---------- */
 const PATCH_NOTES=[
+ {v:69,ar:['تصليح لمشكلة إن اللعبة بتقف لما تدوس، ولو حصل خطأ هيظهر شريط أحمر صوّره وابعته'],en:['Fix for the game freezing on tap; if an error happens a red bar shows it, screenshot it and send it']},
  {v:68,ar:['أسماء الأبطال بقت بالإنجليزي في كل حتة'],en:['Hero names are shown in English everywhere']},
  {v:67,ar:['دندي: صد الفولاذ اتشال واتحط مكانه وضع الغضب، قبضاته بتولّع وضربه أقوى وأسرع'],en:['Dendi: Steel Guard is replaced by Fury Mode, burning fists with harder, faster punches']},
  {v:66,ar:['اتصلّحت مشكلة العملتين فوق بعض وحاجات قديمة كانت مستخبية ورا الشاشة، واللعبة بقت أخف'],en:['Fixed the double coin bar and old screens hidden behind the game, the game is lighter now']},
