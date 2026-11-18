@@ -1327,7 +1327,7 @@ function lookOf(lv,kind,ch){
   const C=CHARS[ch||S.char||'fighter'],LK=C.looks,top=LK.length-1,tier=tierOf(lv),tot=total(lv),b=LK[Math.min(tier,top)];
   const L=Object.assign({ol:'#120e2a',boot:b.pants,arm:'skin'},b,{tier,char:ch||S.char||'fighter',ex:new Set(b.ex.split(' ')),rings:tier>=8?Math.min(1+Math.floor((tier-8)/2),4):1,
     lw:5+6*lv.str/tot,tw:12+10*lv.end/tot,hr:8+5*lv.int/tot,spd:lv.spd/tot});
-  if(L.char==='ninja')L.ex.add('katana');if(L.sc>1)L.sc=1+(L.sc-1)*.45;
+  if(L.char==='ninja')L.ex.add('katana');L.sc=1;
   if(L.pat){L.skin=L.top=L.pants=L.boot='#141040';L.ol=L.acc;if(L.mask)L.mask='#141040'}
   if(tier>top){const h=(300+47*(tier-top)+({ninja:50,mage:140,golem:190,archer:100,vampire:-30,kitsu:20,ryu:210}[L.char]||0)+360)%360;L.acc=L.ol=L.pat=`hsl(${h} 95% 72%)`}
   if(kind==='ghost'){Object.assign(L,{skin:'#cfeaf2',top:'#9fd4e6',pants:'#6fa9bd',boot:'#5d93a8',hair:'#e9fbff',bracer:null,cape:L.cape?'#b7e3f1':null,capeIn:'#e9fbff',
