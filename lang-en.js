@@ -142,3 +142,5 @@ Object.assign(window.LANG_EN,{"فرخ العنقاء": "Phoenix Chick", "فول�
 Object.assign(window.LANG_EN,{"ريح السماء": "Heaven's Gale", "حكم السماء": "Sky Judgement", "الحصاد الأخير": "Final Harvest", "أفق الحدث": "Event Horizon", "الضربة الكبرى": "Grand Slam", "تسونامي الهاوية": "Abyss Tsunami", "ألف فولاذ": "Thousand Steel", "العنقاء رجّعتك": "The phoenix revived you", "ريح": "Gale", "رعد": "Thunder", "حصاد": "Harvest", "مدار": "Orbit", "قبضة": "Fist"});
 
 Object.assign(window.LANG_EN,{"وضع الغضب": "Fury Mode", "غضب الحلبة": "Ring Fury", "النار الحمرا": "Red Fire", "غضب لا يوقف": "Unstoppable Fury"});
+
+Object.assign(window.LANG_EN,{"مرحلة وبوص كل": "stages · a boss every"});
