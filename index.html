@@ -893,7 +893,7 @@ function tr(s){if(LANG!=='en'||typeof s!=='string'||!HAS_AR.test(s))return s;let
   r=s.replace(AR_RE,trRun).replace(/\u060C/g,',').replace(/\u061F/g,'?').replace(/(\d) ([KMBT])(?![a-z])/g,'$1$2').replace(/\s{2,}/g,' ');
   if(TRC.size>5000)TRC.clear();TRC.set(s,r);return r}
 function trNode(n){if(n.nodeType===3){const v=n.nodeValue;if(HAS_AR.test(v)){const t=tr(v);if(t!==v)n.nodeValue=t}return}
-  if(n.nodeType!==1||n.tagName==='SCRIPT'||n.tagName==='STYLE')return;for(const a of['aria-label','title','placeholder'])if(n.hasAttribute&&n.hasAttribute(a)){const v=n.getAttribute(a);if(HAS_AR.test(v))n.setAttribute(a,tr(v))}
+  if(n.nodeType!==1||n.tagName==='SCRIPT'||n.tagName==='STYLE')return;for(const a of['aria-label','title','placeholder'])if(n.hasAttribute&&n.hasAttribute(a)){const v=n.getAttribute(a);if(HAS_AR.test(v)){const t=tr(v);if(t!==v)n.setAttribute(a,t)}}
   for(let c=n.firstChild;c;c=c.nextSibling)trNode(c)}
 if(LANG==='en'){document.documentElement.lang='en';document.documentElement.dir='ltr';document.title=tr(document.title);trNode(document.body);
   new MutationObserver(ms=>{for(const m of ms){if(m.type==='characterData')trNode(m.target);else if(m.type==='attributes')trNode(m.target);else for(const n of m.addedNodes)trNode(n)}})
@@ -2988,6 +2988,7 @@ function kitsuUlt(A,D,v){const U=R.ult;if(U)U.dur=1.9;const rage=A.fox>0||(A.tai
 
 /* ---------- patch notes: simple words, newest first ---------- */
 const PATCH_NOTES=[
+ {v:79,ar:['اتصلّح التهنيج نهائيًا: كان بسبب الترجمة الإنجليزي في بعض الصفحات','اللعبة أسرع ورجعت التأثيرات والأسلحة في الصفحات'],en:['The freeze is fixed: it came from the English translation on some screens','Faster again, glows and weapons are back on the screens']},
  {v:78,ar:['صفحة الأبطال بتظهر الكروت واحد ورا التاني (مؤقتًا عشان نعرف سبب التهنيج)'],en:['The heroes screen shows cards one by one (temporary, to find the freeze)']},
  {v:77,ar:['تصليح تهنيج صفحة الأبطال على بعض الموبايلات'],en:['Fix for the heroes screen freezing on some phones']},
  {v:76,ar:['الضغط على الأزرار بقى أسرع'],en:['Buttons respond faster']},
@@ -3399,21 +3400,21 @@ function bcr(s){try{BCR.a.push(((Date.now()-BCR.t0)/1000).toFixed(1)+'s '+s);if(
     d.textContent=LL('آخر مرة اللعبة وقفت هنا (صوّر وابعت · دوس عشان تقفل):','Last time the game stopped here (screenshot it · tap to close):')+'\nv'+(window.__live||window.BUILD_V)+' · stuck in: '+(stuck.join(', ')||'drawing / no exit')+'\n'+L.slice(-30).join('\n');d.onclick=()=>d.remove();document.body.appendChild(d)}catch(e){}},1200);
   try{localStorage.removeItem('by-bc')}catch(e){}})();
 BCR.hot=0;
-for(const n of ['show','switchChar','renderChars','renderHome','buildUps','findMatch','startRun','stillFig','figBox','lookOf','drawPrev','drawFig','tierInfo','renderShop','renderProf','renderCodex','toast','sfx','music','save','tagSearch','tagStart','openEvo','mapArt','renderStory','fit','measure']){
+if(0)for(const n of ['show','switchChar','renderChars','renderHome','buildUps','findMatch','startRun','stillFig','figBox','lookOf','drawPrev','drawFig','tierInfo','renderShop','renderProf','renderCodex','toast','sfx','music','save','tagSearch','tagStart','openEvo','mapArt','renderStory','fit','measure']){
   const f=window[n];if(typeof f!=='function')continue;const hot=['lookOf','drawPrev','sfx','figBox','drawFig','tierInfo','fit','measure'].includes(n);if(['lookOf','tierInfo','fit','measure','sfx'].includes(n))continue;let cnt=0;
   window[n]=function(...a){if(n==='show'){BCR.hot=2;if(a[0]==='home')try{bcr('# '+S.char+' lv '+JSON.stringify(S.lv)+' ghost '+JSON.stringify(S.ghost)+' day '+S.day+' dpr '+DPR+'/'+(window.devicePixelRatio||1)+' prev '+JSON.stringify(SZ.prev)+' win '+innerWidth+'x'+innerHeight)}catch(e){}}const log=!hot||BCR.hot>0||(++cnt%40===1);if(log)bcr('> '+n+(a[0]!=null&&typeof a[0]!=='object'&&typeof a[0]!=='function'?'('+String(a[0]).slice(0,16)+')':''));const r=f.apply(this,a);if(log)bcr('< '+n);return r}}
-setInterval(()=>bcr('. alive '+mode+(R&&R.phase?'/'+R.phase:'')),2000);
-document.addEventListener('visibilitychange',()=>bcr(document.hidden?'. hidden':'. visible'));addEventListener('pagehide',()=>bcr('. bye'));
-{const _fbd=frameBody;let fc=0;frameBody=function(ts){if(BCR.hot>0){bcr('. f'+BCR.hot+' '+mode);BCR.hot--}else if(++fc%30===0)bcr('. frame '+mode+(R&&R.P?'/'+R.P.char:''));return _fbd(ts)}}
+0&&setInterval(()=>bcr('. alive '+mode+(R&&R.phase?'/'+R.phase:'')),2000);
+
+if(0){const _fbd=frameBody;let fc=0;frameBody=function(ts){if(BCR.hot>0){bcr('. f'+BCR.hot+' '+mode);BCR.hot--}else if(++fc%30===0)bcr('. frame '+mode+(R&&R.P?'/'+R.P.char:''));return _fbd(ts)}}
 
 /* menu figures of the new heroes without the new weapon extras (diagnosing a phone GPU hang) */
-function safeLook(L){if(!L||!L.ex||!(L.ex.has('scythe')||L.ex.has('spear')||L.ex.has('planets')))return L;const C=Object.assign({},L);C.ex=new Set([...L.ex].filter(x=>x!=='scythe'&&x!=='spear'&&x!=='planets'));return C}
+function safeLook(L){return L;if(!L||!L.ex||!(L.ex.has('scythe')||L.ex.has('spear')||L.ex.has('planets')))return L;const C=Object.assign({},L);C.ex=new Set([...L.ex].filter(x=>x!=='scythe'&&x!=='spear'&&x!=='planets'));return C}
 
 /* phones: no CSS filter glows (they hung a Mali GPU at paint time) */
-if(IS_PHONE||'ontouchstart' in window||navigator.maxTouchPoints>0)document.body.classList.add('nofx');
+
 
 /* temporary: reveal the heroes screen item by item to find the one that hangs the phone's GPU */
-{const _rc=renderChars;let tok=0;renderChars=function(...a){const r=_rc.apply(this,a);const my=++tok;
+if(0){const _rc=renderChars;let tok=0;renderChars=function(...a){const r=_rc.apply(this,a);const my=++tok;
   const items=[...document.querySelectorAll('#cGrid [data-pick],#cComps [data-cpk]')];for(const e of items)e.style.visibility='hidden';
   let i=0;const next=()=>{if(my!==tok||i>=items.length){if(i>=items.length)bcr('# all revealed');return}const e=items[i++];bcr('# reveal '+(e.dataset.pick?'hero '+e.dataset.pick:'comp '+e.dataset.cpk));e.style.visibility='';setTimeout(next,180)};
   setTimeout(next,60);return r}}
