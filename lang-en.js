@@ -144,3 +144,7 @@ Object.assign(window.LANG_EN,{"ريح السماء": "Heaven's Gale", "حكم ا
 Object.assign(window.LANG_EN,{"وضع الغضب": "Fury Mode", "غضب الحلبة": "Ring Fury", "النار الحمرا": "Red Fire", "غضب لا يوقف": "Unstoppable Fury"});
 
 Object.assign(window.LANG_EN,{"مرحلة وبوص كل": "stages · a boss every"});
+
+Object.assign(window.LANG_EN,{"نقط 3 ضد 3": "3v3 points"});
+
+Object.assign(window.LANG_EN,{"دفاع": "Defense"});

@@ -3,7 +3,7 @@
 <head>
 <script>(function(){var shown=0;function rep(msg){try{if(shown>2||!document.body)return;if(/Unexpected identifier|already been declared|Script error/i.test(msg))return;shown++;var d=document.getElementById('errBar');if(!d){d=document.createElement('div');d.id='errBar';d.style.cssText='position:fixed;left:8px;right:8px;bottom:8px;z-index:2147483647;background:#b0102c;color:#fff;font:600 11px/1.35 system-ui,sans-serif;padding:6px 10px;border-radius:9px;white-space:pre-wrap;max-height:40vh;overflow:auto';d.onclick=function(){d.remove()};document.body.appendChild(d)}d.textContent+=(d.textContent?'\n':'')+'v'+(window.__live||window.BUILD_V||'?')+' · '+msg}catch(e){}}window.addEventListener('error',function(e){rep((e.message||'error')+' @'+(e.lineno||0)+':'+(e.colno||0)+(e.error&&e.error.stack?'\n'+String(e.error.stack).split('\n').slice(1,3).join('\n'):''))});window.addEventListener('unhandledrejection',function(e){rep('promise: '+(e.reason&&(e.reason.message||e.reason)))})})();</script>
 <script>(function(){function cut(){var m=document.getElementById('liveEnd');if(!m)return;while(m.nextSibling)m.parentNode.removeChild(m.nextSibling);}if(window.__live)document.addEventListener('DOMContentLoaded',cut)})();</script>
-<script>window.BUILD_V=28;window.LIVE_BASE='https://khalednmg100-dotcom.github.io/beat-yesterday-live/';(function(){try{if(window.__live||location.port)return;var o=JSON.parse(localStorage.getItem('by-live')||'null');if(o&&o.v>window.BUILD_V&&o.html&&o.html.length>50000){var E='<'+'/script>',h=o.html.replace(/<head>/i,'<head><script>window.__live='+o.v+E);if(o.lang)h=h.replace('<script src="lang-en.js">'+E,'<script>'+o.lang.split(E).join('<\/script>')+E);document.open();document.write(h);document.close()}}catch(e){}})();</script>
+<script>window.BUILD_V=82;window.LIVE_BASE='https://khalednmg100-dotcom.github.io/beat-yesterday-live/';(function(){try{if(window.__live||location.port)return;var o=JSON.parse(localStorage.getItem('by-live')||'null');if(o&&o.v>window.BUILD_V&&o.html&&o.html.length>50000){var E='<'+'/script>',h=o.html.replace(/<head>/i,'<head><script>window.__live='+o.v+E);if(o.lang)h=h.replace('<script src="lang-en.js">'+E,'<script>'+o.lang.split(E).join('<\/script>')+E);document.open();document.write(h);document.close()}}catch(e){}})();</script>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no, viewport-fit=cover">
 <title>اغلب نفسك</title>
@@ -334,6 +334,36 @@ body:not(.onhome) .cbar .evo3d,body:not(.onhome) #cbP{display:none}
 #quests .aclm{padding:3px 7px!important;font-size:10px!important;min-height:0!important}#quests .aclm .coin{width:12px!important;height:12px!important}}
 
 body.nofx *,body.nofx *::before,body.nofx *::after{filter:none!important;backdrop-filter:none!important;-webkit-backdrop-filter:none!important}
+
+#rq,#ldg{position:fixed;inset:0;z-index:9500;display:grid;place-items:center;background:radial-gradient(120% 90% at 50% 30%,#2a1c5a,#0b0920 70%);background-size:cover;background-position:center;color:#fff}
+.rqc,.ldc{display:flex;flex-direction:column;align-items:center;gap:6px;text-align:center;padding:14px 22px;border-radius:16px;background:#0b0920bb;border:1px solid #ffffff1a;min-width:260px}
+.rqr{width:70px;height:70px;object-fit:contain;animation:rqp 1.6s ease-in-out infinite}@keyframes rqp{50%{transform:scale(1.08)}}
+.rqt{font:800 18px var(--display,system-ui);color:#ffd23e}.rqk{font-size:12px;color:#ddd}.rqtime{font:800 26px var(--display,system-ui)}#rq small{font-size:11px;color:#aaa}
+.rqd{display:flex;gap:6px}.rqd i{width:7px;height:7px;border-radius:50%;background:#ffd23e;animation:rqb 1s infinite}.rqd i:nth-child(2){animation-delay:.15s}.rqd i:nth-child(3){animation-delay:.3s}@keyframes rqb{50%{opacity:.2;transform:translateY(-4px)}}
+.rqx{margin-top:4px;border:0;border-radius:10px;padding:7px 22px;background:#ff5a6e;color:#fff;font:800 13px system-ui;cursor:pointer}#rq.found .rqt{color:#7dffa8}#rq.found .rqd{display:none}
+.ldc b{font:800 18px var(--display,system-ui);color:#ffd23e}.ldb{width:240px;height:10px;border-radius:6px;background:#ffffff1a;overflow:hidden}.ldb i{display:block;height:100%;width:0;background:linear-gradient(90deg,#ffb23e,#ffd23e,#fff3a0);border-radius:6px}
+.ldp{font:800 13px system-ui}.ldc small{font-size:11px;color:#cfc8ff;max-width:300px}#ldg.out{opacity:0;transition:opacity .3s}
+#helpTip{position:fixed;z-index:99999;max-width:240px;background:#0b0920f4;border:1px solid #ffd23e88;color:#fff;font:600 11px/1.35 system-ui,sans-serif;padding:7px 9px;border-radius:9px;pointer-events:none;box-shadow:0 6px 18px #0008}
+[data-help]{cursor:help}.hasHelp{position:relative}.hasHelp::after{content:'?';position:absolute;top:1px;inset-inline-end:3px;font:800 8px system-ui;color:#ffd23e;opacity:.7}
+@media (max-height:440px){#over .card{max-height:97vh;padding:6px 10px!important;gap:4px!important}#oBan{font-size:24px!important;line-height:1.05}#oTitle{font-size:13px!important}#oText{font-size:11px!important}
+ #oStats{display:grid!important;grid-template-columns:repeat(5,minmax(0,1fr))!important;gap:4px!important}
+ #oStats .st{display:flex!important;flex-direction:column;align-items:center;justify-content:center;gap:0!important;padding:3px 2px!important;text-align:center;min-height:0}
+ #oStats .st i{font-size:12px;font-style:normal}#oStats .st b{font-size:13px;order:-1}#oStats .st span{font-size:8.5px!important;white-space:normal!important;overflow:visible!important;text-overflow:clip!important;line-height:1.1}#oStats .st em{font-size:8px}
+ #oGain .ech{padding:2px 8px!important}#oBtn{padding:6px!important;font-size:15px!important;min-height:0!important}}
+
+#tin,#trr{position:fixed;inset:0;z-index:9500;display:grid;place-items:center;background:radial-gradient(120% 90% at 50% 20%,#3a2a08ee,#0b0920f6 70%);color:#fff}
+.tic,.trc{display:flex;flex-direction:column;align-items:center;gap:6px;padding:12px 18px;border-radius:16px;background:#0b0920cc;border:1.5px solid #ffd23e66;box-shadow:0 0 30px #ffb23e33;min-width:300px;max-width:94vw}
+.tih{display:flex;align-items:center;gap:10px}.tih .cupi{width:44px;height:44px}.tih small{font-size:10px;color:#ffd23e;display:block}.tih b{font:800 18px var(--display,system-ui);display:block}.tih span{font-size:11px;color:#ddd}
+.tiv{display:flex;align-items:center;gap:16px}.tip{display:flex;flex-direction:column;align-items:center;gap:2px;min-width:110px}.tip img{width:60px;height:60px;border-radius:50%;box-shadow:0 0 0 2px #ffd23e,0 0 14px #ffb23e66}.tip b{font-size:13px}.tip small{font-size:10px;color:#ccc}
+.tivs{font:800 30px var(--display,system-ui);color:#ff5a6e}.tipow{width:260px;height:8px;border-radius:5px;background:#ff5a6e;overflow:hidden}.tipow i{display:block;height:100%;background:#7dffa8}.tipl{font-size:10px;color:#ccc}
+.tic3{font:800 34px var(--display,system-ui);color:#ffd23e;line-height:1}.tic3.fight{color:#ff5a6e}.tisk{font-size:9.5px;color:#999}
+.trc b{font:800 16px var(--display,system-ui);color:#ffd23e}.trl{display:flex;flex-direction:column;gap:4px;max-height:58vh;overflow:auto;width:100%}
+.trm{display:grid;grid-template-columns:1fr 14px 26px 14px 1fr 44px;align-items:center;gap:4px;padding:4px 8px;border-radius:9px;background:#ffffff0d;font-size:11.5px;opacity:0;animation:trIn .35s forwards}
+.trm .w{color:#7dffa8;font-weight:800}.trm .l{color:#999}.trm span{white-space:nowrap;overflow:hidden;text-overflow:ellipsis}.trm span:last-of-type{text-align:end}.trm em{font-style:normal;font-size:9px;color:#ff5a6e;text-align:center}.trm i{font-style:normal;color:#7dffa8;font-size:10px}.trm small{font-size:9px;color:#ffd23e;text-align:end}
+.trm.me{background:#ffb23e22;outline:1px solid #ffb23e88}@keyframes trIn{from{opacity:0;transform:translateY(6px)}to{opacity:1;transform:none}}
+.tstep{display:flex;gap:4px}.tstep i{font-style:normal;font-size:9.5px;padding:2px 7px;border-radius:9px;background:#ffffff10;color:#aaa}.tstep i.ok{background:#7dffa833;color:#7dffa8}.tstep i.on{background:#ffd23e;color:#1a1200;font-weight:800}
+.tnext{display:flex;align-items:center;gap:10px;padding:6px 10px;border-radius:12px;background:linear-gradient(90deg,#ffb23e33,#0b092088);border:1px solid #ffd23e66;grid-column:1/-1}.tnext img{width:42px;height:42px;border-radius:50%;box-shadow:0 0 0 2px #ffd23e}
+.tnext small{font-size:9.5px;color:#ffd23e;display:block}.tnext b{font-size:14px;display:block}.tnext span{font-size:10px;color:#ccc}
 #pAll{background:linear-gradient(#7dffa8,#2fbf6a);color:#05210f}
 .side .bar{height:13px;border-radius:7px;background:#00000066;border:1.5px solid #ffffff2e}
 .side .bar i{width:100%;transform-origin:left;will-change:transform} .side.en .bar i{transform-origin:right}
@@ -1917,7 +1947,7 @@ function rr(c,x,y,w,h,r){c.beginPath();if(c.roundRect)c.roundRect(x,y,w,h,r);els
 const STAT={
   str:{n:'القوة',i:'<path d="M4 9v6M7 6v12M17 6v12M20 9v6M7 12h10"/>',e:l=>'ضرر الضربة '+fmt(dmg(l))},
   spd:{n:'السرعة',i:'<path d="M13 2 5 14h6l-1 8 8-12h-6z"/>',e:l=>rate(l).toFixed(1)+' ضربة في الثانية · تفادي أسرع'},
-  end:{n:'التحمل',i:'<path d="M12 3l7 3v5c0 5-3 8-7 10-4-2-7-5-7-10V6z"/>',e:l=>'صحة '+fmt(maxHp(l))},
+  end:{n:'التحمل',i:'<path d="M12 3l7 3v5c0 5-3 8-7 10-4-2-7-5-7-10V6z"/>',e:l=>'صحة '+fmt(formHp(l))+' · '+LL('ثابتة لكل تحوّل','fixed for each form')},
   int:{n:'الذكاء',i:'<circle cx="12" cy="12" r="3"/><path d="M2 12s4-7 10-7 10 7 10 7-4 7-10 7S2 12 2 12z"/>',e:l=>'نقط ×'+intMult(l).toFixed(1)+' · ضربة حرجة '+Math.round(crit(l)*100)+'%'}
 };
 function buildUps(){
@@ -2013,7 +2043,7 @@ function lay(){if(!SZ.cv||!SZ.cv[0])measure();if(!SZ.cv[0]||!SZ.cv[1])return;con
   if(cw>ch){H=420;W=H*cw/ch;FLOOR=H-74;const c=W*.44;PX=c-90;EX=c+90}
   else{W=360;H=W*ch/cw;FLOOR=Math.max(250,H-268*W/cw);PX=92;EX=268}}
 const slideIn=()=>Math.max(300,W-EX+70);
-function mk(p,lv,hp,d,o){return fInit(Object.assign({p,lv,hp,max:hp,dmg:d,st:'idle',t:0,w:1,kind:'light',blockT:9,dodgeCd:0,kickCd:0,off:0,kb:0,flash:0,combo:0,next:1.2,slide:0,weakT:0,frozen:0,
+function mk(p,lv,hp,d,o){if(p){if(MODE!=='pvp'){const nh=formHp(lv);PSCALE=hp>0?nh/hp:1;hp=nh}else PSCALE=1;if(R&&R.E&&R.pscale&&R.phase!=='over')R.E.dmg*=PSCALE/R.pscale;if(R)R.pscale=PSCALE}else d*=PSCALE;return fInit(Object.assign({p,lv,hp,max:hp,dmg:d,st:'idle',t:0,w:1,kind:'light',blockT:9,dodgeCd:0,kickCd:0,off:0,kb:0,flash:0,combo:0,next:1.2,slide:0,weakT:0,frozen:0,
   cd:{str:0,spd:0,int:0,end:0},cpCd:0,cpE:0,shieldT:0,shieldMax:1,reflect:0,energy:0,hand:null,ps:Object.assign({},REST)},o||{}))}
 /* ---------- fight mechanics (both sides follow the same rules) ----------
    stamina: every attack, kick, skill and dodge costs some; it refills when you stop. Empty = TIRED (slower, no dodge, takes more damage).
@@ -2114,7 +2144,7 @@ function addEn(f,v){if(f.comp&&R&&R.phase==='fight')f.cpE=Math.min(100,(f.cpE||0
 let MODE='train',OPP=null;
 function foe(round){
   if(MODE==='story')return SUB==='wboss'?wbossFoe():SUB==='tower'?towerFoe():SUB==='tag'?tagFoe(0):storyFoe();
-  if(MODE==='pvp'){const o=OPP;return mk(false,o.lv,pvpHp(S.lv,o.lv)*(o.hpm||1),dmg(o.lv)*1.15,{name:o.name,look:lookOf(o.lv,null,o.char),char:o.char,comp:o.comp||null,pvp:true,ai:o.ai,next:.5,slide:slideIn()})}
+  if(MODE==='pvp'){const o=OPP;return mk(false,o.lv,pvpHp(S.lv,o.lv)*(o.hpm||1),dmg(o.lv)*1.15*rankedHp(S.lv)/Math.max(1,pvpHp(o.lv,S.lv)*.52),{name:o.name,look:lookOf(o.lv,null,o.char),char:o.char,comp:o.comp||null,pvp:true,ai:o.ai,next:.5,slide:slideIn()})}
   const d=S.day;
   /* shadows keep up with the player: they always take a real fight (~14+ hits) and always hurt */
   const skx=1+.06*skSum(S.lv); // skills add damage, so foes get tougher with them
@@ -2127,9 +2157,9 @@ function foe(round){
 }
 function startRun(mode){
   MODE=mode||'train';lay();
-  R={map:MAP_IDS[Math.floor(Math.random()*MAP_IDS.length)],st:{dmg:0,big:0,cmb:0,cc:0,dodge:0,pd:0,block:0,parry:0,brk:0,react:0,sk:0,ult:0,cs:0},mode:MODE,phase:'run',it:0,round:0,P:mk(true,S.lv,MODE==='pvp'?pvpHp(OPP.lv,S.lv)*.52:maxHp(S.lv),dmg(S.lv),{look:lookOf(S.lv),char:S.char||'fighter',comp:S.comp||null}),E:null,fx:[],pt:[],earned:0,energy:0,held:false,q:null,last:0,shake:0,scroll:0,stepT:0,hand:[PX,FLOOR-70],
+  R={map:MAP_IDS[Math.floor(Math.random()*MAP_IDS.length)],st:{dmg:0,big:0,cmb:0,cc:0,dodge:0,pd:0,block:0,parry:0,brk:0,react:0,sk:0,ult:0,cs:0},mode:MODE,phase:'run',it:0,round:0,P:mk(true,S.lv,MODE==='pvp'?rankedHp(S.lv):maxHp(S.lv),dmg(S.lv),{look:lookOf(S.lv),char:S.char||'fighter',comp:S.comp||null}),E:null,fx:[],pt:[],earned:0,energy:0,held:false,q:null,last:0,shake:0,scroll:0,stepT:0,hand:[PX,FLOOR-70],
      tasks:[],hs:0,zoom:0,ult:null,sty:{}};
-  R.tour=TOUR_FIGHT;TOUR_FIGHT=false;R.hc=0;R.hcT=-9;try{hitCount(0)}catch(e){}R.E=foe(0);R.P.hand=R.hand;
+  R.pscale=PSCALE;R.tour=TOUR_FIGHT;TOUR_FIGHT=false;R.hc=0;R.hcT=-9;try{hitCount(0)}catch(e){}R.E=foe(0);R.P.hand=R.hand;
   setupSkills();layoutPad();kickIconSet();{const e=document.querySelector('.side.me span');if(e)e.textContent=(isElite()?'👑 ':'')+myName()}$('timer').hidden=MODE!=='pvp';
   $('over').classList.remove('on');label();
   $('hint').textContent=MODE==='train'&&S.day<=3&&!S.tipsOff?'الشريط الأخضر طاقتك: متسبّمش. البرتقالي دفاع الخصم: املاه تكسره. صد أو تفادي في آخر لحظة = كاونتر. ضرب ضرب ركلة = ضربة صاعدة.':'';
@@ -2515,7 +2545,7 @@ function aiPvp(E,P,dt){const A=E.ai;
   else{E.st='idle';if(E.next<=0)E.next=A.pace*(.35+Math.random()*.5)}}
 
 function step(dt){
-  if(R.phase==='over')return;
+  if(R.phase==='over'||R.hold)return;
   const P=R.P,E=R.E,d=S.day;
   R.zoom=Math.max(0,R.zoom-dt*.25);
   if(R.hs>0){R.hs-=dt;return}
@@ -2583,7 +2613,7 @@ function showStats(win,earn){const b=$('oBan');b.textContent=win?'VICTORY':'DEFE
   const rows=[['⚔️','الضرر الكلي',s.dmg||0],['💥','أكبر ضربة',s.big||0],['🔗','أطول كومبو',s.cmb||0],['⏱️','الوقت',Math.floor(T/60)+':'+String(T%60).padStart(2,'0'),1],
     ['💨','تفادي',s.dodge||0,0,pd],['🛡️','صد',s.block||0,0,pr],['🔨','كسر الجارد',s.brk||0],['✨','دمج العناصر',s.react||0],['🌀','مهارات',s.sk||0],['⚡','قاضية',(s.ult||0)+(s.cs||0)]];
   $('oStats').innerHTML=rows.map(r=>`<div class="st"><i>${r[0]}</i><span>${tr(r[1])}</span><b data-v="${r[3]?'':r[2]}">${r[3]?r[2]:'0'}</b>${r[4]||''}</div>`).join('');
-  const IC={evo:'<i class="evo3d"></i>',coin:'<i class="coin3d"></i>',bp:'<img src="img/pass.webp" alt="">',rp:'<img src="'+rankPic(rankOf(S.rp))+'" alt="">'};
+  const IC={evo:'<i class="evo3d"></i>',coin:'<i class="coin3d"></i>',bp:'<img src="img/pass.webp" alt="">',rp:'<img src="'+rankPic(rankOf(S.rp))+'" alt="">',trp:'<img src="'+rankPic(rankOf(S.tagRp||0))+'" alt="">'};
   $('oGain').innerHTML='<div class="earn">'+earn.map(e=>`<span class="ech">${IC[e[0]]}<b>${e[1]>0?'+':''}${fmt(e[1])}</b><small>${tr(e[2])}</small></span>`).join('')+'</div>';
   const els=[...$('oStats').querySelectorAll('b[data-v]')].filter(x=>x.dataset.v!=='');const t0=performance.now();
   (function tick(){const u=Math.min(1,(performance.now()-t0)/900),e=1-Math.pow(1-u,3);for(const x of els)x.textContent=fmt(+x.dataset.v*e);if(u<1)requestAnimationFrame(tick)})()}
@@ -2609,11 +2639,11 @@ const NAMES=(()=>{let z=12345;const rr=()=>(z=(z*16807)%2147483647)/2147483647,o
 function rand(a,b){return a+Math.random()*(b-a)}
 const power=lv=>dmg(lv)*maxHp(lv)*rate(lv);
 function makeOpp(){const myT=total(S.lv)-4,rp=Math.max(0,Math.round((S.rp||0)+rand(-70,70)));
-  const ratio=Math.max(.6,rand(.9+.12*Math.min(1,rp/1400),1.08+.14*Math.min(1,rp/1400))+(rp-(S.rp||0))/800),T=Math.max(0,Math.round(myT*ratio));
+  const ri=Math.min(18,rankOf(S.rp).idx),ratio=Math.max(.6,rand(.78+ri*.026,.9+ri*.026)),T=Math.max(0,Math.round(myT*ratio));
   const style=['str','spd','int','end','bal'][Math.floor(Math.random()*5)],w={str:1,spd:1,int:1,end:1};if(style!=='bal')w[style]=2.6;
   const sum=w.str+w.spd+w.int+w.end,lv={str:1,spd:1,int:1,end:1};let left=T;
   for(const k of KEYS){const n=Math.floor(T*w[k]/sum);lv[k]+=n;left-=n}while(left-->0)lv[KEYS[Math.floor(Math.random()*4)]]++;
-  const sk=Math.min(1,.2+rp/1400);let name;const seen=(window._nmSeen=window._nmSeen||[]);do{name=genName()}while(seen.includes(name));seen.push(name);if(seen.length>300)seen.shift();
+  const sk=Math.min(1,.15+ri*.048);let name;const seen=(window._nmSeen=window._nmSeen||[]);do{name=genName()}while(seen.includes(name));seen.push(name);if(seen.length>300)seen.shift();
   const hpm=Math.max(.78,Math.min(1.35,Math.pow(Math.max(1,T)/Math.max(1,myT),.7)))*rand(.88,1.12);return{name,lv,rp,style,hpm,char:CHAR_IDS[Math.floor(Math.random()*CHAR_IDS.length)],comp:rp>=100&&Math.random()<.55?COMP_IDS[Math.floor(Math.random()*COMP_IDS.length)]:null,ai:{dodge:.14+.42*sk,block:.2+.32*sk,skill:.45+.35*sk,combo:.3+.5*sk,pace:.85-.5*sk}}}
 function pvpFinish(win){if(R.tour){tourFinish(win);return}
   R.phase='over';R.ult=null;const o=OPP,before=rankOf(S.rp),rel=Math.log(power(o.lv)/power(S.lv));
@@ -2762,7 +2792,7 @@ function renderTour(){const T=S.tour,cups=S.cups||{};$('tCups').innerHTML=`<span
   $('tBody').innerHTML=`<div class="tgroups">${grp('A')}${grp('B')}</div><div class="tbr"><h4><img class="cupi" src="${CUP_G}" alt=""> ${LL('الكاس الدهبي · أول اتنين','Gold Cup · top 2')}</h4>${tree('s1','s2','f',`<img class="cupi" src="${CUP_G}" alt="">`,LL('نص نهائي 1','Semi 1'),LL('نص نهائي 2','Semi 2'),LL('النهائي','Final'))}</div>`+
     `<div class="tbr low"><h4><img class="cupi" src="${CUP_S}" alt=""> ${LL('بطولة التحدي · آخر اتنين','Challenge · bottom 2')}</h4>${tree('l1','l2','lf',`<img class="cupi" src="${CUP_S}" alt="">`,LL('تحدي 1','Challenge 1'),LL('تحدي 2','Challenge 2'),LL('نهائي التحدي','Challenge final'))}</div>`;
   const x=tNext();$('tGo').textContent=T.stage==='done'?LL('بطولة جديدة','New tournament'):x?LL('العب ضد ','Play vs ')+tName(x.opp):LL('كمّل البطولة','Continue');if(T.stage==='done')setTimeout(tourCeleb,300)}
-$('tGo').onclick=()=>{auInit();sfx('click');const T=S.tour;if(!T||T.stage==='done'){tourNew();renderTour();return}const x=tNext();if(x){TOUR_FIGHT=true;findMatch(T.ps[x.opp])}else{tourAdvance(null);renderTour()}};
+$('tGo').onclick=()=>{auInit();sfx('click');const T=S.tour;if(!T||T.stage==='done'){tourNew();renderTour();return}const x=tNext();if(x){OPP=T.ps[x.opp];tourIntro(x,()=>{TOUR_FIGHT=true;loadUI(()=>{show('play');startRun('pvp')},()=>music(true))})}else{tourAdvance(null);renderTour()}};
 
 $('tBack').onclick=()=>{sfx('click');show('menu')};
 
@@ -2988,6 +3018,8 @@ function kitsuUlt(A,D,v){const U=R.ult;if(U)U.dur=1.9;const rage=A.fox>0||(A.tai
 
 /* ---------- patch notes: simple words, newest first ---------- */
 const PATCH_NOTES=[
+ {v:84,ar:['صحتك بقت ثابتة لكل تحوّل في كل الأوضاع، والتحمل بيقلل الضرب اللي بييجي عليك','البطولة اتجددت: كارت قبل كل ماتش بالخصم المعروف، عد تنازلي، ونتايج الجولة بتظهر بعد كل ماتش'],en:['Your health is fixed for each form in every mode, endurance lowers the damage you take','The tournament is renewed: a match card with the known opponent, a countdown, and round results after every match']},
+ {v:83,ar:['الرانكد زي الأونلاين: بحث عن خصم، شاشة مواجهة، تحميل، وبعدين الماتش','صحتك في الرانكد ثابتة لكل تحوّل، والخصوم على قد رتبتك','3 ضد 3 بقاله تصنيف ورتب خاصة بيه','شاشة النتيجة على قد الموبايل، ودوس على أي رقم عشان تعرف معناه'],en:['Ranked like online: queue, versus screen, loading, then the match','Your ranked health is fixed for each form, opponents match your rank','3v3 has its own rating and ranks','The results screen fits phones, tap any number to see what it means']},
  {v:82,ar:['أزرار المرافق نزلت تحت شوية بعيد عن شريط الصحة'],en:['Companion buttons moved down, away from the health bar']},
  {v:81,ar:['المرافقين اترسموا من جديد: واضحين ومتحركين (أجنحة وديول ولهب وعيون بترمش)'],en:['Companions redrawn: crisp and animated (wings, tails, flames, blinking eyes)']},
  {v:80,ar:['الصور والأيقونات بقت بتظهر من غير نت','البوص بيتعصّب: كل ما الوقت يطول من غير ما تقتله ضربه بيزيد عليك'],en:['Pictures and icons now show without internet','Bosses enrage: the longer the fight, the harder they hit']},
@@ -3104,7 +3136,7 @@ function tagSearch(team){const m=$('match');m.classList.add('on');m.style.backgr
   setTimeout(()=>{clearInterval(iv);$('mmSearch').hidden=true;let el=document.getElementById('tagVs');if(!el){el=document.createElement('div');el.id='tagVs';m.appendChild(el)}el.hidden=false;
     el.innerHTML=`<div class="tvs"><div class="tvr">${team.map(id=>`<div><img src="${avSrc(id)}" alt=""><b>${tr(CHARS[id].name)}</b></div>`).join('')}</div><div class="vsx">VS</div><div class="tvr">${foes.map(id=>`<div><img src="${avSrc(id)}" alt=""><b>${tr(CHARS[id].name)}</b></div>`).join('')}</div></div>`;sfx('morph');
     setTimeout(()=>{el.hidden=true;m.classList.remove('on');m.style.backgroundImage='';tagStart(team,foes)},2400)},2000)}
-function tagFoe(i){const ids=R.tagEids||[],ch=ids[i]||CHAR_IDS[i%CHAR_IDS.length],mul=.9;const lv={};for(const k of KEYS)lv[k]=Math.max(1,Math.round(S.lv[k]*mul));
+function tagFoe(i){const ids=R.tagEids||[],ch=ids[i]||CHAR_IDS[i%CHAR_IDS.length],mul=.8+Math.min(18,rankOf(S.tagRp||0).idx)*.025;const lv={};for(const k of KEYS)lv[k]=Math.max(1,Math.round(S.lv[k]*mul));
   const hp=maxHp(S.lv)*(1+.1*skSum(S.lv))*2.6,dm=maxHp(S.lv)*.055,ai={dodge:.3,block:.3,skill:.6,combo:.6,pace:.7};return mk(false,lv,hp,dm,{name:tr(CHARS[ch].name),look:lookOf(lv,null,ch),char:ch,smart:true,ai,story:true,slide:slideIn()})}
 function tagStart(team,foes){const orig=S.char;TAG_TEAM=team.slice(0,3);SUB='tag';S.tagOrig=orig;if(S.char!==TAG_TEAM[0])switchChar(TAG_TEAM[0]);
   const pool=CHAR_IDS.slice().sort(()=>Math.random()-.5);auInit();sfx('click');show('play');R=null;startRun('story');R.tagEids=foes||pool.slice(0,3);R.E=tagFoe(0);R.tagE=[1,2];R.tagP=TAG_TEAM.slice(1);R.tagN=1;label();music(true)}
@@ -3113,7 +3145,7 @@ function tagNextP(){const id=R.tagP.shift();switchChar(id);const P=mk(true,S.lv,
 function tagFinish(win){R.phase='over';R.ult=null;achAfterFight(win);const coins=win?260:40;S.coins=(S.coins||0)+coins;bpGain(win?50:12);const reward=Math.round((win?90:20)*dayMult(S.day)*intMult(S.lv));S.pts+=reward+R.earned;lastGain=reward+R.earned;
   if(S.tagOrig&&S.char!==S.tagOrig)switchChar(S.tagOrig);styMerge();useTrialFight();save();music(false);sfx(win?'win':'lose');$('oAd').hidden=true;$('card').className='card '+(win?'win':'lose');
   $('oTitle').textContent=win?LL('فريقك كسب!','Your team won!'):LL('فريقك خسر','Your team lost');$('oText').textContent=LL('3 ضد 3 · الأبطال بيدخلوا ورا بعض','3v3 · heroes enter one after another');
-  showStats(win,[['coin',coins,'عملات'],['evo',lastGain,'نقاط تطور'],['bp',win?50:12,'نقط الباس']]);$('oBtn').textContent=LL('ارجع للتحديات','Back to Challenges');$('over').classList.add('on')}
+  const tb=rankOf(S.tagRp||0),dT=win?Math.round(22+Math.random()*8):-Math.round(10+Math.random()*5);S.tagRp=Math.max(0,(S.tagRp||0)+dT);const ta=rankOf(S.tagRp);save();$('oText').textContent=LL('تصنيف 3 ضد 3: ','3v3 rating: ')+tr(ta.full)+(ta.need?' · '+ta.into+' / 100':'')+(ta.idx>tb.idx?LL(' · طلعت رتبة!',' · ranked up!'):ta.idx<tb.idx?LL(' · نزلت رتبة',' · ranked down'):'');showStats(win,[['trp',dT,LL('نقط 3 ضد 3','3v3 points')],['coin',coins,'عملات'],['evo',lastGain,'نقاط تطور'],['bp',win?50:12,'نقط الباس']]);$('oBtn').textContent=LL('ارجع للتحديات','Back to Challenges');$('over').classList.add('on')}
 function tagPick(){if(document.getElementById('avPick'))return;const own=CHAR_IDS.filter(owns);let sel=own.slice(0,3);const o=document.createElement('div');o.id='avPick';
   const draw=()=>{o.innerHTML=`<div class="avc"><div class="avh"><b>${LL('اختار فريقك (لحد 3)','Pick your team (up to 3)')}</b><button class="ico" id="avX">✕</button></div><div class="avg">${own.map(id=>`<button class="avi${sel.includes(id)?' on':''}" data-tp="${id}"><img src="${avSrc(id)}" alt=""><b>${tr(CHARS[id].name)}</b>${sel.includes(id)?`<small>#${sel.indexOf(id)+1}</small>`:''}</button>`).join('')}</div><button class="go" id="tpGo"${sel.length?'':' disabled'}>${LL('ابدأ','Start')} (${sel.length}/3)</button></div>`;
     o.querySelector('#avX').onclick=()=>o.remove();o.querySelector('#tpGo').onclick=()=>{if(!sel.length)return;o.remove();tagSearch(sel)}};
@@ -3124,7 +3156,7 @@ function renderModes(){const W=wbS(),B=wbCur(),T=twS();{const h=document.querySe
   $('moGrid').innerHTML=tile('wboss',`<img src="${UI_IMG(B.bn)}" alt="" class="wbimg">`,LL('بوص الأسبوع','Weekly Boss')+': '+LL(B.n[0],B.n[1]),LL('محاولات النهارده ','Tries today ')+(3-W.tries)+'/3 · '+LL('أحسن ضرر ','Best ')+Math.round(W.best*100)+'%',`<div class="motb">${WB_TIER.map((x,i)=>`<i class="${i<W.got?'on':''}">${Math.round(x[0]*100)}% · ${fmt(x[1])}</i>`).join('')}</div>`)+
     tile('wlb',`<img src="${UI_IMG('challenges')}" alt="">`,LL('ترتيب بوص الأسبوع','Weekly boss leaderboard'),LL('أكتر ضرر وأسرع قتل','Most damage and fastest kill'))+
     tile('tower',`<img src="${UI_IMG('tower')}" alt="">`,LL('البرج','The Tower'),LL('الدور ','Floor ')+T.cur+' · '+LL('أعلى دور ','Best ')+T.best,`<div class="motb"><i>${LL('كل دور أصعب · بوص كل 5','Harder every floor · boss every 5')}</i></div>`)+
-    tile('tag',`<img src="${UI_IMG('tag')}" alt="">`,LL('فرق 3 ضد 3','Tag Team 3v3'),LL('أبطالك بيدخلوا ورا بعض لما واحد يقع','Your heroes enter one after another'))+
+    tile('tag',`<img src="${UI_IMG('tag')}" alt="">`,LL('فرق 3 ضد 3','Tag Team 3v3'),LL('تصنيف: ','Rating: ')+tr(rankOf(S.tagRp||0).full)+' · '+LL('أبطالك بيدخلوا ورا بعض','heroes tag in one by one'))+
     tile('quests',`<img src="${UI_IMG('quests')}" alt="">`,LL('المهام اليومية','Daily Quests'),qReady()?LL('فيه جوايز مستنياك!','Rewards waiting!'):LL('مهام جديدة كل يوم','New quests every day'))}
 $('moGrid').addEventListener('click',e=>{const b=e.target.closest('[data-mo]');if(!b)return;const m=b.dataset.mo;if(m==='wboss')wbossPlay();else if(m==='wlb')wbBoard();else if(m==='tower')towerPlay();else if(m==='tag')tagPick();else{sfx('click');show('quests');renderQuests()}});
 $('mModes').onclick=()=>{auInit();sfx('click');show('modes');renderModes()};$('moBack').onclick=()=>{sfx('click');show('menu')};
@@ -3530,6 +3562,83 @@ const PETS={
     c.strokeStyle=PO;c.lineWidth=.8;c.beginPath();c.moveTo(12.4,.4);c.quadraticCurveTo(11,2,9.6,1.2);c.stroke();
     for(let i=0;i<5;i++)pSpark(c,Math.cos(i*1.3+t*1.4)*15,Math.sin(i*1.3+t*1.4)*10,3,i%2?'#ffd23e':'#bfe0ff',t,i*1.7)}
 };
+
+/* ---------- 2.14: ranked flow, fixed form health, explanations ---------- */
+function tierStartLv(lv){const n=tierOf(lv);let t=4;for(let i=0;i<n;i++)t+=tierLen(i);const x=Math.max(1,Math.round(t/4));return{str:x,spd:x,int:x,end:x}}
+function rankedHp(lv){const c=tierStartLv(lv);return Math.max(100,Math.round(pvpHp(c,c)*.52/10)*10)}
+function queueUI(o){document.getElementById('rq')?.remove();const d=document.createElement('div');d.id='rq';
+  d.innerHTML=`<div class="rqc"><img class="rqr" src="${o.pic}" alt=""><b class="rqt">${LL('بندوّر على خصم','Finding a match')}</b><span class="rqk">${o.rank}</span><div class="rqtime">0:00</div><small>${LL('الوقت المتوقع ','Estimated wait ')}0:${String(o.est).padStart(2,'0')}</small><div class="rqd"><i></i><i></i><i></i></div><button class="rqx">${LL('إلغاء','Cancel')}</button></div>`;
+  document.body.appendChild(d);let t=0;const iv=setInterval(()=>{t++;d.querySelector('.rqtime').textContent=Math.floor(t/60)+':'+String(t%60).padStart(2,'0');
+    if(t>=o.wait){clearInterval(iv);d.querySelector('.rqt').textContent=LL('لقينا خصم!','Match found!');d.classList.add('found');d.querySelector('.rqx').hidden=true;sfx('morph');setTimeout(()=>{d.remove();o.onFound()},1000)}},1000);
+  d.querySelector('.rqx').onclick=()=>{clearInterval(iv);d.remove();sfx('click')}}
+function vsShow(after){const m=$('match');m.classList.add('on');m.style.backgroundImage=`linear-gradient(#0b0920cc,#0b0920ee),url(${bnSrc(myBn())})`;$('mmSearch').hidden=true;$('mmVs').hidden=false;
+  const ro=rankOf(OPP.rp),rm=rankOf(S.rp);$('vsOpName').textContent=OPP.name;{const e=document.querySelector('.vside.me b');if(e)e.textContent=myName()}
+  $('vsMeInfo').innerHTML=formName(S.lv)+' · '+LL('مستوى ','Level ')+total(S.lv)+' · <img class="rki" src="'+rankPic(rm)+'" alt="">'+rm.full;$('vsOpInfo').textContent=CHARS[OPP.char].name+' · '+formName(OPP.lv,OPP.char)+' · '+LL('مستوى ','Level ')+total(OPP.lv)+' · '+ro.full+(OPP.comp?' · '+COMPS[OPP.comp].name:'');
+  stillFig('vsMe',S.lv,1,null,S.char);rkFrame(document.querySelector('.vside.me'),rm,1,1);rkFrame(document.querySelector('.vside.op'),ro,0,1);stillFig('vsOp',OPP.lv,-1,null,OPP.char);sfx('morph');
+  setTimeout(()=>{m.classList.remove('on');m.style.backgroundImage='';after()},2400)}
+const LOAD_TIPS=[['صد أو تفادي في آخر لحظة = كاونتر','Block or dodge at the last moment = counter'],['املا الشريط البرتقالي بتاع الخصم عشان تكسر دفاعه','Fill the enemy orange bar to break his guard'],['ضرب ضرب ركلة = ضربة صاعدة','Hit, hit, kick = launcher'],['البوصات بتتعصب كل ما الماتش يطول','Bosses enrage the longer the fight lasts'],['دوس على أي رقم في النتيجة عشان تعرف معناه','Tap any number on the results to see what it means']];
+function loadUI(start,after){document.getElementById('ldg')?.remove();const d=document.createElement('div');d.id='ldg';const tip=LOAD_TIPS[Math.floor(Math.random()*LOAD_TIPS.length)];
+  d.style.backgroundImage=`linear-gradient(#0b0920dd,#0b0920f4),url(${bnSrc(myBn())})`;
+  d.innerHTML=`<div class="ldc"><b>${LL('جاري التحميل','Loading')}</b><div class="ldb"><i></i></div><span class="ldp">0%</span><small>💡 ${LL(tip[0],tip[1])}</small></div>`;document.body.appendChild(d);
+  const bar=d.querySelector('.ldb i'),pct=d.querySelector('.ldp');let shown=0,target=0;const set=v=>{target=Math.max(target,v)};
+  const anim=setInterval(()=>{shown+=(target-shown)*.25;bar.style.width=shown.toFixed(1)+'%';pct.textContent=Math.round(shown)+'%'},60);
+  try{start()}catch(e){console.error(e)}if(R)R.hold=1;set(20);
+  const urls=[];try{const ch=[R.P&&R.P.char,R.E&&R.E.char].filter(Boolean);for(const c of ch){urls.push(avSrc(c));if(CHARS[c]&&CHARS[c].art)urls.push(CHARS[c].art)}
+    for(const k of KEYS){const t=skTier(S.lv[k]);if(t)urls.push(iconSrc(S.char,k,t))}urls.push(ultIcon(S.char),kickIcon(S.char));if(S.comp)urls.push('https://khalednmg100-dotcom.github.io/beat-yesterday-live/img/ic/comp_'+S.comp+'_sk.webp','https://khalednmg100-dotcom.github.io/beat-yesterday-live/img/ic/comp_'+S.comp+'_ult.webp')}catch(e){}
+  let done=0;const one=u=>new Promise(r=>{const i=new Image();i.onload=i.onerror=()=>{done++;set(20+50*done/Math.max(1,urls.length));r()};i.src=u;setTimeout(r,3500)});
+  const t0=performance.now();Promise.all(urls.map(one)).then(()=>{set(78);try{const c=document.createElement('canvas').getContext('2d');for(const f of[R.P,R.E])if(f){drawFig(c,100,200,1,f.look,REST,1,1.6);if(f.comp&&PETS[f.comp])PETS[f.comp](c,1,COMPS[f.comp].col)}}catch(e){}set(92);
+    setTimeout(()=>{set(100);setTimeout(()=>{clearInterval(anim);bar.style.width='100%';pct.textContent='100%';d.classList.add('out');if(R)R.hold=0;setTimeout(()=>d.remove(),350);after&&after()},350)},Math.max(250,1600-(performance.now()-t0)))})}
+findMatch=function(o){auInit();sfx('click');const preset=!!(o&&o.lv);OPP=preset?o:makeOpp();
+  const go=()=>vsShow(()=>loadUI(()=>{show('play');startRun('pvp')},()=>music(true)));
+  if(preset||TOUR_FIGHT){go();return}const r=rankOf(S.rp);queueUI({pic:rankPic(r),rank:tr(r.full),wait:Math.round(3+Math.random()*5+r.idx*.25),est:Math.round(5+r.idx*.25),onFound:go})};
+function tagVsShow(team,foes,after){const m=$('match');m.classList.add('on');m.style.backgroundImage=`linear-gradient(#0b0920cc,#0b0920ee),url(${bnSrc(myBn())})`;$('mmSearch').hidden=true;$('mmVs').hidden=true;
+  let el=document.getElementById('tagVs');if(!el){el=document.createElement('div');el.id='tagVs';m.appendChild(el)}el.hidden=false;
+  el.innerHTML=`<div class="tvs"><div class="tvr">${team.map(id=>`<div><img src="${avSrc(id)}" alt=""><b>${tr(CHARS[id].name)}</b></div>`).join('')}</div><div class="vsx">VS</div><div class="tvr">${foes.map(id=>`<div><img src="${avSrc(id)}" alt=""><b>${tr(CHARS[id].name)}</b></div>`).join('')}</div></div>`;sfx('morph');
+  setTimeout(()=>{el.hidden=true;m.classList.remove('on');m.style.backgroundImage='';after()},2400)}
+tagSearch=function(team){const r=rankOf(S.tagRp||0),foes=CHAR_IDS.slice().sort(()=>Math.random()-.5).slice(0,3);
+  queueUI({pic:rankPic(r),rank:LL('3 ضد 3 · ','3v3 · ')+tr(r.full),wait:Math.round(3+Math.random()*5+r.idx*.25),est:Math.round(5+r.idx*.25),onFound:()=>tagVsShow(team,foes,()=>loadUI(()=>tagStart(team,foes),null))})};
+/* tap to explain */
+const HELP_ST=[['كل الضرر اللي عملته في الماتش','All the damage you dealt in the match'],['أقوى ضربة واحدة ضربتها','Your strongest single hit'],['أكتر ضربات ورا بعض من غير ما الخصم يضربك','Most hits in a row without getting hit'],['مدة الماتش','How long the match lasted'],
+  ['مرات التفادي · المثالي = في آخر لحظة وبيديك كاونتر','Dodges · perfect = at the last moment, gives a counter'],['مرات الصد · المثالي = صد في آخر لحظة (باري)','Blocks · perfect = block at the last moment (parry)'],['مرات ما كسرت دفاع الخصم بملا الشريط البرتقالي','Times you broke the enemy guard by filling the orange bar'],
+  ['تفاعل عنصرين على الخصم زي نار مع جليد = ضرر زيادة','Two elements on the enemy, like fire + ice = bonus damage'],['عدد المهارات اللي استخدمتها','Skills you used'],['القواضي بتاعتك وبتاعة المرافق','Your finishers and your companion finishers']];
+const HELP_EARN={rp:['نقط الرانك: كل 100 نقطة = رتبة أعلى','Rank points: every 100 = the next division'],trp:['نقط تصنيف 3 ضد 3: كل 100 نقطة = رتبة أعلى','3v3 rating points: every 100 = the next division'],coin:['عملات: تشتري بيها أبطال ومرافقين من الشوب','Coins: buy heroes and companions in the shop'],evo:['نقاط التطور: تطوّر بيها صفاتك في صفحة Level up','Evolution points: upgrade your stats on Level up'],bp:['نقط الباتل باس: بتفتح جوايز الباس','Battle pass XP: unlocks pass rewards']};
+{const _ss=showStats;showStats=function(win,earn){_ss(win,earn);try{[...$('oStats').children].forEach((el,i)=>{const h=HELP_ST[i];if(h){el.dataset.help=LL(h[0],h[1]);el.classList.add('hasHelp')}});
+  [...$('oGain').querySelectorAll('.ech')].forEach((el,i)=>{const h=HELP_EARN[(earn[i]||[])[0]];if(h){el.dataset.help=LL(h[0],h[1]);el.classList.add('hasHelp')}})}catch(e){}}}
+function helpTip(el){document.getElementById('helpTip')?.remove();const d=document.createElement('div');d.id='helpTip';d.textContent=el.dataset.help;document.body.appendChild(d);
+  const r=el.getBoundingClientRect(),w=d.offsetWidth,h=d.offsetHeight;let x=r.left+r.width/2-w/2,y=r.top-h-6;if(y<4)y=r.bottom+6;x=Math.max(4,Math.min(innerWidth-w-4,x));d.style.left=x+'px';d.style.top=y+'px';
+  clearTimeout(helpTip.t);helpTip.t=setTimeout(()=>d.remove(),3800)}
+document.addEventListener('click',e=>{const h=e.target.closest&&e.target.closest('[data-help]');if(h&&!e.target.closest('button:not([data-help])'))helpTip(h);else document.getElementById('helpTip')?.remove()});
+setTimeout(()=>{try{const cb=$('coinBar');const ci=cb.querySelector('.coin3d'),ei=cb.querySelector('.evo3d');for(const[el,h]of[[ci,HELP_EARN.coin],[$('cbN'),HELP_EARN.coin],[ei,HELP_EARN.evo],[$('cbP'),HELP_EARN.evo]])if(el)el.dataset.help=LL(h[0],h[1])}catch(e){}},0);
+
+/* ---------- fixed health per form in every mode ---------- */
+let PSCALE=1;
+function formHp(lv){return rankedHp(lv)}
+/* ---------- tournament presentation ---------- */
+function tourStageInfo(x){const T=S.tour,lo=x.k&&x.k[0]==='l';
+  const stage=T.stage==='group'?LL('دور المجموعات','Group stage'):T.stage==='ko1'?(lo?LL('نص نهائي التحدي','Challenge semi-final'):LL('نص النهائي','Semi-final')):(x.k==='lf'?LL('نهائي التحدي','Challenge final'):LL('النهائي','The Final'));
+  const sub=T.stage==='group'?LL('المجموعة ','Group ')+(T.A.includes(0)?'A':'B')+' · '+LL('الجولة ','Round ')+Math.min(3,T.rd+1)+' / 3':x.k==='f'?LL('على الكاس الدهبي','for the gold cup'):x.k==='lf'?LL('على الكاس الفضي','for the silver cup'):LL('الفايز يروح النهائي','the winner goes to the final');
+  return{stage,sub,cup:lo||x.k==='lf'?CUP_S:CUP_G}}
+function tourIntro(x,after){document.getElementById('tin')?.remove();const T=S.tour,op=T.ps[x.opp],I=tourStageInfo(x),pm=power(S.lv),po=power(op.lv),pct=Math.max(5,Math.min(95,Math.round(100*pm/(pm+po))));
+  const d=document.createElement('div');d.id='tin';
+  d.innerHTML=`<div class="tic"><div class="tih"><img class="cupi" src="${I.cup}" alt=""><div><small>${LL('بطولة الـ8','The 8-player Cup')}</small><b>${I.stage}</b><span>${I.sub}</span></div></div>
+    <div class="tiv"><div class="tip"><img src="${avSrc(S.char)}" alt=""><b>${myName()}</b><small>${tr(CHARS[S.char].name)} · ${LL('مستوى ','Lv ')}${total(S.lv)}</small></div><div class="tivs">VS</div>
+    <div class="tip"><img src="${avSrc(op.char)}" alt=""><b>${op.name}</b><small>${tr(CHARS[op.char].name)} · ${LL('مستوى ','Lv ')}${total(op.lv)}</small></div></div>
+    <div class="tipow"><i style="width:${pct}%"></i></div><small class="tipl">${LL('القوة','Power')} ${pct}% · ${100-pct}%</small><div class="tic3">3</div><small class="tisk">${LL('دوس عشان تبدأ على طول','Tap to start now')}</small></div>`;
+  document.body.appendChild(d);sfx('morph');let n=3,done=0;const go=()=>{if(done)return;done=1;clearInterval(iv);d.remove();after()};
+  const iv=setInterval(()=>{n--;const c=d.querySelector('.tic3');if(n>0){c.textContent=n;sfx('click')}else if(n===0){c.textContent=LL('ابدأ!','FIGHT!');c.classList.add('fight');sfx('boom')}else go()},800);d.onclick=go}
+{const _ta=tourAdvance;tourAdvance=function(win){const T=S.tour;if(!T){_ta(win);return}const st=T.stage,g0=T.gm.length;_ta(win);const L=[];
+  if(st==='group'){for(const m of T.gm.slice(g0))L.push({a:m.a,b:m.b,w:m.w})}else if(T.ko&&T.ko.w){for(const k of(st==='ko1'?['s1','s2','l1','l2']:['f','lf'])){const m=T.ko[k];if(m)L.push({a:m[0],b:m[1],w:T.ko.w[k],k})}}
+  for(const m of L)m.how=(m.a===0||m.b===0)?'':(Math.random()<.7?'KO':LL('وقت','TIME'));T.lastRound={st,rd:T.rd,list:L,seen:0};save()}}
+function tourRoundReveal(){const T=S.tour,R0=T&&T.lastRound;if(!R0||R0.seen||!R0.list.length)return;R0.seen=1;save();document.getElementById('trr')?.remove();
+  const title=R0.st==='group'?LL('نتايج الجولة ','Round results · ')+(R0.rd):R0.st==='ko1'?LL('نتايج نص النهائي','Semi-final results'):LL('نتايج النهائي','Final results');
+  const d=document.createElement('div');d.id='trr';d.innerHTML=`<div class="trc"><b>${title}</b><div class="trl">${R0.list.map(m=>{const mine=m.a===0||m.b===0;const nm=i=>`<span class="${m.w===i?'w':'l'}">${tName(i)}</span>`;
+    return `<div class="trm${mine?' me':''}">${nm(m.a)}<i>${m.w===m.a?'✔':''}</i><em>VS</em><i>${m.w===m.b?'✔':''}</i>${nm(m.b)}<small>${m.how||(m.w===0?LL('فزت','WIN'):LL('خسرت','LOSS'))}</small></div>`}).join('')}</div><button class="go">${LL('كمّل','Continue')}</button></div>`;
+  document.body.appendChild(d);[...d.querySelectorAll('.trm')].forEach((el,i)=>{el.style.animationDelay=(i*.35)+'s'});d.querySelector('button').onclick=()=>{sfx('click');d.remove()}}
+{const _rt=renderTour;renderTour=function(){_rt();try{const T=S.tour;const st=$('tStage');
+  if(T){const cur=T.stage==='group'?Math.min(2,T.rd):T.stage==='ko1'?3:T.stage==='ko2'?4:5,steps=[LL('ج1','R1'),LL('ج2','R2'),LL('ج3','R3'),LL('نص النهائي','Semi'),LL('النهائي','Final')];
+    st.innerHTML=`<div class="tstep">${steps.map((s,i)=>`<i class="${i<cur?'ok':i===cur?'on':''}">${s}</i>`).join('')}</div>`;
+    const x=tNext();if(x&&T.stage!=='done'){const op=T.ps[x.opp],I=tourStageInfo(x),c=document.createElement('div');c.className='tnext';c.innerHTML=`<img src="${avSrc(op.char)}" alt=""><div><small>${LL('ماتشك الجاي','Your next match')} · ${I.stage}</small><b>${LL('ضد ','vs ')}${op.name}</b><span>${tr(CHARS[op.char].name)} · ${LL('مستوى ','Lv ')}${total(op.lv)} · ${I.sub}</span></div>`;$('tBody').prepend(c)}}
+  tourRoundReveal()}catch(e){console.error(e)}}}
 setTimeout(achBadge,1500);
 /* a stable little leaderboard around your rank */
 function renderArena(){const r=rankOf(S.rp);
