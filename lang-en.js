@@ -148,3 +148,5 @@ Object.assign(window.LANG_EN,{"مرحلة وبوص كل": "stages · a boss ever
 Object.assign(window.LANG_EN,{"نقط 3 ضد 3": "3v3 points"});
 
 Object.assign(window.LANG_EN,{"دفاع": "Defense"});
+
+Object.assign(window.LANG_EN,{"جراند ماستر": "Grandmaster", "تشامبيون": "Champion"});
