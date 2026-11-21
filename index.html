@@ -1168,7 +1168,7 @@ const ADS={ok:false,ready:false,plug:null};
 async function adsInit(){
   try{const C=window.Capacitor;if(!C||typeof C.nativePromise!=='function')return;
     ADS.plug={initialize:o=>C.nativePromise('AdMob','initialize',o||{}),prepareRewardVideoAd:o=>C.nativePromise('AdMob','prepareRewardVideoAd',o),showRewardVideoAd:()=>C.nativePromise('AdMob','showRewardVideoAd',{})};
-    await ADS.plug.initialize({});ADS.ok=true;adsLoad()}catch(e){}
+    await adsConsent(C);await ADS.plug.initialize({});ADS.ok=true;adsLoad()}catch(e){}
 }
 async function adsPick(){if(ADS.picked)return;ADS.picked=1;try{const C=window.Capacitor,App=C&&capPlug(C,'App');if(App&&App.getInfo){const i=await App.getInfo();if(parseInt(i.build||'0',10)>=21)AD_REWARDED=AD_REAL}}catch(e){}}
 async function adsLoad(){ADS.ready=false;await adsPick();try{await ADS.plug.prepareRewardVideoAd({adId:AD_REWARDED});ADS.ready=true}catch(e){}}
@@ -3046,6 +3046,7 @@ function kitsuUlt(A,D,v){const U=R.ult;if(U)U.dur=1.9;const rage=A.fox>0||(A.tai
 
 /* ---------- patch notes: simple words, newest first ---------- */
 const PATCH_NOTES=[
+ {v:91,ar:['اللاعيبة في أوروبا بيظهرلهم طلب الموافقة على الإعلانات زي ما جوجل طالبة'],en:['Players in Europe now see the ad consent message Google requires']},
  {v:90,ar:['الإعلانات الاختيارية بقت إعلانات حقيقية (في نسخة المتجر 2.16)'],en:['Optional ads are now real ads (store version 2.16)']},
  {v:89,ar:['تسجيل الدخول بجوجل بيبدأ لوحده أول ما تفتح اللعبة','لو تسجيل الدخول فشل بيظهر سبب واضح'],en:['Google sign-in starts by itself when you open the game','A failed sign-in now shows a clear reason']},
  {v:88,ar:['إنجازات جوجل بتاعة القصة وبوصات القصة بقت بأيقونات جديدة'],en:['Google achievements for story stages and story bosses have new icons']},
@@ -3777,6 +3778,15 @@ pgsSignIn=async function(auto){if(!PGS.P||PGS.busy)return;PGS.busy=true;
   PGS.busy=false;save0()};
 pgsInit=(f=>async function(){await f();if(PGS.avail&&!PGS.auth)setTimeout(()=>{if(!PGS.auth)pgsSignIn(true)},2500)})(pgsInit);
 pgsUI=(f=>function(){f();const g=$('gpgBox');if(g&&!PGS.auth&&S.pgsErr){let e=g.querySelector('.gpgerr');if(!e){e=document.createElement('small');e.className='gpgerr';g.appendChild(e)}e.textContent=S.pgsErr}})(pgsUI);
+
+/* ---------- ads consent (UMP): ask EU/UK players before ads ---------- */
+async function adsConsent(C){try{const call=(m,o)=>C.nativePromise('AdMob',m,o||{});
+  let info=await call('requestConsentInfo',{});ADS.consent=info&&info.status;
+  if(info&&info.status==='REQUIRED'&&info.isConsentFormAvailable){info=await call('showConsentForm',{});ADS.consent=info&&info.status}
+  ADS.privacyBtn=!!(info&&info.privacyOptionsRequirementStatus==='REQUIRED');adsPrivBtn()}catch(e){}}
+function adsPrivBtn(){try{if(!ADS.privacyBtn)return;const box=document.querySelector('#settings .sets');if(!box||$('adPriv'))return;
+  const b=document.createElement('button');b.className='set wide';b.id='adPriv';b.textContent=LL('خيارات خصوصية الإعلانات','Ad privacy choices');
+  b.onclick=()=>{sfx('click');try{window.Capacitor.nativePromise('AdMob','showPrivacyOptionsForm',{}).catch(()=>{})}catch(e){}};box.appendChild(b)}catch(e){}}
 setTimeout(achBadge,1500);
 /* a stable little leaderboard around your rank */
 function renderArena(){const r=rankOf(S.rp);
