@@ -3,7 +3,7 @@
 <head>
 <script>(function(){var shown=0;function rep(msg){try{if(shown>2||!document.body)return;if(/Unexpected identifier|already been declared|Script error/i.test(msg))return;shown++;var d=document.getElementById('errBar');if(!d){d=document.createElement('div');d.id='errBar';d.style.cssText='position:fixed;left:8px;right:8px;bottom:8px;z-index:2147483647;background:#b0102c;color:#fff;font:600 11px/1.35 system-ui,sans-serif;padding:6px 10px;border-radius:9px;white-space:pre-wrap;max-height:40vh;overflow:auto';d.onclick=function(){d.remove()};document.body.appendChild(d)}d.textContent+=(d.textContent?'\n':'')+'v'+(window.__live||window.BUILD_V||'?')+' · '+msg}catch(e){}}window.addEventListener('error',function(e){rep((e.message||'error')+' @'+(e.lineno||0)+':'+(e.colno||0)+(e.error&&e.error.stack?'\n'+String(e.error.stack).split('\n').slice(1,3).join('\n'):''))});window.addEventListener('unhandledrejection',function(e){rep('promise: '+(e.reason&&(e.reason.message||e.reason)))})})();</script>
 <script>(function(){function cut(){var m=document.getElementById('liveEnd');if(!m)return;while(m.nextSibling)m.parentNode.removeChild(m.nextSibling);}if(window.__live)document.addEventListener('DOMContentLoaded',cut)})();</script>
-<script>window.BUILD_V=90;window.LIVE_BASE='https://khalednmg100-dotcom.github.io/beat-yesterday-live/';(function(){try{if(window.__live||location.port)return;var o=JSON.parse(localStorage.getItem('by-live')||'null');if(o&&o.v>window.BUILD_V&&o.html&&o.html.length>50000){var E='<'+'/script>',h=o.html.replace(/<head>/i,'<head><script>window.__live='+o.v+E);if(o.lang)h=h.replace('<script src="lang-en.js">'+E,'<script>'+o.lang.split(E).join('<\/script>')+E);document.open();document.write(h);document.close()}}catch(e){}})();</script>
+<script>window.BUILD_V=99;window.LIVE_BASE='https://khalednmg100-dotcom.github.io/beat-yesterday-live/';(function(){try{if(window.__live||location.port)return;var o=JSON.parse(localStorage.getItem('by-live')||'null');if(o&&o.v>window.BUILD_V&&o.html&&o.html.length>50000){var E='<'+'/script>',h=o.html.replace(/<head>/i,'<head><script>window.__live='+o.v+E);if(o.lang)h=h.replace('<script src="lang-en.js">'+E,'<script>'+o.lang.split(E).join('<\/script>')+E);document.open();document.write(h);document.close()}}catch(e){}})();</script>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no, viewport-fit=cover">
 <title>اغلب نفسك</title>
@@ -451,6 +451,13 @@ body.nofx *,body.nofx *::before,body.nofx *::after{filter:none!important;backdro
 #pfPop .pfhd{position:relative}.rbn.pf{position:absolute;top:-10px;right:44px;height:92px;width:auto}
 .pfbnr{display:flex;align-items:center;gap:12px;background:#ffffff0a;border-radius:12px;padding:6px 10px}.rbn.pfbig{height:120px;width:auto}
 .pfbnr b{display:block;font-family:var(--display);font-weight:400;font-size:22px;color:#ffe680}.pfbnr small{opacity:.75}
+#upCard{position:fixed;inset:0;z-index:9900;background:#05030ecc;display:grid;place-items:center;padding:16px}
+.upc{background:linear-gradient(160deg,#241e52,#120e2e);border:1.5px solid #ffb23e88;border-radius:18px;padding:16px 18px;display:flex;flex-direction:column;gap:8px;align-items:center;text-align:center;max-width:420px}
+.upc b{font-family:var(--display);font-weight:400;font-size:22px;color:#ffe680}.upc small{opacity:.8}.upb{display:flex;gap:8px}
+.lbtabs{display:flex;gap:6px;margin:4px 0 6px}.lbt{flex:1;border:1.5px solid #ffffff22;background:#ffffff0d;color:#e9e4f7;border-radius:10px;padding:5px 6px;font-weight:800;font-size:12px;cursor:pointer}
+.lbt.on{background:linear-gradient(160deg,#ffb23e,#ff8a2a);color:#1a1236;border-color:transparent}
+.lbmsg{display:flex;flex-direction:column;gap:8px;align-items:center;text-align:center;padding:14px 8px;opacity:.9;font-size:13px}
+.lbme{border-top:1px dashed #ffffff33;margin-top:4px;padding-top:4px}
 #pAll{background:linear-gradient(#7dffa8,#2fbf6a);color:#05210f}
 .side .bar{height:13px;border-radius:7px;background:#00000066;border:1.5px solid #ffffff2e}
 .side .bar i{width:100%;transform-origin:left;will-change:transform} .side.en .bar i{transform-origin:right}
@@ -3106,6 +3113,8 @@ function kitsuUlt(A,D,v){const U=R.ult;if(U)U.dur=1.9;const rage=A.fox>0||(A.tai
 
 /* ---------- patch notes: simple words, newest first ---------- */
 const PATCH_NOTES=[
+ {v:99,ar:['لوحة المتصدرين في شاشة الرانكد بقت حقيقية من جوجل بلاي: أعلى رانك، أعلى دمج، وضرر البوص بأسامي اللاعيبة الحقيقية'],en:['The ranked screen leaderboard is now real (Google Play): top rank, top damage and boss damage with real player names']},
+ {v:98,ar:['التحديثات بقت بتشتغل على طول بزرار حدّث دلوقتي، من غير ما تقفل اللعبة'],en:['Updates now apply right away with an Update now button, no need to close the game']},
  {v:97,ar:['بانر رانك جديد زي ليج: كل رانك ليه شكل مختلف (أطراف وأجنحة وتاج وهالة) في شاشة المواجهة والبروفايل'],en:['New LoL-style rank banners: every rank has its own shape (points, wings, crown, halo) on the VS screen and profiles']},
  {v:96,ar:['شاشة اختيار الأبطال زي ليج في الرانكد و3 ضد 3: قبول الماتش، حظر، اختيار، وتثبيت','كل بطل بيقول جملته بصوته لما تثبّته','3 أبطال مجانيين كل أسبوع تقدر تلعب بيهم','اتصلحت مشكلة شاشة اختيار فريق 3 ضد 3 اللي كانت بتنزل لتحت'],en:['LoL-style champion select in ranked and 3v3: accept, ban, pick and lock in','Every hero says a voice line when you lock them in','3 free heroes every week to play with','Fixed the 3v3 team picker jumping down on every tap']},
  {v:95,ar:['مستوى بروفايل جديد لوحده: خبرة من كل ماتش و50 عملة كل مستوى','ماستري لكل بطل من 1 لـ 7 زي ليج: الماتشات بتعلّيه وأشكال التحوّل بتتفتح معاه','تقدّمك القديم اتحوّل لماستري من غير ما تخسر أشكالك'],en:['New profile level: XP from every match and 50 coins per level','Hero mastery 1 to 7 like LoL: matches raise it and it unlocks the evolution forms','Your old progress turned into mastery without losing your forms']},
@@ -3755,8 +3764,8 @@ async function pgsAfterSignIn(){if(S.pgsWho!==PGS.id){S.pgsWho=PGS.id;S.pgsSent=
 function pgsSync(){if(!PGS.auth||!PGS.P)return;const sent=S.pgsSent||(S.pgsSent={});let ch=0;
   for(const d of ACH_BASE){const ids=PGS.ids.ach[d[0]];if(!ids)continue;let v=0;try{v=achVal(d[0])}catch(e){}let n=0;while(n<d[4].length&&v>=d[4][n])n++;
     for(let i=sent[d[0]]||0;i<n&&i<ids.length;i++){PGS.P.unlock({id:ids[i]}).catch(()=>{});ch=1}if(n>(sent[d[0]]||0)){sent[d[0]]=n}}
-  const rp=Math.round(S.rp||0);if(rp>(S.pgsRp||0)){PGS.P.submitScore({id:PGS.ids.lb.rank,score:rp}).catch(()=>{});S.pgsRp=rp;ch=1}
-  const bd=Math.round(S.bestDmg||0);if(bd>(S.pgsDmg||0)){PGS.P.submitScore({id:PGS.ids.lb.dmg,score:bd}).catch(()=>{});S.pgsDmg=bd;ch=1}
+  const rp=Math.round(S.rp||0);if(rp>(S.pgsRp||0)){PGS.P.submitScore({id:PGS.ids.lb.rank,score:rp,tag:lbTag()}).catch(()=>{});S.pgsRp=rp;ch=1}
+  const bd=Math.round(S.bestDmg||0);if(bd>(S.pgsDmg||0)){PGS.P.submitScore({id:PGS.ids.lb.dmg,score:bd,tag:lbTag()}).catch(()=>{});S.pgsDmg=bd;ch=1}
   if(ch)save0()}
 achAfterFight=(f=>function(win){f(win);try{const d=Math.round((R&&R.st&&R.st.dmg)||0);if(d>(S.bestDmg||0))S.bestDmg=d;pgsSync()}catch(e){}})(achAfterFight);
 /* cloud save: one slot, uploaded at most every 90 s and when the app goes to the background */
@@ -3823,7 +3832,7 @@ document.addEventListener('click',e=>{const t=e.target;if(!t||!t.closest||docume
 /* boss damage leaderboard: best damage dealt to any boss (story, tower, weekly) in one fight */
 PGS.ids.lb.boss='CgkIyp-Dk4MDEAIQfQ';
 achAfterFight=(f=>function(win){try{const E=R&&R.E;if(E&&E.sboss){const d=Math.round(Math.max((R.st&&R.st.dmg)||0,E.max-Math.max(0,E.hp)));if(d>(S.bossDmg||0)){S.bossDmg=d;if(R.fx)R.fx.push({k:'name',txt:LL('رقم قياسي جديد في ضرر البوص: ','New boss damage record: ')+fmt(d),col:'#ffd23e',t:0,d:1.8})}}}catch(e){}f(win)})(achAfterFight);
-pgsSync=(f=>function(){f();try{if(!PGS.auth||!PGS.P)return;const b=Math.round(S.bossDmg||0);if(b>(S.pgsBoss||0)){PGS.P.submitScore({id:PGS.ids.lb.boss,score:b}).catch(()=>{});S.pgsBoss=b;save0()}}catch(e){}})(pgsSync);
+pgsSync=(f=>function(){f();try{if(!PGS.auth||!PGS.P)return;const b=Math.round(S.bossDmg||0);if(b>(S.pgsBoss||0)){PGS.P.submitScore({id:PGS.ids.lb.boss,score:b,tag:lbTag()}).catch(()=>{});S.pgsBoss=b;save0()}}catch(e){}})(pgsSync);
 setTimeout(()=>{try{pgsUI=(f=>function(){f();const al=$('achLb');if(al)al.textContent=LL('المتصدرين: رانك · دمج · بوص','Leaderboards: rank · damage · boss')})(pgsUI);pgsUI()}catch(e){}},1500);
 /* tournament card dot: a match is waiting */
 function tourDot(){try{const c=document.querySelector('#menu [data-m="tour"],#mTour');if(!c)return;let d=c.querySelector('.dot.tdot');if(!d){d=document.createElement('i');d.className='dot tdot';c.appendChild(d)}d.hidden=!(S.tour&&S.tour.stage!=='done'&&tNext())}catch(e){}}
@@ -4021,6 +4030,40 @@ function rankBanner(r,cls){const t=bnTier(r),c=BN_COL[t],id='bn'+Math.random().t
 vsShow=(f=>function(after){f(after);try{for(const [sel,rp] of [['.vside.me',S.rp],['.vside.op',OPP&&OPP.rp]]){const el=document.querySelector(sel);if(!el)continue;el.querySelector('.rbn')?.remove();el.insertAdjacentHTML('afterbegin',rankBanner(rankOf(rp||0),'vs'))}}catch(e){}})(vsShow);
 pfOpen=(f=>function(o){f(o);try{const hd=document.querySelector('#pfPop .pfhd');if(hd&&o){const rp=o.me?(S.rp||0):(o.rp||0);hd.insertAdjacentHTML('beforeend',rankBanner(rankOf(rp),'pf'))}}catch(e){}})(pfOpen);
 renderProf=(f=>function(){const r=f.apply(this,arguments);try{const b=$('pfBody');if(b&&!b.querySelector('.rbn.pfbig')){const pr=b.querySelector('.pfprog');if(pr)pr.insertAdjacentHTML('afterbegin',`<div class="pfbnr">${rankBanner(rankOf(S.rp||0),'pfbig')}<div><b>${tr(rankOf(S.rp||0).full)}</b><small>${LL('رانك 3 ضد 3: ','3v3 rank: ')+tr(rankOf(S.tagRp||0).full)}</small></div></div>`)}}catch(e){}return r})(renderProf);
+
+/* ---------- apply downloaded live updates without a cold start ---------- */
+function liveReady(v){try{window.__liveReady=v;const show1=()=>{if(document.getElementById('upCard'))return;if(document.body.classList.contains('playing')||(R&&R.phase==='fight')){setTimeout(show1,4000);return}
+  const d=document.createElement('div');d.id='upCard';d.innerHTML=`<div class="upc"><b>${LL('تحديث جديد جاهز!','New update ready!')}</b><small>${LL('اللعبة هتفتح من جديد في ثانية وتقدّمك محفوظ','The game restarts in a second, your progress is saved')}</small><div class="upb"><button class="go" id="upNow">${LL('حدّث دلوقتي','Update now')}</button><button class="go alt" id="upLater">${LL('بعدين','Later')}</button></div></div>`;
+  document.body.appendChild(d);$('upNow').onclick=()=>{try{save()}catch(e){}sessionStorage.setItem('by-skip-intro','1');location.reload()};$('upLater').onclick=()=>d.remove()};show1()}catch(e){}}
+document.addEventListener('visibilitychange',()=>{if(document.visibilityState==='visible'){try{liveCheck()}catch(e){}}});
+try{const App=window.Capacitor&&capPlug(window.Capacitor,'App');App&&App.addListener&&App.addListener('resume',()=>{try{liveCheck()}catch(e){}})}catch(e){}
+
+/* ---------- real leaderboards (Google Play Games) ---------- */
+const LB={cache:{},kind:'rank'};
+function lbTag(){try{const b=new TextEncoder().encode(String(myName()||'').slice(0,30));let s='';b.forEach(x=>s+=String.fromCharCode(x));return btoa(s).replace(/\+/g,'-').replace(/\//g,'_').replace(/=+$/,'').slice(0,64)}catch(e){return''}}
+function lbUntag(t){try{if(!t)return'';let s=t.replace(/-/g,'+').replace(/_/g,'/');while(s.length%4)s+='=';const bin=atob(s);return new TextDecoder().decode(Uint8Array.from(bin,c=>c.charCodeAt(0))).replace(/[<>&]/g,'')}catch(e){return''}}
+/* every submit carries the in-game name */
+const _lbSubmit=(id,score)=>{try{PGS.P.submitScore({id,score,tag:lbTag()}).catch(()=>{})}catch(e){}};
+pgsSync=(f=>function(){try{if(PGS.auth&&PGS.P&&!S.pgsTagged){S.pgsTagged=1;const rp=Math.round(S.rp||0),bd=Math.round(S.bestDmg||0),bs=Math.round(S.bossDmg||0);if(rp)_lbSubmit(PGS.ids.lb.rank,rp);if(bd)_lbSubmit(PGS.ids.lb.dmg,bd);if(bs&&PGS.ids.lb.boss)_lbSubmit(PGS.ids.lb.boss,bs)}}catch(e){}return f()})(pgsSync);
+async function lbLoad(kind,force){const id={rank:PGS.ids.lb.rank,dmg:PGS.ids.lb.dmg,boss:PGS.ids.lb.boss}[kind];const c=LB.cache[kind];if(!force&&c&&Date.now()-c.t<60000)return c.d;
+  const d=await PGS.P.loadTop({id,span:2,max:25});LB.cache[kind]={t:Date.now(),d};return d}
+function lbRow(e,kind,me){const nm=(lbUntag(e.tag)||e.name||'?').replace(/[<>&]/g,'');let val;
+  if(kind==='rank'){const k=rankOf(e.score||0);val=`<span class="rk" style="color:${k.col}"><img class="rki" src="${rankPic(k)}" alt="">${tr(k.full)}</span><b>${e.score}</b>`}else val=`<span class="rk"></span><b>${fmt(e.score||0)}</b>`;
+  const medal=e.rank<=3?['🥇','🥈','🥉'][e.rank-1]:'#'+e.rank;return `<div class="row${me?' me':''} rr"><span class="p">${medal}</span><span class="n">${nm}</span>${val}</div>`}
+async function arenaBoard(){const box=$('aBoard');if(!box)return;const kind=LB.kind;
+  const tabs=`<div class="lbtabs">${[['rank',LL('أعلى رانك','Top rank')],['dmg',LL('أعلى دمج','Top damage')],['boss',LL('ضرر البوص','Boss damage')]].map(([k,t])=>`<button class="lbt${k===kind?' on':''}" data-lb="${k}">${t}</button>`).join('')}</div>`;
+  const head=`<h4>${LL('المتصدرين في العالم · Google Play','World leaderboard · Google Play')}</h4>`+tabs;
+  if(!PGS.avail){box.innerHTML=head+`<div class="lbmsg">${LL('لوحة المتصدرين الحقيقية شغالة في نسخة اللعبة من جوجل بلاي','The real leaderboard works in the Google Play version of the game')}</div>`;return}
+  if(!PGS.auth){box.innerHTML=head+`<div class="lbmsg">${LL('سجّل دخول بجوجل عشان تشوف المتصدرين الحقيقيين وتظهر معاهم','Sign in with Google to see the real top players and appear with them')}<button class="go" id="lbIn">${LL('تسجيل الدخول بجوجل','Sign in with Google')}</button></div>`;$('lbIn').onclick=()=>pgsSignIn().then(()=>arenaBoard());return}
+  box.innerHTML=head+`<div class="lbmsg">${LL('بيحمّل...','Loading...')}</div>`;
+  try{const d=await lbLoad(kind);if(LB.kind!==kind)return;const list=(d&&d.entries)||[];const meR=d&&d.me;
+    const rows=list.map(e=>lbRow(e,kind,(e.pid&&e.pid===PGS.id)||(meR&&meR.rank===e.rank))).join('')||`<div class="lbmsg">${LL('لسه محدش سجّل رقم هنا. العب وكن الأول!','No scores here yet. Play and be the first!')}</div>`;
+    const mine=meR&&meR.rank>25?`<div class="lbme">${lbRow({rank:meR.rank,name:PGS.name,tag:lbTag(),score:meR.score},kind,1)}</div>`:'';
+    box.innerHTML=head+rows+mine}
+  catch(e){box.innerHTML=head+`<div class="lbmsg">${LL('حدّث اللعبة من جوجل بلاي عشان تشوف اللوحة هنا، أو افتحها من جوجل:','Update the game from Google Play to see the board here, or open it in Google:')}<button class="go alt" id="lbG">${LL('افتح لوحة جوجل','Open Google leaderboard')}</button></div>`;
+    const g=$('lbG');if(g)g.onclick=()=>{const id={rank:PGS.ids.lb.rank,dmg:PGS.ids.lb.dmg,boss:PGS.ids.lb.boss}[kind];PGS.P.showLeaderboard({id}).catch(()=>{})}}}
+document.addEventListener('click',e=>{const b=e.target.closest&&e.target.closest('#aBoard [data-lb]');if(!b)return;LB.kind=b.dataset.lb;sfx('click');arenaBoard()});
+renderArena=(f=>function(){const r=f.apply(this,arguments);try{arenaBoard()}catch(e){}return r})(renderArena);
 setTimeout(achBadge,1500);
 /* a stable little leaderboard around your rank */
 function renderArena(){const r=rankOf(S.rp);
@@ -4043,7 +4086,7 @@ function coinTick(){{const p=fmt(S.pts||0),e=$('cbP');if(e&&e.textContent!==p)e.
     $('coinBar').classList.remove('bump');void $('coinBar').offsetWidth;$('coinBar').classList.add('bump')}CB.shown=v;el.textContent=fmt(v);if($('mPassLv'))passBadge()}
 setInterval(coinTick,250);
 function liveCheck(){if(!window.fetch||!navigator.onLine||location.port)return;const cur=window.__live||window.BUILD_V;fetch(LIVE_BASE+'version.json?'+Date.now(),{cache:'no-store'}).then(r=>r.ok?r.json():null).then(j=>{if(!j||!(j.v>cur))return;
-  return Promise.all([fetch(LIVE_BASE+'index.html?v='+j.v,{cache:'no-store'}).then(r=>r.ok?r.text():null),fetch(LIVE_BASE+'lang-en.js?v='+j.v,{cache:'no-store'}).then(r=>r.ok?r.text():null)]).then(([h,lg])=>{if(h&&h.length>50000&&h.includes('BUILD_V')){try{localStorage.setItem('by-live',JSON.stringify({v:j.v,html:h,lang:lg||''}));toast(LL('تحديث جديد جاهز · هيشتغل المرة الجاية','Update ready · it starts next time'))}catch(e){}}})}).catch(()=>{})}
+  return Promise.all([fetch(LIVE_BASE+'index.html?v='+j.v,{cache:'no-store'}).then(r=>r.ok?r.text():null),fetch(LIVE_BASE+'lang-en.js?v='+j.v,{cache:'no-store'}).then(r=>r.ok?r.text():null)]).then(([h,lg])=>{if(h&&h.length>50000&&h.includes('BUILD_V')){try{localStorage.setItem('by-live',JSON.stringify({v:j.v,html:h,lang:lg||''}));liveReady(j.v)}catch(e){}}})}).catch(()=>{})}
 setTimeout(liveCheck,4000);
 $('cbPlus').onclick=()=>{sfx('click');if(mode!=='shop')show('shop')};
 /* ---------- battle pass ---------- */
